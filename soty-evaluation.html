@@ -135,8 +135,14 @@
       .g2,.g4{grid-template-columns:1fr}
       .jinputs{grid-template-columns:repeat(3,1fr)}
       .statgrid{grid-template-columns:1fr 1fr}
-      .srow{grid-template-columns:30px 1fr}
-      .srow select,.srow .del-btn{display:none}
+      .srow{grid-template-columns:30px 1fr auto auto;gap:4px;padding:8px 8px}
+      .srow input[type=text]{min-width:0}
+      .srow select,.srow .del-btn{font-size:11px;padding:6px 8px}
+      .btn-row{flex-direction:column;gap:8px}
+      .btn{width:100%;justify-content:center}
+      input[type=number],input[type=text],select{font-size:16px;padding:8px 10px}
+      .card-hd{flex-direction:column;align-items:flex-start}
+      .card-hd h3{margin-bottom:8px}
     }
   </style>
 </head>

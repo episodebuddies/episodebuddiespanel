@@ -193,7 +193,20 @@
     .toast.show{transform:translateY(0);opacity:1}
 
     @media(max-width:1024px){.kpi-grid{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}}
-    @media(max-width:768px){.app-main{padding:14px 14px 80px}.kpi-grid{grid-template-columns:1fr 1fr}.arow{grid-template-columns:28px 1fr}.arow select,.arow .del-btn{display:none}.ah-progress{display:none}}
+    @media(max-width:768px){
+      .app-main{padding:14px 14px 80px}
+      .kpi-grid{grid-template-columns:1fr 1fr}
+      .arow{grid-template-columns:28px 1fr auto auto;gap:4px;padding:8px 8px}
+      .arow input[type=text]{min-width:0}
+      .arow select,.arow .del-btn{font-size:11px;padding:6px 8px}
+      .ah-progress{display:none}
+      .btn-row{flex-direction:column;gap:8px}
+      .btn{width:100%;justify-content:center}
+      input[type=number],input[type=text],select{font-size:16px;padding:8px 10px}
+      .card-hd{flex-direction:column;align-items:flex-start}
+      .card-hd-left{width:100%;margin-bottom:8px}
+      .card-hd-left h3{margin-bottom:8px}
+    }
   </style>
 </head>
 <body>
