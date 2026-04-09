@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Head Judge Dashboard · SOTY & AOTY 2026 · Buddies Support Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#1B2A4A;--deep-navy:#0F1B33;--navy2:#243556;--navy3:#2d3f5e;
+      --gold:#C9A84C;--gold-light:#E8C97A;--gold-dim:rgba(201,168,76,0.12);
+      --white:#fff;--off-white:#F4F5F8;--card:#fff;
+      --text-dark:#0F1B33;--text-mid:#4A5568;--text-light:#8896A6;
+      --green:#16a34a;--green-dim:rgba(22,163,74,0.1);
+      --red:#dc2626;--red-dim:rgba(220,38,38,0.08);
+      --amber:#d97706;--amber-dim:rgba(217,119,6,0.1);
+      --blue:#2563eb;--blue-dim:rgba(37,99,235,0.08);
+      --purple:#7c3aed;--purple-dim:rgba(124,58,237,0.08);
+      --border:rgba(27,42,74,0.1);
+      --shadow:0 1px 3px rgba(15,27,51,0.07),0 4px 12px rgba(15,27,51,0.05);
+      --shadow-md:0 4px 16px rgba(15,27,51,0.1);
+      --shadow-lg:0 8px 32px rgba(15,27,51,0.14);
+      --serif:'Playfair Display',Georgia,serif;
+      --sans:'DM Sans',system-ui,sans-serif;
+      --r:10px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--off-white);color:var(--text-dark);font-size:14px}
+    ::-webkit-scrollbar{width:5px;height:5px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:rgba(27,42,74,0.18);border-radius:3px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+    /* ─── SIDEBAR ─── */
+    .sidebar{
+      position:fixed;top:0;left:0;bottom:0;width:230px;
+      background:linear-gradient(180deg,var(--deep-navy) 0%,#142030 100%);
+      border-right:1px solid rgba(201,168,76,0.12);
+      display:flex;flex-direction:column;z-index:100;
+      overflow-y:auto;scrollbar-width:none;
+    }
+    .sidebar::-webkit-scrollbar{display:none}
+    .sb-logo{padding:22px 20px 18px;border-bottom:1px solid rgba(255,255,255,0.06)}
+    .sb-logo-row{display:flex;align-items:center;gap:10px}
+    .sb-logo-icon{width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .sb-logo-icon img{width:20px;height:20px;object-fit:contain}
+    .sb-title{font-family:var(--serif);font-size:13px;color:var(--white);font-weight:700;line-height:1.3}
+    .sb-sub{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase;margin-top:1px}
+    .sb-season{margin:12px 20px 0;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:8px 12px;text-align:center}
+    .sb-season-lbl{font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+    .sb-season-val{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--gold);line-height:1.2}
+    .sb-nav{padding:16px 12px;flex:1}
+    .sb-nav-group{margin-bottom:20px}
+    .sb-nav-label{font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:0 8px;margin-bottom:6px}
+    .sb-nav a{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:6px;text-decoration:none;color:rgba(255,255,255,0.55);font-size:12px;font-weight:600;letter-spacing:0.02em;transition:all .2s;margin-bottom:2px}
+    .sb-nav a:hover{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85)}
+    .sb-nav a.active{background:rgba(201,168,76,0.12);color:var(--gold);border-left:2px solid var(--gold);padding-left:8px}
+    .sb-nav a .nav-icon{font-size:15px;width:20px;text-align:center;flex-shrink:0}
+    .sb-nav a .nav-badge{margin-left:auto;font-size:9px;font-weight:700;background:rgba(220,38,38,0.3);color:#fca5a5;padding:2px 6px;border-radius:10px}
+    .sb-footer{padding:14px 20px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;color:rgba(255,255,255,0.2)}
+
+    /* ─── TOPBAR ─── */
+    .topbar{
+      position:fixed;top:0;left:230px;right:0;height:58px;
+      background:rgba(244,245,248,0.92);backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 24px;z-index:90;
+    }
+    .topbar-left{display:flex;align-items:center;gap:14px}
+    .topbar-title{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy)}
+    .topbar-sub{font-size:11px;color:var(--text-light)}
+    .topbar-right{display:flex;align-items:center;gap:10px}
+    .topbar-time{font-size:11px;color:var(--text-light)}
+    .btn-refresh{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border-radius:6px;border:1px solid var(--border);background:var(--white);color:var(--navy);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+    .btn-refresh:hover{background:var(--navy);color:var(--white)}
+
+    /* ─── MAIN ─── */
+    .main{margin-left:230px;padding-top:58px}
+    .main-inner{padding:22px 24px 60px;max-width:1300px}
+
+    /* ─── SECTIONS ─── */
+    .section{margin-bottom:28px}
+    .section-title{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+    .section-title::before{content:'';display:block;width:3px;height:20px;background:var(--gold);border-radius:2px;flex-shrink:0}
+    .section-sub{font-size:13px;color:var(--text-mid);margin-bottom:16px;margin-top:-8px}
+
+    /* ─── GRID ─── */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+    .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .g12{display:grid;grid-template-columns:1fr 2fr;gap:16px}
+
+    /* ─── CARDS ─── */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+    .card-hd{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+    .card-hd-title{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:7px}
+    .card-hd-title .ch-icon{font-size:17px}
+    .card-hd-sub{font-size:11px;color:var(--text-light);margin-top:1px}
+    .card-hd-dark{background:linear-gradient(135deg,var(--deep-navy),var(--navy2));border-bottom:none}
+    .card-hd-dark .card-hd-title{color:var(--white)}
+    .card-hd-dark .card-hd-sub{color:rgba(255,255,255,0.4)}
+    .card-body{padding:18px}
+    .card-body-flush{padding:0}
+
+    /* ─── KPI CARDS ─── */
+    .kpi{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:all .2s}
+    .kpi:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+    .kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--r) var(--r) 0 0}
+    .kpi.k-gold::before{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+    .kpi.k-green::before{background:linear-gradient(90deg,#22c55e,#4ade80)}
+    .kpi.k-blue::before{background:linear-gradient(90deg,#60a5fa,#38bdf8)}
+    .kpi.k-purple::before{background:linear-gradient(90deg,#a78bfa,#818cf8)}
+    .kpi.k-red::before{background:linear-gradient(90deg,#f87171,#fca5a5)}
+    .kpi.k-amber::before{background:linear-gradient(90deg,#fbbf24,#f59e0b)}
+    .kpi-lbl{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:6px}
+    .kpi-val{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--navy);line-height:1}
+    .kpi-sub{font-size:11px;color:var(--text-light);margin-top:5px}
+    .kpi-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:32px;opacity:0.07}
+    .kpi-trend{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;margin-top:5px;padding:2px 8px;border-radius:10px}
+    .kpi-trend.up{background:var(--green-dim);color:var(--green)}
+    .kpi-trend.down{background:var(--red-dim);color:var(--red)}
+    .kpi-trend.neutral{background:var(--amber-dim);color:var(--amber)}
+
+    /* ─── EVAL CARDS ─── */
+    .eval-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;transition:all .2s;text-decoration:none;display:block}
+    .eval-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+    .eval-card-header{padding:22px 22px 18px;position:relative}
+    .eval-card-header.soty{background:linear-gradient(135deg,var(--deep-navy),#162230)}
+    .eval-card-header.aoty{background:linear-gradient(135deg,#162035,#1d2d4a)}
+    .eval-card-tag{font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+    .eval-card-title{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--white);margin-bottom:4px}
+    .eval-card-sub{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.6}
+    .eval-card-ring{position:absolute;right:18px;top:18px;width:70px;height:70px}
+    .eval-card-ring svg{transform:rotate(-90deg)}
+    .eval-card-ring .ring-bg{fill:none;stroke:rgba(255,255,255,0.08);stroke-width:5}
+    .eval-card-ring .ring-fill{fill:none;stroke:var(--gold);stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset .8s ease}
+    .eval-card-ring-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
+    .eval-card-ring-pct{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--white);line-height:1}
+    .eval-card-ring-lbl{font-size:8px;color:rgba(255,255,255,0.4);letter-spacing:0.05em;text-transform:uppercase}
+    .eval-card-body{padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .eval-stat{text-align:center}
+    .eval-stat-val{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy);line-height:1}
+    .eval-stat-lbl{font-size:10px;color:var(--text-light);letter-spacing:0.06em;text-transform:uppercase;margin-top:2px}
+    .eval-cta{font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:8px 16px;border-radius:6px;background:var(--gold);color:var(--deep-navy);border:none;cursor:pointer;transition:all .2s;white-space:nowrap;text-decoration:none;display:inline-block}
+    .eval-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+    /* ─── PROGRESS BARS ─── */
+    .prog-row{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+    .prog-row:last-child{margin-bottom:0}
+    .prog-label-row{display:flex;align-items:center;justify-content:space-between}
+    .prog-label{font-size:12px;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:6px}
+    .prog-pct{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--navy)}
+    .prog-track{height:8px;background:rgba(27,42,74,0.08);border-radius:4px;overflow:hidden}
+    .prog-fill{height:100%;border-radius:4px;transition:width .8s ease}
+    .prog-fill.pf-gold{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+    .prog-fill.pf-green{background:linear-gradient(90deg,#22c55e,#4ade80)}
+    .prog-fill.pf-blue{background:linear-gradient(90deg,#60a5fa,#38bdf8)}
+    .prog-fill.pf-purple{background:linear-gradient(90deg,#a78bfa,#818cf8)}
+    .prog-fill.pf-red{background:linear-gradient(90deg,#f87171,#fca5a5)}
+    .prog-fill.pf-amber{background:linear-gradient(90deg,#fbbf24,#f59e0b)}
+    .prog-sub{font-size:11px;color:var(--text-light)}
+
+    /* ─── RANKING SNAPSHOT ─── */
+    .rank-tabs{display:flex;gap:5px;margin-bottom:14px;flex-wrap:wrap}
+    .rank-tab{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--white);color:var(--text-mid);cursor:pointer;transition:all .2s}
+    .rank-tab:hover{background:rgba(27,42,74,0.06)}
+    .rank-tab.active{background:var(--navy);color:var(--white);border-color:var(--navy)}
+    .rank-category-tabs{display:flex;gap:5px;margin-bottom:14px}
+    .rct{font-size:11px;font-weight:600;padding:6px 14px;border-radius:5px;border:1px solid var(--border);background:var(--white);color:var(--text-mid);cursor:pointer;transition:all .2s}
+    .rct.active{background:var(--deep-navy);color:var(--white);border-color:var(--deep-navy)}
+    .rank-topn-row{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+    .rank-topn-input{width:70px;font-family:var(--sans);font-size:13px;border:1px solid var(--border);border-radius:6px;padding:6px 8px}
+    .rank-topn-input:focus{outline:none;border-color:var(--gold)}
+    .rank-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid rgba(27,42,74,0.05);transition:background .2s}
+    .rank-item:last-child{border-bottom:none}
+    .rank-item:hover{background:rgba(201,168,76,0.04)}
+    .rank-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;background:rgba(27,42,74,0.08);color:var(--navy)}
+    .rank-num.r1{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--deep-navy);box-shadow:0 2px 6px rgba(201,168,76,0.3)}
+    .rank-num.r2{background:rgba(201,168,76,0.4);color:var(--deep-navy)}
+    .rank-num.r3{background:rgba(201,168,76,0.2);color:var(--navy)}
+    .rank-info{flex:1;min-width:0}
+    .rank-name{font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px}
+    .rank-meta{font-size:11px;color:var(--text-light)}
+    .rank-score-wrap{text-align:right;flex-shrink:0}
+    .rank-score{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy)}
+    .rank-bar{width:80px;height:4px;background:rgba(27,42,74,0.08);border-radius:2px;margin-top:4px;overflow:hidden}
+    .rank-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:2px;transition:width .6s ease}
+    .rank-empty{padding:28px;text-align:center;color:var(--text-light);font-size:13px}
+
+    /* ─── JUDGE ASSIGNMENTS ─── */
+    .judge-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .judge-card{background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:14px 16px;transition:border-color .2s}
+    .judge-card:hover{border-color:rgba(201,168,76,0.3)}
+    .judge-name{font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px}
+    .judge-code{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    .judge-task{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-mid);margin-bottom:5px}
+    .judge-task:last-child{margin-bottom:0}
+    .jt-check{width:16px;height:16px;border-radius:4px;border:1px solid var(--border);background:var(--white);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:10px}
+    .jt-check.done{background:var(--green);border-color:var(--green);color:var(--white)}
+    .judge-prog{margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+    .judge-prog-track{height:5px;background:rgba(27,42,74,0.08);border-radius:3px;overflow:hidden;margin-top:4px}
+    .judge-prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:3px;transition:width .5s ease}
+    .jp-lbl{font-size:10px;color:var(--text-light);display:flex;justify-content:space-between}
+
+    /* ─── ANALYTICS ─── */
+    .analytics-row{display:flex;gap:12px;flex-wrap:wrap}
+    .analytic-tile{flex:1;min-width:100px;background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:12px 14px;text-align:center}
+    .at-val{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--navy);line-height:1}
+    .at-lbl{font-size:10px;color:var(--text-light);margin-top:4px;letter-spacing:0.06em;text-transform:uppercase}
+    .chart-bar-row{display:flex;align-items:flex-end;gap:3px;height:80px;padding:0 4px;margin-top:10px}
+    .cb-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px}
+    .cb{border-radius:3px 3px 0 0;transition:height .6s ease;min-height:2px;cursor:default}
+    .cb:hover{filter:brightness(1.1)}
+    .cb-lbl{font-size:8px;color:var(--text-light);text-align:center;letter-spacing:0.04em}
+
+    /* ─── TASKS ─── */
+    .task-item{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid rgba(27,42,74,0.06)}
+    .task-item:last-child{border-bottom:none}
+    .task-check{width:20px;height:20px;border-radius:5px;border:2px solid var(--border);background:var(--white);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:11px;margin-top:1px}
+    .task-check.done{background:var(--green);border-color:var(--green);color:var(--white)}
+    .task-text{flex:1}
+    .task-label{font-size:13px;font-weight:600;color:var(--navy);transition:color .2s}
+    .task-item.is-done .task-label{text-decoration:line-through;color:var(--text-light)}
+    .task-desc{font-size:11px;color:var(--text-light);margin-top:2px;line-height:1.5}
+    .task-priority{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 7px;border-radius:10px;margin-left:auto;flex-shrink:0;margin-top:2px}
+    .tp-high{background:var(--red-dim);color:var(--red)}
+    .tp-med{background:var(--amber-dim);color:var(--amber)}
+    .tp-low{background:var(--green-dim);color:var(--green)}
+
+    /* ─── DATES ─── */
+    .date-timeline{display:flex;flex-direction:column;gap:0}
+    .date-item{display:flex;gap:14px;position:relative}
+    .date-item:not(:last-child)::before{content:'';position:absolute;left:15px;top:28px;bottom:0;width:1px;background:var(--border)}
+    .date-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;position:relative;z-index:1;border:2px solid transparent;transition:all .2s}
+    .date-dot.past{background:var(--green-dim);border-color:var(--green);color:var(--green)}
+    .date-dot.today{background:var(--gold-dim);border-color:var(--gold);color:var(--gold);box-shadow:0 0 10px rgba(201,168,76,0.3);animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{box-shadow:0 0 10px rgba(201,168,76,0.3)}50%{box-shadow:0 0 18px rgba(201,168,76,0.5)}}
+    .date-dot.upcoming{background:var(--off-white);border-color:var(--border);color:var(--text-light)}
+    .date-dot.urgent{background:var(--red-dim);border-color:var(--red);color:var(--red)}
+    .date-info{padding:4px 0 18px}
+    .date-label{font-size:13px;font-weight:700;color:var(--navy)}
+    .date-when{font-size:11px;font-weight:600;color:var(--gold);margin-top:1px}
+    .date-desc{font-size:11px;color:var(--text-light);margin-top:2px;line-height:1.5}
+    .date-remaining{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 8px;border-radius:10px;margin-top:4px;display:inline-block}
+    .dr-red{background:var(--red-dim);color:var(--red)}
+    .dr-amber{background:var(--amber-dim);color:var(--amber)}
+    .dr-green{background:var(--green-dim);color:var(--green)}
+    .dr-past{background:rgba(27,42,74,0.06);color:var(--text-light)}
+
+    /* ─── RESOURCES ─── */
+    .resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .resource-card{background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:14px 16px;cursor:pointer;transition:all .2s;text-decoration:none;display:block}
+    .resource-card:hover{border-color:rgba(201,168,76,0.35);background:var(--white);transform:translateY(-1px)}
+    .rc-icon{font-size:22px;margin-bottom:8px}
+    .rc-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
+    .rc-sub{font-size:11px;color:var(--text-light)}
+    .resource-link{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--off-white);border:1px solid var(--border);border-radius:7px;text-decoration:none;transition:all .2s;margin-bottom:6px}
+    .resource-link:hover{background:var(--white);border-color:rgba(201,168,76,0.3)}
+    .rl-icon{font-size:18px;flex-shrink:0}
+    .rl-text{flex:1}
+    .rl-title{font-size:12px;font-weight:700;color:var(--navy)}
+    .rl-url{font-size:10px;color:var(--text-light)}
+    .rl-arrow{color:var(--text-light);font-size:12px}
+
+    /* ─── NOTES ─── */
+    .notes-area{width:100%;min-height:180px;font-family:var(--sans);font-size:13px;color:var(--text-dark);border:1px solid var(--border);border-radius:8px;padding:14px 16px;resize:vertical;line-height:1.75;transition:border-color .2s;background:var(--white)}
+    .notes-area:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.1)}
+    .notes-meta{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+    .notes-saved{font-size:11px;color:var(--text-light)}
+    .btn-save-note{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border-radius:6px;background:var(--navy);color:var(--white);border:none;cursor:pointer;transition:all .2s}
+    .btn-save-note:hover{background:var(--deep-navy)}
+    .notes-pins{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+    .note-pin{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.2);border-radius:7px;padding:10px 13px;display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--text-mid);line-height:1.55}
+    .note-pin-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+
+    /* ─── STATUS BADGES ─── */
+    .badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:3px 9px;border-radius:20px}
+    .badge-pass{background:var(--green-dim);color:var(--green)}
+    .badge-pending{background:var(--amber-dim);color:var(--amber)}
+    .badge-todo{background:var(--red-dim);color:var(--red)}
+    .badge-info{background:var(--blue-dim);color:var(--blue)}
+
+    /* ─── DIVIDER ─── */
+    .divider{height:1px;background:var(--border);margin:4px 0 16px}
+
+    /* ─── BUTTONS ─── */
+    .btn{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:8px 16px;border-radius:6px;border:none;cursor:pointer;transition:all .2s;white-space:nowrap;text-decoration:none}
+    .btn-gold{background:var(--gold);color:var(--deep-navy)}.btn-gold:hover{background:var(--gold-light)}
+    .btn-navy{background:var(--navy);color:var(--white)}.btn-navy:hover{background:var(--deep-navy)}
+    .btn-outline{background:transparent;color:var(--navy);border:1px solid var(--border)}.btn-outline:hover{background:var(--navy);color:var(--white)}
+    .btn-sm{padding:5px 10px;font-size:10px}
+
+    /* ─── TOAST ─── */
+    .toast{position:fixed;bottom:20px;right:20px;background:var(--deep-navy);color:var(--white);padding:11px 18px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;transform:translateY(60px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);border-left:3px solid var(--gold);pointer-events:none;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow-lg)}
+    .toast.show{transform:translateY(0);opacity:1}
+
+    @media(max-width:1100px){.g4{grid-template-columns:1fr 1fr}.resource-grid{grid-template-columns:1fr 1fr}.g12{grid-template-columns:1fr}.judge-grid{grid-template-columns:1fr}}
+    @media(max-width:900px){.g2,.g3{grid-template-columns:1fr}.sidebar{width:200px}.main{margin-left:200px}.topbar{left:200px}}
+    @media(max-width:700px){.sidebar{display:none}.main{margin-left:0}.topbar{left:0}}
+
+    /* ─── AWARDS TRACKER ─── */
+    .award-section-title{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+    .award-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:20px}
+    .award-card{background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:14px 16px;transition:border-color .2s}
+    .award-card.confirmed{border-color:rgba(22,163,74,0.35);background:rgba(22,163,74,0.03)}
+    .award-card.auto{border-color:rgba(201,168,76,0.3)}
+    .award-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}
+    .award-icon{font-size:20px;flex-shrink:0}
+    .award-name{font-size:13px;font-weight:700;color:var(--navy);line-height:1.3}
+    .award-cat{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-top:2px}
+    .award-winner-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+    .award-winner-val{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--navy);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .award-winner-val.empty{font-family:var(--sans);font-size:12px;font-style:italic;color:var(--text-light);font-weight:400}
+    .award-score{font-size:12px;font-weight:700;color:var(--gold);white-space:nowrap}
+    .award-actions{display:flex;align-items:center;gap:6px;margin-top:8px}
+    .award-override-input{font-family:var(--sans);font-size:12px;border:1px solid var(--border);border-radius:5px;padding:5px 8px;background:var(--white);flex:1;transition:border-color .2s}
+    .award-override-input:focus{outline:none;border-color:var(--gold)}
+    .award-confirm-btn{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:5px 10px;border-radius:5px;border:none;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .award-confirm-btn.confirm{background:var(--green);color:var(--white)}.award-confirm-btn.confirm:hover{background:#15803d}
+    .award-confirm-btn.reset{background:var(--red-dim);color:var(--red);border:1px solid rgba(220,38,38,0.2)}.award-confirm-btn.reset:hover{background:#fca5a5}
+    .award-status-pill{font-size:9px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:2px 8px;border-radius:10px}
+    .ap-auto{background:var(--gold-dim);color:#8a6f3a}
+    .ap-confirmed{background:var(--green-dim);color:var(--green)}
+    .ap-pending{background:rgba(27,42,74,0.08);color:var(--text-light)}
+    .award-ft-note{font-size:11px;color:var(--text-mid);margin-top:4px;line-height:1.5}
+    .award-divider{height:1px;background:var(--border);margin:16px 0}
+  </style>
+</head>
+<body>
+
+<!-- ─── SIDEBAR ─── -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-row">
+      <div class="sb-logo-icon"><img src="https://episodebuddiessotyaoty.wordpress.com/wp-content/uploads/2026/03/buddies-logo.png?w=300" alt="BSH"></div>
+      <div><div class="sb-title">Buddies Support Hub</div><div class="sb-sub">Internal · Judge Panel</div></div>
+    </div>
+    <div class="sb-season"><div class="sb-season-lbl">Competition Season</div><div class="sb-season-val">SOTY & AOTY 2026</div></div>
+  </div>
+  <div class="sb-nav">
+    <div class="sb-nav-group">
+      <div class="sb-nav-label">Overview</div>
+      <a href="#dashboard" class="active"><span class="nav-icon">🏠</span>Dashboard</a>
+      <a href="#progress"><span class="nav-icon">📈</span>Eval Progress</a>
+      <a href="#rankings"><span class="nav-icon">🏅</span>Ranking Snapshot</a>
+    </div>
+    <div class="sb-nav-group">
+      <div class="sb-nav-label">Evaluations</div>
+      <a href="soty-evaluation.html" target="_blank"><span class="nav-icon">📖</span>SOTY Evaluation ↗</a>
+      <a href="aoty-evaluation.html" target="_blank"><span class="nav-icon">✍</span>AOTY Evaluation ↗</a>
+    </div>
+    <div class="sb-nav-group">
+      <div class="sb-nav-label">Management</div>
+      <a href="#judges"><span class="nav-icon">🎯</span>Judge Assignments</a>
+      <a href="#tasks"><span class="nav-icon">✅</span>Pending Tasks</a>
+      <a href="#analytics"><span class="nav-icon">📊</span>Analytics</a>
+    </div>
+    <div class="sb-nav-group">
+      <div class="sb-nav-label">Reference</div>
+      <a href="#dates"><span class="nav-icon">📅</span>Key Dates</a>
+      <a href="#resources"><span class="nav-icon">📁</span>Admin Resources</a>
+      <a href="#notes"><span class="nav-icon">📝</span>Internal Notes</a>
+    </div>
+  </div>
+  <div class="sb-footer">© 2026 Buddies Support Hub<br>Head Judge Access Only</div>
+</aside>
+
+<!-- ─── TOPBAR ─── -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div>
+      <div class="topbar-title" id="page-title">Dashboard Overview</div>
+      <div class="topbar-sub">Head Judge Control Panel · SOTY & AOTY 2026</div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-time" id="live-time"></div>
+    <button class="btn-refresh" onclick="refreshAll()">↻ Refresh Data</button>
+  </div>
+</div>
+
+<!-- ─── MAIN ─── -->
+<div class="main">
+<div class="main-inner">
+
+<!-- ══════════ 1. DASHBOARD OVERVIEW ══════════ -->
+<div class="section" id="dashboard">
+  <div class="section-title">Dashboard Overview</div>
+  <div class="g4" id="overview-kpis" style="margin-bottom:16px">
+    <div class="kpi k-gold"><div class="kpi-lbl">Total Entries</div><div class="kpi-val" id="kpi-entries">77</div><div class="kpi-sub">39 stories · 38 authors</div><div class="kpi-icon">📋</div></div>
+    <div class="kpi k-green"><div class="kpi-lbl">Scored (SOTY)</div><div class="kpi-val" id="kpi-soty-scored">0</div><div class="kpi-sub" id="kpi-soty-scored-sub">stories with a score</div><div class="kpi-icon">📖</div></div>
+    <div class="kpi k-blue"><div class="kpi-lbl">Scored (AOTY)</div><div class="kpi-val" id="kpi-aoty-scored">0</div><div class="kpi-sub" id="kpi-aoty-scored-sub">authors with a score</div><div class="kpi-icon">✍</div></div>
+    <div class="kpi k-amber"><div class="kpi-lbl">Overall Progress</div><div class="kpi-val" id="kpi-overall">0%</div><div class="kpi-sub">across both competitions</div><div class="kpi-icon">📈</div></div>
+  </div>
+
+  <!-- Eval Access Cards -->
+  <div class="g2" id="eval-section">
+    <a href="soty-evaluation.html" target="_blank" class="eval-card">
+      <div class="eval-card-header soty">
+        <div class="eval-card-tag">Story of the Year · 2026</div>
+        <div class="eval-card-title">SOTY Evaluation</div>
+        <div class="eval-card-sub">Stage 1 judging, public voting, Top 24 builder, and final placements for all 39 qualifying stories.</div>
+        <div class="eval-card-ring" id="soty-ring-wrap">
+          <svg viewBox="0 0 70 70" width="70" height="70">
+            <circle class="ring-bg" cx="35" cy="35" r="28"/>
+            <circle class="ring-fill" id="soty-ring" cx="35" cy="35" r="28" stroke-dasharray="176" stroke-dashoffset="176"/>
+          </svg>
+          <div class="eval-card-ring-text"><div class="eval-card-ring-pct" id="soty-ring-pct">0%</div><div class="eval-card-ring-lbl">Done</div></div>
+        </div>
+      </div>
+      <div class="eval-card-body">
+        <div class="eval-stat"><div class="eval-stat-val" id="ec-soty-scored">0</div><div class="eval-stat-lbl">Scored</div></div>
+        <div class="eval-stat"><div class="eval-stat-val">39</div><div class="eval-stat-lbl">Total</div></div>
+        <div class="eval-stat"><div class="eval-stat-val" id="ec-soty-top24">0</div><div class="eval-stat-lbl">Top 24 Built</div></div>
+        <span class="eval-cta">Open SOTY Tool →</span>
+      </div>
+    </a>
+
+    <a href="aoty-evaluation.html" target="_blank" class="eval-card">
+      <div class="eval-card-header aoty">
+        <div class="eval-card-tag">Author of the Year · 2026</div>
+        <div class="eval-card-title">AOTY Evaluation</div>
+        <div class="eval-card-sub">Interview, Impact, SOTY Judging, Aesthetics, and voting evaluations for all 38 qualifying authors.</div>
+        <div class="eval-card-ring">
+          <svg viewBox="0 0 70 70" width="70" height="70">
+            <circle class="ring-bg" cx="35" cy="35" r="28"/>
+            <circle class="ring-fill" id="aoty-ring" cx="35" cy="35" r="28" stroke-dasharray="176" stroke-dashoffset="176"/>
+          </svg>
+          <div class="eval-card-ring-text"><div class="eval-card-ring-pct" id="aoty-ring-pct">0%</div><div class="eval-card-ring-lbl">Done</div></div>
+        </div>
+      </div>
+      <div class="eval-card-body">
+        <div class="eval-stat"><div class="eval-stat-val" id="ec-aoty-scored">0</div><div class="eval-stat-lbl">Scored</div></div>
+        <div class="eval-stat"><div class="eval-stat-val">38</div><div class="eval-stat-lbl">Total</div></div>
+        <div class="eval-stat"><div class="eval-stat-val" id="ec-aoty-top24">0</div><div class="eval-stat-lbl">Top 24 Built</div></div>
+        <span class="eval-cta">Open AOTY Tool →</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ══════════ 5. PROGRESS ══════════ -->
+<div class="section" id="progress">
+  <div class="section-title">Evaluation Progress</div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd card-hd-dark"><div class="card-hd-title"><span class="ch-icon">📖</span>SOTY 2026 Stages</div></div>
+      <div class="card-body" id="soty-progress-body">
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Stage 1 — Judging</span><span class="prog-pct" id="s-s1j">0%</span></div><div class="prog-track"><div class="prog-fill pf-gold" id="pb-s1j" style="width:0%"></div></div><div class="prog-sub" id="ps-s1j">—</div></div>
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Stage 1 — Voting</span><span class="prog-pct" id="s-s1v">0%</span></div><div class="prog-track"><div class="prog-fill pf-blue" id="pb-s1v" style="width:0%"></div></div><div class="prog-sub" id="ps-s1v">—</div></div>
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Top 24 Built</span><span class="prog-pct" id="s-t24">0%</span></div><div class="prog-track"><div class="prog-fill pf-purple" id="pb-t24" style="width:0%"></div></div><div class="prog-sub" id="ps-t24">—</div></div>
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Stage 2 — S2S Vote</span><span class="prog-pct" id="s-s2">0%</span></div><div class="prog-track"><div class="prog-fill pf-green" id="pb-s2" style="width:0%"></div></div><div class="prog-sub" id="ps-s2">—</div></div>
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Stage 3 — H2H Vote</span><span class="prog-pct" id="s-s3">0%</span></div><div class="prog-track"><div class="prog-fill pf-amber" id="pb-s3" style="width:0%"></div></div><div class="prog-sub" id="ps-s3">—</div></div>
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Final Placements</span><span class="prog-pct" id="s-s4">0%</span></div><div class="prog-track"><div class="prog-fill pf-red" id="pb-s4" style="width:0%"></div></div><div class="prog-sub" id="ps-s4">—</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd card-hd-dark"><div class="card-hd-title"><span class="ch-icon">✍</span>AOTY 2026 Stages</div></div>
+      <div class="card-body">
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Stage 1 — Judging</span><span class="prog-pct" id="a-s1j">0%</span></div><div class="prog-track"><div class="prog-fill pf-gold" id="apb-s1j" style="width:0%"></div></div><div class="prog-sub" id="aps-s1j">—</div></div>
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Stage 1 — Voting</span><span class="prog-pct" id="a-s1v">0%</span></div><div class="prog-track"><div class="prog-fill pf-blue" id="apb-s1v" style="width:0%"></div></div><div class="prog-sub" id="aps-s1v">—</div></div>
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Top 24 Built</span><span class="prog-pct" id="a-t24">0%</span></div><div class="prog-track"><div class="prog-fill pf-purple" id="apb-t24" style="width:0%"></div></div><div class="prog-sub" id="aps-t24">—</div></div>
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Stage 2 — Poll Vote</span><span class="prog-pct" id="a-s2">0%</span></div><div class="prog-track"><div class="prog-fill pf-green" id="apb-s2" style="width:0%"></div></div><div class="prog-sub" id="aps-s2">—</div></div>
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Stage 3 — H2H Vote</span><span class="prog-pct" id="a-s3">0%</span></div><div class="prog-track"><div class="prog-fill pf-amber" id="apb-s3" style="width:0%"></div></div><div class="prog-sub" id="aps-s3">—</div></div>
+        <div class="prog-row"><div class="prog-label-row"><span class="prog-label">Final Placements</span><span class="prog-pct" id="a-s4">0%</span></div><div class="prog-track"><div class="prog-fill pf-red" id="apb-s4" style="width:0%"></div></div><div class="prog-sub" id="aps-s4">—</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 6. RANKING SNAPSHOT ══════════ -->
+<div class="section" id="rankings">
+  <div class="section-title">Ranking Snapshot</div>
+  <div class="card">
+    <div class="card-hd">
+      <div class="card-hd-title"><span class="ch-icon">🏅</span>Live Rankings</div>
+      <div style="font-size:11px;color:var(--text-light)">Pulled from eval tool data · refresh to update</div>
+    </div>
+    <div class="card-body">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center">
+        <div class="rank-category-tabs">
+          <button class="rct active" onclick="rankCat('soty',this)">SOTY Stories</button>
+          <button class="rct" onclick="rankCat('aoty',this)">AOTY Authors</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;margin-left:auto">
+          <label style="font-size:11px;color:var(--text-mid);margin:0">Show Top</label>
+          <input type="number" class="rank-topn-input" id="rank-topn" value="10" min="1" max="39" oninput="renderRankings()">
+          <button class="btn btn-outline btn-sm" onclick="document.getElementById('rank-topn').value=10;renderRankings()">10</button>
+          <button class="btn btn-outline btn-sm" onclick="document.getElementById('rank-topn').value=12;renderRankings()">12</button>
+          <button class="btn btn-outline btn-sm" onclick="document.getElementById('rank-topn').value=20;renderRankings()">20</button>
+          <button class="btn btn-outline btn-sm" onclick="document.getElementById('rank-topn').value=24;renderRankings()">24</button>
+          <button class="btn btn-outline btn-sm" onclick="document.getElementById('rank-topn').value=30;renderRankings()">30</button>
+        </div>
+      </div>
+      <div id="rankings-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 4. JUDGE ASSIGNMENTS ══════════ -->
+<div class="section" id="judges">
+  <div class="section-title">Judge Assignments</div>
+  <p class="section-sub">Track each judge's evaluation completion across SOTY and AOTY categories.</p>
+  <div class="judge-grid" id="judge-grid"></div>
+</div>
+
+<!-- ══════════ 7. ANALYTICS ══════════ -->
+<div class="section" id="analytics">
+  <div class="section-title">Reports & Analytics</div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd"><div class="card-hd-title"><span class="ch-icon">📊</span>SOTY Score Distribution</div></div>
+      <div class="card-body">
+        <div class="analytics-row" id="soty-analytics-tiles"></div>
+        <div class="chart-bar-row" id="soty-chart-bars"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-hd-title"><span class="ch-icon">📊</span>AOTY Score Distribution</div></div>
+      <div class="card-body">
+        <div class="analytics-row" id="aoty-analytics-tiles"></div>
+        <div class="chart-bar-row" id="aoty-chart-bars"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 9. TASKS ══════════ -->
+<div class="section" id="tasks">
+  <div class="section-title">Pending Tasks</div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd card-hd-dark"><div class="card-hd-title"><span class="ch-icon">📖</span>SOTY Tasks</div><span id="soty-task-badge" class="badge badge-pending">Loading…</span></div>
+      <div class="card-body" id="soty-tasks"></div>
+    </div>
+    <div class="card">
+      <div class="card-hd card-hd-dark"><div class="card-hd-title"><span class="ch-icon">✍</span>AOTY Tasks</div><span id="aoty-task-badge" class="badge badge-pending">Loading…</span></div>
+      <div class="card-body" id="aoty-tasks"></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="card-hd"><div class="card-hd-title"><span class="ch-icon">✅</span>General Tasks</div></div>
+    <div class="card-body" id="general-tasks"></div>
+  </div>
+</div>
+
+<!-- ══════════ 10. KEY DATES ══════════ -->
+<div class="section" id="dates">
+  <div class="section-title">Key Dates & Deadlines</div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd"><div class="card-hd-title"><span class="ch-icon">📅</span>Season Timeline</div></div>
+      <div class="card-body card-body-flush" style="padding:18px">
+        <div class="date-timeline" id="date-timeline"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-hd-title"><span class="ch-icon">⏰</span>Upcoming Deadlines</div></div>
+      <div class="card-body" id="upcoming-deadlines"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ AWARDS TRACKER ══════════ -->
+<div class="section" id="awards-tracker">
+  <div class="section-title">Awards Tracker</div>
+  <p class="section-sub">All special awards and Fast Track confirmations for SOTY & AOTY 2026. Winners are auto-detected from eval tool data. You can confirm or manually override each one.</p>
+
+  <div class="card">
+    <div class="card-hd card-hd-dark">
+      <div class="card-hd-title"><span class="ch-icon">🏆</span>SOTY 2026 — Special Awards</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span style="font-size:11px;color:rgba(255,255,255,0.4)">Fast Track: Top 2 S2S + Popularity Vote winner → Top 12</span>
+        <button class="btn btn-gold btn-sm" onclick="autoDetectAwards()">⚡ Auto-Detect from Eval Data</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="award-section-title">🎯 Judging Category Awards (Fast Track to Top 24)</div>
+      <div class="award-grid" id="soty-judging-awards"></div>
+      <div class="award-divider"></div>
+      <div class="award-section-title">🗳 Voting Awards (Fast Track to Top 12)</div>
+      <div class="award-grid" id="soty-voting-awards"></div>
+      <div class="award-divider"></div>
+      <div class="award-section-title">🎖 Additional Recognition Awards</div>
+      <div class="award-grid" id="soty-recognition-awards"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hd card-hd-dark">
+      <div class="card-hd-title"><span class="ch-icon">✍</span>AOTY 2026 — Special Awards</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.4)">Fast Track: Best Interview · PFP · Aesthetics · Impact → Top 24 &nbsp;·&nbsp; Popularity Vote winner → Top 12</div>
+    </div>
+    <div class="card-body">
+      <div class="award-section-title">🎯 Judging Category Awards (Fast Track to Top 24)</div>
+      <div class="award-grid" id="aoty-judging-awards"></div>
+      <div class="award-divider"></div>
+      <div class="award-section-title">🗳 Voting Award (Fast Track to Top 12)</div>
+      <div class="award-grid" id="aoty-voting-awards"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hd"><div class="card-hd-title"><span class="ch-icon">📋</span>Awards Summary Log</div><button class="btn btn-outline btn-sm" onclick="copyAwardsSummary()">Copy Summary</button></div>
+    <div class="card-body">
+      <div id="awards-summary-log" style="font-family:monospace;font-size:12px;line-height:1.9;color:var(--text-mid);background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:16px;white-space:pre-wrap"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 11. RESOURCES ══════════ -->
+<div class="section" id="resources">
+  <div class="section-title">Admin Resources</div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd"><div class="card-hd-title"><span class="ch-icon">🔗</span>Quick Links</div></div>
+      <div class="card-body">
+        <a href="soty-evaluation.html" target="_blank" class="resource-link"><span class="rl-icon">📖</span><div class="rl-text"><div class="rl-title">SOTY 2026 Evaluation Tool</div><div class="rl-url">soty-2026-eval.html</div></div><span class="rl-arrow">↗</span></a>
+        <a href="aoty-evaluation.html" target="_blank" class="resource-link"><span class="rl-icon">✍</span><div class="rl-text"><div class="rl-title">AOTY 2026 Evaluation Tool</div><div class="rl-url">aoty-2026-eval.html</div></div><span class="rl-arrow">↗</span></a>
+        <a href="https://episodebuddiesvote.vercel.app/soty-2026-vote.html" target="_blank" class="resource-link"><span class="rl-icon">🗳</span><div class="rl-text"><div class="rl-title">SOTY 2026 Popularity Vote</div><div class="rl-url">soty-2026-vote.html</div></div><span class="rl-arrow">↗</span></a>
+        <a href="https://episodebuddiesvote.vercel.app/aoty-2026-vote.html" target="_blank" class="resource-link"><span class="rl-icon">🗳</span><div class="rl-text"><div class="rl-title">AOTY 2026 Popularity Vote</div><div class="rl-url">aoty-2026-vote.html</div></div><span class="rl-arrow">↗</span></a>
+        <a href="https://episodebuddiesvote.vercel.app/" target="_blank" class="resource-link"><span class="rl-icon">🏠</span><div class="rl-text"><div class="rl-title">Vote Index Page</div><div class="rl-url">vote-index.html</div></div><span class="rl-arrow">↗</span></a>
+        <a href="https://episodebuddiessoty.vercel.app/" target="_blank" class="resource-link"><span class="rl-icon">🌐</span><div class="rl-text"><div class="rl-title">SOTY & AOTY Competition Site</div><div class="rl-url">episodebuddiessoty.vercel.app</div></div><span class="rl-arrow">↗</span></a>
+        <a href="https://www.instagram.com/episode_buddies/" target="_blank" class="resource-link"><span class="rl-icon">📱</span><div class="rl-text"><div class="rl-title">Instagram — @episode_buddies</div><div class="rl-url">instagram.com/episode_buddies</div></div><span class="rl-arrow">↗</span></a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-hd-title"><span class="ch-icon">📁</span>Reference Documents</div></div>
+      <div class="card-body">
+        <div class="resource-grid">
+          <div class="resource-card" onclick="toast('Upload your rubric document link in Admin Resources')">
+            <div class="rc-icon">📐</div><div class="rc-title">Judging Rubric</div><div class="rc-sub">SOTY & AOTY scoring criteria</div>
+          </div>
+          <div class="resource-card" onclick="toast('Link your Google Sheet here')">
+            <div class="rc-icon">📊</div><div class="rc-title">Scores Sheet</div><div class="rc-sub">Google Sheets vote tracker</div>
+          </div>
+          <div class="resource-card" onclick="toast('Link your judge manual here')">
+            <div class="rc-icon">📕</div><div class="rc-title">Judge Manual</div><div class="rc-sub">BSH 2026 evaluation guide</div>
+          </div>
+          <div class="resource-card" onclick="toast('Link your qualifier list here')">
+            <div class="rc-icon">📋</div><div class="rc-title">Qualifier List</div><div class="rc-sub">All 39 SOTY + 38 AOTY entries</div>
+          </div>
+          <div class="resource-card" onclick="toast('Link your review template here')">
+            <div class="rc-icon">📝</div><div class="rc-title">Review Template</div><div class="rc-sub">Google Docs review form</div>
+          </div>
+          <a href="#awards-tracker" class="resource-card">
+            <div class="rc-icon">🏆</div><div class="rc-title">Awards Tracker</div><div class="rc-sub">↓ View built-in tracker below</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 12. NOTES ══════════ -->
+<div class="section" id="notes">
+  <div class="section-title">Internal Notes</div>
+  <div class="g12">
+    <div class="card">
+      <div class="card-hd"><div class="card-hd-title"><span class="ch-icon">📌</span>Pinned Reminders</div></div>
+      <div class="card-body">
+        <div class="notes-pins">
+          <div class="note-pin"><span class="note-pin-icon">🔒</span>This page is for internal use only. Do not share the URL publicly.</div>
+          <div class="note-pin"><span class="note-pin-icon">⚡</span>Fast Track winners must be confirmed before promoting to the next stage.</div>
+          <div class="note-pin"><span class="note-pin-icon">📊</span>Evaluation data is stored in browser localStorage. Export regularly as backup.</div>
+          <div class="note-pin"><span class="note-pin-icon">🗓</span>All Stage 1 evaluations must be completed by mid-November 2026.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd card-hd-dark"><div class="card-hd-title"><span class="ch-icon">📝</span>Private Notes</div></div>
+      <div class="card-body">
+        <textarea class="notes-area" id="notes-area" placeholder="Type your notes, observations, reminders, or comments here. Notes are saved privately in your browser…"></textarea>
+        <div class="notes-meta">
+          <span class="notes-saved" id="notes-saved">Not saved yet</span>
+          <button class="btn-save-note" onclick="saveNotes()">Save Notes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end main-inner -->
+</div><!-- end main -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════
+// STORAGE KEYS
+// ═══════════════════════════════════════════════
+const SOTY_SK = 'bsh_soty2026_eval_v2';
+const AOTY_SK = 'bsh_aoty2026_eval_v3';
+const DASH_SK = 'bsh_hj_dashboard_2026';
+
+function getSOTY(){ try{const d=localStorage.getItem(SOTY_SK);return d?JSON.parse(d):null;}catch(e){return null;} }
+function getAOTY(){ try{const d=localStorage.getItem(AOTY_SK);return d?JSON.parse(d):null;}catch(e){return null;} }
+function getDash(){ try{const d=localStorage.getItem(DASH_SK);return d?JSON.parse(d):{};}catch(e){return {};} }
+function saveDash(data){ localStorage.setItem(DASH_SK, JSON.stringify(data)); }
+
+// ═══════════════════════════════════════════════
+// MATH HELPERS (mirror eval tools)
+// ═══════════════════════════════════════════════
+const JUDGES=['CXR','CRG','CSM','CEM','CST'];
+const SOTY_JUDGES_W={directing:20,plot:20,interactivity:10,cover:10};
+const AOTY_JUDGES_W={interview:20,impact:10,soty:15,aesthetics:5};
+const SOTY_VOTE_W={poll:10,feed:10,qualifier:10,popularity:10};
+const AOTY_VOTE_W={feed:15,poll:15,authors:10,popularity:10};
+
+function avg(arr){const v=arr.filter(x=>x!==null&&x!==''&&!isNaN(x)).map(Number);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null;}
+
+function sotyJW(judging,cat){
+  const a=avg(JUDGES.map(j=>{const v=judging?.[cat]?.[j];return(v!==undefined&&v!==null&&v!=='')?Number(v):null;}));
+  if(a===null)return null;
+  return +(a/100*(SOTY_JUDGES_W[cat]||0)).toFixed(2);
+}
+
+function sotyVW(voting,cat,allVoting){
+  let tot=null;
+  const v=voting;if(!v)return null;
+  if(cat==='poll'){const x=(v.poll||[]).filter(x=>x!==null&&x!=='').map(Number);tot=x.length?x.reduce((a,b)=>a+b,0):null;}
+  else if(cat==='feed'){const x=(v.feed||[]).filter(x=>x!==null&&x!=='').map(Number);tot=x.length?x.reduce((a,b)=>a+b,0):null;}
+  else{const x=v[cat];tot=(x!==null&&x!==undefined&&x!=='')?Number(x):null;}
+  if(tot===null)return null;
+  const bench=Math.max(...allVoting.map(v2=>{
+    if(cat==='poll'){const x=(v2.poll||[]).filter(x=>x!==null&&x!=='').map(Number);return x.length?x.reduce((a,b)=>a+b,0):0;}
+    if(cat==='feed'){const x=(v2.feed||[]).filter(x=>x!==null&&x!=='').map(Number);return x.length?x.reduce((a,b)=>a+b,0):0;}
+    const x=v2[cat];return(x!==null&&x!==undefined&&x!=='')?Number(x):0;
+  }).filter(v=>v>0),0.01);
+  return +(tot/bench*(SOTY_VOTE_W[cat]||0)).toFixed(2);
+}
+
+function sotyS1(story,allVoting){
+  const jcats=['directing','plot','interactivity','cover'];
+  const vcats=['poll','feed','qualifier','popularity'];
+  const j=jcats.map(c=>sotyJW(story.judging,c)).filter(v=>v!==null);
+  const v=vcats.map(c=>sotyVW(story.voting,c,allVoting)).filter(v=>v!==null);
+  if(!j.length&&!v.length)return null;
+  return +(j.reduce((a,b)=>a+b,0)+v.reduce((a,b)=>a+b,0)).toFixed(2);
+}
+
+function aotyJW(judging,cat){
+  if(cat==='soty'){const v=judging?.soty;if(v===null||v===undefined||v==='')return null;return+(Number(v)/100*15).toFixed(2);}
+  const a=avg(JUDGES.map(j=>{const v=judging?.[cat]?.[j];return(v!==undefined&&v!==null&&v!=='')?Number(v):null;}));
+  if(a===null)return null;
+  return +(a/100*(AOTY_JUDGES_W[cat]||0)).toFixed(2);
+}
+
+function aotyVW(voting,cat,allVoting){
+  const v=voting;if(!v)return null;
+  let tot=null;
+  if(cat==='feed'){const x=(v.feed||[]).filter(x=>x!==null&&x!=='').map(Number);tot=x.length?x.reduce((a,b)=>a+b,0):null;}
+  else if(cat==='poll'){const x=(v.poll||[]).filter(x=>x!==null&&x!=='').map(Number);tot=x.length?x.reduce((a,b)=>a+b,0):null;}
+  else{const x=v[cat];tot=(x!==null&&x!==undefined&&x!=='')?Number(x):null;}
+  if(tot===null)return null;
+  const bench=Math.max(...allVoting.map(v2=>{
+    if(cat==='feed'){const x=(v2.feed||[]).filter(x=>x!==null&&x!=='').map(Number);return x.length?x.reduce((a,b)=>a+b,0):0;}
+    if(cat==='poll'){const x=(v2.poll||[]).filter(x=>x!==null&&x!=='').map(Number);return x.length?x.reduce((a,b)=>a+b,0):0;}
+    const x=v2[cat];return(x!==null&&x!==undefined&&x!=='')?Number(x):0;
+  }).filter(v=>v>0),0.01);
+  return +(tot/bench*(AOTY_VOTE_W[cat]||0)).toFixed(2);
+}
+
+function aotyS1(author,allVoting){
+  const jcats=['interview','impact','soty','aesthetics'];
+  const vcats=['feed','poll','authors','popularity'];
+  const j=jcats.map(c=>aotyJW(author.judging,c)).filter(v=>v!==null);
+  const v=vcats.map(c=>aotyVW(author.voting,c,allVoting)).filter(v=>v!==null);
+  if(!j.length&&!v.length)return null;
+  return +(j.reduce((a,b)=>a+b,0)+v.reduce((a,b)=>a+b,0)).toFixed(2);
+}
+
+// ═══════════════════════════════════════════════
+// COMPUTE SCORES FROM STORAGE
+// ═══════════════════════════════════════════════
+function computeSOTY(){
+  const D=getSOTY(); if(!D||!D.stories||!D.stories.length)return{scores:[],raw:null};
+  const allVoting=D.stories.map(s=>D.voting[s.id]||{});
+  const scores=D.stories.map(s=>({
+    id:s.id,title:s.title,genre:s.genre,
+    score:sotyS1({judging:D.judging[s.id],voting:D.voting[s.id]},allVoting)
+  })).filter(r=>r.score!==null).sort((a,b)=>b.score-a.score);
+  return{scores,raw:D};
+}
+
+function computeAOTY(){
+  const D=getAOTY(); if(!D||!D.authors||!D.authors.length)return{scores:[],raw:null};
+  const allVoting=D.authors.map(a=>D.voting[a.id]||{});
+  const scores=D.authors.map(a=>({
+    id:a.id,name:a.name,handle:a.handle,
+    score:aotyS1({judging:D.judging[a.id],voting:D.voting[a.id]},allVoting)
+  })).filter(r=>r.score!==null).sort((a,b)=>b.score-a.score);
+  return{scores,raw:D};
+}
+
+// ═══════════════════════════════════════════════
+// KPI & PROGRESS
+// ═══════════════════════════════════════════════
+function pct(n,total){return total?Math.round(n/total*100):0;}
+function setProg(id,pbarId,subId,p,sub){
+  document.getElementById(id).textContent=p+'%';
+  document.getElementById(pbarId).style.width=p+'%';
+  document.getElementById(subId).textContent=sub;
+}
+function setRing(id,pctId,p){
+  const circ=176;const offset=circ-(circ*p/100);
+  document.getElementById(id).setAttribute('stroke-dashoffset',offset.toFixed(1));
+  document.getElementById(pctId).textContent=p+'%';
+}
+
+function updateDashboard(){
+  const {scores:sotyScores,raw:SD}=computeSOTY();
+  const {scores:aotyScores,raw:AD}=computeAOTY();
+
+  // KPIs
+  const sotyTotal=SD?SD.stories.length:39;
+  const aotyTotal=AD?AD.authors.length:38;
+  const sotyScored=sotyScores.length;
+  const aotyScored=aotyScores.length;
+  const overallPct=pct(sotyScored+aotyScored,sotyTotal+aotyTotal);
+
+  document.getElementById('kpi-soty-scored').textContent=sotyScored;
+  document.getElementById('kpi-soty-scored-sub').textContent=`of ${sotyTotal} stories`;
+  document.getElementById('kpi-aoty-scored').textContent=aotyScored;
+  document.getElementById('kpi-aoty-scored-sub').textContent=`of ${aotyTotal} authors`;
+  document.getElementById('kpi-overall').textContent=overallPct+'%';
+
+  // Eval cards
+  const sotyPct=pct(sotyScored,sotyTotal);
+  const aotyPct=pct(aotyScored,aotyTotal);
+  document.getElementById('ec-soty-scored').textContent=sotyScored;
+  document.getElementById('ec-aoty-scored').textContent=aotyScored;
+  document.getElementById('ec-soty-top24').textContent=SD&&SD.top24&&SD.top24.length?'Yes':'No';
+  document.getElementById('ec-aoty-top24').textContent=AD&&AD.top24&&AD.top24.length?'Yes':'No';
+  setRing('soty-ring','soty-ring-pct',sotyPct);
+  setRing('aoty-ring','aoty-ring-pct',aotyPct);
+
+  // ─── SOTY Progress ───
+  if(SD){
+    const n=SD.stories.length||39;
+    // S1 Judging: stories with at least one judge score
+    const s1jCount=SD.stories.filter(s=>{const j=SD.judging[s.id];return j&&Object.values(j).some(cat=>typeof cat==='object'&&Object.values(cat).some(v=>v!==null&&v!==''));}).length;
+    setProg('s-s1j','pb-s1j','ps-s1j',pct(s1jCount,n),`${s1jCount} of ${n} stories have judge scores`);
+    // S1 Voting
+    const s1vCount=SD.stories.filter(s=>{const v=SD.voting[s.id];if(!v)return false;return(v.poll&&v.poll.some(x=>x!==null))||(v.feed&&v.feed.some(x=>x!==null))||v.qualifier!==null||v.popularity!==null;}).length;
+    setProg('s-s1v','pb-s1v','ps-s1v',pct(s1vCount,n),`${s1vCount} of ${n} stories have voting data`);
+    // Top 24
+    const t24done=SD.top24&&SD.top24.length>0;
+    setProg('s-t24','pb-t24','ps-t24',t24done?100:0,t24done?`Top 24 built (${SD.top24.length} stories)`:'Not yet built');
+    // Stage 2
+    const s2count=SD.top24?SD.top24.filter(id=>SD.s2&&SD.s2[id]&&(SD.s2[id].s2s!==null)).length:0;
+    const s2total=SD.top24?SD.top24.length:24;
+    setProg('s-s2','pb-s2','ps-s2',pct(s2count,s2total),`${s2count} of ${s2total} stories have S2S scores`);
+    // Stage 3
+    const s3count=SD.top12?SD.top12.filter(id=>SD.s3&&SD.s3[id]&&SD.s3[id].h2h_raw!==null).length:0;
+    const s3total=SD.top12?SD.top12.length:12;
+    setProg('s-s3','pb-s3','ps-s3',pct(s3count,s3total),`${s3count} of ${s3total} stories have H2H scores`);
+    // Stage 4
+    const s4done=SD.top8&&SD.top8.length>0;
+    setProg('s-s4','pb-s4','ps-s4',s4done?100:0,s4done?`Final: ${SD.top8.length} placed`:'Not yet reached');
+  }
+
+  // ─── AOTY Progress ───
+  if(AD){
+    const n=AD.authors.length||38;
+    const a1jCount=AD.authors.filter(a=>{const j=AD.judging[a.id];return j&&(Object.values(j.interview||{}).some(v=>v!==null&&v!=='')||j.soty!==null);}).length;
+    setProg('a-s1j','apb-s1j','aps-s1j',pct(a1jCount,n),`${a1jCount} of ${n} authors have judge scores`);
+    const a1vCount=AD.authors.filter(a=>{const v=AD.voting[a.id];if(!v)return false;return(v.feed&&v.feed.some(x=>x!==null))||(v.poll&&v.poll.some(x=>x!==null))||v.authors!==null||v.popularity!==null;}).length;
+    setProg('a-s1v','apb-s1v','aps-s1v',pct(a1vCount,n),`${a1vCount} of ${n} authors have voting data`);
+    const at24done=AD.top24&&AD.top24.length>0;
+    setProg('a-t24','apb-t24','aps-t24',at24done?100:0,at24done?`Top 24 built (${AD.top24.length} authors)`:'Not yet built');
+    const as2count=AD.top24?AD.top24.filter(id=>AD.s2&&AD.s2[id]&&AD.s2[id].poll!==null).length:0;
+    const as2total=AD.top24?AD.top24.length:24;
+    setProg('a-s2','apb-s2','aps-s2',pct(as2count,as2total),`${as2count} of ${as2total} authors have 2nd Poll scores`);
+    const as3count=AD.top12?AD.top12.filter(id=>AD.s3&&AD.s3[id]&&AD.s3[id].h2h_raw!==null).length:0;
+    const as3total=AD.top12?AD.top12.length:12;
+    setProg('a-s3','apb-s3','aps-s3',pct(as3count,as3total),`${as3count} of ${as3total} authors have H2H scores`);
+    const as4done=AD.top8&&AD.top8.length>0;
+    setProg('a-s4','apb-s4','aps-s4',as4done?100:0,as4done?`Final: ${AD.top8.length} placed`:'Not yet reached');
+  }
+
+  // ─── Analytics ───
+  renderAnalytics(sotyScores,'soty');
+  renderAnalytics(aotyScores,'aoty');
+
+  // ─── Tasks ───
+  renderTasks(SD,AD);
+}
+
+// ═══════════════════════════════════════════════
+// RANKINGS
+// ═══════════════════════════════════════════════
+let rankingCat='soty';
+function rankCat(cat,el){
+  rankingCat=cat;
+  document.querySelectorAll('.rct').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderRankings();
+}
+
+function renderRankings(){
+  const topN=parseInt(document.getElementById('rank-topn').value)||10;
+  const list=document.getElementById('rankings-list');
+  const {scores}=rankingCat==='soty'?computeSOTY():computeAOTY();
+
+  if(!scores.length){
+    list.innerHTML=`<div class="rank-empty">No scores found. Open the ${rankingCat.toUpperCase()} Evaluation Tool and enter some scores first.</div>`;
+    return;
+  }
+
+  const display=scores.slice(0,topN);
+  const mx=scores[0]?.score||100;
+
+  list.innerHTML=display.map((r,i)=>{
+    const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    const pct=Math.round(r.score/mx*100);
+    const label=rankingCat==='soty'?`<span style="font-size:11px;color:var(--text-light)">${r.genre}</span>`:`<span style="font-size:11px;color:var(--text-light)">${r.handle||''}</span>`;
+    const name=rankingCat==='soty'?r.title:r.name;
+    return`<div class="rank-item">
+      <div class="rank-num ${rc}">${i+1}</div>
+      <div class="rank-info">
+        <div class="rank-name">${name}</div>
+        <div class="rank-meta">${label}</div>
+      </div>
+      <div class="rank-score-wrap">
+        <div class="rank-score">${r.score.toFixed(2)}</div>
+        <div class="rank-bar"><div class="rank-bar-fill" style="width:${pct}%"></div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════
+// ANALYTICS
+// ═══════════════════════════════════════════════
+function renderAnalytics(scores,prefix){
+  const tilesEl=document.getElementById(prefix+'-analytics-tiles');
+  const barsEl=document.getElementById(prefix+'-chart-bars');
+  if(!scores.length){
+    tilesEl.innerHTML=`<div style="font-size:13px;color:var(--text-light)">No data yet — enter scores in the ${prefix.toUpperCase()} Evaluation Tool.</div>`;
+    barsEl.innerHTML='';return;
+  }
+  const vals=scores.map(r=>r.score);
+  const mx=Math.max(...vals),mn=Math.min(...vals),av=vals.reduce((a,b)=>a+b,0)/vals.length;
+  const above70=vals.filter(v=>v>=70).length;
+  tilesEl.innerHTML=`
+    <div class="analytic-tile"><div class="at-val">${mx.toFixed(1)}</div><div class="at-lbl">Highest</div></div>
+    <div class="analytic-tile"><div class="at-val">${av.toFixed(1)}</div><div class="at-lbl">Average</div></div>
+    <div class="analytic-tile"><div class="at-val">${mn.toFixed(1)}</div><div class="at-lbl">Lowest</div></div>
+    <div class="analytic-tile"><div class="at-val">${above70}</div><div class="at-lbl">Above 70</div></div>`;
+
+  // Distribution bar chart — bucket into 10-point ranges
+  const buckets=Array(10).fill(0);
+  vals.forEach(v=>{const b=Math.min(9,Math.floor(v/10));buckets[b]++;});
+  const maxB=Math.max(...buckets,1);
+  const colors=['bar-red','bar-red','bar-red','bar-red','bar-amber','bar-amber','bar-gold','bar-gold','bar-green','bar-green'];
+  barsEl.innerHTML=buckets.map((b,i)=>{
+    const h=Math.round(b/maxB*72);
+    return`<div class="cb-wrap">
+      <div class="cb pf-${colors[i].replace('bar-','')}" style="width:100%;height:${h}px;background:${['#f87171','#f87171','#f87171','#f87171','#fbbf24','#fbbf24','var(--gold)','var(--gold)','#4ade80','#4ade80'][i]}"></div>
+      <div class="cb-lbl">${i*10}s<br><span style="color:var(--navy);font-weight:700">${b}</span></div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════
+// TASKS
+// ═══════════════════════════════════════════════
+const DASH_TASKS_SOTY=[
+  {id:'st1',label:'Complete Stage 1 Judging',desc:'All 5 judges score all 39 stories across 4 categories',priority:'high'},
+  {id:'st2',label:'Enter all public voting data',desc:'Poll, Feed, Qualifier, and Popularity Vote totals for all stories',priority:'high'},
+  {id:'st3',label:'Build Top 24',desc:'Auto-build from Top 20 + 4 Fast Track award winners',priority:'high'},
+  {id:'st4',label:'Collect S2S vote data',desc:'Gather raw S2S vote scores for all 24 Stage 2 stories',priority:'med'},
+  {id:'st5',label:'Collect 2nd Poll vote data',desc:'Stage 2 poll totals (for reference — does not count toward promotion)',priority:'med'},
+  {id:'st6',label:'Promote Top 12 to Stage 3',desc:'Top 2 S2S + Popularity Winner advance; remaining spots by promo score',priority:'med'},
+  {id:'st7',label:'Collect H2H vote data',desc:'Raw H2H totals for all 12 Stage 3 stories',priority:'low'},
+  {id:'st8',label:'Confirm and announce Top 8 placements',desc:'Final rankings from Stage 3 totals',priority:'low'},
+];
+const DASH_TASKS_AOTY=[
+  {id:'at1',label:'Complete all author interviews',desc:'Interview, Impact, SOTY Judging, and Aesthetics scored by 5 judges',priority:'high'},
+  {id:'at2',label:'Enter all AOTY voting data',desc:'Feed, Poll, Authors, and Popularity Vote totals for all 38 authors',priority:'high'},
+  {id:'at3',label:'Build AOTY Top 24',desc:'Top 20 + Best Interview, PFP, Aesthetics, and Impact Fast Track winners',priority:'high'},
+  {id:'at4',label:'Collect AOTY 2nd Poll vote data',desc:'Stage 2 poll totals for all 24 authors',priority:'med'},
+  {id:'at5',label:'Promote AOTY Top 12 to Stage 3',desc:'Popularity Vote winner fast-tracks; rest ranked by Stage 2 total',priority:'med'},
+  {id:'at6',label:'Collect AOTY H2H vote data',desc:'Raw H2H totals for all 12 Stage 3 authors',priority:'low'},
+  {id:'at7',label:'Confirm and announce AOTY Top 8',desc:'Final AOTY placements from Stage 3',priority:'low'},
+];
+const DASH_TASKS_GENERAL=[
+  {id:'gt1',label:'Export SOTY evaluation data',desc:'Save JSON backup of all SOTY scores before major stages',priority:'med'},
+  {id:'gt2',label:'Export AOTY evaluation data',desc:'Save JSON backup of all AOTY scores before major stages',priority:'med'},
+  {id:'gt3',label:'Publish Stage 1 results',desc:'Share Top 24 announcement on Instagram / competition site',priority:'med'},
+  {id:'gt4',label:'Announce Fast Track winners',desc:'Publicly reveal which stories/authors earned Fast Track spots',priority:'med'},
+  {id:'gt5',label:'Brief all 5 judges on scoring guidelines',desc:'Ensure all judges have reviewed the 2026 rubric before evaluation begins',priority:'high'},
+  {id:'gt6',label:'Confirm final SOTY winner announcement date',desc:'Coordinate with team on date and format',priority:'low'},
+];
+
+function renderTasks(SD,AD){
+  const dash=getDash();
+  const done=dash.tasksDone||{};
+
+  function taskHTML(tasks,containerId,badgeId){
+    const remaining=tasks.filter(t=>!done[t.id]).length;
+    const badge=document.getElementById(badgeId);
+    if(badge){badge.textContent=remaining>0?`${remaining} pending`:'All done';badge.className=`badge ${remaining>0?'badge-pending':'badge-pass'}`;}
+    return tasks.map(t=>`
+      <div class="task-item ${done[t.id]?'is-done':''}" id="ti-${t.id}">
+        <div class="task-check ${done[t.id]?'done':''}" onclick="toggleTask('${t.id}')">${done[t.id]?'✓':''}</div>
+        <div class="task-text">
+          <div class="task-label">${t.label}</div>
+          <div class="task-desc">${t.desc}</div>
+        </div>
+        <span class="task-priority tp-${t.priority}">${t.priority}</span>
+      </div>`).join('');
+  }
+
+  document.getElementById('soty-tasks').innerHTML=taskHTML(DASH_TASKS_SOTY,null,'soty-task-badge');
+  document.getElementById('aoty-tasks').innerHTML=taskHTML(DASH_TASKS_AOTY,null,'aoty-task-badge');
+  document.getElementById('general-tasks').innerHTML=taskHTML(DASH_TASKS_GENERAL,null,null);
+}
+
+function toggleTask(id){
+  const dash=getDash();
+  if(!dash.tasksDone)dash.tasksDone={};
+  dash.tasksDone[id]=!dash.tasksDone[id];
+  saveDash(dash);
+  renderTasks(getSOTY(),getAOTY());
+  toast(dash.tasksDone[id]?'Task marked done ✓':'Task reopened','✅');
+}
+
+// ═══════════════════════════════════════════════
+// JUDGE ASSIGNMENTS
+// ═══════════════════════════════════════════════
+const JUDGE_DEFS=[
+  {code:'CXR',name:'Xavier',role:'Head Judge'},
+  {code:'CRG',name:'Ryan Graye',role:'Senior Judge'},
+  {code:'CSM',name:'Samantha',role:'Judge'},
+  {code:'CEM',name:'Emili',role:'Judge'},
+  {code:'CST',name:'Scarlet',role:'Judge'},
+];
+const JUDGE_TASKS=[
+  {id:'soty_dir',label:'SOTY — Directing',cat:'soty'},
+  {id:'soty_plt',label:'SOTY — Plot',cat:'soty'},
+  {id:'soty_int',label:'SOTY — Interactivity',cat:'soty'},
+  {id:'soty_cov',label:'SOTY — Story Cover',cat:'soty'},
+  {id:'aoty_int',label:'AOTY — Interview',cat:'aoty'},
+  {id:'aoty_imp',label:'AOTY — Impact Message',cat:'aoty'},
+  {id:'aoty_aes',label:'AOTY — Aesthetics',cat:'aoty'},
+  {id:'aoty_pfp',label:'AOTY — Profile Picture',cat:'aoty'},
+];
+
+function renderJudges(){
+  const dash=getDash();
+  const jDone=dash.judgeDone||{};
+  document.getElementById('judge-grid').innerHTML=JUDGE_DEFS.map(j=>{
+    const doneTasks=JUDGE_TASKS.filter(t=>jDone[j.code+'_'+t.id]);
+    const pct=Math.round(doneTasks.length/JUDGE_TASKS.length*100);
+    return`<div class="judge-card">
+      <div class="judge-name">${j.name}</div>
+      <div class="judge-code">${j.code} · ${j.role}</div>
+      ${JUDGE_TASKS.map(t=>{
+        const key=j.code+'_'+t.id;
+        const d=!!jDone[key];
+        return`<div class="judge-task">
+          <div class="jt-check ${d?'done':''}" onclick="toggleJudgeTask('${j.code}','${t.id}')">${d?'✓':''}</div>
+          <span>${t.label}</span>
+        </div>`;
+      }).join('')}
+      <div class="judge-prog">
+        <div class="jp-lbl"><span>Progress</span><span>${doneTasks.length}/${JUDGE_TASKS.length}</span></div>
+        <div class="judge-prog-track"><div class="judge-prog-fill" style="width:${pct}%"></div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleJudgeTask(judgeCode,taskId){
+  const dash=getDash();
+  if(!dash.judgeDone)dash.judgeDone={};
+  const key=judgeCode+'_'+taskId;
+  dash.judgeDone[key]=!dash.judgeDone[key];
+  saveDash(dash);
+  renderJudges();
+}
+
+// ═══════════════════════════════════════════════
+// KEY DATES
+// ═══════════════════════════════════════════════
+const KEY_DATES=[
+  {label:'Competition Season Opens',when:'Early September 2026',date:'2026-09-01',desc:'Evaluation work begins. Judges start reviewing qualifying entries.',type:'past'},
+  {label:'Qualifier Submission Deadline',when:'Mid September 2026',date:'2026-09-15',desc:'All story and author qualifiers confirmed. No new entries accepted after this date.',type:'past'},
+  {label:'Popularity Vote Opens',when:'October 1st, 2026',date:'2026-10-01',desc:'SOTY and AOTY Popularity Votes go live on the competition site.',type:'upcoming'},
+  {label:'Popularity Vote Closes',when:'October 8th, 2026',date:'2026-10-08',desc:'Voting closes at midnight. Results are locked and used for Stage 1.',type:'upcoming'},
+  {label:'Stage 1 Evaluation Deadline',when:'Mid November 2026',date:'2026-11-15',desc:'All Stage 1 judging must be completed. Top 24 built and announced.',type:'urgent'},
+  {label:'Stage 2 Completion',when:'Late November 2026',date:'2026-11-28',desc:'S2S and Poll votes collected. Top 12 confirmed and promoted.',type:'upcoming'},
+  {label:'Stage 3 — H2H Vote',when:'Early December 2026',date:'2026-12-07',desc:'Head-to-Head voting round. Top 8 finalists determined.',type:'upcoming'},
+  {label:'Final Placements Announced',when:'Late December 2026',date:'2026-12-28',desc:'SOTY and AOTY winners and all runner-ups officially announced.',type:'upcoming'},
+];
+
+function renderDates(){
+  const now=new Date();
+  document.getElementById('date-timeline').innerHTML=KEY_DATES.map(d=>{
+    const dt=new Date(d.date);
+    const isPast=dt<now;
+    const isToday=Math.abs(dt-now)<86400000;
+    const diffDays=Math.ceil((dt-now)/86400000);
+    let dotClass=isPast?'past':'upcoming';
+    if(isToday)dotClass='today';
+    if(!isPast&&diffDays<=14)dotClass='urgent';
+
+    let remainHTML='';
+    if(isPast){remainHTML=`<span class="date-remaining dr-past">Completed</span>`;}
+    else if(diffDays<=7){remainHTML=`<span class="date-remaining dr-red">${diffDays}d remaining</span>`;}
+    else if(diffDays<=30){remainHTML=`<span class="date-remaining dr-amber">${diffDays}d remaining</span>`;}
+    else{remainHTML=`<span class="date-remaining dr-green">${diffDays}d remaining</span>`;}
+
+    const emoji=isPast?'✓':isToday?'★':diffDays<=14?'⚠':'○';
+
+    return`<div class="date-item">
+      <div class="date-dot ${dotClass}">${emoji}</div>
+      <div class="date-info">
+        <div class="date-label">${d.label}</div>
+        <div class="date-when">${d.when}</div>
+        <div class="date-desc">${d.desc}</div>
+        ${remainHTML}
+      </div>
+    </div>`;
+  }).join('');
+
+  // Upcoming only
+  const upcoming=KEY_DATES.filter(d=>new Date(d.date)>=now).slice(0,4);
+  document.getElementById('upcoming-deadlines').innerHTML=upcoming.length?upcoming.map(d=>{
+    const dt=new Date(d.date);const diff=Math.ceil((dt-new Date())/86400000);
+    const cls=diff<=7?'badge-todo':diff<=30?'badge-pending':'badge-info';
+    return`<div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(27,42,74,0.06)">
+      <div style="flex:1"><div style="font-size:13px;font-weight:700;color:var(--navy)">${d.label}</div><div style="font-size:11px;color:var(--text-light);margin-top:2px">${d.when}</div></div>
+      <span class="badge ${cls}">${diff}d</span>
+    </div>`;
+  }).join(''):`<div style="font-size:13px;color:var(--text-light);text-align:center;padding:20px">No upcoming deadlines</div>`;
+}
+
+// ═══════════════════════════════════════════════
+// NOTES
+// ═══════════════════════════════════════════════
+function loadNotes(){
+  const dash=getDash();
+  const ta=document.getElementById('notes-area');
+  if(dash.notes)ta.value=dash.notes;
+  const meta=document.getElementById('notes-saved');
+  if(dash.notesSaved)meta.textContent='Last saved: '+new Date(dash.notesSaved).toLocaleString();
+}
+function saveNotes(){
+  const dash=getDash();
+  dash.notes=document.getElementById('notes-area').value;
+  dash.notesSaved=Date.now();
+  saveDash(dash);
+  document.getElementById('notes-saved').textContent='Saved: '+new Date().toLocaleTimeString();
+  toast('Notes saved ✓','📝');
+}
+document.getElementById('notes-area').addEventListener('input',()=>{
+  // Auto-save after 2s idle
+  clearTimeout(window._notesTimer);
+  window._notesTimer=setTimeout(()=>{
+    const dash=getDash();dash.notes=document.getElementById('notes-area').value;dash.notesSaved=Date.now();saveDash(dash);
+    document.getElementById('notes-saved').textContent='Auto-saved '+new Date().toLocaleTimeString();
+  },2000);
+});
+
+// ═══════════════════════════════════════════════
+// LIVE CLOCK
+// ═══════════════════════════════════════════════
+function updateClock(){
+  document.getElementById('live-time').textContent=new Date().toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+updateClock();setInterval(updateClock,30000);
+
+// ═══════════════════════════════════════════════
+// REFRESH
+// ═══════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════
+// AWARDS TRACKER
+// ═══════════════════════════════════════════════
+const SOTY_JUDGING_AWARDS = [
+  {id:'sa_dir',  icon:'🎬', name:'Best Directing',          cat:'directing',   type:'soty_judge', ftNote:'Fast Track to Top 24'},
+  {id:'sa_plt',  icon:'✍',  name:'Best Plot & Writing',     cat:'plot',        type:'soty_judge', ftNote:'Fast Track to Top 24'},
+  {id:'sa_int',  icon:'🎮', name:'Best Interactivity',      cat:'interactivity',type:'soty_judge',ftNote:'Fast Track to Top 24'},
+  {id:'sa_cov',  icon:'🖼', name:'Best Story Cover',         cat:'cover',       type:'soty_judge', ftNote:'Fast Track to Top 24'},
+];
+const SOTY_VOTING_AWARDS = [
+  {id:'sv_pop',  icon:'🌟', name:'Popularity Vote Winner',  cat:'popularity',  type:'soty_vote',  ftNote:'Fast Track to Top 12'},
+  {id:'sv_s2s1', icon:'⚡', name:'Top S2S Score #1',        cat:'s2s1',        type:'soty_s2s',   ftNote:'Fast Track to Top 12'},
+  {id:'sv_s2s2', icon:'⚡', name:'Top S2S Score #2',        cat:'s2s2',        type:'soty_s2s',   ftNote:'Fast Track to Top 12'},
+];
+const SOTY_RECOGNITION_AWARDS = [
+  {id:'sr_best', icon:'🏆', name:'Most Innovative Concept', cat:'custom',      type:'custom',     ftNote:'Recognition Award'},
+  {id:'sr_fave', icon:'❤',  name:'Community Favourite',     cat:'custom',      type:'custom',     ftNote:'Recognition Award'},
+  {id:'sr_dir2', icon:'🎬', name:'Best Directing (Runner Up)', cat:'custom',   type:'custom',     ftNote:'Recognition Award'},
+];
+const AOTY_JUDGING_AWARDS = [
+  {id:'aj_int',  icon:'🎤', name:'Best Interview',          cat:'interview',   type:'aoty_judge', ftNote:'Fast Track to Top 24'},
+  {id:'aj_pfp',  icon:'📷', name:'Best Profile Picture',    cat:'pfp',         type:'aoty_pfp',   ftNote:'Fast Track to Top 24'},
+  {id:'aj_aes',  icon:'✨', name:'Best IG Aesthetics',      cat:'aesthetics',  type:'aoty_judge', ftNote:'Fast Track to Top 24'},
+  {id:'aj_imp',  icon:'💬', name:'Best Impact Message',     cat:'impact',      type:'aoty_judge', ftNote:'Fast Track to Top 24'},
+];
+const AOTY_VOTING_AWARDS = [
+  {id:'av_pop',  icon:'🌟', name:'Popularity Vote Winner',  cat:'popularity',  type:'aoty_vote',  ftNote:'Fast Track to Top 12'},
+];
+
+function getAwardsDash(){ try{const d=localStorage.getItem('bsh_awards_2026');return d?JSON.parse(d):{};}catch(e){return {};} }
+function saveAwardsDash(data){ localStorage.setItem('bsh_awards_2026', JSON.stringify(data)); }
+
+function autoDetectAwards(){
+  const SD = getSOTY();
+  const AD = getAOTY();
+  const awards = getAwardsDash();
+
+  // SOTY judging awards
+  if(SD && SD.stories && SD.stories.length){
+    const top20ids = (() => {
+      const allVoting = SD.stories.map(s => SD.voting[s.id] || {});
+      return SD.stories.map(s => ({
+        id:s.id, title:s.title,
+        score: sotyS1({judging:SD.judging[s.id], voting:SD.voting[s.id]}, allVoting) || 0
+      })).sort((a,b) => b.score-a.score).slice(0,20).map(r => r.id);
+    })();
+
+    const jcats = {directing:'directing', plot:'plot', interactivity:'interactivity', cover:'cover'};
+    for(const [awardId, cat] of Object.entries({sa_dir:'directing',sa_plt:'plot',sa_int:'interactivity',sa_cov:'cover'})){
+      if(!awards[awardId+'_confirmed']){
+        const sorted = SD.stories
+          .map(s => ({id:s.id, title:s.title, score: sotyJW(SD.judging[s.id], cat) || 0}))
+          .sort((a,b) => b.score - a.score);
+        // Find top scorer not in top 20
+        const ft = sorted.find(r => !top20ids.includes(r.id));
+        awards[awardId+'_auto'] = ft ? ft.title : (sorted[0]?.title || '');
+        awards[awardId+'_score'] = ft ? ft.score.toFixed(2) : (sorted[0]?.score.toFixed(2) || '—');
+      }
+    }
+    // SOTY popularity vote winner
+    if(!awards['sv_pop_confirmed']){
+      const allVoting = SD.stories.map(s => SD.voting[s.id] || {});
+      const sorted = SD.stories
+        .map(s => ({id:s.id, title:s.title, score: sotyVW(SD.voting[s.id], 'popularity', allVoting) || 0}))
+        .sort((a,b) => b.score - a.score);
+      awards['sv_pop_auto'] = sorted[0]?.title || '';
+      awards['sv_pop_score'] = sorted[0]?.score.toFixed(2) || '—';
+    }
+    // SOTY S2S top 2
+    if(SD.top24 && SD.s2){
+      const s2sSorted = SD.top24
+        .map(id => {
+          const s = SD.stories.find(s=>s.id===id);
+          const val = SD.s2[id]?.s2s;
+          return {id, title: s?.title||id, score: val !== null && val !== undefined ? Number(val) : 0};
+        }).sort((a,b) => b.score - a.score);
+      if(!awards['sv_s2s1_confirmed']){ awards['sv_s2s1_auto'] = s2sSorted[0]?.title||''; awards['sv_s2s1_score'] = s2sSorted[0]?.score||'—'; }
+      if(!awards['sv_s2s2_confirmed']){ awards['sv_s2s2_auto'] = s2sSorted[1]?.title||''; awards['sv_s2s2_score'] = s2sSorted[1]?.score||'—'; }
+    }
+  }
+
+  // AOTY judging awards
+  if(AD && AD.authors && AD.authors.length){
+    const top20ids = (() => {
+      const allVoting = AD.authors.map(a => AD.voting[a.id] || {});
+      return AD.authors.map(a => ({
+        id:a.id,
+        score: aotyS1({judging:AD.judging[a.id], voting:AD.voting[a.id]}, allVoting) || 0
+      })).sort((a,b) => b.score-a.score).slice(0,20).map(r => r.id);
+    })();
+
+    for(const [awardId, cat] of Object.entries({aj_int:'interview',aj_aes:'aesthetics',aj_imp:'impact'})){
+      if(!awards[awardId+'_confirmed']){
+        const sorted = AD.authors
+          .map(a => ({id:a.id, name:a.name, score: aotyJW(AD.judging[a.id], cat) || 0}))
+          .sort((a,b) => b.score - a.score);
+        const ft = sorted.find(r => !top20ids.includes(r.id));
+        awards[awardId+'_auto'] = ft ? ft.name : (sorted[0]?.name || '');
+        awards[awardId+'_score'] = ft ? ft.score.toFixed(2) : (sorted[0]?.score.toFixed(2) || '—');
+      }
+    }
+    // PFP (uses avg judge scores but weight=0)
+    if(!awards['aj_pfp_confirmed']){
+      const sorted = AD.authors.map(a => {
+        const avgScore = avg(JUDGES.map(j => {
+          const v=AD.judging[a.id]?.pfp?.[j]; return(v!==undefined&&v!==null&&v!=='')?Number(v):null;
+        }));
+        return {id:a.id, name:a.name, score: avgScore||0};
+      }).sort((a,b) => b.score - a.score);
+      const ft = sorted.find(r => !top20ids.includes(r.id));
+      awards['aj_pfp_auto'] = ft ? ft.name : (sorted[0]?.name || '');
+      awards['aj_pfp_score'] = ft ? ft.score.toFixed(1) : (sorted[0]?.score.toFixed(1) || '—');
+    }
+    // AOTY popularity vote
+    if(!awards['av_pop_confirmed']){
+      const allVoting = AD.authors.map(a => AD.voting[a.id] || {});
+      const sorted = AD.authors
+        .map(a => ({id:a.id, name:a.name, score: aotyVW(AD.voting[a.id], 'popularity', allVoting) || 0}))
+        .sort((a,b) => b.score - a.score);
+      awards['av_pop_auto'] = sorted[0]?.name || '';
+      awards['av_pop_score'] = sorted[0]?.score.toFixed(2) || '—';
+    }
+  }
+
+  saveAwardsDash(awards);
+  renderAwards();
+  toast('Awards auto-detected from eval data ✓', '⚡');
+}
+
+function renderAwardCard(award, awards){
+  const autoWinner = awards[award.id+'_auto'] || '';
+  const confirmedWinner = awards[award.id+'_confirmed'];
+  const overrideVal = awards[award.id+'_override'] || '';
+  const winner = confirmedWinner || autoWinner;
+  const score = awards[award.id+'_score'] || '';
+  const isConfirmed = !!confirmedWinner;
+  const hasAuto = !!autoWinner;
+
+  return `<div class="award-card ${isConfirmed?'confirmed':hasAuto?'auto':''}" id="ac-${award.id}">
+    <div class="award-card-top">
+      <div>
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+          <span class="award-icon">${award.icon}</span>
+          <div>
+            <div class="award-name">${award.name}</div>
+            <div class="award-cat">${award.ftNote}</div>
+          </div>
+        </div>
+      </div>
+      <span class="award-status-pill ${isConfirmed?'ap-confirmed':hasAuto?'ap-auto':'ap-pending'}">${isConfirmed?'Confirmed':hasAuto?'Auto-detected':'Pending'}</span>
+    </div>
+    <div class="award-winner-row">
+      <div class="award-winner-val ${!winner?'empty':''}">${winner||'Not yet determined'}</div>
+      ${score&&winner?`<span class="award-score">${score} pts</span>`:''}
+    </div>
+    <div class="award-actions">
+      <input type="text" class="award-override-input" id="ov-${award.id}"
+        value="${overrideVal}" placeholder="${hasAuto?'Override auto-detected winner…':'Enter winner name…'}">
+      ${isConfirmed
+        ? `<button class="award-confirm-btn reset" onclick="resetAward('${award.id}')">↺ Reset</button>`
+        : `<button class="award-confirm-btn confirm" onclick="confirmAward('${award.id}')">✓ Confirm</button>`
+      }
+    </div>
+    <div class="award-ft-note" style="margin-top:6px;font-size:10px;color:var(--text-light)">${
+      hasAuto && !isConfirmed ? `Auto-detected from evaluation data. Confirm to lock in.` :
+      isConfirmed ? `Confirmed winner. Click Reset to re-evaluate.` :
+      `No evaluation data yet. Enter manually or auto-detect.`
+    }</div>
+  </div>`;
+}
+
+function renderAwards(){
+  const awards = getAwardsDash();
+  document.getElementById('soty-judging-awards').innerHTML = SOTY_JUDGING_AWARDS.map(a=>renderAwardCard(a,awards)).join('');
+  document.getElementById('soty-voting-awards').innerHTML = SOTY_VOTING_AWARDS.map(a=>renderAwardCard(a,awards)).join('');
+  document.getElementById('soty-recognition-awards').innerHTML = SOTY_RECOGNITION_AWARDS.map(a=>renderAwardCard(a,awards)).join('');
+  document.getElementById('aoty-judging-awards').innerHTML = AOTY_JUDGING_AWARDS.map(a=>renderAwardCard(a,awards)).join('');
+  document.getElementById('aoty-voting-awards').innerHTML = AOTY_VOTING_AWARDS.map(a=>renderAwardCard(a,awards)).join('');
+  renderAwardsSummary(awards);
+}
+
+function confirmAward(id){
+  const awards = getAwardsDash();
+  const inputVal = document.getElementById('ov-'+id)?.value?.trim();
+  const autoVal = awards[id+'_auto'];
+  const winner = inputVal || autoVal;
+  if(!winner){ toast('Enter or auto-detect a winner first','⚠️'); return; }
+  awards[id+'_confirmed'] = winner;
+  if(inputVal) awards[id+'_override'] = inputVal;
+  saveAwardsDash(awards);
+  renderAwards();
+  toast('Award confirmed: '+winner,'✅');
+}
+
+function resetAward(id){
+  const awards = getAwardsDash();
+  delete awards[id+'_confirmed'];
+  delete awards[id+'_override'];
+  saveAwardsDash(awards);
+  renderAwards();
+  toast('Award reset — can now be re-detected or re-confirmed','↺');
+}
+
+function renderAwardsSummary(awards){
+  const allAwards = [...SOTY_JUDGING_AWARDS,...SOTY_VOTING_AWARDS,...SOTY_RECOGNITION_AWARDS,...AOTY_JUDGING_AWARDS,...AOTY_VOTING_AWARDS];
+  const lines = ['SOTY & AOTY 2026 — AWARDS SUMMARY','Generated: '+new Date().toLocaleString(),'','═══ SOTY 2026 ═══'];
+  [...SOTY_JUDGING_AWARDS,...SOTY_VOTING_AWARDS,...SOTY_RECOGNITION_AWARDS].forEach(a=>{
+    const w = awards[a.id+'_confirmed'] || awards[a.id+'_auto'] || 'TBC';
+    const s = awards[a.id+'_score'] || '';
+    const status = awards[a.id+'_confirmed']?'[CONFIRMED]':awards[a.id+'_auto']?'[auto]':'[pending]';
+    lines.push(`${a.icon}  ${a.name.padEnd(30)} → ${w} ${s?'('+s+' pts)':''} ${status}`);
+  });
+  lines.push('','═══ AOTY 2026 ═══');
+  [...AOTY_JUDGING_AWARDS,...AOTY_VOTING_AWARDS].forEach(a=>{
+    const w = awards[a.id+'_confirmed'] || awards[a.id+'_auto'] || 'TBC';
+    const s = awards[a.id+'_score'] || '';
+    const status = awards[a.id+'_confirmed']?'[CONFIRMED]':awards[a.id+'_auto']?'[auto]':'[pending]';
+    lines.push(`${a.icon}  ${a.name.padEnd(30)} → ${w} ${s?'('+s+' pts)':''} ${status}`);
+  });
+  const confirmed = allAwards.filter(a=>awards[a.id+'_confirmed']).length;
+  lines.push('','─────────────────────────────────────────');
+  lines.push(`Confirmed: ${confirmed}/${allAwards.length} awards`);
+  document.getElementById('awards-summary-log').textContent = lines.join('\n');
+}
+
+function copyAwardsSummary(){
+  const text = document.getElementById('awards-summary-log').textContent;
+  navigator.clipboard.writeText(text).then(()=>toast('Summary copied to clipboard','📋')).catch(()=>toast('Copy failed — select and copy manually','⚠️'));
+}
+
+function refreshAll(){
+  updateDashboard();
+  renderRankings();
+  renderJudges();
+  renderDates();
+  renderAwards();
+  toast('Dashboard refreshed','↻');
+}
+
+// ═══════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════
+function toast(msg,icon='✓'){
+  const el=document.getElementById('toast');
+  el.innerHTML=`<span>${icon}</span> ${msg}`;
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),2600);
+}
+
+// ═══════════════════════════════════════════════
+// SIDEBAR SCROLL HIGHLIGHT
+// ═══════════════════════════════════════════════
+const sections=document.querySelectorAll('.section[id]');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-80)current=s.id;});
+  document.querySelectorAll('.sb-nav a').forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+current);
+  });
+});
+
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
+updateDashboard();
+renderRankings();
+renderJudges();
+renderDates();
+renderAwards();
+loadNotes();
+</script>
+</body>
+</html>

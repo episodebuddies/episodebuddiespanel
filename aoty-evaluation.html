@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AOTY 2026 — Evaluation Tool · Buddies Support Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#1B2A4A;--deep-navy:#0F1B33;--navy2:#243556;
+      --gold:#C9A84C;--gold-light:#E8C97A;--gold-dim:rgba(201,168,76,0.15);
+      --white:#FFFFFF;--off-white:#F4F5F8;
+      --text-dark:#0F1B33;--text-mid:#4A5568;--text-light:#8896A6;
+      --green:#16a34a;--green-dim:rgba(22,163,74,0.12);
+      --red:#dc2626;--red-dim:rgba(220,38,38,0.1);
+      --purple:#7c3aed;--purple-dim:rgba(124,58,237,0.1);
+      --blue:#2563eb;--blue-dim:rgba(37,99,235,0.1);
+      --border:rgba(27,42,74,0.1);
+      --shadow:0 1px 3px rgba(15,27,51,0.08),0 4px 12px rgba(15,27,51,0.05);
+      --shadow-lg:0 8px 32px rgba(15,27,51,0.14);
+      --serif:'Playfair Display',Georgia,serif;
+      --sans:'DM Sans',system-ui,sans-serif;
+      --radius:10px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--off-white);color:var(--text-dark);font-size:14px;min-height:100vh}
+    ::-webkit-scrollbar{width:6px;height:6px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:rgba(27,42,74,0.2);border-radius:3px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+
+    .app-header{background:linear-gradient(135deg,var(--deep-navy) 0%,#162035 100%);border-bottom:1px solid rgba(201,168,76,0.2);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
+    .ah-left{display:flex;align-items:center;gap:14px}
+    .ah-logo{width:38px;height:38px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .ah-logo img{width:22px;height:22px;object-fit:contain}
+    .app-title{font-family:var(--serif);font-size:16px;color:var(--white);font-weight:700;line-height:1.2}
+    .app-sub{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:0.12em;text-transform:uppercase}
+    .ah-divider{width:1px;height:32px;background:rgba(255,255,255,0.1);margin:0 4px}
+    .ah-stage-label{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:0.08em;text-transform:uppercase}
+    .ah-stage-val{font-family:var(--serif);font-size:13px;color:var(--gold);font-weight:700}
+    .ah-right{display:flex;gap:6px;align-items:center}
+    .ah-progress{display:flex;gap:5px;align-items:center;margin-right:10px}
+    .ah-pdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.12);transition:background .3s}
+    .ah-pdot.done{background:rgba(201,168,76,0.6)}
+    .ah-pdot.active{background:var(--white);box-shadow:0 0 6px rgba(255,255,255,0.4)}
+
+    .stage-tabs{background:var(--navy);padding:0 24px;display:flex;align-items:center;overflow-x:auto;border-bottom:1px solid rgba(201,168,76,0.12);scrollbar-width:none;gap:2px}
+    .stage-tabs::-webkit-scrollbar{display:none}
+    .stab{font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.4);padding:14px 14px;border:none;background:none;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s,background .2s;display:flex;align-items:center;gap:6px}
+    .stab:hover{color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.04)}
+    .stab.active{color:var(--gold);border-bottom-color:var(--gold)}
+    .stab .tab-dot{width:5px;height:5px;border-radius:50%;background:var(--green);display:none}
+    .stab.has-data .tab-dot{display:block}
+
+    .app-main{max-width:1400px;margin:0 auto;padding:22px 24px 80px}
+    .panel{display:none}.panel.active{display:block;animation:panelIn .25s ease}
+    @keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+    .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
+    .card-hd{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+    .card-hd-left h3{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy)}
+    .card-hd-left p{font-size:12px;color:var(--text-light);margin-top:2px}
+    .card-hd-dark{background:linear-gradient(135deg,var(--deep-navy),var(--navy2));border-bottom:none}
+    .card-hd-dark .card-hd-left h3{color:var(--white)}
+    .card-hd-dark .card-hd-left p{color:rgba(255,255,255,0.4)}
+    .card-body{padding:20px}
+
+    .btn{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:9px 16px;border-radius:6px;border:none;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .btn-gold{background:var(--gold);color:var(--deep-navy)}.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 4px 12px rgba(201,168,76,0.3)}
+    .btn-navy{background:var(--navy);color:var(--white)}.btn-navy:hover{background:var(--deep-navy)}
+    .btn-outline{background:transparent;color:var(--navy);border:1px solid var(--border)}.btn-outline:hover{background:var(--navy);color:var(--white)}
+    .btn-ghost{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12)}.btn-ghost:hover{background:rgba(255,255,255,0.14);color:rgba(255,255,255,0.9)}
+    .btn-red{background:var(--red-dim);color:var(--red);border:1px solid rgba(220,38,38,0.2)}.btn-red:hover{background:#fca5a5}
+    .btn-sm{padding:6px 12px;font-size:10px}
+    .btn-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+
+    input[type=number],input[type=text],select{font-family:var(--sans);font-size:13px;color:var(--text-dark);border:1px solid var(--border);border-radius:6px;padding:7px 10px;background:var(--white);width:100%;transition:all .2s}
+    input:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.12)}
+    input.has-val{border-color:rgba(22,163,74,0.4);background:#f0fdf4}
+    input.bad{border-color:var(--red);background:#fff5f5}
+    label{font-size:11px;font-weight:600;color:var(--text-mid);display:block;margin-bottom:3px}
+
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .flex{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+    .twrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}
+    table.st{width:100%;border-collapse:collapse;font-size:13px}
+    table.st th{background:linear-gradient(135deg,var(--deep-navy),var(--navy));color:var(--gold);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:10px 12px;text-align:left;white-space:nowrap}
+    table.st td{padding:9px 12px;border-bottom:1px solid rgba(27,42,74,0.06);vertical-align:middle}
+    table.st tr:last-child td{border-bottom:none}
+    table.st tr:hover td{background:rgba(201,168,76,0.03)}
+    table.st tr.hilite td{background:rgba(201,168,76,0.05)}
+    table.st tr.ftrow td{background:rgba(22,163,74,0.04)}
+
+    .score-bar-wrap{display:flex;align-items:center;gap:8px;min-width:120px}
+    .score-bar-track{flex:1;height:5px;background:rgba(27,42,74,0.1);border-radius:3px;overflow:hidden;min-width:60px}
+    .score-bar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+    .bar-gold{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+    .bar-green{background:linear-gradient(90deg,#22c55e,#4ade80)}
+    .bar-red{background:linear-gradient(90deg,#f87171,#fca5a5)}
+    .bar-purple{background:linear-gradient(90deg,#a78bfa,#c4b5fd)}
+    .score-bar-val{font-family:var(--serif);font-size:14px;font-weight:700;min-width:40px;text-align:right}
+
+    .rb{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-size:12px;font-weight:700;background:rgba(27,42,74,0.08);color:var(--navy);flex-shrink:0}
+    .rb.r1{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--deep-navy);box-shadow:0 2px 8px rgba(201,168,76,0.35)}
+    .rb.r2{background:rgba(201,168,76,0.4);color:var(--deep-navy)}
+    .rb.r3{background:rgba(201,168,76,0.2);color:var(--navy)}
+
+    .badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:3px 9px;border-radius:20px}
+    .badge-pass{background:var(--green-dim);color:var(--green)}
+    .badge-fail{background:var(--red-dim);color:var(--red)}
+    .badge-ft{background:var(--gold-dim);color:#8a6f3a;border:1px solid rgba(201,168,76,0.25)}
+    .badge-adv{background:var(--blue-dim);color:var(--blue)}
+    .badge-pfp{background:var(--purple-dim);color:var(--purple)}
+
+    .fbar{background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:11px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .fbar label{margin:0;white-space:nowrap;font-size:12px;color:var(--text-mid)}
+    .topn{width:68px}
+    .fbar-info{font-size:12px;color:var(--text-light);margin-left:auto}
+    .bench-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(27,42,74,0.06);border:1px solid var(--border);border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600;color:var(--navy)}
+    .bench-pill span{color:var(--gold);font-family:var(--serif);font-size:13px}
+
+    .stabs{display:flex;gap:5px;margin-bottom:16px;flex-wrap:wrap}
+    .subtab{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border-radius:6px;border:1px solid var(--border);background:var(--white);color:var(--text-mid);cursor:pointer;transition:all .2s}
+    .subtab:hover{background:rgba(27,42,74,0.06)}
+    .subtab.active{background:var(--navy);color:var(--white);border-color:var(--navy)}
+
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+    .kpi{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+    .kpi.kpi-gold::before{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+    .kpi.kpi-green::before{background:linear-gradient(90deg,#22c55e,#4ade80)}
+    .kpi.kpi-purple::before{background:linear-gradient(90deg,#a78bfa,#818cf8)}
+    .kpi.kpi-blue::before{background:linear-gradient(90deg,#60a5fa,#38bdf8)}
+    .kpi-lbl{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:6px}
+    .kpi-val{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--navy);line-height:1}
+    .kpi-sub{font-size:11px;color:var(--text-light);margin-top:4px}
+    .kpi-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:28px;opacity:0.08}
+
+    .author-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+    .author-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);transition:all .2s;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+    .author-card:hover{border-color:rgba(201,168,76,0.4);box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+    .author-card.top-card{border-color:rgba(201,168,76,0.35);background:linear-gradient(160deg,#fffdf5,var(--white))}
+    .ac-rank{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase}
+    .ac-name{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--navy)}
+    .ac-handle{font-size:11px;color:var(--text-light)}
+    .ac-score{font-family:var(--serif);font-size:26px;font-weight:700;background:linear-gradient(135deg,var(--navy),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .ac-score-null{font-family:var(--serif);font-size:20px;font-weight:700;color:rgba(27,42,74,0.15)}
+    .ac-bar-track{width:100%;height:4px;background:rgba(27,42,74,0.08);border-radius:2px;overflow:hidden}
+    .ac-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .7s ease}
+    .ac-badges{display:flex;gap:4px;flex-wrap:wrap;justify-content:center}
+
+    .view-toggle{display:flex;gap:4px;background:var(--off-white);border:1px solid var(--border);border-radius:6px;padding:3px}
+    .vt-btn{font-size:14px;padding:5px 9px;border:none;background:transparent;cursor:pointer;border-radius:4px;transition:all .2s;color:var(--text-light)}
+    .vt-btn.active{background:var(--white);color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+
+    .info{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:12px 16px;font-size:13px;color:#7a6030;margin-bottom:16px;line-height:1.7}
+    .info strong{color:var(--navy)}
+    .info-purple{background:var(--purple-dim);border-color:rgba(124,58,237,0.2);color:#5b21b6}
+    .info-purple strong{color:#4c1d95}
+    .info-green{background:var(--green-dim);border-color:rgba(22,163,74,0.25);color:#166534}
+
+    .arow{display:grid;grid-template-columns:32px 1fr 160px 44px;gap:8px;align-items:center;background:var(--off-white);border:1px solid var(--border);border-radius:7px;padding:8px 12px;margin-bottom:6px;transition:border-color .2s}
+    .arow:hover{border-color:rgba(201,168,76,0.3)}
+    .arow-num{font-family:var(--serif);font-size:15px;font-weight:700;color:rgba(201,168,76,0.4);text-align:center}
+
+    .ref-table{width:100%;border-collapse:collapse;font-size:12px}
+    .ref-table th{background:rgba(27,42,74,0.05);padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid);border-bottom:1px solid var(--border)}
+    .ref-table td{padding:8px 12px;border-bottom:1px solid rgba(27,42,74,0.05)}
+    .ref-table tr:last-child td{border-bottom:none}
+
+    .placement-grid{display:flex;flex-direction:column;gap:10px}
+    .placement-row{display:flex;align-items:center;gap:16px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px 18px;transition:all .2s}
+    .placement-row.p1{background:linear-gradient(135deg,rgba(201,168,76,0.08),var(--white));border-color:rgba(201,168,76,0.4);box-shadow:0 4px 16px rgba(201,168,76,0.15)}
+    .placement-row:hover{border-color:rgba(201,168,76,0.3);transform:translateX(3px)}
+    .placement-medal{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+    .placement-medal.m1{background:linear-gradient(135deg,var(--gold),var(--gold-light))}
+    .placement-medal.m2{background:linear-gradient(135deg,#c0c0c0,#e8e8e8)}
+    .placement-medal.m3{background:linear-gradient(135deg,#cd7f32,#e8a87c)}
+    .placement-medal.mrest{background:rgba(27,42,74,0.08)}
+    .placement-info{flex:1}
+    .placement-title{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
+    .placement-name{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--navy)}
+    .placement-handle{font-size:12px;color:var(--text-light)}
+    .placement-bar-track{width:100%;height:4px;background:rgba(27,42,74,0.08);border-radius:2px;margin-top:6px;overflow:hidden}
+    .placement-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .8s ease}
+    .placement-score-wrap{text-align:right}
+    .placement-score{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--navy)}
+    .placement-score-lbl{font-size:10px;color:var(--text-light)}
+
+    .toast{position:fixed;bottom:24px;right:24px;background:var(--deep-navy);color:var(--white);padding:12px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;transform:translateY(80px);opacity:0;transition:all .35s cubic-bezier(.34,1.56,.64,1);border-left:3px solid var(--gold);pointer-events:none;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow-lg)}
+    .toast.show{transform:translateY(0);opacity:1}
+
+    @media(max-width:1024px){.kpi-grid{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}}
+    @media(max-width:768px){.app-main{padding:14px 14px 80px}.kpi-grid{grid-template-columns:1fr 1fr}.arow{grid-template-columns:28px 1fr}.arow select,.arow .del-btn{display:none}.ah-progress{display:none}}
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="ah-left">
+    <div class="ah-logo"><img src="https://episodebuddiessotyaoty.wordpress.com/wp-content/uploads/2026/03/buddies-logo.png?w=300" alt="BSH"></div>
+    <div><div class="app-title">AOTY 2026 — Evaluation Tool</div><div class="app-sub">Buddies Support Hub · Internal</div></div>
+    <div class="ah-divider"></div>
+    <div><div class="ah-stage-label">Current Stage</div><div class="ah-stage-val" id="ah-sv">Setup</div></div>
+  </div>
+  <div class="ah-right">
+    <div class="ah-progress">
+      <div class="ah-pdot active" id="pd-0"></div><div class="ah-pdot" id="pd-1"></div>
+      <div class="ah-pdot" id="pd-2"></div><div class="ah-pdot" id="pd-3"></div>
+      <div class="ah-pdot" id="pd-4"></div><div class="ah-pdot" id="pd-5"></div>
+      <div class="ah-pdot" id="pd-6"></div><div class="ah-pdot" id="pd-7"></div>
+    </div>
+    <button class="btn btn-ghost btn-sm" onclick="exportJSON()">⬇ Export</button>
+    <button class="btn btn-ghost btn-sm" onclick="document.getElementById('imp').click()">⬆ Import</button>
+    <button class="btn btn-red btn-sm" onclick="confirmReset()">↺ Reset</button>
+  </div>
+</header>
+
+<nav class="stage-tabs">
+  <button class="stab active" data-p="setup"   data-i="0" onclick="go('setup',0)">⚙ Setup<div class="tab-dot"></div></button>
+  <button class="stab" data-p="judging"         data-i="1" onclick="go('judging',1)">🎯 Judging<div class="tab-dot"></div></button>
+  <button class="stab" data-p="voting"          data-i="2" onclick="go('voting',2)">🗳 Voting<div class="tab-dot"></div></button>
+  <button class="stab" data-p="combined"        data-i="3" onclick="go('combined',3)">📊 Combined<div class="tab-dot"></div></button>
+  <button class="stab" data-p="awards"          data-i="4" onclick="go('awards',4)">🏅 Awards<div class="tab-dot"></div></button>
+  <button class="stab" data-p="top24"           data-i="5" onclick="go('top24',5)">⚡ Top 24<div class="tab-dot"></div></button>
+  <button class="stab" data-p="stage2"          data-i="6" onclick="go('stage2',6)">2️⃣ Stage 2<div class="tab-dot"></div></button>
+  <button class="stab" data-p="stage3"          data-i="7" onclick="go('stage3',7)">3️⃣ Stage 3<div class="tab-dot"></div></button>
+  <button class="stab" data-p="stage4"          data-i="8" onclick="go('stage4',8)">🏆 Final<div class="tab-dot"></div></button>
+</nav>
+
+<main class="app-main">
+
+<div id="p-setup" class="panel active">
+  <div class="kpi-grid">
+    <div class="kpi kpi-gold"><div class="kpi-lbl">Qualifying Authors</div><div class="kpi-val" id="kpi-n">0</div><div class="kpi-sub">loaded for evaluation</div><div class="kpi-icon">✍</div></div>
+    <div class="kpi kpi-green"><div class="kpi-lbl">Judging</div><div class="kpi-val">50%</div><div class="kpi-sub">Interview · Impact · SOTY · Aesthetics</div><div class="kpi-icon">🎯</div></div>
+    <div class="kpi kpi-purple"><div class="kpi-lbl">Voting</div><div class="kpi-val">50%</div><div class="kpi-sub">Feed · Poll · Authors · Popularity</div><div class="kpi-icon">🗳</div></div>
+    <div class="kpi kpi-blue"><div class="kpi-lbl">Fast Track Spots</div><div class="kpi-val">4</div><div class="kpi-sub">Interview · PFP · Aesthetics · Impact</div><div class="kpi-icon">⚡</div></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-hd card-hd-dark">
+        <div class="card-hd-left"><h3>Author Setup</h3><p>Load all 38 qualifying authors to begin</p></div>
+        <div class="btn-row">
+          <button class="btn btn-gold btn-sm" onclick="loadDefaults()">Load 2026 Authors</button>
+          <button class="btn btn-ghost btn-sm" onclick="addAuthor()">+ Add</button>
+          <button class="btn btn-red btn-sm" onclick="clearAll()">Clear</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="info"><strong>Quick start:</strong> Click "Load 2026 Authors" to pre-fill all 38 authors with handles. Everything autosaves to your browser.</div>
+        <div id="alist"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+          <span id="acount" style="font-size:13px;color:var(--text-mid)"></span>
+          <button class="btn btn-gold" onclick="go('judging',1)">Start Judging →</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hd"><div class="card-hd-left"><h3>Formula Reference</h3></div></div>
+      <div class="card-body">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Judging Panel — 50%</div>
+        <table class="ref-table" style="margin-bottom:16px">
+          <thead><tr><th>Category</th><th>Weight</th><th>Formula</th></tr></thead>
+          <tbody>
+            <tr><td>Author's Interview</td><td><strong>20%</strong></td><td>(avg ÷ 100) × 20</td></tr>
+            <tr><td>Impact Message</td><td><strong>10%</strong></td><td>(avg ÷ 100) × 10</td></tr>
+            <tr><td>SOTY Judging</td><td><strong>15%</strong></td><td>(entered ÷ 100) × 15</td></tr>
+            <tr><td>Instagram Aesthetics</td><td><strong>5%</strong></td><td>(avg ÷ 100) × 5</td></tr>
+            <tr><td style="color:var(--text-light)">Profile Picture ★</td><td style="color:var(--text-light)">—</td><td style="color:var(--text-light)">Tracked only · Fast Track</td></tr>
+          </tbody>
+        </table>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Public Voting — 50%</div>
+        <table class="ref-table">
+          <thead><tr><th>Category</th><th>Weight</th><th>Formula</th></tr></thead>
+          <tbody>
+            <tr><td>Feed Vote</td><td><strong>15%</strong></td><td>(total ÷ benchmark) × 15</td></tr>
+            <tr><td>Poll Vote</td><td><strong>15%</strong></td><td>(total ÷ benchmark) × 15</td></tr>
+            <tr><td>Authors Vote</td><td><strong>10%</strong></td><td>(total ÷ benchmark) × 10</td></tr>
+            <tr><td>Popularity Vote</td><td><strong>10%</strong></td><td>(total ÷ benchmark) × 10</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="p-judging" class="panel">
+  <div class="card">
+    <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 1 — Judging Panel</h3><p>Enter judge scores 0–100. Leave blank if a judge skipped that author.</p></div></div>
+    <div class="card-body">
+      <div class="info"><strong>Judges:</strong> CXR (Xavier) · CRG (Ryan Graye) · CSM (Samantha) · CEM (Emili) · CST (Scarlet) &nbsp;·&nbsp; <strong>SOTY Judging</strong> = single value entry (the author's 60% judging score) &nbsp;·&nbsp; <span style="color:var(--purple);font-weight:700">★ PFP</span> tracked but not counted in total.</div>
+      <div class="stabs">
+        <button class="subtab active" onclick="jTab('interview',this)">🎤 Interview ×20%</button>
+        <button class="subtab" onclick="jTab('impact',this)">💬 Impact ×10%</button>
+        <button class="subtab" onclick="jTab('soty',this)">📖 SOTY Judging ×15%</button>
+        <button class="subtab" onclick="jTab('aesthetics',this)">📸 Aesthetics ×5%</button>
+        <button class="subtab" onclick="jTab('pfp',this)">⭐ Profile Picture ★</button>
+      </div>
+      <div class="fbar">
+        <label>Top N:</label><input type="number" class="topn" id="j-topn" min="1" placeholder="All" oninput="renderJ()">
+        <button class="btn btn-outline btn-sm" onclick="setN('j-topn','');renderJ()">All</button>
+        <span class="fbar-info" id="j-info"></span>
+      </div>
+      <div class="twrap"><table class="st"><thead id="j-head"></thead><tbody id="j-body"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+<div id="p-voting" class="panel">
+  <div class="card">
+    <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 1 — Public Voting</h3><p>Enter raw totals. Benchmark auto-detects from highest score.</p></div></div>
+    <div class="card-body">
+      <div class="info"><strong>Feed Vote:</strong> 2 days, auto-summed. <strong>Poll Vote:</strong> 3 rounds, auto-summed. <strong>Authors & Popularity:</strong> enter final cumulative total.</div>
+      <div class="stabs">
+        <button class="subtab active" onclick="vTab('feed',this)">📡 Feed ×15%</button>
+        <button class="subtab" onclick="vTab('poll',this)">📊 Poll ×15%</button>
+        <button class="subtab" onclick="vTab('authors',this)">✍ Authors ×10%</button>
+        <button class="subtab" onclick="vTab('popularity',this)">🌟 Popularity ×10%</button>
+      </div>
+      <div class="fbar">
+        <label>Top N:</label><input type="number" class="topn" id="v-topn" min="1" placeholder="All" oninput="renderV()">
+        <button class="btn btn-outline btn-sm" onclick="setN('v-topn','');renderV()">All</button>
+        <div id="v-bench"></div><span class="fbar-info" id="v-info"></span>
+      </div>
+      <div class="twrap"><table class="st"><thead id="v-head"></thead><tbody id="v-body"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+<div id="p-combined" class="panel">
+  <div class="card">
+    <div class="card-hd card-hd-dark">
+      <div class="card-hd-left"><h3>Stage 1 — Combined Leaderboard</h3><p>Judging 50% + Voting 50% = Total out of 100</p></div>
+      <div class="btn-row">
+        <div class="view-toggle">
+          <button class="vt-btn active" id="vt-t" onclick="setView('table')" title="Table">☰</button>
+          <button class="vt-btn" id="vt-c" onclick="setView('cards')" title="Cards">⊞</button>
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="go('top24',5)">Build Top 24 →</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="kpi-grid" id="c-kpis"></div>
+      <div class="fbar">
+        <label>Top N:</label><input type="number" class="topn" id="c-topn" min="1" placeholder="All" oninput="renderC()">
+        <button class="btn btn-outline btn-sm" onclick="setN('c-topn',20);renderC()">Top 20</button>
+        <button class="btn btn-outline btn-sm" onclick="setN('c-topn',24);renderC()">Top 24</button>
+        <button class="btn btn-outline btn-sm" onclick="setN('c-topn','');renderC()">All</button>
+        <span class="fbar-info" id="c-info"></span>
+      </div>
+      <div id="c-tv"><div class="twrap"><table class="st"><thead id="c-head"></thead><tbody id="c-body"></tbody></table></div></div>
+      <div id="c-cv" style="display:none"><div class="author-cards-grid" id="c-cards"></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="p-awards" class="panel">
+  <div class="card">
+    <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Special Awards & Fast Track</h3><p>Top N per category. Top scorer not in Top 20 earns Fast Track.</p></div></div>
+    <div class="card-body">
+      <div class="info info-purple"><strong>Fast Track awards (4 spots):</strong> Best Interview · Best Profile Picture · Best IG Aesthetics · Best Impact Message — each award's top scorer outside the Top 20 earns automatic Top 24 entry.</div>
+      <div class="fbar">
+        <label>Top N:</label><input type="number" class="topn" id="a-topn" value="4" min="1" max="20" oninput="renderA()">
+        <button class="btn btn-outline btn-sm" onclick="setN('a-topn',4);renderA()">4</button>
+        <button class="btn btn-outline btn-sm" onclick="setN('a-topn',8);renderA()">8</button>
+        <button class="btn btn-outline btn-sm" onclick="setN('a-topn',12);renderA()">12</button>
+        <button class="btn btn-outline btn-sm" onclick="setN('a-topn',20);renderA()">20</button>
+      </div>
+      <div class="g2" id="awards-grid"></div>
+    </div>
+  </div>
+</div>
+
+<div id="p-top24" class="panel">
+  <div class="card">
+    <div class="card-hd card-hd-dark">
+      <div class="card-hd-left"><h3>Top 24 Builder</h3><p>Top 20 by combined score + 4 Fast Track winners</p></div>
+      <button class="btn btn-gold btn-sm" onclick="buildTop24()">⚡ Auto-Build Top 24</button>
+    </div>
+    <div class="card-body">
+      <div class="info info-green"><strong>Composition:</strong> Authors ranked 1–20 by Stage 1 total advance. The top scorer in each Fast Track award category not already in the Top 20 fills the remaining 4 spots.</div>
+      <div id="top24-out"><p style="color:var(--text-light);font-size:13px">Click "Auto-Build Top 24" above.</p></div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+        <button class="btn btn-navy" onclick="promoteS2()">Promote Top 24 to Stage 2 →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="p-stage2" class="panel">
+  <div class="card">
+    <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 2 — Top 24</h3><p>2nd Poll Vote (÷ benchmark × 15) added to Stage 1 carry-over → Top 12</p></div></div>
+    <div class="card-body">
+      <div class="info"><strong>Formula:</strong> S1 Score + 2nd Poll Weighted (out of 15) = S2 Total. Top 12 advance. Fast Track authors carry S1 score directly.</div>
+      <div class="fbar">
+        <label>Top N:</label><input type="number" class="topn" id="s2-topn" min="1" placeholder="All" oninput="renderS2()">
+        <button class="btn btn-outline btn-sm" onclick="setN('s2-topn',12);renderS2()">Top 12</button>
+        <button class="btn btn-outline btn-sm" onclick="setN('s2-topn','');renderS2()">All</button>
+        <div id="s2-bench" style="margin-left:auto"></div>
+      </div>
+      <div class="twrap"><table class="st"><thead id="s2-head"></thead><tbody id="s2-body"></tbody></table></div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+        <button class="btn btn-navy" onclick="promoteS3()">Promote Top 12 to Stage 3 →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="p-stage3" class="panel">
+  <div class="card">
+    <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 3 — Head-to-Head</h3><p>H2H Vote (out of 10) added to Stage 2 score → Top 8</p></div></div>
+    <div class="card-body">
+      <div class="info"><strong>Formula:</strong> S2 Total + H2H Vote (e.g. 8.5) = S3 Total. Top 8 advance to the Final.</div>
+      <div class="fbar">
+        <label>Top N:</label><input type="number" class="topn" id="s3-topn" min="1" placeholder="All" oninput="renderS3()">
+        <button class="btn btn-outline btn-sm" onclick="setN('s3-topn',8);renderS3()">Top 8</button>
+        <button class="btn btn-outline btn-sm" onclick="setN('s3-topn','');renderS3()">All</button>
+      </div>
+      <div class="twrap"><table class="st"><thead id="s3-head"></thead><tbody id="s3-body"></tbody></table></div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+        <button class="btn btn-navy" onclick="promoteS4()">Promote Top 8 to Final →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="p-stage4" class="panel">
+  <div class="card">
+    <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 4 — Final Placements 🏆</h3><p>Top 8 ranked by Stage 3 total</p></div></div>
+    <div class="card-body"><div id="s4-out"><p style="color:var(--text-light);font-size:13px">Promote Top 8 from Stage 3 first.</p></div></div>
+  </div>
+</div>
+
+</main>
+<div class="toast" id="toast"></div>
+<input type="file" id="imp" accept=".json" style="display:none" onchange="importJSON(event)">
+
+<script>
+const SK='bsh_aoty2026_eval_v3';
+const JUDGES=['CXR','CRG','CSM','CEM','CST'];
+const JNAMES={CXR:'Xavier',CRG:'Ryan Graye',CSM:'Samantha',CEM:'Emili',CST:'Scarlet'};
+const PLAC=[{t:'🏆 AOTY Winner',m:'m1',e:'🥇'},{t:'1st Runner Up',m:'m2',e:'🥈'},{t:'2nd Runner Up',m:'m3',e:'🥉'},{t:'3rd Runner Up',m:'mrest',e:'4'},{t:'4th Runner Up',m:'mrest',e:'5'},{t:'5th Runner Up',m:'mrest',e:'6'},{t:'6th Runner Up',m:'mrest',e:'7'},{t:'7th Runner Up',m:'mrest',e:'8'}];
+const JW={interview:20,impact:10,soty:15,aesthetics:5,pfp:0};
+const VW={feed:15,poll:15,authors:10,popularity:10};
+const FT=[{key:'interview',label:'Best Interview',icon:'🎤'},{key:'pfp',label:'Best Profile Picture',icon:'📷'},{key:'aesthetics',label:'Best IG Aesthetics',icon:'✨'},{key:'impact',label:'Best Impact Message',icon:'💬'}];
+const DEFS=[['AK Gray','@alistoriez'],['Alessandra','@alessandra.write'],['Augen','@night_black_episode'],['BD','@xbr.eex'],['Blackhearts','@heartsepi.write'],['Bunny Lin','@bunnylin.episode'],['Chanel N','@chanel.stories'],['Charlie Seb','@charlieseb.writes'],['Chriswrite_episode','@chriswrites_episode'],['Daphne De Carter','@daphnedecarter.episode'],['Daze Meadly','@dazemeadly.epi'],['Em_stories14','@em_stories14'],['Eysenck','@eys.writes'],['Fern','@fables_by_fern'],['Harly','@harlywritess'],['Honey','@episode.honeyy'],['Ivy','@ivy.epiwrites'],['Janb','@janb.stories'],['Jmstoriesxx','@jmstoriesxx'],['Kath','@kath.stories'],['Kimberly V.','@k.v.stories'],['L. Kennedy','@l.kennedy_episode'],['Lisa Melz','@lisa.writess'],['Lulu Majestic','@lulu_majestic'],['Lum0s','@lum0s_writes'],['Lumiere','@vers_de_lumiere'],['Nadi','@nadi_stories'],['Nas','@nxx._epy'],['Nelly','@nellyy.epi'],['Nelson','@nelsonepisode'],['Odessa','@odessa_episode'],['R. Lewis','@rlewiswrites'],['Rumi','@rumiwritess'],['Sarai','@saraii.episode'],['Song','@song.epi'],['Tali','@taliberry.scripted'],['Veni','@veni.writes'],['Viper','@viper.episode']];
+const PNAMES=['Setup','Judging','Voting','Combined','Awards','Top 24','Stage 2','Stage 3','Final'];
+
+function blank(){return{authors:[],judging:{},voting:{},top24:[],fastTrack:{},s2:{},s3:{},top12:[],top8:[]};}
+let S=(()=>{try{const d=localStorage.getItem(SK);return d?JSON.parse(d):blank();}catch(e){return blank();}})();
+let jCat='interview',vCat='feed',curView='table';
+
+function save(){localStorage.setItem(SK,JSON.stringify(S));}
+function initA(id){if(!S.judging[id])S.judging[id]={interview:{},impact:{},aesthetics:{},pfp:{},soty:null};if(!S.voting[id])S.voting[id]={feed:[null,null],poll:[null,null,null],authors:null,popularity:null};}
+function avg(arr){const v=arr.filter(x=>x!==null&&x!==''&&!isNaN(x)).map(Number);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null;}
+function jAvg(id,cat){if(cat==='soty')return null;return avg(JUDGES.map(j=>{const v=S.judging[id]?.[cat]?.[j];return v!==undefined&&v!==null&&v!==''?Number(v):null;}));}
+function jW(id,cat){if(cat==='soty'){const v=S.judging[id]?.soty;if(v===null||v===undefined||v==='')return null;return+(Number(v)/100*15).toFixed(2);}const a=jAvg(id,cat);if(a===null)return null;const w=JW[cat];if(!w)return null;return+(a/100*w).toFixed(2);}
+function pfp(id){const a=jAvg(id,'pfp');return a!==null?+a.toFixed(2):null;}
+function vTot(id,cat){const v=S.voting[id];if(!v)return null;if(cat==='feed'){const x=(v.feed||[]).filter(x=>x!==null&&x!=='').map(Number);return x.length?x.reduce((a,b)=>a+b,0):null;}if(cat==='poll'){const x=(v.poll||[]).filter(x=>x!==null&&x!=='').map(Number);return x.length?x.reduce((a,b)=>a+b,0):null;}const x=v[cat];return x!==null&&x!==undefined&&x!==''?Number(x):null;}
+function bm(cat){const t=S.authors.map(a=>vTot(a.id,cat)).filter(v=>v!==null);return t.length?Math.max(...t):null;}
+function vW(id,cat){const t=vTot(id,cat),b=bm(cat),w=VW[cat];if(t===null||!b||!w)return null;return+(t/b*w).toFixed(2);}
+function s1(id){const j=['interview','impact','soty','aesthetics'].map(c=>jW(id,c)).filter(v=>v!==null);const v=['feed','poll','authors','popularity'].map(c=>vW(id,c)).filter(v=>v!==null);if(!j.length&&!v.length)return null;return+(j.reduce((a,b)=>a+b,0)+v.reduce((a,b)=>a+b,0)).toFixed(2);}
+function s2bm(){const v=S.top24.map(id=>{const x=S.s2[id]?.poll;return x!==null&&x!==undefined&&x!==''?Number(x):null;}).filter(v=>v!==null);return v.length?Math.max(...v):null;}
+function s2pW(val){const b=s2bm();if(val===null||val===undefined||val===''||!b)return null;return+(Number(val)/b*15).toFixed(2);}
+// All Top 24 compete in Stage 2. Popularity Vote winner fast-tracks to Top 12.
+function getAOTYFT12(){const s=S.top24.map(id=>({id,pop:vW(id,'popularity')||0})).sort((a,b)=>b.pop-a.pop);return s.length&&s[0].pop>0?[s[0].id]:[];}
+// s2T = S1 + Poll weighted (no fast track bypass)
+function s2T(id){const base=s1(id);if(base===null)return null;const p=S.s2[id]?.poll;return+(base+(s2pW(p)||0)).toFixed(2);}
+// H2H: raw → benchmark → /10
+function h2hBm(){const vals=S.top12.map(id=>{const v=S.s3[id]?.h2h_raw;return(v!==null&&v!==undefined&&v!=='')?Number(v):null;}).filter(v=>v!==null);return vals.length?Math.max(...vals):null;}
+function h2hW(val){const b=h2hBm();if(val===null||val===undefined||val===''||!b)return null;return+(Number(val)/b*10).toFixed(2);}
+// s3T uses h2h_raw
+function s3T(id){const base=s2T(id);if(base===null)return null;const h=S.s3[id]?.h2h_raw;return+(base+(h2hW(h)||0)).toFixed(2);}
+
+function scCol(val,mx){if(val===null)return'var(--text-light)';const p=val/mx*100;return p>=75?'var(--green)':p>=50?'var(--gold)':'var(--red)';}
+function bcls(val,mx){if(val===null)return'bar-gold';const p=val/mx*100;return p>=75?'bar-green':p>=50?'bar-gold':'bar-red';}
+function bar(val,mx,cl){if(val===null)return'<span style="color:#ccc">—</span>';const p=Math.min(100,Math.round(val/mx*100)),c=cl||bcls(val,mx);return`<div class="score-bar-wrap"><div class="score-bar-val" style="color:${scCol(val,mx)}">${val.toFixed(2)}</div><div class="score-bar-track"><div class="score-bar-fill ${c}" style="width:${p}%"></div></div></div>`;}
+
+function go(name,idx){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('p-'+name).classList.add('active');
+  document.querySelector(`[data-p="${name}"]`).classList.add('active');
+  document.getElementById('ah-sv').textContent=PNAMES[idx||0];
+  for(let i=0;i<8;i++){const d=document.getElementById('pd-'+i);if(d){d.classList.remove('done','active');i<(idx||0)?d.classList.add('done'):i===(idx||0)&&d.classList.add('active');}}
+  const r={judging:renderJ,voting:renderV,combined:renderC,awards:renderA,stage2:renderS2,stage3:renderS3,stage4:renderS4};
+  if(r[name])r[name]();
+}
+function setN(id,v){document.getElementById(id).value=v;}
+function setView(v){curView=v;document.getElementById('vt-t').classList.toggle('active',v==='table');document.getElementById('vt-c').classList.toggle('active',v==='cards');document.getElementById('c-tv').style.display=v==='table'?'block':'none';document.getElementById('c-cv').style.display=v==='cards'?'block':'none';}
+
+function loadDefaults(){if(S.authors.length&&!confirm('Replace existing authors?'))return;S=blank();S.authors=DEFS.map((d,i)=>({id:'a'+(i+1),name:d[0],handle:d[1]}));save();renderSetup();toast('38 authors loaded','✅');}
+function addAuthor(){S.authors.push({id:'a'+Date.now(),name:'',handle:''});save();renderSetup();}
+function clearAll(){if(!confirm('Reset ALL data?'))return;S=blank();save();renderSetup();}
+function delA(id){S.authors=S.authors.filter(a=>a.id!==id);delete S.judging[id];delete S.voting[id];save();renderSetup();}
+function upA(id,f,v){const a=S.authors.find(a=>a.id===id);if(a){a[f]=v;save();}}
+
+function renderSetup(){
+  document.getElementById('acount').textContent=S.authors.length+' authors loaded';
+  document.getElementById('kpi-n').textContent=S.authors.length;
+  if(S.authors.length)document.querySelector('[data-p="setup"]').classList.add('has-data');
+  document.getElementById('alist').innerHTML=S.authors.map((a,i)=>`
+    <div class="arow"><div class="arow-num">${String(i+1).padStart(2,'0')}</div>
+      <input type="text" value="${a.name}" placeholder="Author name…" onchange="upA('${a.id}','name',this.value)">
+      <input type="text" value="${a.handle}" placeholder="@handle" onchange="upA('${a.id}','handle',this.value)" style="font-size:12px;color:var(--text-light)">
+      <button class="btn btn-red btn-sm del-btn" onclick="delA('${a.id}')">✕</button>
+    </div>`).join('');
+}
+
+function jTab(cat,el){jCat=cat;document.querySelectorAll('#p-judging .subtab').forEach(t=>t.classList.remove('active'));el.classList.add('active');renderJ();}
+function renderJ(){
+  const cat=jCat,topN=parseInt(document.getElementById('j-topn').value)||null;
+  const isSoty=cat==='soty',isPFP=cat==='pfp',w=JW[cat]||0;
+  let rows=S.authors.map(a=>{initA(a.id);return{a,wt:isSoty?jW(a.id,'soty'):(isPFP?pfp(a.id):jW(a.id,cat)),ra:isSoty?null:jAvg(a.id,cat)};}).sort((a,b)=>(b.wt||0)-(a.wt||0));
+  document.getElementById('j-info').textContent=topN?`Top ${Math.min(topN,rows.length)} of ${rows.length}`:`All ${rows.length}`;
+  const disp=topN?rows.slice(0,topN):rows;
+  const mx=isPFP?100:w||15;
+
+  if(isSoty){
+    document.getElementById('j-head').innerHTML=`<tr><th>#</th><th>Author</th><th>Handle</th><th>SOTY Judging Score (0–100)</th><th>/ 15</th></tr>`;
+    document.getElementById('j-body').innerHTML=disp.map((r,i)=>{
+      const v=S.judging[r.a.id]?.soty,rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
+      return`<tr class="${i<(topN||Infinity)?'hilite':''}"><td><span class="rb ${rc}">${i+1}</span></td><td><strong>${r.a.name}</strong></td><td style="font-size:11px;color:var(--text-light)">${r.a.handle}</td><td><input type="number" min="0" max="100" value="${v??''}" placeholder="Enter SOTY judging %…" class="${v!==null&&v!==''?'has-val':''}" style="max-width:220px" oninput="setSoty('${r.a.id}',this)"></td><td>${bar(r.wt,15,'bar-gold')}</td></tr>`;
+    }).join('');
+    return;
+  }
+  document.getElementById('j-head').innerHTML=`<tr><th>#</th><th>Author</th><th>Handle</th>${JUDGES.map(j=>`<th>${j}<br><small style="opacity:.5;font-weight:400">${JNAMES[j]}</small></th>`).join('')}<th>Avg %</th><th>${isPFP?'PFP / 100':'/ '+w}${isPFP?' <span style="font-size:9px;background:rgba(124,58,237,0.2);color:#a78bfa;padding:1px 6px;border-radius:3px">Not counted</span>':''}</th></tr>`;
+  document.getElementById('j-body').innerHTML=disp.map((r,i)=>{
+    const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    const ji=JUDGES.map(j=>{const v=S.judging[r.a.id]?.[cat]?.[j];return`<td><input type="number" class="${v!==undefined&&v!==null&&v!==''?'has-val':''}" min="0" max="100" value="${v??''}" placeholder="–" style="width:52px;text-align:center;padding:4px;font-size:12px" oninput="setJ('${r.a.id}','${cat}','${j}',this)"></td>`;}).join('');
+    const bc=isPFP?'bar-purple':bcls(r.wt,mx);
+    return`<tr class="${i<(topN||Infinity)?'hilite':''}"><td><span class="rb ${rc}">${i+1}</span></td><td><strong>${r.a.name}</strong></td><td style="font-size:11px;color:var(--text-light)">${r.a.handle}</td>${ji}<td style="text-align:center;color:var(--text-mid)">${r.ra!==null?r.ra.toFixed(1)+'%':'—'}</td><td>${r.wt!==null?bar(r.wt,mx,bc):'<span style="color:#ccc">—</span>'}</td></tr>`;
+  }).join('');
+  if(S.authors.length)document.querySelector('[data-p="judging"]').classList.add('has-data');
+}
+function setJ(id,cat,j,inp){initA(id);if(inp.value===''){S.judging[id][cat][j]=null;inp.className='';save();renderJ();return;}const v=Math.min(100,Math.max(0,parseFloat(inp.value)));if(isNaN(v)){inp.classList.add('bad');return;}inp.className='has-val';S.judging[id][cat][j]=v;save();renderJ();}
+function setSoty(id,inp){initA(id);if(inp.value===''){S.judging[id].soty=null;inp.className='';save();renderJ();return;}const v=Math.min(100,Math.max(0,parseFloat(inp.value)));if(isNaN(v)){inp.classList.add('bad');return;}inp.className='has-val';S.judging[id].soty=v;save();renderJ();}
+
+function vTab(cat,el){vCat=cat;document.querySelectorAll('#p-voting .subtab').forEach(t=>t.classList.remove('active'));el.classList.add('active');renderV();}
+function renderV(){
+  const cat=vCat,w=VW[cat],topN=parseInt(document.getElementById('v-topn').value)||null;
+  const b=bm(cat);document.getElementById('v-bench').innerHTML=b?`<div class="bench-pill">Benchmark <span>${b.toLocaleString()}</span></div>`:'';
+  let rows=S.authors.map(a=>{initA(a.id);return{a,t:vTot(a.id,cat),w:vW(a.id,cat)};}).sort((a,b)=>(b.t||0)-(a.t||0));
+  document.getElementById('v-info').textContent=topN?`Top ${Math.min(topN,rows.length)} of ${rows.length}`:`All ${rows.length}`;
+  const disp=topN?rows.slice(0,topN):rows;
+  let xH='',xC=r=>'';
+  if(cat==='feed'){xH='<th>Day 1</th><th>Day 2</th>';xC=r=>[0,1].map(i=>{const v=S.voting[r.a.id]?.feed?.[i];return`<td><input type="number" min="0" value="${v??''}" placeholder="0" class="${v!==null&&v!==''?'has-val':''}" style="width:74px;text-align:center" oninput="setV('${r.a.id}','feed',${i},this.value)"></td>`;}).join('');}
+  else if(cat==='poll'){xH='<th>Round 1</th><th>Round 2</th><th>Round 3</th>';xC=r=>[0,1,2].map(i=>{const v=S.voting[r.a.id]?.poll?.[i];return`<td><input type="number" min="0" value="${v??''}" placeholder="0" class="${v!==null&&v!==''?'has-val':''}" style="width:68px;text-align:center" oninput="setV('${r.a.id}','poll',${i},this.value)"></td>`;}).join('');}
+  else{xH=`<th>${cat==='authors'?'Total':'Final Total'}</th>`;xC=r=>{const v=S.voting[r.a.id]?.[cat];return`<td><input type="number" min="0" value="${v??''}" placeholder="0" class="${v!==null&&v!==''?'has-val':''}" style="width:90px;text-align:center" oninput="setV('${r.a.id}','${cat}',null,this.value)"></td>`;};}
+  document.getElementById('v-head').innerHTML=`<tr><th>#</th><th>Author</th><th>Handle</th>${xH}<th>Total</th><th>/ ${w}</th></tr>`;
+  document.getElementById('v-body').innerHTML=disp.map((r,i)=>{const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';return`<tr><td><span class="rb ${rc}">${i+1}</span></td><td><strong>${r.a.name}</strong></td><td style="font-size:11px;color:var(--text-light)">${r.a.handle}</td>${xC(r)}<td style="text-align:center;color:var(--text-mid)">${r.t!==null?r.t.toLocaleString():'—'}</td><td>${r.w!==null?bar(r.w,w):'<span style="color:#ccc">—</span>'}</td></tr>`;}).join('');
+  if(S.authors.length)document.querySelector('[data-p="voting"]').classList.add('has-data');
+}
+function setV(id,cat,idx,val){initA(id);const v=val===''?null:Math.max(0,parseFloat(val)||0);if(cat==='feed')S.voting[id].feed[idx]=v;else if(cat==='poll')S.voting[id].poll[idx]=v;else S.voting[id][cat]=v;save();renderV();}
+
+function renderC(){
+  const topN=parseInt(document.getElementById('c-topn').value)||null;
+  let rows=S.authors.map(a=>({a,int:jW(a.id,'interview'),imp:jW(a.id,'impact'),sot:jW(a.id,'soty'),aes:jW(a.id,'aesthetics'),pf:pfp(a.id),feed:vW(a.id,'feed'),poll:vW(a.id,'poll'),auth:vW(a.id,'authors'),pop:vW(a.id,'popularity'),total:s1(a.id)})).sort((a,b)=>(b.total||0)-(a.total||0));
+  document.getElementById('c-info').textContent=topN?`Top ${Math.min(topN,rows.length)} of ${rows.length}`:`All ${rows.length}`;
+  const sc=rows.map(r=>r.total).filter(v=>v!==null);
+  const mx=sc.length?Math.max(...sc):100,av=sc.length?sc.reduce((a,b)=>a+b,0)/sc.length:0;
+  document.getElementById('c-kpis').innerHTML=`<div class="kpi kpi-gold"><div class="kpi-lbl">Scored</div><div class="kpi-val">${sc.length}</div><div class="kpi-sub">of ${S.authors.length}</div><div class="kpi-icon">✅</div></div><div class="kpi kpi-green"><div class="kpi-lbl">Top Score</div><div class="kpi-val">${mx.toFixed(2)}</div><div class="kpi-sub">out of 100</div><div class="kpi-icon">🏆</div></div><div class="kpi kpi-purple"><div class="kpi-lbl">Average</div><div class="kpi-val">${av.toFixed(2)}</div><div class="kpi-sub">out of 100</div><div class="kpi-icon">📊</div></div><div class="kpi kpi-blue"><div class="kpi-lbl">20th Place</div><div class="kpi-val">${rows[19]?.total?.toFixed(2)||'—'}</div><div class="kpi-sub">cut-off line</div><div class="kpi-icon">✂</div></div>`;
+  const top20=rows.slice(0,20).map(r=>r.a.id);
+  const disp=topN?rows.slice(0,topN):rows;
+  const f=v=>v!==null?v.toFixed(2):`<span style="color:#ddd">—</span>`;
+  document.getElementById('c-head').innerHTML=`<tr><th>#</th><th>Author</th><th>Handle</th><th>Interview/20</th><th>Impact/10</th><th>SOTY/15</th><th>Aesthetics/5</th><th style="color:rgba(167,139,250,0.8)">PFP★</th><th>Feed/15</th><th>Poll/15</th><th>Authors/10</th><th>Pop/10</th><th>TOTAL /100</th><th>Top 20?</th></tr>`;
+  document.getElementById('c-body').innerHTML=disp.map((r,i)=>{const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';const in20=top20.includes(r.a.id);return`<tr class="${in20?'hilite':''}"><td><span class="rb ${rc}">${i+1}</span></td><td><strong>${r.a.name}</strong></td><td style="font-size:11px;color:var(--text-light)">${r.a.handle}</td><td>${f(r.int)}</td><td>${f(r.imp)}</td><td>${f(r.sot)}</td><td>${f(r.aes)}</td><td style="color:var(--purple);font-size:12px">${r.pf!==null?r.pf.toFixed(1):'—'}</td><td>${f(r.feed)}</td><td>${f(r.poll)}</td><td>${f(r.auth)}</td><td>${f(r.pop)}</td><td>${r.total!==null?bar(r.total,mx):'<span style="color:#ccc">—</span>'}</td><td><span class="badge ${in20?'badge-pass':'badge-fail'}">${in20?'✔ Yes':'—'}</span></td></tr>`;}).join('');
+  document.getElementById('c-cards').innerHTML=disp.map((r,i)=>{const in20=top20.includes(r.a.id);const pct=r.total?Math.round(r.total/mx*100):0;return`<div class="author-card ${in20?'top-card':''}"><div class="ac-rank">${i===0?'🏆 #1':i===1?'🥈 #2':i===2?'🥉 #3':'#'+(i+1)}</div><div class="ac-name">${r.a.name}</div><div class="ac-handle">${r.a.handle}</div>${r.total!==null?`<div class="ac-score">${r.total.toFixed(2)}</div>`:`<div class="ac-score-null">No score yet</div>`}<div class="ac-bar-track"><div class="ac-bar-fill" style="width:${pct}%"></div></div><div class="ac-badges">${in20?'<span class="badge badge-pass">Top 20</span>':''}${S.fastTrack[r.a.id]?'<span class="badge badge-ft">Fast Track</span>':''}</div></div>`;}).join('');
+  if(S.authors.length)document.querySelector('[data-p="combined"]').classList.add('has-data');
+}
+
+function renderA(){
+  const topN=parseInt(document.getElementById('a-topn').value)||4;
+  const ranked=S.authors.map(a=>({id:a.id,total:s1(a.id)||0})).sort((a,b)=>b.total-a.total);
+  const top20=ranked.slice(0,20).map(r=>r.id);
+  document.getElementById('awards-grid').innerHTML=FT.map(cat=>{
+    const isPFP=cat.key==='pfp';const ml=isPFP?100:JW[cat.key];
+    const rows=S.authors.map(a=>({a,score:isPFP?(pfp(a.id)||0):(jW(a.id,cat.key)||0)})).sort((a,b)=>b.score-a.score).slice(0,topN);
+    const mx=Math.max(...rows.map(r=>r.score),0.01);
+    return`<div class="card" style="margin-bottom:0"><div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>${cat.icon} ${cat.label}</h3><p>Top ${topN} · ${isPFP?'out of 100':`max ${ml} pts`}</p></div>${isPFP?`<span class="badge badge-pfp">Fast Track Only</span>`:''}</div><div class="twrap"><table class="st"><thead><tr><th>#</th><th>Author</th><th>Score</th><th>Status</th></tr></thead><tbody>${rows.map((r,i)=>{const in20=top20.includes(r.a.id);return`<tr class="${i===0?'hilite':''}"><td><span class="rb ${i===0?'r1':i===1?'r2':i===2?'r3':''}">${i+1}</span></td><td><strong>${r.a.name}</strong><br><span style="font-size:11px;color:var(--text-light)">${r.a.handle}</span></td><td>${bar(r.score,ml)}</td><td>${in20?`<span class="badge badge-pass">In Top 20</span>`:`<span class="badge badge-ft">FT Eligible</span>`}</td></tr>`;}).join('')}</tbody></table></div></div>`;
+  }).join('');
+}
+
+function buildTop24(){
+  const ranked=S.authors.map(a=>({id:a.id,name:a.name,handle:a.handle,total:s1(a.id)||0})).sort((a,b)=>b.total-a.total);
+  const top20=ranked.slice(0,20).map(r=>r.id);
+  const ft={},used=new Set();
+  for(const cat of FT){const isPFP=cat.key==='pfp';const sorted=S.authors.map(a=>({id:a.id,score:isPFP?(pfp(a.id)||0):(jW(a.id,cat.key)||0)})).sort((a,b)=>b.score-a.score);for(const e of sorted){if(!top20.includes(e.id)&&!used.has(e.id)){ft[e.id]=cat.label;used.add(e.id);break;}}}
+  S.top24=[...top20,...Object.keys(ft)];S.fastTrack=ft;save();
+  const rows=S.top24.map((id,i)=>{const a=S.authors.find(a=>a.id===id);const total=s1(id);const isFT=!!ft[id];const rank=top20.indexOf(id)+1;const rc=rank===1?'r1':rank===2?'r2':rank===3?'r3':'';return`<tr class="${isFT?'ftrow':'hilite'}"><td>${isFT?`<span class="badge badge-ft">⚡ ${ft[id]}</span>`:`<span class="rb ${rc}">${rank}</span>`}</td><td><strong>${a?.name||'?'}</strong></td><td style="font-size:11px;color:var(--text-light)">${a?.handle||''}</td><td>${total!==null?bar(total,100):'<span style="color:#ccc">—</span>'}</td></tr>`;}).join('');
+  document.getElementById('top24-out').innerHTML=`<div style="display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap"><div style="background:var(--gold-dim);border:1px solid rgba(201,168,76,0.25);border-radius:8px;padding:12px 18px;display:flex;align-items:center;gap:10px"><span style="font-size:22px">🏅</span><div><div style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy)">20</div><div style="font-size:11px;color:var(--text-light)">From Rankings</div></div></div><div style="background:var(--green-dim);border:1px solid rgba(22,163,74,0.25);border-radius:8px;padding:12px 18px;display:flex;align-items:center;gap:10px"><span style="font-size:22px">⚡</span><div><div style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy)">${Object.keys(ft).length}</div><div style="font-size:11px;color:var(--text-light)">Fast Track</div></div></div><div style="background:var(--navy);border-radius:8px;padding:12px 18px;display:flex;align-items:center;gap:10px"><span style="font-size:22px">🎯</span><div><div style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--white)">${S.top24.length}</div><div style="font-size:11px;color:rgba(255,255,255,0.4)">Total Top 24</div></div></div></div><div class="twrap"><table class="st"><thead><tr><th>Rank / Award</th><th>Author</th><th>Handle</th><th>S1 Score / 100</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  document.querySelector('[data-p="top24"]').classList.add('has-data');
+  toast('Top 24 built ✓','⚡');
+}
+function promoteS2(){if(!S.top24.length){toast('Build Top 24 first','⚠️');return;}S.top24.forEach(id=>{if(!S.s2[id])S.s2[id]={poll:null};});save();go('stage2',6);toast('Top 24 → Stage 2','✅');}
+
+function renderS2(){
+  if(!S.top24.length){document.getElementById('s2-body').innerHTML='<tr><td colspan="8" style="text-align:center;color:var(--text-light);padding:24px">Build and promote Top 24 first.</td></tr>';return;}
+  const topN=parseInt(document.getElementById('s2-topn').value)||null;
+  const b=s2bm();
+  document.getElementById('s2-bench').innerHTML=b?`<div class="bench-pill">Poll Benchmark <span>${b.toLocaleString()}</span></div>`:'';
+  const ft12=getAOTYFT12();
+  const mx_base=Math.max(...S.top24.map(id=>s2T(id)||0),0.01);
+  const rows=S.top24.map(id=>{
+    const a=S.authors.find(a=>a.id===id);
+    const isFT12=ft12.includes(id);
+    return{id,a,base:s1(id)||0,total:s2T(id)||s1(id)||0,isFT12};
+  }).sort((a,b)=>b.total-a.total);
+  // Top 12: FT12 guaranteed + top (12-ft12.length) non-FT by s2T
+  const nonFT=rows.filter(r=>!r.isFT12).map(r=>r.id).slice(0,12-ft12.length);
+  const top12ids=[...ft12,...nonFT];
+  const disp=topN?rows.slice(0,topN):rows;
+  document.getElementById('s2-head').innerHTML=`<tr><th>#</th><th>Author</th><th>Handle</th><th>S1 Score</th><th>2nd Poll Raw</th><th>Poll /15</th><th>S2 Total</th><th>Top 12?</th></tr>`;
+  document.getElementById('s2-body').innerHTML=disp.map((r,i)=>{
+    const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';const in12=top12ids.includes(r.id);
+    const poll=S.s2[r.id]?.poll;
+    const ftBadge=r.isFT12?`&nbsp;<span class="badge badge-ft" style="font-size:9px">Pop FT</span>`:'';
+    return`<tr class="${in12?'hilite':''} ${r.isFT12?'ftrow':''}">
+      <td><span class="rb ${rc}">${i+1}</span></td>
+      <td><strong>${r.a?.name||'?'}</strong>${ftBadge}</td>
+      <td style="font-size:11px;color:var(--text-light)">${r.a?.handle||''}</td>
+      <td>${r.base.toFixed(2)}</td>
+      <td><input type="number" min="0" value="${poll??''}" placeholder="0"
+        class="${poll!==null&&poll!==''?'has-val':''}" style="width:88px;text-align:center"
+        oninput="setS2('${r.id}',this.value)"></td>
+      <td>${s2pW(poll)!==null?s2pW(poll).toFixed(2):'—'}</td>
+      <td>${bar(r.total,mx_base)}</td>
+      <td><span class="badge ${in12?'badge-pass':'badge-fail'}">${in12?'✔ Top 12':'❌'}</span></td>
+    </tr>`;
+  }).join('');
+}
+function setS2(id,val){if(!S.s2[id])S.s2[id]={poll:null};S.s2[id].poll=val===''?null:Math.max(0,parseFloat(val)||0);save();renderS2();}
+function promoteS3(){
+  const ft12=getAOTYFT12();
+  const nonFT=S.top24
+    .filter(id=>!ft12.includes(id))
+    .map(id=>({id,total:s2T(id)||0}))
+    .sort((a,b)=>b.total-a.total)
+    .slice(0,12-ft12.length)
+    .map(r=>r.id);
+  S.top12=[...ft12,...nonFT];
+  S.top12.forEach(id=>{if(!S.s3[id])S.s3[id]={h2h_raw:null};});
+  save();go('stage3',7);toast('Top 12 → Stage 3','✅');
+}
+
+function renderS3(){
+  if(!S.top12.length){document.getElementById('s3-body').innerHTML='<tr><td colspan="7" style="text-align:center;color:var(--text-light);padding:24px">Promote Top 12 from Stage 2 first.</td></tr>';return;}
+  const topN=parseInt(document.getElementById('s3-topn').value)||null;
+  const rows=S.top12.map(id=>{const a=S.authors.find(a=>a.id===id);return{id,a,base:s2T(id)||0,total:s3T(id)||0};}).sort((a,b)=>b.total-a.total);
+  const top8=rows.slice(0,8).map(r=>r.id);const disp=topN?rows.slice(0,topN):rows;const mx=Math.max(...rows.map(r=>r.total),0.01);
+  document.getElementById('s3-head').innerHTML=`<tr><th>#</th><th>Author</th><th>Handle</th><th>S2 Score</th><th>H2H (/10)</th><th>S3 Total</th><th>Top 8?</th></tr>`;
+  document.getElementById('s3-body').innerHTML=disp.map((r,i)=>{const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';const in8=top8.includes(r.id);const h=S.s3[r.id]?.h2h;return`<tr class="${in8?'hilite':''}"><td><span class="rb ${rc}">${i+1}</span></td><td><strong>${r.a?.name||'?'}</strong></td><td style="font-size:11px;color:var(--text-light)">${r.a?.handle||''}</td><td>${r.base.toFixed(2)}</td><td><input type="number" min="0" max="10" step="0.5" value="${h??''}" placeholder="0.0" class="${h!==null&&h!==''?'has-val':''}" style="width:74px;text-align:center" oninput="setS3('${r.id}',this.value)"></td><td>${bar(r.total,mx)}</td><td><span class="badge ${in8?'badge-pass':'badge-fail'}">${in8?'✔ Top 8':'❌'}</span></td></tr>`;}).join('');
+}
+function setS3(id,val){if(!S.s3[id])S.s3[id]={h2h_raw:null};S.s3[id].h2h_raw=val===''?null:Math.max(0,parseFloat(val)||0);save();renderS3();}
+function promoteS4(){const s=S.top12.map(id=>({id,total:s3T(id)||0})).sort((a,b)=>b.total-a.total);S.top8=s.slice(0,8).map(r=>r.id);save();go('stage4',8);renderS4();toast('Top 8 → Final','🏆');}
+
+function renderS4(){
+  if(!S.top8.length){document.getElementById('s4-out').innerHTML='<p style="color:var(--text-light);font-size:13px">Promote Top 8 from Stage 3 first.</p>';return;}
+  const rows=S.top8.map(id=>{const a=S.authors.find(a=>a.id===id);return{id,a,total:s3T(id)||0};}).sort((a,b)=>b.total-a.total);
+  const mx=rows[0]?.total||100;
+  const dnp=S.top12.filter(id=>!S.top8.includes(id)).map(id=>S.authors.find(a=>a.id===id)?.name||'?');
+  document.getElementById('s4-out').innerHTML=`<div class="placement-grid">${rows.map((r,i)=>{const p=PLAC[i];const pct=Math.round(r.total/mx*100);return`<div class="placement-row ${i===0?'p1':''}"><div class="placement-medal ${p.m}">${i<3?p.e:`<span style="font-size:15px;font-weight:700;color:var(--text-mid)">${p.e}</span>`}</div><div class="placement-info"><div class="placement-title">${p.t}</div><div class="placement-name">${r.a?.name||'?'}</div><div class="placement-handle">${r.a?.handle||''}</div><div class="placement-bar-track"><div class="placement-bar-fill" style="width:${pct}%"></div></div></div><div class="placement-score-wrap"><div class="placement-score">${r.total.toFixed(2)}</div><div class="placement-score-lbl">out of 100</div></div></div>`;}).join('')}</div><div style="margin-top:14px;padding:12px 16px;background:var(--off-white);border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text-mid)"><strong style="color:var(--navy)">Did Not Place in Top 8:</strong> ${dnp.join(' · ')||'None'}</div>`;
+}
+
+function exportJSON(){const b=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='aoty2026-eval-'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Exported','⬇');}
+function importJSON(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{S=JSON.parse(ev.target.result);save();renderSetup();toast('Imported','⬆');}catch(err){toast('Import failed','⚠️');}};r.readAsText(f);e.target.value='';}
+function confirmReset(){if(!confirm('Reset ALL data?'))return;S=blank();save();renderSetup();toast('Reset','↺');}
+
+function toast(msg,icon='✓'){const el=document.getElementById('toast');el.innerHTML=`<span>${icon}</span> ${msg}`;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2800);}
+
+renderSetup();
+</script>
+</body>
+</html>
