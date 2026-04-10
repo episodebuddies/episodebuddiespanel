@@ -157,8 +157,8 @@
     </div>
   </div>
   <div class="ah-right">
-    <button class="btn btn-outline btn-sm" onclick="exportJSON()">⬇ Export</button>
-    <button class="btn btn-outline btn-sm" onclick="document.getElementById('imp').click()">⬆ Import</button>
+    <button class="btn btn-ghost btn-sm" onclick="exportJSON()">⬇ Export</button>
+    <button class="btn btn-ghost btn-sm" onclick="document.getElementById('imp').click()">⬆ Import</button>
     <button class="btn btn-red btn-sm" onclick="confirmReset()">↺ Reset</button>
   </div>
 </header>
@@ -185,7 +185,7 @@
       <div class="btn-row">
         <button class="btn btn-gold btn-sm" onclick="loadDefaults()">Load 2026 Stories</button>
         <button class="btn btn-navy btn-sm" onclick="addStory()">+ Add Story</button>
-        <button class="btn btn-outline btn-sm" onclick="clearAll()">Clear All</button>
+        <button class="btn btn-red btn-sm" onclick="clearAll()">Clear</button>
       </div>
     </div>
     <div class="card-body">
@@ -571,10 +571,7 @@ function addStory() {
   save(); renderSetup();
 }
 
-function clearAll() {
-  if(!confirm('Reset ALL data? This cannot be undone.'))return;
-  S=blankState(); save(); renderSetup();
-}
+function clearAll(){if(!confirm('Reset ALL data?'))return;S=blankState();save();renderSetup();}
 
 function delStory(id) {
   S.stories=S.stories.filter(s=>s.id!==id);
@@ -1017,38 +1014,15 @@ function renderS4() {
 // ═══════════════════════════════════════════════════
 // EXPORT / IMPORT / RESET
 // ═══════════════════════════════════════════════════
-function exportJSON() {
-  const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='soty2026-eval-'+new Date().toISOString().slice(0,10)+'.json';
-  a.click(); toast('Data exported ✓');
-}
+function exportJSON(){const b=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='soty2026-eval-'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Exported','⬇');}
+function importJSON(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{S=JSON.parse(ev.target.result);save();renderSetup();toast('Imported','⬆');}catch(err){toast('Import failed','⚠️');}};r.readAsText(f);e.target.value='';}
 
-function importJSON(e) {
-  const file=e.target.files[0]; if(!file)return;
-  const r=new FileReader();
-  r.onload=ev=>{
-    try{S=JSON.parse(ev.target.result);save();renderSetup();toast('Data imported ✓');}
-    catch(err){toast('Import failed — invalid file');}
-  };
-  r.readAsText(file);
-  e.target.value='';
-}
-
-function confirmReset() {
-  if(!confirm('Reset ALL evaluation data? This cannot be undone.'))return;
-  S=blankState();save();renderSetup();toast('All data reset');
-}
+function confirmReset(){if(!confirm('Reset ALL data?'))return;S=blankState();save();renderSetup();toast('Reset','↺');}
 
 // ═══════════════════════════════════════════════════
 // TOAST
 // ═══════════════════════════════════════════════════
-function toast(msg) {
-  const el=document.getElementById('toast');
-  el.textContent=msg; el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),2800);
-}
+function toast(msg,icon='✓'){const el=document.getElementById('toast');el.innerHTML=`<span>${icon}</span> ${msg}`;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2800);}
 
 // ═══════════════════════════════════════════════════
 // INIT
