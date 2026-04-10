@@ -75,6 +75,15 @@
     table.st tr.hilite td{background:rgba(201,168,76,0.06)}
     table.st tr.ftrow td{background:rgba(22,163,74,0.05)}
 
+    /* SCORE BAR */
+    .score-bar-wrap{display:flex;align-items:center;gap:8px;min-width:120px}
+    .score-bar-track{flex:1;height:5px;background:rgba(27,42,74,0.1);border-radius:3px;overflow:hidden;min-width:60px}
+    .score-bar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+    .bar-gold{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+    .bar-green{background:linear-gradient(90deg,#22c55e,#4ade80)}
+    .bar-red{background:linear-gradient(90deg,#f87171,#fca5a5)}
+    .score-bar-val{font-family:var(--serif);font-size:14px;font-weight:700;min-width:40px;text-align:right}
+
     /* RANK BADGE */
     .rb{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:12px;font-weight:700;background:rgba(27,42,74,0.1);color:var(--navy)}
     .rb.r1{background:var(--gold);color:var(--deep-navy)}
@@ -87,6 +96,23 @@
     .badge-fail{background:#fee2e2;color:var(--red)}
     .badge-ft{background:rgba(201,168,76,0.15);color:#8a6f3a;border:1px solid rgba(201,168,76,0.3)}
     .badge-adv{background:rgba(37,99,235,0.1);color:#1d4ed8}
+
+    .view-toggle{display:flex;gap:4px;background:var(--off-white);border:1px solid var(--border);border-radius:6px;padding:3px}
+    .vt-btn{font-size:14px;padding:5px 9px;border:none;background:transparent;cursor:pointer;border-radius:4px;transition:all .2s;color:var(--text-light)}
+    .vt-btn.active{background:var(--white);color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+
+    .author-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}
+    .author-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:0 1px 4px rgba(15,27,51,0.06);display:flex;flex-direction:column;gap:10px;transition:transform .2s,box-shadow .2s}
+    .author-card:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(15,27,51,0.12)}
+    .author-card.top-card{border-color:rgba(201,168,76,0.4);background:linear-gradient(160deg,#fffdf5,var(--white))}
+    .ac-rank{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.06em}
+    .ac-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy)}
+    .ac-handle{font-size:12px;color:var(--text-light)}
+    .ac-score{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--navy)}
+    .ac-score-null{font-family:var(--serif);font-size:18px;font-weight:700;color:rgba(27,42,74,0.25)}
+    .ac-bar-track{width:100%;height:6px;background:rgba(27,42,74,0.08);border-radius:999px;overflow:hidden}
+    .ac-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .7s ease}
+    .ac-badges{display:flex;gap:6px;flex-wrap:wrap}
 
     /* FILTER BAR */
     .fbar{background:var(--off-white);border:1px solid var(--border);border-radius:6px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -287,7 +313,13 @@
   <div class="card">
     <div class="card-hd">
       <div><h3>Stage 1 — Combined Scores</h3><p>Judging (60%) + Public Voting (40%) = Total out of 100</p></div>
-      <button class="btn btn-gold btn-sm" onclick="go('top24')">Build Top 24 →</button>
+      <div class="btn-row">
+        <div class="view-toggle">
+          <button class="vt-btn active" id="vt-t" onclick="setView('table')" title="Table">☰</button>
+          <button class="vt-btn" id="vt-c" onclick="setView('cards')" title="Cards">⊞</button>
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="go('top24')">Build Top 24 →</button>
+      </div>
     </div>
     <div class="card-body">
       <div class="statgrid" id="c-stats"></div>
@@ -299,7 +331,8 @@
         <button class="btn btn-outline btn-sm" onclick="setTopN('c-topn','');renderC()">All</button>
         <span class="fbar-info" id="c-info"></span>
       </div>
-      <div class="twrap"><table class="st"><thead id="c-head"></thead><tbody id="c-body"></tbody></table></div>
+      <div id="c-tv" class="twrap"><table class="st"><thead id="c-head"></thead><tbody id="c-body"></tbody></table></div>
+      <div id="c-cv" style="display:none"><div class="author-cards-grid" id="c-cards"></div></div>
     </div>
   </div>
 </div>
@@ -426,7 +459,7 @@ function blankState() {
   return { stories:[], judging:{}, voting:{}, top24:[], fastTrack:{}, s2:{}, s3:{}, top12:[], top8:[] };
 }
 let S = (() => { try { const d=localStorage.getItem(SK); return d?JSON.parse(d):blankState(); } catch(e){return blankState();} })();
-let jCat='directing', vCat='poll';
+let jCat='directing', vCat='poll', curView='table';
 
 function save(){ localStorage.setItem(SK, JSON.stringify(S)); }
 
@@ -542,6 +575,11 @@ function s3Total(id) {
   return +(base+(h2hW(h)||0)).toFixed(2);
 }
 
+// PERFORMANCE INDICATOR FUNCTIONS
+function scCol(val,mx){if(val===null)return'var(--text-light)';const p=val/mx*100;return p>=75?'var(--green)':p>=50?'var(--gold)':'var(--red)';}
+function bcls(val,mx){if(val===null)return'bar-gold';const p=val/mx*100;return p>=75?'bar-green':p>=50?'bar-gold':'bar-red';}
+function bar(val,mx,cl){if(val===null)return'<span style="color:#ccc">—</span>';const p=Math.min(100,Math.round(val/mx*100)),c=cl||bcls(val,mx);return`<div class="score-bar-wrap"><div class="score-bar-val" style="color:${scCol(val,mx)}">${val.toFixed(2)}</div><div class="score-bar-track"><div class="score-bar-fill ${c}" style="width:${p}%"></div></div></div>`;}
+
 // ═══════════════════════════════════════════════════
 // NAVIGATION
 // ═══════════════════════════════════════════════════
@@ -555,6 +593,15 @@ function go(name) {
 }
 
 function setTopN(id,val){document.getElementById(id).value=val;}
+
+function setView(v){
+  curView=v;
+  document.getElementById('vt-t').classList.toggle('active', v==='table');
+  document.getElementById('vt-c').classList.toggle('active', v==='cards');
+  document.getElementById('c-tv').style.display = v==='table' ? 'block' : 'none';
+  document.getElementById('c-cv').style.display = v==='cards' ? 'block' : 'none';
+  if(v==='cards') renderC();
+}
 
 // ═══════════════════════════════════════════════════
 // SETUP
@@ -636,7 +683,7 @@ function renderJ() {
       <td style="font-size:11px;color:var(--text-light)">${r.s.genre}</td>
       ${jinp}
       <td style="text-align:center;color:var(--text-mid)">${r.a!==null?r.a.toFixed(1)+'%':'—'}</td>
-      <td style="text-align:center"><strong>${r.w!==null?r.w.toFixed(2):'—'}</strong></td>
+      <td>${r.w!==null?bar(r.w,w):'<span style="color:#ccc">—</span>'}</td>
     </tr>`;
   }).join('');
 }
@@ -709,7 +756,7 @@ function renderV() {
       <td style="font-size:11px;color:var(--text-light)">${r.s.genre}</td>
       ${extraCells(r)}
       <td style="text-align:center;color:var(--text-mid)">${r.t!==null?r.t.toLocaleString():'—'}</td>
-      <td style="text-align:center"><strong>${r.w!==null?r.w.toFixed(2):'—'}</strong></td>
+      <td>${r.w!==null?bar(r.w,10):'<span style="color:#ccc">—</span>'}</td>
     </tr>`;
   }).join('');
 }
@@ -763,10 +810,27 @@ function renderC() {
       <td style="font-size:11px;color:var(--text-light)">${r.s.genre}</td>
       <td>${f(r.dir)}</td><td>${f(r.plt)}</td><td>${f(r.int)}</td><td>${f(r.cov)}</td>
       <td>${f(r.poll)}</td><td>${f(r.feed)}</td><td>${f(r.qual)}</td><td>${f(r.pop)}</td>
-      <td style="background:rgba(201,168,76,0.05)"><strong style="font-size:15px">${r.total!==null?r.total.toFixed(2):'—'}</strong></td>
+      <td style="background:rgba(201,168,76,0.05)">${r.total!==null?bar(r.total,mx):'<span style="color:#ccc">—</span>'}</td>
       <td><span class="badge ${in20?'badge-pass':'badge-fail'}">${in20?'✔ Yes':'—'}</span></td>
     </tr>`;
   }).join('');
+
+  document.getElementById('c-cards').innerHTML=disp.map((r,i)=>{
+    const rankLabel=i===0?'🏆 #1':i===1?'🥈 #2':i===2?'🥉 #3':'#'+(i+1);
+    const in20=top20ids.includes(r.s.id);
+    const pct = mx?Math.round((r.total||0)/mx*100):0;
+    return `<div class="author-card ${in20?'top-card':''}">
+      <div class="ac-rank">${rankLabel}</div>
+      <div class="ac-name">${r.s.title}</div>
+      <div class="ac-handle">${r.s.genre}</div>
+      ${r.total!==null?`<div class="ac-score">${r.total.toFixed(2)}</div>`:`<div class="ac-score-null">No score yet</div>`}
+      <div class="ac-bar-track"><div class="ac-bar-fill" style="width:${pct}%"></div></div>
+      <div class="ac-badges">${in20?'<span class="badge badge-pass">Top 20</span>':''}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('c-tv').style.display = curView==='table' ? 'block' : 'none';
+  document.getElementById('c-cv').style.display = curView==='cards' ? 'block' : 'none';
 }
 
 // ═══════════════════════════════════════════════════
