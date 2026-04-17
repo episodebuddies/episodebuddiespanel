@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monthly Contest Scoring · Buddies Support Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B2A4A;--deep-navy:#0F1B33;--navy2:#243556;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-dim:rgba(201,168,76,0.12);
+  --white:#fff;--off-white:#F4F5F8;
+  --text-dark:#0F1B33;--text-mid:#4A5568;--text-light:#8896A6;
+  --green:#16a34a;--green-dim:rgba(22,163,74,0.1);
+  --red:#dc2626;--red-dim:rgba(220,38,38,0.08);
+  --amber:#d97706;--amber-dim:rgba(217,119,6,0.1);
+  --border:rgba(27,42,74,0.1);
+  --shadow:0 1px 3px rgba(15,27,51,0.07),0 4px 12px rgba(15,27,51,0.05);
+  --shadow-md:0 4px 16px rgba(15,27,51,0.1);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --r:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--off-white);color:var(--text-dark);font-size:14px}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-thumb{background:rgba(27,42,74,0.18);border-radius:3px}
+
+/* HEADER */
+.app-header{background:linear-gradient(135deg,var(--deep-navy),#162035);border-bottom:1px solid rgba(201,168,76,0.2);padding:0 24px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.ah-left{display:flex;align-items:center;gap:12px}
+.ah-logo{width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center}
+.ah-logo img{width:20px;height:20px;object-fit:contain}
+.app-title{font-family:var(--serif);font-size:16px;color:var(--white);font-weight:700}
+.app-sub{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase}
+.ah-right{display:flex;gap:6px}
+
+/* CONTEST TABS */
+.contest-tabs{background:var(--navy);padding:0 20px;display:flex;overflow-x:auto;border-bottom:1px solid rgba(201,168,76,0.12);scrollbar-width:none;gap:2px}
+.contest-tabs::-webkit-scrollbar{display:none}
+.ctab{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.4);padding:13px 14px;border:none;background:none;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;display:flex;align-items:center;gap:6px}
+.ctab:hover{color:rgba(255,255,255,0.75)}
+.ctab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.ctab .tab-dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:none}
+.ctab.has-data .tab-dot{display:block}
+.ctab.in-progress{color:rgba(255,200,50,0.6)}
+.ctab.in-progress.active{color:#fbbf24;border-bottom-color:#fbbf24}
+
+/* MAIN */
+.app-main{max-width:1380px;margin:0 auto;padding:20px 22px 60px}
+.panel{display:none}.panel.active{display:block;animation:panelIn .2s ease}
+@keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* CARDS */
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-bottom:16px}
+.card-hd{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.card-hd-dark{background:linear-gradient(135deg,var(--deep-navy),var(--navy2));border-bottom:none}
+.card-hd-title{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--navy)}
+.card-hd-dark .card-hd-title{color:var(--white)}
+.card-hd-sub{font-size:11px;color:var(--text-light);margin-top:1px}
+.card-hd-dark .card-hd-sub{color:rgba(255,255,255,0.4)}
+.card-body{padding:18px}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:8px 14px;border-radius:6px;border:none;cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-gold{background:var(--gold);color:var(--deep-navy)}.btn-gold:hover{background:var(--gold-light)}
+.btn-navy{background:var(--navy);color:var(--white)}.btn-navy:hover{background:var(--deep-navy)}
+.btn-outline{background:transparent;color:var(--navy);border:1px solid var(--border)}.btn-outline:hover{background:var(--navy);color:var(--white)}
+.btn-ghost{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65);border:1px solid rgba(255,255,255,0.12)}.btn-ghost:hover{background:rgba(255,255,255,0.15);color:#fff}
+.btn-red{background:var(--red-dim);color:var(--red);border:1px solid rgba(220,38,38,0.2)}
+.btn-sm{padding:5px 10px;font-size:10px}
+.btn-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+
+/* INPUTS */
+input[type=number],input[type=text],select,textarea{font-family:var(--sans);font-size:13px;color:var(--text-dark);border:1px solid var(--border);border-radius:6px;padding:6px 9px;background:var(--white);width:100%;transition:all .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.1)}
+input.has-val{border-color:rgba(22,163,74,0.4);background:#f0fdf4}
+label{font-size:11px;font-weight:600;color:var(--text-mid);display:block;margin-bottom:3px}
+
+/* LAYOUT */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.flex{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+/* TABLES */
+.twrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}
+table.st{width:100%;border-collapse:collapse;font-size:13px}
+table.st th{background:linear-gradient(135deg,var(--deep-navy),var(--navy));color:var(--gold);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:9px 11px;text-align:left;white-space:nowrap}
+table.st td{padding:8px 11px;border-bottom:1px solid rgba(27,42,74,0.06);vertical-align:middle}
+table.st tr:last-child td{border-bottom:none}
+table.st tr:hover td{background:rgba(201,168,76,0.03)}
+table.st tr.winner-row td{background:rgba(201,168,76,0.07)}
+table.st tr.qualifies td{background:rgba(22,163,74,0.04)}
+
+/* KPI */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.kpi{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.kpi.k-gold::before{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+.kpi.k-green::before{background:linear-gradient(90deg,#22c55e,#4ade80)}
+.kpi.k-blue::before{background:linear-gradient(90deg,#60a5fa,#38bdf8)}
+.kpi.k-purple::before{background:linear-gradient(90deg,#a78bfa,#818cf8)}
+.kpi.k-amber::before{background:linear-gradient(90deg,#fbbf24,#f59e0b)}
+.kpi-lbl{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:5px}
+.kpi-val{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--navy);line-height:1}
+.kpi-sub{font-size:11px;color:var(--text-light);margin-top:4px}
+.kpi-icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:28px;opacity:0.07}
+
+/* SCORE BAR */
+.sbar-wrap{display:flex;align-items:center;gap:7px}
+.sbar-val{font-family:var(--serif);font-size:14px;font-weight:700;min-width:44px;text-align:right}
+.sbar-track{flex:1;height:5px;background:rgba(27,42,74,0.08);border-radius:3px;overflow:hidden;min-width:50px}
+.sbar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+.sb-green{background:linear-gradient(90deg,#22c55e,#4ade80)}
+.sb-gold{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+.sb-red{background:linear-gradient(90deg,#f87171,#fca5a5)}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
+.badge-pass{background:var(--green-dim);color:var(--green)}
+.badge-fail{background:rgba(27,42,74,0.08);color:var(--text-light)}
+.badge-gold{background:var(--gold-dim);color:#8a6f3a;border:1px solid rgba(201,168,76,0.25)}
+.badge-amber{background:var(--amber-dim);color:var(--amber)}
+.badge-blue{background:rgba(37,99,235,0.08);color:#2563eb}
+.badge-red{background:var(--red-dim);color:var(--red)}
+
+/* RANK BADGE */
+.rb{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:12px;font-weight:700;background:rgba(27,42,74,0.08);color:var(--navy)}
+.rb.r1{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--deep-navy)}
+.rb.r2{background:rgba(201,168,76,0.35);color:var(--deep-navy)}
+.rb.r3{background:rgba(201,168,76,0.18);color:var(--navy)}
+
+/* INFO */
+.info{background:var(--gold-dim);border:1px solid rgba(201,168,76,0.22);border-radius:8px;padding:11px 15px;font-size:13px;color:#7a6030;margin-bottom:14px;line-height:1.65}
+.info strong{color:var(--navy)}
+.info-green{background:var(--green-dim);border-color:rgba(22,163,74,0.22);color:#166534}
+.info-blue{background:rgba(37,99,235,0.06);border-color:rgba(37,99,235,0.18);color:#1d4ed8}
+
+/* AWARDS */
+.awards-grid{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:0}
+.award-pill{display:flex;align-items:center;gap:8px;background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;flex:1;min-width:180px;transition:border-color .2s}
+.award-pill.has-winner{border-color:rgba(201,168,76,0.35);background:rgba(201,168,76,0.05)}
+.award-pill.soty-q{border-color:rgba(22,163,74,0.35);background:var(--green-dim)}
+.award-icon{font-size:20px;flex-shrink:0}
+.award-name{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-light)}
+.award-winner{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--navy);line-height:1.3;margin-top:2px}
+.award-score{font-size:11px;color:var(--gold);font-weight:600}
+
+/* CONTEST SETUP FORM */
+.setup-field{margin-bottom:12px}
+.setup-field label{margin-bottom:4px}
+.cat-row{display:flex;gap:8px;align-items:center;margin-bottom:7px;background:var(--off-white);border:1px solid var(--border);border-radius:6px;padding:7px 10px}
+.cat-row input{flex:1}
+.cat-row .max-input{width:70px}
+
+/* STORY SCORE SECTION */
+.story-section{background:var(--off-white);border:1px solid var(--border);border-radius:8px;margin-bottom:12px;overflow:hidden;transition:border-color .2s}
+.story-section:hover{border-color:rgba(201,168,76,0.3)}
+.story-section.has-scores{border-color:rgba(22,163,74,0.3)}
+.story-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 15px;cursor:pointer;flex-wrap:wrap}
+.story-hd-left{display:flex;align-items:center;gap:10px}
+.story-hd-toggle{font-size:12px;color:var(--text-light);transition:transform .2s}
+.story-hd.open .story-hd-toggle{transform:rotate(90deg)}
+.story-meta-title{font-weight:700;color:var(--navy);font-size:13px}
+.story-meta-sub{font-size:11px;color:var(--text-light)}
+.story-body{display:none;padding:14px 15px;border-top:1px solid var(--border);background:var(--white)}
+.story-body.open{display:block}
+
+/* SCORE INPUT GRID */
+.judge-score-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px}
+.judge-col-header{font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--navy);margin-bottom:10px;padding:6px 10px;background:var(--off-white);border-radius:5px}
+.score-input-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.score-input-row label{width:140px;font-size:12px;flex-shrink:0;margin:0}
+.score-input-row input{width:80px;text-align:center}
+.score-input-row .max-lbl{font-size:11px;color:var(--text-light);white-space:nowrap}
+
+/* FINAL SCORES ROW */
+.final-scores-bar{display:flex;gap:10px;flex-wrap:wrap;padding:12px 15px;background:rgba(201,168,76,0.05);border-top:1px solid rgba(201,168,76,0.15)}
+.fs-item{text-align:center}
+.fs-lbl{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light)}
+.fs-val{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--navy);line-height:1.2}
+
+/* SOTY QUALIFIERS SECTION */
+.qualifier-list{display:flex;flex-direction:column;gap:8px}
+.qualifier-item{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid rgba(22,163,74,0.25);border-radius:8px;padding:10px 14px}
+.qi-rank{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--gold);width:28px;text-align:center;flex-shrink:0}
+.qi-info{flex:1}
+.qi-title{font-weight:700;color:var(--navy);font-size:13px}
+.qi-meta{font-size:11px;color:var(--text-light)}
+.qi-score{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--green)}
+
+/* SOTY ALL LIST */
+.soty-master{display:flex;flex-direction:column;gap:6px}
+.soty-item{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--white);border:1px solid var(--border);border-radius:7px;font-size:12px}
+.soty-item.qualifies{border-color:rgba(22,163,74,0.3);background:rgba(22,163,74,0.04)}
+.si-contest{font-size:10px;color:var(--text-light);min-width:120px}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--deep-navy);color:var(--white);padding:11px 18px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;transform:translateY(60px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);border-left:3px solid var(--gold);pointer-events:none;display:flex;align-items:center;gap:7px;box-shadow:0 8px 24px rgba(15,27,51,0.18)}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* CONTEST SETUP PANEL */
+.contest-setup-grid{display:grid;grid-template-columns:1fr 2fr;gap:14px}
+.add-story-row{display:flex;gap:8px;align-items:flex-end;margin-bottom:10px}
+.story-table-row{display:grid;grid-template-columns:1fr 140px 80px 34px;gap:6px;align-items:center;background:var(--off-white);border:1px solid var(--border);border-radius:6px;padding:7px 10px;margin-bottom:5px}
+
+@media(max-width:1024px){.kpi-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.app-main{padding:12px 12px 60px}.g2,.g3,.g4{grid-template-columns:1fr}.judge-score-grid{grid-template-columns:1fr}.kpi-grid{grid-template-columns:1fr 1fr}.contest-setup-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="ah-left">
+    <div class="ah-logo"><img src="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png" alt="BSH"></div>
+    <div><div class="app-title">Monthly Contest Scoring</div><div class="app-sub">Buddies Support Hub · Internal</div></div>
+  </div>
+  <div class="ah-right">
+    <button class="btn btn-ghost btn-sm" onclick="exportData()">⬇ Export</button>
+    <button class="btn btn-ghost btn-sm" onclick="document.getElementById('imp').click()">⬆ Import</button>
+    <button class="btn btn-red btn-sm" onclick="confirmReset()">↺ Reset</button>
+  </div>
+</header>
+
+<nav class="contest-tabs" id="contest-tabs"></nav>
+
+<main class="app-main" id="app-main"></main>
+
+<div id="soty-panel" style="display:none"></div>
+<div class="toast" id="toast"></div>
+<input type="file" id="imp" accept=".json" style="display:none" onchange="importData(event)">
+
+<script>
+// ═══════════════════════════════════════════════
+// SEED DATA
+// ═══════════════════════════════════════════════
+const SEED_CONTESTS = [
+  {id:"lita",name:"Love In The Air",month:"February 2026",status:"completed",
+   categories:[{id:"fi",label:"First Impression",max:50},{id:"dir",label:"Directing",max:100},{id:"plt",label:"Plot",max:100},{id:"int",label:"Interactivity",max:100},{id:"oth",label:"Others",max:100}],
+   stories:[
+    {id:"s1",title:"Bitter Sweet",author:"@ivy.epiwrites",genre:"Drama",j1:{name:"Natalie",scores:[48,98,89,87,87]},j2:{name:"Xavier",scores:[42,82,75,91,85]},fan:64.74},
+    {id:"s2",title:"Deserve Me",author:"@episodexkat",genre:"Romance",j1:{name:"June",scores:[34,50,56,22,63]},j2:{name:"Sofia",scores:[42,40,56,15,68]},fan:31.63},
+    {id:"s3",title:"Love's Last Whisper",author:"@nxx._epy",genre:"Romance",j1:{name:"Mercy",scores:[43,89,60,15,63]},j2:{name:"Nelson",scores:[46,87,73,19,67]},fan:78.63},
+    {id:"s4",title:"Off Key",author:"@kl.writess",genre:"Romance",j1:{name:"Tali",scores:[33,67,68,71,75]},j2:{name:"June",scores:[39,73,51,84,56]},fan:7.27},
+    {id:"s5",title:"Oops! My Boss",author:"@janeh08_",genre:"Romance",j1:{name:"Sofia",scores:[40,84,65,50,82]},j2:{name:"Jessi",scores:[32,65,48,58,68]},fan:27.99},
+    {id:"s6",title:"Scratch That",author:"@alessandra.write",genre:"Drama",j1:{name:"Penny",scores:[48,96,95,93,93]},j2:{name:"Xavier",scores:[47,87,94,93,90]},fan:69.36},
+    {id:"s7",title:"Sirius",author:"@episode.littleduck",genre:"Drama",j1:{name:"Penny",scores:[34,68,59,23,65]},j2:{name:"Tali",scores:[45,86,70,55,71]},fan:67.8},
+    {id:"s8",title:"The Revealed",author:"@maevtwrites",genre:"Mystery",j1:{name:"Jessi",scores:[13,36,7,45,45]},j2:{name:"Mercy",scores:[24,39,35,54,22]},fan:28.14},
+    {id:"s9",title:"Warner's Song",author:"@tay.author",genre:"Romance",j1:{name:"Nelson",scores:[45,85,92,37,81]},j2:{name:"June",scores:[50,90,98,58,99]},fan:47.58},
+    {id:"s10",title:"You Wreck Me",author:"@kerli.writes",genre:"Drama",j1:{name:"Sofia",scores:[50,100,82,55,79]},j2:{name:"Natalie",scores:[46,99,78,76,83]},fan:42.29},
+   ]},
+  {id:"hshp",name:"Her Story Her Power",month:"March 2026",status:"completed",
+   categories:[{id:"tf",label:"Theme Fit",max:50},{id:"fi",label:"First Impression",max:50},{id:"dir",label:"Directing",max:100},{id:"plt",label:"Plot",max:100},{id:"int",label:"Interactivity",max:100},{id:"oth",label:"Others",max:100}],
+   stories:[
+    {id:"s1",title:"Below The Belt",author:"@crissywritess",genre:"Romance",j1:{name:"Natalie",scores:[27,36,82,71,63,72]},j2:{name:"Penny",scores:[24,35,65,60,67,61]},fan:48.7},
+    {id:"s2",title:"Bougainvillea Lies",author:"@blueytales",genre:"Drama",j1:{name:"Sofia",scores:[40,40,78,80,18,77]},j2:{name:"Nelson",scores:[18,34,83,56,19,66]},fan:47.15},
+    {id:"s3",title:"Daylight Savings",author:"@runeslocket_",genre:"Thriller",j1:{name:"June",scores:[42,50,80,76,84,87]},j2:{name:"Xavier",scores:[37,39,68,60,77,64]},fan:31.67},
+    {id:"s4",title:"Exonerate Me",author:"@octeasesn",genre:"Drama",j1:{name:"Xavier",scores:[30,40,77,69,71,66]},j2:{name:"Jessi",scores:[12,35,76,56,61,54]},fan:60.55},
+    {id:"s5",title:"Eyes Without A Face",author:"@epy.beiia",genre:"Drama",j1:{name:"Mercy",scores:[27,43,86,66,59,62]},j2:{name:"Sofia",scores:[40,40,75,79,38,80]},fan:58.67},
+    {id:"s6",title:"House Of Hearts",author:"@talina.writes",genre:"Fantasy",j1:{name:"Penny",scores:[35,38,67,70,43,66]},j2:{name:"Jessi",scores:[43,43,78,85,69,85]},fan:35.2},
+    {id:"s7",title:"Out Of Tone",author:"@sincerelyursolivia",genre:"Adventure",j1:{name:"Xavier",scores:[45,46,92,88,81,89]},j2:{name:"Mercy",scores:[48,47,91,83,76,78]},fan:45.64},
+    {id:"s8",title:"Seasons In The Sun",author:"@kitty.episodee",genre:"LGBTQ+",j1:{name:"Jessi",scores:[30,19,81,52,35,71]},j2:{name:"Natalie",scores:[37,47,88,83,40,84]},fan:46.67},
+    {id:"s9",title:"Shadow Star",author:"@jadecollins.episode",genre:"Drama",j1:{name:"Nelson",scores:[46,45,65,85,32,68]},j2:{name:"Tali",scores:[36,43,71,68,26,68]},fan:74.44},
+    {id:"s10",title:"Sold To The Mafia Queen",author:"@episode_carter_",genre:"LGBTQ+",j1:{name:"Tali",scores:[35,35,62,60,18,62]},j2:{name:"June",scores:[42,38,59,71,26,71]},fan:18.89},
+   ]},
+  {id:"hgr1",name:"Hidden Gems Spotlight 1",month:"April 2026",status:"completed",
+   categories:[{id:"fi",label:"First Impression",max:50},{id:"dir",label:"Directing",max:100},{id:"plt",label:"Plot",max:100},{id:"int",label:"Interactivity",max:100},{id:"oth",label:"Others",max:100}],
+   stories:[
+    {id:"s1",title:"BT: Centuries Apart",author:"@stardust.writes",genre:"Sci-Fi",j1:{name:"Nelson",scores:[35,76,60,71,65]},j2:{name:"Tali",scores:[36,82,70,76,66]},fan:34.15},
+    {id:"s2",title:"BT: Deposed",author:"@myst.episode",genre:"Thriller",j1:{name:"Natalie",scores:[46,98,95,87,95]},j2:{name:"Xavier",scores:[44,92,94,91,88]},fan:42.28},
+    {id:"s3",title:"BT: Flare Of Fate",author:"@episode.littleduck",genre:"Fantasy",j1:{name:"Tali",scores:[47,77,75,69,74]},j2:{name:"Mercy",scores:[36,66,43,50,50]},fan:58.68},
+    {id:"s4",title:"BT: Halfway Down",author:"@saleem.episode",genre:"Drama",j1:{name:"June",scores:[45,87,75,77,79]},j2:{name:"Nelson",scores:[42,84,74,68,77]},fan:19.01},
+    {id:"s5",title:"BT: Price Of Touch",author:"@junini.writes",genre:"Drama",j1:{name:"Sofia",scores:[50,80,80,78,76]},j2:{name:"Natalie",scores:[42,83,82,77,81]},fan:26.67},
+    {id:"s6",title:"BT: Prima Donna",author:"@fyo.episode",genre:"Drama",j1:{name:"Jessi",scores:[21,60,39,81,63]},j2:{name:"Xavier",scores:[31,65,57,58,64]},fan:55.56},
+    {id:"s7",title:"BT: Reflection In Time",author:"@jmstoriesxx",genre:"Romance",j1:{name:"Penny",scores:[42,73,76,67,73]},j2:{name:"Jessi",scores:[41,72,66,59,70]},fan:37.19},
+    {id:"s8",title:"BT: Stolen By A Star",author:"@chiclet_episode",genre:"Romance",j1:{name:"Penny",scores:[45,74,78,51,79]},j2:{name:"Sofia",scores:[34,53,52,39,51]},fan:40.49},
+    {id:"s9",title:"BT: Unrest",author:"@sparrow_author",genre:"Horror",j1:{name:"Mercy",scores:[43,76,70,82,73]},j2:{name:"Nelson",scores:[45,90,86,83,80]},fan:34.65},
+    {id:"s10",title:"BT: Wicked Grace",author:"@valkyriewrites",genre:"Fantasy",j1:{name:"Xavier",scores:[47,91,93,93,90]},j2:{name:"June",scores:[50,98,100,91,99]},fan:46.46},
+   ]},
+  {id:"hgr2",name:"Hidden Gems Spotlight 2",month:"In Progress",status:"in_progress",
+   categories:[{id:"fi",label:"First Impression",max:50},{id:"dir",label:"Directing",max:100},{id:"plt",label:"Plot",max:100},{id:"int",label:"Interactivity",max:100},{id:"oth",label:"Others",max:100}],
+   stories:[
+    {id:"s1",title:"Casting Shadows",author:"@episode.laine",genre:"Drama",j1:{name:"Natalie",scores:[null,null,null,null,null]},j2:{name:"Sofia",scores:[null,null,null,null,null]},fan:null},
+    {id:"s2",title:"Crown Of Secrets",author:"@shaylawrites",genre:"Drama",j1:{name:"Xavier",scores:[null,null,null,null,null]},j2:{name:"Penny",scores:[null,null,null,null,null]},fan:null},
+    {id:"s3",title:"Echoes Of Elsewhere",author:"@floras.writes",genre:"LGBTQ+",j1:{name:"Mercy",scores:[null,null,null,null,null]},j2:{name:"Jessi",scores:[null,null,null,null,null]},fan:null},
+    {id:"s4",title:"Echoes Of Love",author:"@epy_gunjan",genre:"Romance",j1:{name:"Penny",scores:[null,null,null,null,null]},j2:{name:"June",scores:[null,null,null,null,null]},fan:null},
+    {id:"s5",title:"Inevitably Yours",author:"@storiesbysaff",genre:"Comedy",j1:{name:"June",scores:[null,null,null,null,null]},j2:{name:"Mercy",scores:[null,null,null,null,null]},fan:null},
+    {id:"s6",title:"Law Of Attraction",author:"@dylanepisode",genre:"Romance",j1:{name:"Tali",scores:[null,null,null,null,null]},j2:{name:"Nelson",scores:[null,null,null,null,null]},fan:null},
+    {id:"s7",title:"Off The Market",author:"@episode_ariel",genre:"Comedy",j1:{name:"Natalie",scores:[null,null,null,null,null]},j2:{name:"Xavier",scores:[null,null,null,null,null]},fan:null},
+    {id:"s8",title:"The Finish Line Between Us",author:"@aishaa.writess",genre:"Action",j1:{name:"Nelson",scores:[null,null,null,null,null]},j2:{name:"Tali",scores:[null,null,null,null,null]},fan:null},
+    {id:"s9",title:"When We Were Young",author:"@writtenby.rina",genre:"Drama",j1:{name:"Sofia",scores:[null,null,null,null,null]},j2:{name:"Jessi",scores:[null,null,null,null,null]},fan:null},
+    {id:"s10",title:"Without Limits",author:"@joaniej.ep",genre:"Drama",j1:{name:"Jessi",scores:[null,null,null,null,null]},j2:{name:"Xavier",scores:[null,null,null,null,null]},fan:null},
+   ]},
+  {id:"c5",name:"Contest 5",month:"",status:"empty",categories:[{id:"fi",label:"First Impression",max:50},{id:"dir",label:"Directing",max:100},{id:"plt",label:"Plot",max:100},{id:"int",label:"Interactivity",max:100},{id:"oth",label:"Others",max:100}],stories:[]},
+  {id:"c6",name:"Contest 6",month:"",status:"empty",categories:[{id:"fi",label:"First Impression",max:50},{id:"dir",label:"Directing",max:100},{id:"plt",label:"Plot",max:100},{id:"int",label:"Interactivity",max:100},{id:"oth",label:"Others",max:100}],stories:[]},
+  {id:"c7",name:"Contest 7",month:"",status:"empty",categories:[{id:"fi",label:"First Impression",max:50},{id:"dir",label:"Directing",max:100},{id:"plt",label:"Plot",max:100},{id:"int",label:"Interactivity",max:100},{id:"oth",label:"Others",max:100}],stories:[]},
+  {id:"c8",name:"Contest 8",month:"",status:"empty",categories:[{id:"fi",label:"First Impression",max:50},{id:"dir",label:"Directing",max:100},{id:"plt",label:"Plot",max:100},{id:"int",label:"Interactivity",max:100},{id:"oth",label:"Others",max:100}],stories:[]},
+  {id:"c9",name:"Contest 9",month:"",status:"empty",categories:[{id:"fi",label:"First Impression",max:50},{id:"dir",label:"Directing",max:100},{id:"plt",label:"Plot",max:100},{id:"int",label:"Interactivity",max:100},{id:"oth",label:"Others",max:100}],stories:[]},
+  {id:"c10",name:"Contest 10",month:"",status:"empty",categories:[{id:"fi",label:"First Impression",max:50},{id:"dir",label:"Directing",max:100},{id:"plt",label:"Plot",max:100},{id:"int",label:"Interactivity",max:100},{id:"oth",label:"Others",max:100}],stories:[]},
+];
+
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+const SK = 'bsh_monthly_contests_2026';
+let S, currentContest = 0, openStories = {};
+
+function loadState() {
+  try { const d = localStorage.getItem(SK); S = d ? JSON.parse(d) : JSON.parse(JSON.stringify(SEED_CONTESTS)); }
+  catch(e) { S = JSON.parse(JSON.stringify(SEED_CONTESTS)); }
+}
+function save() { localStorage.setItem(SK, JSON.stringify(S)); }
+
+// ═══════════════════════════════════════════════
+// MATH
+// ═══════════════════════════════════════════════
+function maxPossible(cats) { return cats.reduce((a,c) => a + c.max, 0); }
+
+function jTotal(scores) {
+  const valid = (scores||[]).filter(v => v !== null && v !== '');
+  return valid.length ? valid.reduce((a,b) => a + Number(b), 0) : null;
+}
+
+function storyAvgPct(story, cats) {
+  const t1 = jTotal(story.j1.scores);
+  const t2 = jTotal(story.j2.scores);
+  if (t1 === null && t2 === null) return null;
+  const mx = maxPossible(cats);
+  const vals = [t1, t2].filter(v => v !== null);
+  const avg = vals.reduce((a,b)=>a+b,0) / vals.length;
+  return parseFloat((avg / mx * 100).toFixed(2));
+}
+
+function catAvg(story, catIdx) {
+  const s1 = story.j1.scores[catIdx];
+  const s2 = story.j2.scores[catIdx];
+  const vals = [s1, s2].filter(v => v !== null && v !== '');
+  if (!vals.length) return null;
+  return vals.reduce((a,b)=>a+Number(b),0) / vals.length;
+}
+
+function detectAwards(contest) {
+  const cats = contest.categories;
+  const stories = contest.stories;
+  const scored = stories.filter(s => storyAvgPct(s, cats) !== null);
+  if (!scored.length) return null;
+  scored.sort((a,b) => (storyAvgPct(b,cats)||0) - (storyAvgPct(a,cats)||0));
+
+  // Direction index
+  const dirIdx = cats.findIndex(c => c.id === 'dir');
+  const pltIdx = cats.findIndex(c => c.id === 'plt');
+  const intIdx = cats.findIndex(c => c.id === 'int');
+
+  const byDir = dirIdx >= 0 ? [...scored].sort((a,b) => (catAvg(b,dirIdx)||0) - (catAvg(a,dirIdx)||0)) : [];
+  const byPlt = pltIdx >= 0 ? [...scored].sort((a,b) => (catAvg(b,pltIdx)||0) - (catAvg(a,pltIdx)||0)) : [];
+  const byInt = intIdx >= 0 ? [...scored].sort((a,b) => (catAvg(b,intIdx)||0) - (catAvg(a,intIdx)||0)) : [];
+  const byFan = stories.filter(s=>s.fan!==null).sort((a,b)=>b.fan-a.fan);
+
+  return {
+    winner: scored[0] || null,
+    runnerUp: scored[1] || null,
+    bestDir: byDir[0] || null,
+    bestDirScore: byDir[0] ? catAvg(byDir[0], dirIdx) : null,
+    bestPlt: byPlt[0] || null,
+    bestPltScore: byPlt[0] ? catAvg(byPlt[0], pltIdx) : null,
+    bestInt: byInt[0] || null,
+    bestIntScore: byInt[0] ? catAvg(byInt[0], intIdx) : null,
+    topFan: byFan[0] || null,
+    topFanScore: byFan[0]?.fan || null,
+  };
+}
+
+function sotyQualifiers(contest) {
+  const cats = contest.categories;
+  return contest.stories
+    .map(s => ({ story: s, avg: storyAvgPct(s, cats) }))
+    .filter(r => r.avg !== null && r.avg > 75)
+    .sort((a,b) => b.avg - a.avg);
+}
+
+function allSotyQualifiers() {
+  const result = [];
+  S.forEach(c => {
+    sotyQualifiers(c).forEach(r => result.push({ contest: c.name, month: c.month, story: r.story, avg: r.avg }));
+  });
+  return result;
+}
+
+// ═══════════════════════════════════════════════
+// RENDER TABS
+// ═══════════════════════════════════════════════
+function renderTabs() {
+  const tabs = document.getElementById('contest-tabs');
+  tabs.innerHTML = S.map((c,i) => {
+    const scored = c.stories.filter(s => storyAvgPct(s, c.categories) !== null).length;
+    const hasData = scored > 0;
+    const cls = [
+      'ctab',
+      i === currentContest ? 'active' : '',
+      c.status === 'in_progress' ? 'in-progress' : '',
+      hasData ? 'has-data' : '',
+    ].join(' ');
+    const statusIcon = c.status === 'completed' ? '✓' : c.status === 'in_progress' ? '◐' : '○';
+    return `<button class="${cls}" onclick="switchContest(${i})">
+      ${statusIcon} ${c.name}${c.month ? ' · '+c.month.split(' ')[0] : ''}
+      <div class="tab-dot"></div>
+    </button>`;
+  }).join('');
+
+  // Also add SOTY Summary tab
+  tabs.innerHTML += `<button class="ctab ${currentContest === 'soty' ? 'active' : ''}" onclick="switchContest('soty')" style="border-left:1px solid rgba(255,255,255,0.1);margin-left:8px">🏆 SOTY Qualifiers</button>`;
+}
+
+// ═══════════════════════════════════════════════
+// SWITCH CONTEST
+// ═══════════════════════════════════════════════
+function switchContest(idx) {
+  currentContest = idx;
+  renderTabs();
+  if (idx === 'soty') { renderSotyPanel(); return; }
+  renderContestPanel(S[idx], idx);
+}
+
+// ═══════════════════════════════════════════════
+// RENDER CONTEST PANEL
+// ═══════════════════════════════════════════════
+function renderContestPanel(c, idx) {
+  const main = document.getElementById('app-main');
+  const cats = c.categories;
+  const mx = maxPossible(cats);
+  const awards = detectAwards(c);
+  const qualifiers = sotyQualifiers(c);
+
+  // KPIs
+  const scored = c.stories.filter(s => storyAvgPct(s,cats) !== null).length;
+  const topScore = c.stories.map(s=>storyAvgPct(s,cats)).filter(v=>v!==null);
+  const hi = topScore.length ? Math.max(...topScore) : 0;
+  const av = topScore.length ? (topScore.reduce((a,b)=>a+b,0)/topScore.length).toFixed(1) : '—';
+
+  const statusBadge = c.status === 'completed'
+    ? '<span class="badge badge-pass">✓ Completed</span>'
+    : c.status === 'in_progress'
+    ? '<span class="badge badge-amber">◐ In Progress</span>'
+    : '<span class="badge badge-fail">Empty</span>';
+
+  main.innerHTML = `
+  <!-- KPIs -->
+  <div class="kpi-grid">
+    <div class="kpi k-gold"><div class="kpi-lbl">Contest</div><div class="kpi-val" style="font-size:18px">${c.name}</div><div class="kpi-sub">${c.month||'Month not set'}</div><div class="kpi-icon">📅</div></div>
+    <div class="kpi k-green"><div class="kpi-lbl">Entries Scored</div><div class="kpi-val">${scored}<span style="font-size:14px;color:var(--text-light)">/${c.stories.length}</span></div><div class="kpi-sub">Max score: ${mx} pts</div><div class="kpi-icon">📝</div></div>
+    <div class="kpi k-blue"><div class="kpi-lbl">Top Score</div><div class="kpi-val">${hi ? hi.toFixed(1)+'%' : '—'}</div><div class="kpi-sub">Average: ${av}%</div><div class="kpi-icon">🏆</div></div>
+    <div class="kpi k-purple"><div class="kpi-lbl">SOTY Qualifiers</div><div class="kpi-val">${qualifiers.length}</div><div class="kpi-sub">Average above 75%</div><div class="kpi-icon">⭐</div></div>
+  </div>
+
+  <!-- Contest Settings -->
+  <div class="card">
+    <div class="card-hd card-hd-dark">
+      <div><div class="card-hd-title">⚙ Contest Settings</div><div class="card-hd-sub">Name, month, categories and status</div></div>
+      <div class="btn-row">${statusBadge}</div>
+    </div>
+    <div class="card-body">
+      <div class="g3">
+        <div class="setup-field"><label>Contest Name</label>
+          <input type="text" value="${c.name}" oninput="updateContest(${idx},'name',this.value)" placeholder="e.g. Love In The Air">
+        </div>
+        <div class="setup-field"><label>Month / Period</label>
+          <input type="text" value="${c.month}" oninput="updateContest(${idx},'month',this.value)" placeholder="e.g. February 2026">
+        </div>
+        <div class="setup-field"><label>Status</label>
+          <select onchange="updateContest(${idx},'status',this.value)">
+            <option value="empty" ${c.status==='empty'?'selected':''}>Empty / Not Started</option>
+            <option value="in_progress" ${c.status==='in_progress'?'selected':''}>In Progress</option>
+            <option value="completed" ${c.status==='completed'?'selected':''}>Completed</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:12px">
+        <label style="margin-bottom:8px">Scoring Categories</label>
+        <div id="cat-list-${idx}">
+          ${cats.map((cat,ci) => `
+            <div class="cat-row">
+              <input type="text" value="${cat.label}" placeholder="Category name" oninput="updateCat(${idx},${ci},'label',this.value)" style="flex:1">
+              <input type="number" class="max-input" value="${cat.max}" min="1" oninput="updateCat(${idx},${ci},'max',this.value)" placeholder="Max">
+              <span style="font-size:11px;color:var(--text-light);white-space:nowrap">Max pts</span>
+              <button class="btn btn-red btn-sm" onclick="removeCat(${idx},${ci})">✕</button>
+            </div>`).join('')}
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="addCat(${idx})" style="margin-top:6px">+ Add Category</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Story -->
+  <div class="card">
+    <div class="card-hd card-hd-dark">
+      <div><div class="card-hd-title">📚 Stories (${c.stories.length})</div><div class="card-hd-sub">Enter judge scores for each story</div></div>
+      <button class="btn btn-gold btn-sm" onclick="addStory(${idx})">+ Add Story</button>
+    </div>
+    <div class="card-body" style="padding:14px">
+      <div id="stories-list-${idx}">
+        ${c.stories.map((s,si) => renderStorySection(c, idx, s, si)).join('')}
+        ${!c.stories.length ? '<p style="color:var(--text-light);font-size:13px;text-align:center;padding:20px">No stories added yet. Click "+ Add Story" to begin.</p>' : ''}
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Table -->
+  ${scored > 0 ? renderResultsTable(c) : ''}
+
+  <!-- Awards -->
+  ${awards ? renderAwardsSection(awards, c) : ''}
+
+  <!-- SOTY Qualifiers -->
+  ${qualifiers.length > 0 ? renderQualifiersSection(qualifiers) : ''}
+  `;
+}
+
+// ═══════════════════════════════════════════════
+// STORY SECTION
+// ═══════════════════════════════════════════════
+function renderStorySection(c, idx, s, si) {
+  const cats = c.categories;
+  const avg = storyAvgPct(s, cats);
+  const t1 = jTotal(s.j1.scores);
+  const t2 = jTotal(s.j2.scores);
+  const avgTotal = (t1 !== null && t2 !== null) ? ((t1+t2)/2).toFixed(1) : t1 !== null ? t1 : t2;
+  const hasScores = avg !== null;
+  const isOpen = openStories[`${idx}_${si}`];
+  const qualifies = avg !== null && avg > 75;
+  const pct = avg || 0;
+  const barClass = pct >= 75 ? 'sb-green' : pct >= 50 ? 'sb-gold' : 'sb-red';
+
+  return `<div class="story-section ${hasScores?'has-scores':''}" id="ss-${idx}-${si}">
+    <div class="story-hd ${isOpen?'open':''}" onclick="toggleStory(${idx},${si})">
+      <div class="story-hd-left">
+        <span class="story-hd-toggle">▶</span>
+        <div>
+          <div class="story-meta-title">${s.title} <span style="font-size:11px;font-weight:400;color:var(--text-light)">${s.genre}</span></div>
+          <div class="story-meta-sub">${s.author} · ${s.j1.name} & ${s.j2.name}</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        ${qualifies ? '<span class="badge badge-pass">⭐ SOTY Qualifier</span>' : ''}
+        ${avg !== null ? `<div class="sbar-wrap"><div class="sbar-val" style="color:${pct>=75?'var(--green)':pct>=50?'var(--gold)':'var(--red)'}">${avg}%</div><div class="sbar-track" style="width:100px"><div class="sbar-fill ${barClass}" style="width:${pct}%"></div></div></div>` : '<span style="font-size:11px;color:var(--text-light)">No scores yet</span>'}
+        <button class="btn btn-red btn-sm" onclick="event.stopPropagation();removeStory(${idx},${si})">✕</button>
+      </div>
+    </div>
+
+    <div class="story-body ${isOpen?'open':''}">
+      <!-- Story meta -->
+      <div class="g3" style="margin-bottom:14px">
+        <div><label>Story Title</label><input type="text" value="${s.title}" oninput="updateStory(${idx},${si},'title',this.value)"></div>
+        <div><label>Author Handle</label><input type="text" value="${s.author}" oninput="updateStory(${idx},${si},'author',this.value)"></div>
+        <div><label>Genre</label><input type="text" value="${s.genre}" oninput="updateStory(${idx},${si},'genre',this.value)"></div>
+      </div>
+
+      <!-- Judge scores -->
+      <div class="judge-score-grid">
+        <div>
+          <div class="judge-col-header">Judge 1: <input type="text" value="${s.j1.name}" oninput="updateJudgeName(${idx},${si},'j1',this.value)" style="display:inline;width:120px;padding:3px 6px;font-size:12px;margin-left:6px"></div>
+          ${cats.map((cat,ci) => `
+            <div class="score-input-row">
+              <label>${cat.label}</label>
+              <input type="number" min="0" max="${cat.max}" value="${s.j1.scores[ci]??''}" placeholder="0"
+                class="${s.j1.scores[ci]!==null&&s.j1.scores[ci]!==''?'has-val':''}"
+                oninput="setScore(${idx},${si},'j1',${ci},this.value)">
+              <span class="max-lbl">/ ${cat.max}</span>
+            </div>`).join('')}
+          <div style="padding:8px 0;border-top:1px solid var(--border);margin-top:8px;font-size:12px;color:var(--text-mid)">
+            Total: <strong>${t1 !== null ? t1 : '—'}</strong> / ${maxPossible(cats)}
+          </div>
+        </div>
+        <div>
+          <div class="judge-col-header">Judge 2: <input type="text" value="${s.j2.name}" oninput="updateJudgeName(${idx},${si},'j2',this.value)" style="display:inline;width:120px;padding:3px 6px;font-size:12px;margin-left:6px"></div>
+          ${cats.map((cat,ci) => `
+            <div class="score-input-row">
+              <label>${cat.label}</label>
+              <input type="number" min="0" max="${cat.max}" value="${s.j2.scores[ci]??''}" placeholder="0"
+                class="${s.j2.scores[ci]!==null&&s.j2.scores[ci]!==''?'has-val':''}"
+                oninput="setScore(${idx},${si},'j2',${ci},this.value)">
+              <span class="max-lbl">/ ${cat.max}</span>
+            </div>`).join('')}
+          <div style="padding:8px 0;border-top:1px solid var(--border);margin-top:8px;font-size:12px;color:var(--text-mid)">
+            Total: <strong>${t2 !== null ? t2 : '—'}</strong> / ${maxPossible(cats)}
+          </div>
+        </div>
+      </div>
+
+      <!-- Fan vote -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <label style="margin:0;white-space:nowrap">Top Fan Story Vote %</label>
+        <input type="number" min="0" max="100" step="0.01" value="${s.fan??''}" placeholder="e.g. 64.74"
+          style="width:120px" class="${s.fan!==null?'has-val':''}"
+          oninput="updateStory(${idx},${si},'fan',this.value!==''?parseFloat(this.value):null)">
+        <span style="font-size:11px;color:var(--text-light)">Fan vote is standalone · does not affect judging average or SOTY qualification</span>
+      </div>
+
+      <!-- Final scores bar -->
+      ${avg !== null ? `
+      <div class="final-scores-bar">
+        ${cats.map((cat,ci) => {
+          const a = catAvg(s, ci);
+          return a !== null ? `<div class="fs-item"><div class="fs-lbl">${cat.label}</div><div class="fs-val">${a.toFixed(1)}<span style="font-size:10px;color:var(--text-light)">/100</span></div></div>` : '';
+        }).join('')}
+        <div class="fs-item" style="margin-left:auto;border-left:1px solid var(--border);padding-left:12px">
+          <div class="fs-lbl">Avg Total</div>
+          <div class="fs-val" style="color:${pct>=75?'var(--green)':pct>=50?'var(--gold)':'var(--red)'}">${avg}%</div>
+        </div>
+        ${qualifies ? '<div class="fs-item"><div class="fs-lbl">SOTY</div><div class="fs-val" style="color:var(--green)">✓ Qualifies</div></div>' : ''}
+      </div>` : ''}
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════
+// RESULTS TABLE
+// ═══════════════════════════════════════════════
+function renderResultsTable(c) {
+  const cats = c.categories;
+  const rows = c.stories
+    .map(s => ({ s, avg: storyAvgPct(s, cats) }))
+    .filter(r => r.avg !== null)
+    .sort((a,b) => b.avg - a.avg);
+
+  if (!rows.length) return '';
+  const mx = Math.max(...rows.map(r=>r.avg));
+
+  return `<div class="card">
+    <div class="card-hd card-hd-dark"><div class="card-hd-title">📊 Results Leaderboard</div></div>
+    <div class="twrap">
+      <table class="st">
+        <thead><tr><th>#</th><th>Story</th><th>Author</th><th>Genre</th>
+          ${cats.map(c=>`<th>${c.label}<br><small style="opacity:.55">/avg</small></th>`).join('')}
+          <th>Avg %</th><th>Fan Vote</th><th>SOTY?</th>
+        </tr></thead>
+        <tbody>${rows.map((r,i) => {
+          const s = r.s;
+          const qualifies = r.avg > 75;
+          const rc = i===0?'r1':i===1?'r2':i===2?'r3':'';
+          const pct = Math.round(r.avg/mx*100);
+          const barCls = r.avg>=75?'sb-green':r.avg>=50?'sb-gold':'sb-red';
+          return `<tr class="${i===0?'winner-row':qualifies?'qualifies':''}">
+            <td><span class="rb ${rc}">${i+1}</span></td>
+            <td><strong>${s.title}</strong></td>
+            <td style="font-size:11px">${s.author}</td>
+            <td><span class="badge badge-blue" style="font-size:9px">${s.genre}</span></td>
+            ${cats.map((_,ci) => {
+              const a = catAvg(s, ci);
+              return `<td style="text-align:center">${a!==null?a.toFixed(1):'—'}</td>`;
+            }).join('')}
+            <td><div class="sbar-wrap"><div class="sbar-val" style="color:${r.avg>=75?'var(--green)':r.avg>=50?'var(--gold)':'var(--red)'}">${r.avg}%</div><div class="sbar-track" style="width:80px"><div class="sbar-fill ${barCls}" style="width:${pct}%"></div></div></div></td>
+            <td style="text-align:center">${s.fan!==null?s.fan+'%':'—'}</td>
+            <td>${qualifies?'<span class="badge badge-pass">✓ Yes</span>':'<span class="badge badge-fail">—</span>'}</td>
+          </tr>`;
+        }).join('')}</tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════
+// AWARDS SECTION
+// ═══════════════════════════════════════════════
+function renderAwardsSection(a, c) {
+  const cats = c.categories;
+  const dirIdx = cats.findIndex(ct=>ct.id==='dir');
+  const pltIdx = cats.findIndex(ct=>ct.id==='plt');
+  const intIdx = cats.findIndex(ct=>ct.id==='int');
+
+  const pills = [
+    {icon:'🏆',name:'Contest Winner',winner:a.winner,score:a.winner?storyAvgPct(a.winner,cats)+'%':null},
+    {icon:'🥈',name:'Runner Up',winner:a.runnerUp,score:a.runnerUp?storyAvgPct(a.runnerUp,cats)+'%':null},
+    dirIdx>=0&&{icon:'🎬',name:'Best Directing',winner:a.bestDir,score:a.bestDirScore?a.bestDirScore.toFixed(1)+'%':null},
+    pltIdx>=0&&{icon:'✍',name:'Best Plot',winner:a.bestPlt,score:a.bestPltScore?a.bestPltScore.toFixed(1)+'%':null},
+    intIdx>=0&&{icon:'🎮',name:'Best Interactivity',winner:a.bestInt,score:a.bestIntScore?a.bestIntScore.toFixed(1)+'%':null},
+    {icon:'❤',name:'Top Fan Story',winner:a.topFan,score:a.topFanScore?a.topFanScore+'%':null},
+  ].filter(Boolean);
+
+  return `<div class="card">
+    <div class="card-hd card-hd-dark"><div class="card-hd-title">🏅 Awards & Recognition</div><div class="card-hd-sub">Auto-detected from judge scores · Fan Story is standalone</div></div>
+    <div class="card-body">
+      <div class="awards-grid">
+        ${pills.map(p => `
+          <div class="award-pill ${p.winner?'has-winner':''}">
+            <span class="award-icon">${p.icon}</span>
+            <div>
+              <div class="award-name">${p.name}</div>
+              <div class="award-winner">${p.winner?p.winner.title:'Not yet determined'}</div>
+              ${p.winner&&p.score?`<div class="award-score">${p.score}</div>`:''}
+              ${p.winner?`<div style="font-size:10px;color:var(--text-light)">${p.winner.author}</div>`:''}
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════
+// QUALIFIERS SECTION
+// ═══════════════════════════════════════════════
+function renderQualifiersSection(qualifiers) {
+  return `<div class="card">
+    <div class="card-hd card-hd-dark">
+      <div><div class="card-hd-title">⭐ SOTY Qualifiers from This Contest</div><div class="card-hd-sub">Judging average above 75% · Fan vote not included</div></div>
+      <span class="badge badge-pass" style="font-size:12px">${qualifiers.length} qualified</span>
+    </div>
+    <div class="card-body">
+      <div class="qualifier-list">
+        ${qualifiers.map((r,i) => `
+          <div class="qualifier-item">
+            <div class="qi-rank">${i+1}</div>
+            <div class="qi-info">
+              <div class="qi-title">${r.story.title}</div>
+              <div class="qi-meta">${r.story.author} · ${r.story.genre}</div>
+            </div>
+            <div class="qi-score">${r.avg}%</div>
+          </div>`).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════
+// SOTY MASTER PANEL
+// ═══════════════════════════════════════════════
+function renderSotyPanel() {
+  const main = document.getElementById('app-main');
+  const all = allSotyQualifiers();
+
+  main.innerHTML = `
+  <div class="card">
+    <div class="card-hd card-hd-dark">
+      <div><div class="card-hd-title">⭐ All SOTY Qualifiers — 2026</div><div class="card-hd-sub">All stories from any contest with judging average above 75% · Fan vote excluded</div></div>
+      <span class="badge badge-pass" style="font-size:13px;padding:5px 12px">${all.length} total qualifiers</span>
+    </div>
+    <div class="card-body">
+      ${all.length ? `
+      <div class="info info-green"><strong>Qualification rule:</strong> A story qualifies for SOTY when its judging average (across all scored categories) exceeds 75%. The fan vote score is <strong>not</strong> included in this calculation.</div>
+      <div class="twrap">
+        <table class="st">
+          <thead><tr><th>#</th><th>Story</th><th>Author</th><th>Genre</th><th>Contest</th><th>Month</th><th>Avg %</th></tr></thead>
+          <tbody>${all.map((r,i) => `
+            <tr class="qualifies">
+              <td><span class="rb ${i===0?'r1':i===1?'r2':i===2?'r3':''}">${i+1}</span></td>
+              <td><strong>${r.story.title}</strong></td>
+              <td style="font-size:11px">${r.story.author}</td>
+              <td><span class="badge badge-blue" style="font-size:9px">${r.story.genre}</span></td>
+              <td style="font-size:11px">${r.contest}</td>
+              <td style="font-size:11px;color:var(--text-light)">${r.month}</td>
+              <td><span style="font-family:var(--serif);font-size:15px;font-weight:700;color:var(--green)">${r.avg}%</span></td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>` : `
+      <div class="info info-blue" style="text-align:center;padding:24px">
+        <div style="font-size:24px;margin-bottom:8px">📋</div>
+        No stories have qualified for SOTY yet. Stories with a judging average above 75% will appear here automatically.
+      </div>`}
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════
+// EDIT ACTIONS
+// ═══════════════════════════════════════════════
+function toggleStory(idx, si) {
+  const key = `${idx}_${si}`;
+  openStories[key] = !openStories[key];
+  switchContest(idx);
+  // Scroll to story
+  setTimeout(() => {
+    const el = document.getElementById(`ss-${idx}-${si}`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 50);
+}
+
+function setScore(idx, si, judge, catIdx, val) {
+  const v = val === '' ? null : Math.min(S[idx].categories[catIdx].max, Math.max(0, parseFloat(val)));
+  S[idx].stories[si][judge].scores[catIdx] = isNaN(v) ? null : v;
+  save();
+  // Re-render just results + awards by refreshing
+  debounceRender(idx);
+}
+
+let renderTimer = null;
+function debounceRender(idx) {
+  clearTimeout(renderTimer);
+  renderTimer = setTimeout(() => {
+    // Update score display without full re-render (preserve open state)
+    const c = S[idx];
+    const cats = c.categories;
+    c.stories.forEach((s, si) => {
+      const avg = storyAvgPct(s, cats);
+      // Update the mini score bar in story header
+    });
+    // Full re-render - preserve open stories
+    renderContestPanel(c, idx);
+  }, 400);
+}
+
+function updateContest(idx, field, val) {
+  S[idx][field] = val;
+  save();
+  if (field === 'name' || field === 'month' || field === 'status') renderTabs();
+}
+
+function updateCat(idx, ci, field, val) {
+  S[idx].categories[ci][field] = field === 'max' ? (parseInt(val)||100) : val;
+  save();
+}
+
+function addCat(idx) {
+  S[idx].categories.push({ id: 'cat'+Date.now(), label: 'New Category', max: 100 });
+  // Add null to each story's scores
+  S[idx].stories.forEach(s => { s.j1.scores.push(null); s.j2.scores.push(null); });
+  save();
+  switchContest(idx);
+}
+
+function removeCat(idx, ci) {
+  if (S[idx].categories.length <= 1) { toast('Must have at least one category','⚠️'); return; }
+  S[idx].categories.splice(ci, 1);
+  S[idx].stories.forEach(s => { s.j1.scores.splice(ci,1); s.j2.scores.splice(ci,1); });
+  save();
+  switchContest(idx);
+}
+
+function updateStory(idx, si, field, val) {
+  S[idx].stories[si][field] = val;
+  save();
+}
+
+function updateJudgeName(idx, si, judge, val) {
+  S[idx].stories[si][judge].name = val;
+  save();
+}
+
+function addStory(idx) {
+  const cats = S[idx].categories;
+  const id = 's' + Date.now();
+  S[idx].stories.push({
+    id, title: '', author: '', genre: '',
+    j1: { name: 'Judge 1', scores: cats.map(() => null) },
+    j2: { name: 'Judge 2', scores: cats.map(() => null) },
+    fan: null
+  });
+  const si = S[idx].stories.length - 1;
+  openStories[`${idx}_${si}`] = true;
+  save();
+  switchContest(idx);
+  toast('Story added','➕');
+}
+
+function removeStory(idx, si) {
+  if (!confirm(`Remove "${S[idx].stories[si].title || 'this story'}"?`)) return;
+  S[idx].stories.splice(si, 1);
+  save();
+  switchContest(idx);
+  toast('Story removed','✕');
+}
+
+// ═══════════════════════════════════════════════
+// EXPORT / IMPORT / RESET
+// ═══════════════════════════════════════════════
+function exportData() {
+  const b = new Blob([JSON.stringify(S, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(b);
+  a.download = 'bsh-contests-2026-' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  toast('Exported ✓','⬇');
+}
+
+function importData(e) {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    try { S = JSON.parse(ev.target.result); save(); switchContest(0); toast('Imported ✓','⬆'); }
+    catch(err) { toast('Import failed','⚠️'); }
+  };
+  r.readAsText(f);
+  e.target.value = '';
+}
+
+function confirmReset() {
+  if (!confirm('Reset ALL contest data to seed data? This cannot be undone.')) return;
+  S = JSON.parse(JSON.stringify(SEED_CONTESTS));
+  save();
+  openStories = {};
+  switchContest(0);
+  toast('Reset to original data','↺');
+}
+
+// ═══════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════
+function toast(msg, icon='✓') {
+  const el = document.getElementById('toast');
+  el.innerHTML = `<span>${icon}</span> ${msg}`;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2600);
+}
+
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
+loadState();
+renderTabs();
+switchContest(0);
+</script>
+</body>
+</html>
