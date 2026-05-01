@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AOTY 2026 — Evaluation Tool · Buddies Support Hub</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+  <!-- Search & social preview -->
+  <meta property="og:image" content="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+  <meta property="og:title" content="Episode Buddies">
+  <meta property="og:description" content="Uplifting Episode authors through free community services, monthly contests, and the most celebrated annual competitions on the platform.">
+  <meta name="theme-color" content="#0F1B33">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
@@ -213,7 +221,7 @@
 
 <header class="app-header">
   <div class="ah-left">
-    <div class="ah-logo"><img src="https://episodebuddiessotyaoty.wordpress.com/wp-content/uploads/2026/03/buddies-logo.png?w=300" alt="BSH"></div>
+    <div class="ah-logo"><img src="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png" alt="BSH"></div>
     <div><div class="app-title">AOTY 2026 — Evaluation Tool</div><div class="app-sub">Buddies Support Hub · Internal</div></div>
     <div class="ah-divider"></div>
     <div><div class="ah-stage-label">Current Stage</div><div class="ah-stage-val" id="ah-sv">Setup</div></div>
@@ -255,7 +263,7 @@
   <div class="g2">
     <div class="card">
       <div class="card-hd card-hd-dark">
-        <div class="card-hd-left"><h3>Author Setup</h3><p>Load all 38 qualifying authors to begin</p></div>
+        <div class="card-hd-left"><h3>Author Setup</h3><p>Load all 40 qualifying authors to begin</p></div>
         <div class="btn-row">
           <button class="btn btn-gold btn-sm" onclick="loadDefaults()">Load 2026 Authors</button>
           <button class="btn btn-ghost btn-sm" onclick="addAuthor()">+ Add</button>
@@ -304,7 +312,7 @@
   <div class="card">
     <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 1 — Judging Panel</h3><p>Enter judge scores 0–100. Leave blank if a judge skipped that author.</p></div></div>
     <div class="card-body">
-      <div class="info"><strong>Judges:</strong> CXR (Xavier) · CRG (Ryan Graye) · CSM (Samantha) · CEM (Emili) · CST (Scarlet) &nbsp;·&nbsp; <strong>SOTY Judging</strong> = single value entry (the author's 60% judging score) &nbsp;·&nbsp; <span style="color:var(--purple);font-weight:700">★ PFP</span> tracked but not counted in total.</div>
+      <div class="info"><strong>Judges:</strong> CXR (Xavier) · CTA (Tali) · CCS (Charlie Seb) · CRL (R. Lewis) · CNL (Nilette) · CNM (Natalie M) &nbsp;·&nbsp; <strong>SOTY Judging</strong> = single value entry (the author's 60% judging score) &nbsp;·&nbsp; <span style="color:var(--purple);font-weight:700">★ PFP</span> tracked but not counted in total.</div>
       <div class="stabs">
         <button class="subtab active" onclick="jTab('interview',this)">🎤 Interview ×20%</button>
         <button class="subtab" onclick="jTab('impact',this)">💬 Impact ×10%</button>
@@ -453,8 +461,8 @@
 
 <script>
 const SK='bsh_aoty2026_eval_v3';
-const JUDGES=['CXR','CRG','CSM','CEM','CST'];
-const JNAMES={CXR:'Xavier',CRG:'Ryan Graye',CSM:'Samantha',CEM:'Emili',CST:'Scarlet'};
+const JUDGES=['CXR','CTA','CCS','CRL','CNL','CNM'];
+const JNAMES={CXR:'Xavier',CTA:'Tali',CCS:'Charlie Seb',CRL:'R. Lewis',CNL:'Nilette',CNM:'Natalie M'};
 const PLAC=[{t:'🏆 AOTY Winner',m:'m1',e:'🥇'},{t:'1st Runner Up',m:'m2',e:'🥈'},{t:'2nd Runner Up',m:'m3',e:'🥉'},{t:'3rd Runner Up',m:'mrest',e:'4'},{t:'4th Runner Up',m:'mrest',e:'5'},{t:'5th Runner Up',m:'mrest',e:'6'},{t:'6th Runner Up',m:'mrest',e:'7'},{t:'7th Runner Up',m:'mrest',e:'8'}];
 const JW={interview:20,impact:10,soty:15,aesthetics:5,pfp:0};
 const VW={feed:15,poll:15,authors:10,popularity:10};
