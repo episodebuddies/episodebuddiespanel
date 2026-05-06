@@ -560,6 +560,7 @@ function renderStorySection(c, idx, s, si) {
       <!-- Story meta -->
       <div class="g3" style="margin-bottom:14px">
         <div><label>Story Title</label><input type="text" value="${s.title}" onchange="updateStory(${idx},${si},'title',this.value)"></div>
+        <div><label>Author IG Handle</label><input type="text" value="${s.author}" oninput="updateStory(${idx},${si},'author',this.value)" placeholder="@author"></div>
         <div><label>Genre</label><input type="text" value="${s.genre}" oninput="updateStory(${idx},${si},'genre',this.value)"></div>
       </div>
 
