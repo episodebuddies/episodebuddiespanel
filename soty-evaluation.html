@@ -271,7 +271,7 @@
       <div><h3>Stage 1 — Judging Panel</h3><p>Enter each judge's score 0–100. Leave blank if judge did not score that story.</p></div>
     </div>
     <div class="card-body">
-      <div class="info"><strong>Judges:</strong> CXR (Xavier) · CRG (Ryan Graye) · CSM (Samantha) · CEM (Emili) · CST (Scarlet)<br>
+      <div class="info"><strong>Judges:</strong> CXR (Xavier) · CTA (Tali) · CRL (R. Lewis) · CNL (Nillette) · CMY (Mercy)<br>
       <strong>Directing & Plot</strong> are multiplied ×20%. <strong>Interactivity & Cover</strong> are multiplied ×10%. Blank scores are excluded from the average.</div>
       <div class="stabs">
         <button class="subtab active" onclick="jTab('directing',this)">Directing ×20%</button>
@@ -297,7 +297,7 @@
       <div><h3>Stage 1 — Public Voting</h3><p>Enter raw vote totals. Benchmark auto-detects from highest score.</p></div>
     </div>
     <div class="card-body">
-      <div class="info"><strong>Poll Vote:</strong> up to 3 rounds (sum auto-calculated). <strong>Feed Vote:</strong> up to 2 days (sum auto-calculated). <strong>Qualifier & Popularity:</strong> enter the final cumulative total. Benchmark = highest total in each category.</div>
+      <div class="info"><strong>Poll Vote:</strong> up to 2 rounds (sum auto-calculated). <strong>Feed Vote:</strong> up to 2 counts (sum auto-calculated). <strong>Qualifier & Popularity:</strong> enter the final cumulative total. Benchmark = highest total in each category.</div>
       <div class="stabs">
         <button class="subtab active" onclick="vTab('poll',this)">Poll Vote</button>
         <button class="subtab" onclick="vTab('feed',this)">Feed Vote</button>
@@ -443,8 +443,8 @@
 // STATE
 // ═══════════════════════════════════════════════════
 const SK = 'bsh_soty2026_eval_v2';
-const JUDGES = ['CXR','CRG','CSM','CEM','CST'];
-const JNAMES = {CXR:'Xavier',CRG:'Ryan Graye',CSM:'Samantha',CEM:'Emili',CST:'Scarlet'};
+const JUDGES = ['CXR','CTA','CRL','CNL','CMY'];
+const JNAMES = {CXR:'Xavier',CTA:'Tali',CRL:'R. Lewis',CNL:'Nillette',CMY:'Mercy'};
 const GENRES = ['Action','Adventure','Comedy','Drama','Fantasy','Horror','LGBTQ+','Mystery','Romance','Sci-Fi','Thriller'];
 const PLACEMENTS = ['🏆 Winner','1st Runner Up','2nd Runner Up','3rd Runner Up','4th Runner Up','5th Runner Up','6th Runner Up','7th Runner Up'];
 
@@ -473,7 +473,7 @@ function save(){ localStorage.setItem(SK, JSON.stringify(S)); }
 
 function initStory(id) {
   if (!S.judging[id]) S.judging[id]={directing:{},plot:{},interactivity:{},cover:{}};
-  if (!S.voting[id])  S.voting[id]={poll:[null,null,null],feed:[null,null],qualifier:null,popularity:null};
+  if (!S.voting[id])  S.voting[id]={poll:[null,null],feed:[null,null],qualifier:null,popularity:null};
 }
 
 // ═══════════════════════════════════════════════════
@@ -729,15 +729,15 @@ function renderV() {
 
   let extraH='', extraCells=r=>'';
   if(cat==='poll'){
-    extraH='<th>Round 1</th><th>Round 2</th><th>Round 3</th>';
-    extraCells=r=>[0,1,2].map(i=>{
+    extraH='<th>Round 1</th><th>Round 2</th>';
+    extraCells=r=>[0,1].map(i=>{
       const v=S.voting[r.s.id]?.poll?.[i];
       return `<td><input type="number" min="0" value="${v??''}" placeholder="0"
         class="${v!==null&&v!==''?'has-val':''}" style="width:68px;text-align:center"
         oninput="setV('${r.s.id}','poll',${i},this.value)"></td>`;
     }).join('');
   } else if(cat==='feed'){
-    extraH='<th>Day 1</th><th>Day 2</th>';
+    extraH='<th>Count 1</th><th>Count 2</th>';
     extraCells=r=>[0,1].map(i=>{
       const v=S.voting[r.s.id]?.feed?.[i];
       return `<td><input type="number" min="0" value="${v??''}" placeholder="0"

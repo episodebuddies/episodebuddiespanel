@@ -535,13 +535,13 @@ function renderStorySection(c, idx, s, si) {
   const t2 = jTotal(s.j2.scores);
   const avgTotal = (t1 !== null && t2 !== null) ? ((t1+t2)/2).toFixed(1) : t1 !== null ? t1 : t2;
   const hasScores = avg !== null;
-  const isOpen = openStories[`${idx}_${si}`];
+  const isOpen = openStories[`${idx}_${s.id}`];
   const qualifies = avg !== null && avg > 75;
   const pct = avg || 0;
   const barClass = pct >= 75 ? 'sb-green' : pct >= 50 ? 'sb-gold' : 'sb-red';
 
-  return `<div class="story-section ${hasScores?'has-scores':''}" id="ss-${idx}-${si}">
-    <div class="story-hd ${isOpen?'open':''}" onclick="toggleStory(${idx},${si})">
+  return `<div class="story-section ${hasScores?'has-scores':''}" id="ss-${idx}-${s.id}">
+    <div class="story-hd ${isOpen?'open':''}" onclick="toggleStory(${idx},'${s.id}')">
       <div class="story-hd-left">
         <span class="story-hd-toggle">▶</span>
         <div>
@@ -552,15 +552,14 @@ function renderStorySection(c, idx, s, si) {
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         ${qualifies ? '<span class="badge badge-pass">⭐ SOTY Qualifier</span>' : ''}
         ${avg !== null ? `<div class="sbar-wrap"><div class="sbar-val" style="color:${pct>=75?'var(--green)':pct>=50?'var(--gold)':'var(--red)'}">${avg}%</div><div class="sbar-track" style="width:100px"><div class="sbar-fill ${barClass}" style="width:${pct}%"></div></div></div>` : '<span style="font-size:11px;color:var(--text-light)">No scores yet</span>'}
-        <button class="btn btn-red btn-sm" onclick="event.stopPropagation();removeStory(${idx},${si})">✕</button>
+        <button class="btn btn-red btn-sm" onclick="event.stopPropagation();removeStory(${idx},${si},'${s.id}')">✕</button>
       </div>
     </div>
 
     <div class="story-body ${isOpen?'open':''}">
       <!-- Story meta -->
       <div class="g3" style="margin-bottom:14px">
-        <div><label>Story Title</label><input type="text" value="${s.title}" oninput="updateStory(${idx},${si},'title',this.value)"></div>
-        <div><label>Author Handle</label><input type="text" value="${s.author}" oninput="updateStory(${idx},${si},'author',this.value)"></div>
+        <div><label>Story Title</label><input type="text" value="${s.title}" onchange="updateStory(${idx},${si},'title',this.value)"></div>
         <div><label>Genre</label><input type="text" value="${s.genre}" oninput="updateStory(${idx},${si},'genre',this.value)"></div>
       </div>
 
@@ -773,13 +772,13 @@ function renderSotyPanel() {
 // ═══════════════════════════════════════════════
 // EDIT ACTIONS
 // ═══════════════════════════════════════════════
-function toggleStory(idx, si) {
-  const key = `${idx}_${si}`;
+function toggleStory(idx, id) {
+  const key = `${idx}_${id}`;
   openStories[key] = !openStories[key];
   switchContest(idx);
   // Scroll to story
   setTimeout(() => {
-    const el = document.getElementById(`ss-${idx}-${si}`);
+    const el = document.getElementById(`ss-${idx}-${id}`);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, 50);
 }
@@ -835,8 +834,25 @@ function removeCat(idx, ci) {
   switchContest(idx);
 }
 
+function sortStoriesByTitle(idx) {
+  S[idx].stories.sort((a,b) => {
+    const ta = (a.title || '').trim().toLowerCase();
+    const tb = (b.title || '').trim().toLowerCase();
+    if (!ta && !tb) return 0;
+    if (!ta) return 1;
+    if (!tb) return -1;
+    return ta.localeCompare(tb);
+  });
+}
+
 function updateStory(idx, si, field, val) {
   S[idx].stories[si][field] = val;
+  if (field === 'title') {
+    sortStoriesByTitle(idx);
+    save();
+    switchContest(idx);
+    return;
+  }
   save();
 }
 
@@ -854,15 +870,16 @@ function addStory(idx) {
     j2: { name: 'Judge 2', scores: cats.map(() => null) },
     fan: null
   });
-  const si = S[idx].stories.length - 1;
-  openStories[`${idx}_${si}`] = true;
+  openStories[`${idx}_${id}`] = true;
+  sortStoriesByTitle(idx);
   save();
   switchContest(idx);
   toast('Story added','➕');
 }
 
-function removeStory(idx, si) {
+function removeStory(idx, si, id) {
   if (!confirm(`Remove "${S[idx].stories[si].title || 'this story'}"?`)) return;
+  delete openStories[`${idx}_${id}`];
   S[idx].stories.splice(si, 1);
   save();
   switchContest(idx);

@@ -312,7 +312,7 @@
   <div class="card">
     <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 1 — Judging Panel</h3><p>Enter judge scores 0–100. Leave blank if a judge skipped that author.</p></div></div>
     <div class="card-body">
-      <div class="info"><strong>Judges:</strong> CXR (Xavier) · CTA (Tali) · CCS (Charlie Seb) · CRL (R. Lewis) · CNL (Nilette) · CNM (Natalie M) &nbsp;·&nbsp; <strong>SOTY Judging</strong> = single value entry (the author's 60% judging score) &nbsp;·&nbsp; <span style="color:var(--purple);font-weight:700">★ PFP</span> tracked but not counted in total.</div>
+      <div class="info"><strong>Judges:</strong> CXR (Xavier) · CTA (Tali) · CRL (R. Lewis) · CNL (Nillette) · CMY (Mercy)<br>
       <div class="stabs">
         <button class="subtab active" onclick="jTab('interview',this)">🎤 Interview ×20%</button>
         <button class="subtab" onclick="jTab('impact',this)">💬 Impact ×10%</button>
@@ -334,7 +334,7 @@
   <div class="card">
     <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 1 — Public Voting</h3><p>Enter raw totals. Benchmark auto-detects from highest score.</p></div></div>
     <div class="card-body">
-      <div class="info"><strong>Feed Vote:</strong> 2 days, auto-summed. <strong>Poll Vote:</strong> 3 rounds, auto-summed. <strong>Authors & Popularity:</strong> enter final cumulative total.</div>
+      <div class="info"><strong>Feed Vote:</strong> 2 counts, auto-summed. <strong>Poll Vote:</strong> 2 rounds, auto-summed. <strong>Authors & Popularity:</strong> enter final cumulative total.</div>
       <div class="stabs">
         <button class="subtab active" onclick="vTab('feed',this)">📡 Feed ×15%</button>
         <button class="subtab" onclick="vTab('poll',this)">📊 Poll ×15%</button>
@@ -461,8 +461,8 @@
 
 <script>
 const SK='bsh_aoty2026_eval_v3';
-const JUDGES=['CXR','CTA','CCS','CRL','CNL','CNM'];
-const JNAMES={CXR:'Xavier',CTA:'Tali',CCS:'Charlie Seb',CRL:'R. Lewis',CNL:'Nilette',CNM:'Natalie M'};
+const JUDGES=['CXR','CTA','CRL','CNL','CMY'];
+const JNAMES={CXR:'Xavier',CTA:'Tali',CRL:'R. Lewis',CNL:'Nillette',CMY:'Mercy'};
 const PLAC=[{t:'🏆 AOTY Winner',m:'m1',e:'🥇'},{t:'1st Runner Up',m:'m2',e:'🥈'},{t:'2nd Runner Up',m:'m3',e:'🥉'},{t:'3rd Runner Up',m:'mrest',e:'4'},{t:'4th Runner Up',m:'mrest',e:'5'},{t:'5th Runner Up',m:'mrest',e:'6'},{t:'6th Runner Up',m:'mrest',e:'7'},{t:'7th Runner Up',m:'mrest',e:'8'}];
 const JW={interview:20,impact:10,soty:15,aesthetics:5,pfp:0};
 const VW={feed:15,poll:15,authors:10,popularity:10};
@@ -475,7 +475,7 @@ let S=(()=>{try{const d=localStorage.getItem(SK);return d?JSON.parse(d):blank();
 let jCat='interview',vCat='feed',curView='table';
 
 function save(){localStorage.setItem(SK,JSON.stringify(S));}
-function initA(id){if(!S.judging[id])S.judging[id]={interview:{},impact:{},aesthetics:{},pfp:{},soty:null};if(!S.voting[id])S.voting[id]={feed:[null,null],poll:[null,null,null],authors:null,popularity:null};}
+function initA(id){if(!S.judging[id])S.judging[id]={interview:{},impact:{},aesthetics:{},pfp:{},soty:null};if(!S.voting[id])S.voting[id]={feed:[null,null],poll:[null,null],authors:null,popularity:null};}
 function avg(arr){const v=arr.filter(x=>x!==null&&x!==''&&!isNaN(x)).map(Number);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null;}
 function jAvg(id,cat){if(cat==='soty')return null;return avg(JUDGES.map(j=>{const v=S.judging[id]?.[cat]?.[j];return v!==undefined&&v!==null&&v!==''?Number(v):null;}));}
 function jW(id,cat){if(cat==='soty'){const v=S.judging[id]?.soty;if(v===null||v===undefined||v==='')return null;return+(Number(v)/100*15).toFixed(2);}const a=jAvg(id,cat);if(a===null)return null;const w=JW[cat];if(!w)return null;return+(a/100*w).toFixed(2);}
@@ -568,8 +568,8 @@ function renderV(){
   document.getElementById('v-info').textContent=topN?`Top ${Math.min(topN,rows.length)} of ${rows.length}`:`All ${rows.length}`;
   const disp=topN?rows.slice(0,topN):rows;
   let xH='',xC=r=>'';
-  if(cat==='feed'){xH='<th>Day 1</th><th>Day 2</th>';xC=r=>[0,1].map(i=>{const v=S.voting[r.a.id]?.feed?.[i];return`<td><input type="number" min="0" value="${v??''}" placeholder="0" class="${v!==null&&v!==''?'has-val':''}" style="width:74px;text-align:center" oninput="setV('${r.a.id}','feed',${i},this.value)"></td>`;}).join('');}
-  else if(cat==='poll'){xH='<th>Round 1</th><th>Round 2</th><th>Round 3</th>';xC=r=>[0,1,2].map(i=>{const v=S.voting[r.a.id]?.poll?.[i];return`<td><input type="number" min="0" value="${v??''}" placeholder="0" class="${v!==null&&v!==''?'has-val':''}" style="width:68px;text-align:center" oninput="setV('${r.a.id}','poll',${i},this.value)"></td>`;}).join('');}
+  if(cat==='feed'){xH='<th>Count 1</th><th>Count 2</th>';xC=r=>[0,1].map(i=>{const v=S.voting[r.a.id]?.feed?.[i];return`<td><input type="number" min="0" value="${v??''}" placeholder="0" class="${v!==null&&v!==''?'has-val':''}" style="width:74px;text-align:center" oninput="setV('${r.a.id}','feed',${i},this.value)"></td>`;}).join('');}
+  else if(cat==='poll'){xH='<th>Round 1</th><th>Round 2</th>';xC=r=>[0,1].map(i=>{const v=S.voting[r.a.id]?.poll?.[i];return`<td><input type="number" min="0" value="${v??''}" placeholder="0" class="${v!==null&&v!==''?'has-val':''}" style="width:68px;text-align:center" oninput="setV('${r.a.id}','poll',${i},this.value)"></td>`;}).join('');}
   else{xH=`<th>${cat==='authors'?'Total':'Final Total'}</th>`;xC=r=>{const v=S.voting[r.a.id]?.[cat];return`<td><input type="number" min="0" value="${v??''}" placeholder="0" class="${v!==null&&v!==''?'has-val':''}" style="width:90px;text-align:center" oninput="setV('${r.a.id}','${cat}',null,this.value)"></td>`;};}
   document.getElementById('v-head').innerHTML=`<tr><th>#</th><th>Author</th><th>Handle</th>${xH}<th>Total</th><th>/ ${w}</th></tr>`;
   document.getElementById('v-body').innerHTML=disp.map((r,i)=>{const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';return`<tr><td><span class="rb ${rc}">${i+1}</span></td><td><strong>${r.a.name}</strong></td><td style="font-size:11px;color:var(--text-light)">${r.a.handle}</td>${xC(r)}<td style="text-align:center;color:var(--text-mid)">${r.t!==null?r.t.toLocaleString():'—'}</td><td>${r.w!==null?bar(r.w,w):'<span style="color:#ccc">—</span>'}</td></tr>`;}).join('');
