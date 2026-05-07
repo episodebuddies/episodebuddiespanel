@@ -368,11 +368,11 @@
 <div id="p-top24" class="panel">
   <div class="card">
     <div class="card-hd">
-      <div><h3>Top 24 Builder</h3><p>Top 20 by combined score + 4 Fast Track award winners</p></div>
+      <div><h3>Top 24 Builder</h3><p>Top 20 by combined score + 4 Fast Track award winners (retained regardless of Top 20 status)</p></div>
       <button class="btn btn-gold btn-sm" onclick="buildTop24()">⚡ Auto-Build Top 24</button>
     </div>
     <div class="card-body">
-      <div class="info"><strong>How it works:</strong> Stories ranked 1–20 by Stage 1 combined score advance automatically. The highest scorer in each special award category (Directing, Plot, Interactivity, Cover) that is not already in the Top 20 earns a Fast Track spot — making up the full Top 24.</div>
+      <div class="info"><strong>How it works:</strong> Stories ranked 1–20 by Stage 1 combined score advance automatically. Each special award (Directing, Plot, Interactivity, Cover) is won by its top scorer — <em>regardless of whether they are already in the Top 20</em>. Award winners keep their award title. Any spots still needed to reach 24 are auto-filled by the next highest scorers not yet included.</div>
       <div id="top24-out"><p style="color:var(--text-light);font-size:13px">Click "Auto-Build Top 24" to generate. Ensure all Stage 1 scores are entered first.</p></div>
       <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
         <button class="btn btn-navy" onclick="promoteS2()">Promote Top 24 to Stage 2 →</button>
@@ -547,12 +547,13 @@ function s2Total(id) {
 // Fast Track to Top 12: Popularity Vote winner + Top 2 S2S scorers
 function getS2FT12() {
   const ft=new Set();
-  // 1. Popularity vote winner from Stage 1
+  // Popularity vote winner fast-tracks regardless of S2S score or Top 12 position
   const popSorted=S.top24
     .map(id=>({id,pop:vWeighted(id,'popularity')||0}))
     .sort((a,b)=>b.pop-a.pop);
   if(popSorted.length&&popSorted[0].pop>0) ft.add(popSorted[0].id);
-  // 2. Top 2 S2S scorers
+  // Top 2 S2S scorers — independent of popularity winner; if pop winner is also top S2S, still count them,
+  // but only add 2 *additional* S2S spots for non-pop-winner stories
   const s2sSorted=S.top24
     .map(id=>({id,score:s2w(S.s2[id]?.s2s,'s2s')||0}))
     .sort((a,b)=>b.score-a.score);
@@ -846,6 +847,8 @@ function renderC() {
 // ═══════════════════════════════════════════════════
 function renderA() {
   const topN=parseInt(document.getElementById('a-topn').value)||4;
+  const ranked=S.stories.map(s=>({id:s.id,total:s1(s.id)||0})).sort((a,b)=>b.total-a.total);
+  const top20ids=ranked.slice(0,20).map(r=>r.id);
   const cats=[
     {key:'directing',label:'Best Directing',w:20},
     {key:'plot',label:'Best Plot & Writing',w:20},
@@ -858,12 +861,20 @@ function renderA() {
     return `<div class="card" style="margin-bottom:0">
       <div class="card-hd"><div><h3>${cat.label}</h3><p>Top ${topN} · max ${cat.w} pts</p></div></div>
       <div class="twrap"><table class="st">
-        <thead><tr><th>#</th><th>Story</th><th>Score /${cat.w}</th></tr></thead>
-        <tbody>${rows.map((r,i)=>`<tr class="${i===0?'hilite':''}">
+        <thead><tr><th>#</th><th>Story</th><th>Score /${cat.w}</th><th>Status</th></tr></thead>
+        <tbody>${rows.map((r,i)=>{
+          const in20=top20ids.includes(r.s.id);
+          return `<tr class="${i===0?'hilite':''}">
           <td><span class="rb ${i===0?'r1':i===1?'r2':i===2?'r3':''}">${i+1}</span></td>
           <td><strong>${r.s.title}</strong><br><span style="font-size:11px;color:var(--text-light)">${r.s.genre}</span></td>
           <td><strong>${r.score.toFixed(2)}</strong></td>
-        </tr>`).join('')}</tbody>
+          <td>${i===0
+            ? (in20
+                ? `<span class="badge badge-pass">🏅 Award Winner · Also in Top 20</span>`
+                : `<span class="badge badge-ft">🏅 Award Winner · Fast Track</span>`)
+            : (in20 ? `<span class="badge" style="background:#e8f5e9;color:#2e7d32">In Top 20</span>` : '')
+          }</td>
+        </tr>`;}).join('')}</tbody>
       </table></div>
     </div>`;
   }).join('');
@@ -877,36 +888,72 @@ function buildTop24() {
     .sort((a,b)=>b.total-a.total);
   const top20ids=ranked.slice(0,20).map(r=>r.id);
 
+  // Each award independently picks its own top scorer — no skipping if already in Top 20
   const awardCats=['directing','plot','interactivity','cover'];
-  const ft={}, used=new Set();
+  const ft={};
   for(const cat of awardCats){
     const sorted=S.stories.map(s=>({id:s.id,score:jWeighted(s.id,cat)||0})).sort((a,b)=>b.score-a.score);
-    for(const e of sorted){
-      if(!top20ids.includes(e.id)&&!used.has(e.id)){ft[e.id]=cat;used.add(e.id);break;}
+    if(sorted.length&&sorted[0].score>0){
+      const winnerId=sorted[0].id;
+      ft[winnerId]=(ft[winnerId]?ft[winnerId]+' · Best ':' Best ')+cat.charAt(0).toUpperCase()+cat.slice(1);
+      // trim leading space artifact
+      ft[winnerId]=ft[winnerId].trim();
     }
   }
 
-  S.top24=[...top20ids,...Object.keys(ft)];
+  // Build top24: start with top20, add ft winners not already in top20, then autofill
+  const included=new Set(top20ids);
+  const ftExtras=Object.keys(ft).filter(id=>!top20ids.includes(id));
+  ftExtras.forEach(id=>included.add(id));
+
+  // Autofill remaining spots to reach 24
+  const autofill=[];
+  for(const r of ranked){
+    if(included.size>=24)break;
+    if(!included.has(r.id)){autofill.push(r.id);included.add(r.id);}
+  }
+
+  S.top24=[...top20ids,...ftExtras,...autofill].slice(0,24);
   S.fastTrack=ft;
   save();
 
   const rows=S.top24.map((id,i)=>{
     const s=S.stories.find(s=>s.id===id);
-    const total=s1(id); const isFT=!!ft[id]; const rank=top20ids.indexOf(id)+1;
+    const total=s1(id);
+    const isFTWinner=!!ft[id];
+    const inTop20=top20ids.includes(id);
+    const isAutofill=autofill.includes(id);
+    const rank=top20ids.indexOf(id)+1;
     const rc=rank===1?'r1':rank===2?'r2':rank===3?'r3':'';
-    return `<tr class="${isFT?'ftrow':'hilite'}">
-      <td>${isFT?`<span class="badge badge-ft">Fast Track</span>`:`<span class="rb ${rc}">${rank}</span>`}</td>
+    const rankCell=rank>0?`<span class="rb ${rc}">${rank}</span>`
+      :isAutofill?`<span class="badge" style="font-size:10px;background:#e3f2fd;color:#1565c0">Auto</span>`
+      :`<span class="badge badge-ft" style="font-size:10px">FT</span>`;
+    const noteCell=isFTWinner
+      ? (inTop20
+          ? `<span class="badge badge-pass" style="font-size:10px">🏅 ${ft[id]} · Also Top 20</span>`
+          : `<span class="badge badge-ft" style="font-size:10px">🏅 ${ft[id]}</span>`)
+      : (isAutofill ? `<span style="font-size:11px;color:var(--text-light)">Auto-fill</span>` : '');
+    return `<tr class="${isFTWinner?'ftrow':isAutofill?'':'hilite'}">
+      <td>${rankCell}</td>
       <td><strong>${s?.title||'?'}</strong></td>
       <td style="font-size:11px;color:var(--text-light)">${s?.genre||''}</td>
-      <td style="font-size:11px;color:#8a6f3a">${isFT?`Best ${ft[id].charAt(0).toUpperCase()+ft[id].slice(1)}`:''}</td>
+      <td>${noteCell}</td>
       <td><strong>${total!==null?total.toFixed(2):'—'}</strong></td>
     </tr>`;
   }).join('');
 
+  const ftInTop20=Object.keys(ft).filter(id=>top20ids.includes(id)).length;
+  const ftOutTop20=ftExtras.length;
+
   document.getElementById('top24-out').innerHTML=`
-    <div class="info">Top 20 stories (white) + ${Object.keys(ft).length} Fast Track winners (amber) = <strong>24 stories total</strong>.</div>
+    <div class="info">
+      Top 20 stories (white) + ${ftOutTop20} Fast Track winner${ftOutTop20!==1?'s':''} outside Top 20 (amber)
+      ${ftInTop20?`+ ${ftInTop20} award winner${ftInTop20!==1?'s':''} already in Top 20 (keep badge)`:''}
+      ${autofill.length?`+ ${autofill.length} auto-filled`:''}
+      = <strong>${S.top24.length} stories total</strong>.
+    </div>
     <div class="twrap"><table class="st">
-      <thead><tr><th>Rank / Status</th><th>Story</th><th>Genre</th><th>Fast Track Note</th><th>S1 Score</th></tr></thead>
+      <thead><tr><th>Rank / Status</th><th>Story</th><th>Genre</th><th>Award / Note</th><th>S1 Score</th></tr></thead>
       <tbody>${rows}</tbody>
     </table></div>`;
   toast(`Top 24 built ✓`);

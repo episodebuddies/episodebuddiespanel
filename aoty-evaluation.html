@@ -258,7 +258,7 @@
     <div class="kpi kpi-gold"><div class="kpi-lbl">Qualifying Authors</div><div class="kpi-val" id="kpi-n">0</div><div class="kpi-sub">loaded for evaluation</div><div class="kpi-icon">✍</div></div>
     <div class="kpi kpi-green"><div class="kpi-lbl">Judging</div><div class="kpi-val">50%</div><div class="kpi-sub">Interview · Impact · SOTY · Aesthetics</div><div class="kpi-icon">🎯</div></div>
     <div class="kpi kpi-purple"><div class="kpi-lbl">Voting</div><div class="kpi-val">50%</div><div class="kpi-sub">Feed · Poll · Authors · Popularity</div><div class="kpi-icon">🗳</div></div>
-    <div class="kpi kpi-blue"><div class="kpi-lbl">Fast Track Spots</div><div class="kpi-val">4</div><div class="kpi-sub">Interview · PFP · Aesthetics · Impact</div><div class="kpi-icon">⚡</div></div>
+    <div class="kpi kpi-blue"><div class="kpi-lbl">Fast Track Spots</div><div class="kpi-val">6</div><div class="kpi-sub">Top 24: PFP · Aesthetics · Impact · Devote | Top 12: Interview · Popular</div><div class="kpi-icon">⚡</div></div>
   </div>
   <div class="g2">
     <div class="card">
@@ -294,13 +294,23 @@
           </tbody>
         </table>
         <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Public Voting — 50%</div>
-        <table class="ref-table">
+        <table class="ref-table" style="margin-bottom:16px">
           <thead><tr><th>Category</th><th>Weight</th><th>Formula</th></tr></thead>
           <tbody>
             <tr><td>Feed Vote</td><td><strong>15%</strong></td><td>(total ÷ benchmark) × 15</td></tr>
             <tr><td>Poll Vote</td><td><strong>15%</strong></td><td>(total ÷ benchmark) × 15</td></tr>
             <tr><td>Authors Vote</td><td><strong>10%</strong></td><td>(total ÷ benchmark) × 10</td></tr>
             <tr><td>Popularity Vote</td><td><strong>10%</strong></td><td>(total ÷ benchmark) × 10</td></tr>
+          </tbody>
+        </table>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Stage 2 &amp; Beyond</div>
+        <table class="ref-table">
+          <thead><tr><th>Category</th><th>Weight</th><th>Formula</th></tr></thead>
+          <tbody>
+            <tr><td>2nd Poll Vote (Stage 2)</td><td><strong>10%</strong></td><td>(raw ÷ benchmark) × 10</td></tr>
+            <tr><td>Head-to-Head Vote (Stage 3)</td><td><strong>10%</strong></td><td>(raw votes ÷ benchmark) × 10</td></tr>
+            <tr><td style="color:var(--text-light)">Top 24 FT ★</td><td style="color:var(--text-light)">—</td><td style="color:var(--text-light)">PFP · Aesthetics · Impact · Most Devote</td></tr>
+            <tr><td style="color:var(--text-light)">Top 12 FT ★</td><td style="color:var(--text-light)">—</td><td style="color:var(--text-light)">Best Interview · Most Popular Author</td></tr>
           </tbody>
         </table>
       </div>
@@ -382,7 +392,7 @@
   <div class="card">
     <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Special Awards & Fast Track</h3><p>Top N per category. Top scorer not in Top 20 earns Fast Track.</p></div></div>
     <div class="card-body">
-      <div class="info info-purple"><strong>Fast Track awards (4 spots):</strong> Best Interview · Best Profile Picture · Best IG Aesthetics · Best Impact Message — each award's top scorer outside the Top 20 earns automatic Top 24 entry.</div>
+      <div class="info info-purple"><strong>Fast Track awards:</strong> Award winners keep their award regardless of Top 20 status. If already in Top 20, they retain the award title. Top 24 completes with top performers after the top 20 who haven't already qualified.<br><br><strong>Top 24 Fast Track (4 spots):</strong> Best Profile Picture · Best IG Aesthetics · Best Impact Message · Most Devote Author (manually selected — not scored).<br><strong>Top 12 Fast Track (2 spots):</strong> Best Interview · Most Popular Author — awarded to top scorer outside Top 12 by Stage 2 total.</div>
       <div class="fbar">
         <label>Top N:</label><input type="number" class="topn" id="a-topn" value="4" min="1" max="20" oninput="renderA()">
         <button class="btn btn-outline btn-sm" onclick="setN('a-topn',4);renderA()">4</button>
@@ -398,11 +408,19 @@
 <div id="p-top24" class="panel">
   <div class="card">
     <div class="card-hd card-hd-dark">
-      <div class="card-hd-left"><h3>Top 24 Builder</h3><p>Top 20 by combined score + 4 Fast Track winners</p></div>
-      <button class="btn btn-gold btn-sm" onclick="buildTop24()">⚡ Auto-Build Top 24</button>
+      <div class="card-hd-left"><h3>Top 24 Builder</h3><p>Top 20 by combined score + Fast Track winners (PFP · Aesthetics · Impact · Most Devote) + auto-fill from top performers</p></div>
+      <button class="btn btn-gold btn-sm" onclick="buildTop24()">⚡ Build Top 24</button>
     </div>
     <div class="card-body">
-      <div class="info info-green"><strong>Composition:</strong> Authors ranked 1–20 by Stage 1 total advance. The top scorer in each Fast Track award category not already in the Top 20 fills the remaining 4 spots.</div>
+      <div class="info info-green"><strong>Composition:</strong> Authors ranked 1–20 by Stage 1 total advance automatically. Award winners keep their award even if in Top 20. The 4 Top 24 Fast Track awards (PFP, Aesthetics, Impact Message, Most Devote) are displayed with winner badges. Remaining spots to reach 24 are auto-filled by the next highest scorers not yet included.</div>
+      <div class="info info-purple" style="margin-top:0"><strong>Most Devote Author</strong> is a manual selection — use the input below to designate the winner. This does not affect scores.</div>
+      <div style="background:var(--off-white);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span style="font-size:13px;font-weight:700;color:var(--navy)">🙏 Most Devote Author:</span>
+        <select id="devote-select" style="max-width:260px" onchange="setDevote(this.value)">
+          <option value="">— Select manually —</option>
+        </select>
+        <span id="devote-badge" style="display:none" class="badge badge-ft">⭐ Selected</span>
+      </div>
       <div id="top24-out"><p style="color:var(--text-light);font-size:13px">Click "Auto-Build Top 24" above.</p></div>
       <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
         <button class="btn btn-navy" onclick="promoteS2()">Promote Top 24 to Stage 2 →</button>
@@ -413,9 +431,9 @@
 
 <div id="p-stage2" class="panel">
   <div class="card">
-    <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 2 — Top 24</h3><p>2nd Poll Vote (÷ benchmark × 15) added to Stage 1 carry-over → Top 12</p></div></div>
+    <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 2 — Top 24</h3><p>2nd Poll Vote (÷ benchmark × 10) added to Stage 1 carry-over → Top 12</p></div></div>
     <div class="card-body">
-      <div class="info"><strong>Formula:</strong> S1 Score + 2nd Poll Weighted (out of 15) = S2 Total. Top 12 advance. Fast Track authors carry S1 score directly.</div>
+      <div class="info"><strong>Formula:</strong> S1 Score + 2nd Poll Weighted (out of 10) = S2 Total. Top 12 advance.<br><strong>Top 12 Fast Track:</strong> Best Interview winner &amp; Most Popular Author winner earn automatic Top 12 entry (carrying their S2 score).</div>
       <div class="fbar">
         <label>Top N:</label><input type="number" class="topn" id="s2-topn" min="1" placeholder="All" oninput="renderS2()">
         <button class="btn btn-outline btn-sm" onclick="setN('s2-topn',12);renderS2()">Top 12</button>
@@ -432,13 +450,14 @@
 
 <div id="p-stage3" class="panel">
   <div class="card">
-    <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 3 — Head-to-Head</h3><p>H2H Vote (out of 10) added to Stage 2 score → Top 8</p></div></div>
+    <div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>Stage 3 — Head-to-Head</h3><p>H2H raw votes → benchmark → scored /10, added to Stage 2 score → Top 8</p></div></div>
     <div class="card-body">
-      <div class="info"><strong>Formula:</strong> S2 Total + H2H Vote (e.g. 8.5) = S3 Total. Top 8 advance to the Final.</div>
+      <div class="info"><strong>Formula:</strong> S2 Total + H2H Weighted Score (raw ÷ benchmark × 10) = S3 Total. Top 8 advance to the Final. Enter raw vote totals — the benchmark is auto-detected from the highest raw score.</div>
       <div class="fbar">
         <label>Top N:</label><input type="number" class="topn" id="s3-topn" min="1" placeholder="All" oninput="renderS3()">
         <button class="btn btn-outline btn-sm" onclick="setN('s3-topn',8);renderS3()">Top 8</button>
         <button class="btn btn-outline btn-sm" onclick="setN('s3-topn','');renderS3()">All</button>
+        <div id="s3-bench" style="margin-left:auto"></div>
       </div>
       <div class="twrap"><table class="st"><thead id="s3-head"></thead><tbody id="s3-body"></tbody></table></div>
       <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
@@ -466,11 +485,12 @@ const JNAMES={CXR:'Xavier',CTA:'Tali',CRL:'R. Lewis',CNL:'Nillette',CMY:'Mercy'}
 const PLAC=[{t:'🏆 AOTY Winner',m:'m1',e:'🥇'},{t:'1st Runner Up',m:'m2',e:'🥈'},{t:'2nd Runner Up',m:'m3',e:'🥉'},{t:'3rd Runner Up',m:'mrest',e:'4'},{t:'4th Runner Up',m:'mrest',e:'5'},{t:'5th Runner Up',m:'mrest',e:'6'},{t:'6th Runner Up',m:'mrest',e:'7'},{t:'7th Runner Up',m:'mrest',e:'8'}];
 const JW={interview:20,impact:10,soty:15,aesthetics:5,pfp:0};
 const VW={feed:15,poll:15,authors:10,popularity:10};
-const FT=[{key:'interview',label:'Best Interview',icon:'🎤'},{key:'pfp',label:'Best Profile Picture',icon:'📷'},{key:'aesthetics',label:'Best IG Aesthetics',icon:'✨'},{key:'impact',label:'Best Impact Message',icon:'💬'}];
+const FT=[{key:'pfp',label:'Best Profile Picture',icon:'📷'},{key:'aesthetics',label:'Best IG Aesthetics',icon:'✨'},{key:'impact',label:'Best Impact Message',icon:'💬'},{key:'devote',label:'Most Devote Author',icon:'🙏',manual:true}];
+const FT12=[{key:'interview',label:'Best Interview',icon:'🎤'},{key:'popularity',label:'Most Popular Author',icon:'🌟'}];
 const DEFS=[['AK Gray','@alistoriez'],['Alessandra','@alessandra.write'],['Augen','@night_black_episode'],['BD','@xbr.eex'],['Blackhearts','@heartsepi.write'],['Bunny Lin','@bunnylin.episode'],['Chanel N','@chanel.stories'],['Charlie Seb','@charlieseb.writes'],['Chriswrite_episode','@chriswrites_episode'],['Daphne De Carter','@daphnedecarter.episode'],['Daze Meadly','@dazemeadly.epi'],['Em_stories14','@em_stories14'],['Eysenck','@eys.writes'],['Fern','@fables_by_fern'],['Harly','@harlywritess'],['Honey','@episode.honeyy'],['Ivy','@ivy.epiwrites'],['Janb','@janb.stories'],['Jmstoriesxx','@jmstoriesxx'],['Kath','@kath.stories'],['Kimberly V.','@k.v.stories'],['L. Kennedy','@l.kennedy_episode'],['Lisa Melz','@lisa.writess'],['Lulu Majestic','@lulu_majestic'],['Lum0s','@lum0s_writes'],['Lumiere','@vers_de_lumiere'],['Nadi','@nadi_stories'],['Nas','@nxx._epy'],['Nelly','@nellyy.epi'],['Nelson','@nelsonepisode'],['Odessa','@odessa_episode'],['R. Lewis','@rlewiswrites'],['Rumi','@rumiwritess'],['Sarai','@saraii.episode'],['Song','@song.epi'],['Tali','@taliberry.scripted'],['Veni','@veni.writes'],['Viper','@viper.episode']];
 const PNAMES=['Setup','Judging','Voting','Combined','Awards','Top 24','Stage 2','Stage 3','Final'];
 
-function blank(){return{authors:[],judging:{},voting:{},top24:[],fastTrack:{},s2:{},s3:{},top12:[],top8:[]};}
+function blank(){return{authors:[],judging:{},voting:{},top24:[],fastTrack:{},fastTrack12:{},devoteId:null,s2:{},s3:{},top12:[],top8:[]};}
 let S=(()=>{try{const d=localStorage.getItem(SK);return d?JSON.parse(d):blank();}catch(e){return blank();}})();
 let jCat='interview',vCat='feed',curView='table';
 
@@ -485,9 +505,23 @@ function bm(cat){const t=S.authors.map(a=>vTot(a.id,cat)).filter(v=>v!==null);re
 function vW(id,cat){const t=vTot(id,cat),b=bm(cat),w=VW[cat];if(t===null||!b||!w)return null;return+(t/b*w).toFixed(2);}
 function s1(id){const j=['interview','impact','soty','aesthetics'].map(c=>jW(id,c)).filter(v=>v!==null);const v=['feed','poll','authors','popularity'].map(c=>vW(id,c)).filter(v=>v!==null);if(!j.length&&!v.length)return null;return+(j.reduce((a,b)=>a+b,0)+v.reduce((a,b)=>a+b,0)).toFixed(2);}
 function s2bm(){const v=S.top24.map(id=>{const x=S.s2[id]?.poll;return x!==null&&x!==undefined&&x!==''?Number(x):null;}).filter(v=>v!==null);return v.length?Math.max(...v):null;}
-function s2pW(val){const b=s2bm();if(val===null||val===undefined||val===''||!b)return null;return+(Number(val)/b*15).toFixed(2);}
-// All Top 24 compete in Stage 2. Popularity Vote winner fast-tracks to Top 12.
-function getAOTYFT12(){const s=S.top24.map(id=>({id,pop:vW(id,'popularity')||0})).sort((a,b)=>b.pop-a.pop);return s.length&&s[0].pop>0?[s[0].id]:[];}
+function s2pW(val){const b=s2bm();if(val===null||val===undefined||val===''||!b)return null;return+(Number(val)/b*10).toFixed(2);}
+// Top 12 FT: Best Interview and Most Popular Author — top scorer in each category not already guaranteed Top 12 by score
+function getAOTYFT12(){
+  const ft12={};
+  for(const cat of FT12){
+    let scoreArr;
+    if(cat.key==='interview'){scoreArr=S.top24.map(id=>({id,score:jW(id,'interview')||0})).sort((a,b)=>b.score-a.score);}
+    else if(cat.key==='popularity'){scoreArr=S.top24.map(id=>({id,score:vW(id,'popularity')||0})).sort((a,b)=>b.score-a.score);}
+    else{scoreArr=[];}
+    // Each award independently picks its top scorer — no exclusions between awards
+    if(scoreArr.length&&scoreArr[0].score>0){
+      const winnerId=scoreArr[0].id;
+      ft12[winnerId]=(ft12[winnerId]?ft12[winnerId]+' · ':'')+cat.label;
+    }
+  }
+  return ft12;
+}
 // s2T = S1 + Poll weighted (no fast track bypass)
 function s2T(id){const base=s1(id);if(base===null)return null;const p=S.s2[id]?.poll;return+(base+(s2pW(p)||0)).toFixed(2);}
 // H2H: raw → benchmark → /10
@@ -507,7 +541,7 @@ function go(name,idx){
   document.querySelector(`[data-p="${name}"]`).classList.add('active');
   document.getElementById('ah-sv').textContent=PNAMES[idx||0];
   for(let i=0;i<8;i++){const d=document.getElementById('pd-'+i);if(d){d.classList.remove('done','active');i<(idx||0)?d.classList.add('done'):i===(idx||0)&&d.classList.add('active');}}
-  const r={judging:renderJ,voting:renderV,combined:renderC,awards:renderA,stage2:renderS2,stage3:renderS3,stage4:renderS4};
+  const r={judging:renderJ,voting:renderV,combined:renderC,awards:renderA,top24:()=>{populateDevoteSelect();},stage2:renderS2,stage3:renderS3,stage4:renderS4};
   if(r[name])r[name]();
 }
 function setN(id,v){document.getElementById(id).value=v;}
@@ -529,6 +563,7 @@ function renderSetup(){
       <input type="text" value="${a.handle}" placeholder="@handle" onchange="upA('${a.id}','handle',this.value)" style="font-size:12px;color:var(--text-light)">
       <button class="btn btn-red btn-sm del-btn" onclick="delA('${a.id}')">✕</button>
     </div>`).join('');
+  populateDevoteSelect();
 }
 
 function jTab(cat,el){jCat=cat;document.querySelectorAll('#p-judging .subtab').forEach(t=>t.classList.remove('active'));el.classList.add('active');renderJ();}
@@ -597,22 +632,91 @@ function renderA(){
   const topN=parseInt(document.getElementById('a-topn').value)||4;
   const ranked=S.authors.map(a=>({id:a.id,total:s1(a.id)||0})).sort((a,b)=>b.total-a.total);
   const top20=ranked.slice(0,20).map(r=>r.id);
-  document.getElementById('awards-grid').innerHTML=FT.map(cat=>{
-    const isPFP=cat.key==='pfp';const ml=isPFP?100:JW[cat.key];
-    const rows=S.authors.map(a=>({a,score:isPFP?(pfp(a.id)||0):(jW(a.id,cat.key)||0)})).sort((a,b)=>b.score-a.score).slice(0,topN);
-    const mx=Math.max(...rows.map(r=>r.score),0.01);
-    return`<div class="card" style="margin-bottom:0"><div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>${cat.icon} ${cat.label}</h3><p>Top ${topN} · ${isPFP?'out of 100':`max ${ml} pts`}</p></div>${isPFP?`<span class="badge badge-pfp">Fast Track Only</span>`:''}</div><div class="twrap"><table class="st"><thead><tr><th>#</th><th>Author</th><th>Score</th><th>Status</th></tr></thead><tbody>${rows.map((r,i)=>{const in20=top20.includes(r.a.id);return`<tr class="${i===0?'hilite':''}"><td><span class="rb ${i===0?'r1':i===1?'r2':i===2?'r3':''}">${i+1}</span></td><td><strong>${r.a.name}</strong><br><span style="font-size:11px;color:var(--text-light)">${r.a.handle}</span></td><td>${bar(r.score,ml)}</td><td>${in20?`<span class="badge badge-pass">In Top 20</span>`:`<span class="badge badge-ft">FT Eligible</span>`}</td></tr>`;}).join('')}</tbody></table></div></div>`;
+  // Top 24 FT awards (PFP, Aesthetics, Impact, Devote) — winner keeps award even if in Top 20
+  const allFT=[...FT,...FT12];
+  document.getElementById('awards-grid').innerHTML=allFT.map(cat=>{
+    const isPFP=cat.key==='pfp';const isManual=!!cat.manual;const isFT12cat=FT12.some(c=>c.key===cat.key);
+    const ml=isPFP?100:(JW[cat.key]||VW[cat.key]||10);
+    let rows;
+    if(isManual){
+      // Most Devote: show manually selected winner
+      const devId=S.devoteId;const devAuthor=devId?S.authors.find(a=>a.id===devId):null;
+      rows=devAuthor?[{a:devAuthor,score:null,isWinner:true}]:[];
+    } else if(isPFP){
+      rows=S.authors.map(a=>({a,score:pfp(a.id)||0})).sort((a,b)=>b.score-a.score).slice(0,topN);
+    } else if(cat.key==='interview'){
+      rows=S.authors.map(a=>({a,score:jW(a.id,'interview')||0})).sort((a,b)=>b.score-a.score).slice(0,topN);
+    } else if(cat.key==='popularity'){
+      rows=S.authors.map(a=>({a,score:vW(a.id,'popularity')||0})).sort((a,b)=>b.score-a.score).slice(0,topN);
+    } else {
+      rows=S.authors.map(a=>({a,score:jW(a.id,cat.key)||0})).sort((a,b)=>b.score-a.score).slice(0,topN);
+    }
+    const mx=isManual?1:Math.max(...rows.map(r=>r.score||0),0.01);
+    const ftLabel=isFT12cat?'<span class="badge badge-adv" style="font-size:9px">Top 12 FT</span>':'<span class="badge badge-ft" style="font-size:9px">Top 24 FT</span>';
+    return`<div class="card" style="margin-bottom:0"><div class="card-hd card-hd-dark"><div class="card-hd-left"><h3>${cat.icon} ${cat.label}</h3><p>${isManual?'Manually selected':'Top '+topN+' · '+(isPFP?'out of 100':'max '+ml+' pts')}</p></div>${ftLabel}</div><div class="twrap"><table class="st"><thead><tr><th>#</th><th>Author</th><th>Score</th><th>Status</th></tr></thead><tbody>${isManual?(rows.length?rows.map((r,i)=>{const in20=top20.includes(r.a.id);return`<tr class="hilite"><td><span class="rb r1">★</span></td><td><strong>${r.a.name}</strong><br><span style="font-size:11px;color:var(--text-light)">${r.a.handle}</span></td><td><span class="badge badge-ft">🙏 Devote Winner</span></td><td>${in20?'<span class="badge badge-pass">Also in Top 20</span>':'<span class="badge badge-ft">Award Winner</span>'}</td></tr>`;}):['<tr><td colspan="4" style="text-align:center;color:var(--text-light);padding:12px">No winner selected yet — use the selector above.</td></tr>']).join(''):(rows.map((r,i)=>{const in20=top20.includes(r.a.id);return`<tr class="${i===0?'hilite':''}"><td><span class="rb ${i===0?'r1':i===1?'r2':i===2?'r3':''}">${i+1}</span></td><td><strong>${r.a.name}</strong><br><span style="font-size:11px;color:var(--text-light)">${r.a.handle}</span></td><td>${r.score!==null?bar(r.score,ml):'—'}</td><td>${i===0?`<span class="badge badge-ft">🏅 Award Winner</span>`:(in20?`<span class="badge badge-pass">In Top 20</span>`:`<span class="badge-fail badge">Eligible</span>`)}</td></tr>`;}).join(''))}</tbody></table></div></div>`;
   }).join('');
+}
+
+function setDevote(id){S.devoteId=id||null;save();
+  const badge=document.getElementById('devote-badge');badge.style.display=id?'inline-flex':'none';
+  renderA();
+  // If top24 was already built, rebuild it automatically so devote selection shows immediately
+  if(S.top24.length)buildTop24();
+  toast(id?'Most Devote Author set ✓':'Devote selection cleared','🙏');
+}
+
+function populateDevoteSelect(){
+  const sel=document.getElementById('devote-select');if(!sel)return;
+  sel.innerHTML='<option value="">— Select manually —</option>'+S.authors.map(a=>`<option value="${a.id}"${S.devoteId===a.id?' selected':''}>${a.name} ${a.handle}</option>`).join('');
+  const badge=document.getElementById('devote-badge');if(badge)badge.style.display=S.devoteId?'inline-flex':'none';
 }
 
 function buildTop24(){
   const ranked=S.authors.map(a=>({id:a.id,name:a.name,handle:a.handle,total:s1(a.id)||0})).sort((a,b)=>b.total-a.total);
   const top20=ranked.slice(0,20).map(r=>r.id);
-  const ft={},used=new Set();
-  for(const cat of FT){const isPFP=cat.key==='pfp';const sorted=S.authors.map(a=>({id:a.id,score:isPFP?(pfp(a.id)||0):(jW(a.id,cat.key)||0)})).sort((a,b)=>b.score-a.score);for(const e of sorted){if(!top20.includes(e.id)&&!used.has(e.id)){ft[e.id]=cat.label;used.add(e.id);break;}}}
-  S.top24=[...top20,...Object.keys(ft)];S.fastTrack=ft;save();
-  const rows=S.top24.map((id,i)=>{const a=S.authors.find(a=>a.id===id);const total=s1(id);const isFT=!!ft[id];const rank=top20.indexOf(id)+1;const rc=rank===1?'r1':rank===2?'r2':rank===3?'r3':'';return`<tr class="${isFT?'ftrow':'hilite'}"><td>${isFT?`<span class="badge badge-ft">⚡ ${ft[id]}</span>`:`<span class="rb ${rc}">${rank}</span>`}</td><td><strong>${a?.name||'?'}</strong></td><td style="font-size:11px;color:var(--text-light)">${a?.handle||''}</td><td>${total!==null?bar(total,100):'<span style="color:#ccc">—</span>'}</td></tr>`;}).join('');
-  document.getElementById('top24-out').innerHTML=`<div style="display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap"><div style="background:var(--gold-dim);border:1px solid rgba(201,168,76,0.25);border-radius:8px;padding:12px 18px;display:flex;align-items:center;gap:10px"><span style="font-size:22px">🏅</span><div><div style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy)">20</div><div style="font-size:11px;color:var(--text-light)">From Rankings</div></div></div><div style="background:var(--green-dim);border:1px solid rgba(22,163,74,0.25);border-radius:8px;padding:12px 18px;display:flex;align-items:center;gap:10px"><span style="font-size:22px">⚡</span><div><div style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy)">${Object.keys(ft).length}</div><div style="font-size:11px;color:var(--text-light)">Fast Track</div></div></div><div style="background:var(--navy);border-radius:8px;padding:12px 18px;display:flex;align-items:center;gap:10px"><span style="font-size:22px">🎯</span><div><div style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--white)">${S.top24.length}</div><div style="font-size:11px;color:rgba(255,255,255,0.4)">Total Top 24</div></div></div></div><div class="twrap"><table class="st"><thead><tr><th>Rank / Award</th><th>Author</th><th>Handle</th><th>S1 Score / 100</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  // Award winners keep their award regardless of Top 20 status
+  // Top 24 FT: PFP, Aesthetics, Impact, Most Devote — each gets their badge, winner stays in top20 if already there
+  const ft={};
+  for(const cat of FT){
+    if(cat.manual){
+      // Most Devote: manually selected
+      if(S.devoteId){ft[S.devoteId]=(ft[S.devoteId]?ft[S.devoteId]+' · ':'')+cat.label;}
+    } else {
+      const isPFP=cat.key==='pfp';
+      const sorted=S.authors.map(a=>({id:a.id,score:isPFP?(pfp(a.id)||0):(jW(a.id,cat.key)||0)})).sort((a,b)=>b.score-a.score);
+      if(sorted.length){ft[sorted[0].id]=(ft[sorted[0].id]?ft[sorted[0].id]+' · ':'')+cat.label;}
+    }
+  }
+  // Build the top24 list: start with top20, then add ft winners not in top20, then autofill from ranked non-included
+  const included=new Set([...top20]);
+  const ftExtras=Object.keys(ft).filter(id=>!top20.includes(id));
+  for(const id of ftExtras)included.add(id);
+  // Autofill remaining to reach 24
+  let autofill=[];
+  for(const r of ranked){if(!included.has(r.id)){autofill.push(r.id);included.add(r.id);if([...included].length>=24)break;}}
+  S.top24=[...top20,...ftExtras,...autofill].slice(0,24);
+  S.fastTrack=ft;save();
+  const rows=S.top24.map((id,i)=>{
+    const a=S.authors.find(a=>a.id===id);const total=s1(id);
+    const isFT=!!ft[id];const isAutofill=autofill.includes(id);
+    const rank=top20.indexOf(id)+1;const rc=rank===1?'r1':rank===2?'r2':rank===3?'r3':'';
+    const rankLabel=rank>0?`<span class="rb ${rc}">${rank}</span>`:isAutofill?`<span class="badge badge-adv" style="font-size:9px">Auto</span>`:'';
+    return`<tr class="${isFT?'ftrow':isAutofill?'':'hilite'}">
+      <td>${isFT?`<span class="badge badge-ft" style="font-size:9px">⚡ ${ft[id]}</span>`+rankLabel:rankLabel}</td>
+      <td><strong>${a?.name||'?'}</strong></td>
+      <td style="font-size:11px;color:var(--text-light)">${a?.handle||''}</td>
+      <td>${total!==null?bar(total,100):'<span style="color:#ccc">—</span>'}</td>
+    </tr>`;
+  }).join('');
+  const ftCount=Object.keys(ft).filter(id=>!top20.includes(id)).length;
+  document.getElementById('top24-out').innerHTML=`<div style="display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap">
+    <div style="background:var(--gold-dim);border:1px solid rgba(201,168,76,0.25);border-radius:8px;padding:12px 18px;display:flex;align-items:center;gap:10px"><span style="font-size:22px">🏅</span><div><div style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy)">20</div><div style="font-size:11px;color:var(--text-light)">Top 20</div></div></div>
+    <div style="background:var(--green-dim);border:1px solid rgba(22,163,74,0.25);border-radius:8px;padding:12px 18px;display:flex;align-items:center;gap:10px"><span style="font-size:22px">⚡</span><div><div style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy)">${ftCount}</div><div style="font-size:11px;color:var(--text-light)">FT (Outside Top 20)</div></div></div>
+    <div style="background:var(--blue-dim);border:1px solid rgba(37,99,235,0.2);border-radius:8px;padding:12px 18px;display:flex;align-items:center;gap:10px"><span style="font-size:22px">📈</span><div><div style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy)">${autofill.length}</div><div style="font-size:11px;color:var(--text-light)">Auto-filled</div></div></div>
+    <div style="background:var(--navy);border-radius:8px;padding:12px 18px;display:flex;align-items:center;gap:10px"><span style="font-size:22px">🎯</span><div><div style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--white)">${S.top24.length}</div><div style="font-size:11px;color:rgba(255,255,255,0.4)">Total Top 24</div></div></div>
+    </div>
+    <div class="info" style="margin-bottom:14px"><strong>Award winners in Top 20</strong> keep their award badge. Remaining spots after Top 20 + FT extras are auto-filled by the next highest scorers.</div>
+    <div class="twrap"><table class="st"><thead><tr><th>Rank / Award</th><th>Author</th><th>Handle</th><th>S1 Score / 100</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   document.querySelector('[data-p="top24"]').classList.add('has-data');
   toast('Top 24 built ✓','⚡');
 }
@@ -624,21 +728,22 @@ function renderS2(){
   const b=s2bm();
   document.getElementById('s2-bench').innerHTML=b?`<div class="bench-pill">Poll Benchmark <span>${b.toLocaleString()}</span></div>`:'';
   const ft12=getAOTYFT12();
+  const ft12ids=Object.keys(ft12);
   const mx_base=Math.max(...S.top24.map(id=>s2T(id)||0),0.01);
   const rows=S.top24.map(id=>{
     const a=S.authors.find(a=>a.id===id);
-    const isFT12=ft12.includes(id);
-    return{id,a,base:s1(id)||0,total:s2T(id)||s1(id)||0,isFT12};
+    const isFT12=ft12ids.includes(id);
+    return{id,a,base:s1(id)||0,total:s2T(id)||s1(id)||0,isFT12,ft12Label:ft12[id]||null};
   }).sort((a,b)=>b.total-a.total);
-  // Top 12: FT12 guaranteed + top (12-ft12.length) non-FT by s2T
-  const nonFT=rows.filter(r=>!r.isFT12).map(r=>r.id).slice(0,12-ft12.length);
-  const top12ids=[...ft12,...nonFT];
+  // Top 12: FT12 guaranteed + top (12-ft12ids.length) non-FT by s2T
+  const nonFT=rows.filter(r=>!r.isFT12).map(r=>r.id).slice(0,12-ft12ids.length);
+  const top12ids=[...ft12ids,...nonFT];
   const disp=topN?rows.slice(0,topN):rows;
-  document.getElementById('s2-head').innerHTML=`<tr><th>#</th><th>Author</th><th>Handle</th><th>S1 Score</th><th>2nd Poll Raw</th><th>Poll /15</th><th>S2 Total</th><th>Top 12?</th></tr>`;
+  document.getElementById('s2-head').innerHTML=`<tr><th>#</th><th>Author</th><th>Handle</th><th>S1 Score</th><th>2nd Poll Raw</th><th>Poll /10</th><th>S2 Total</th><th>Top 12?</th></tr>`;
   document.getElementById('s2-body').innerHTML=disp.map((r,i)=>{
     const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';const in12=top12ids.includes(r.id);
     const poll=S.s2[r.id]?.poll;
-    const ftBadge=r.isFT12?`&nbsp;<span class="badge badge-ft" style="font-size:9px">Pop FT</span>`:'';
+    const ftBadge=r.isFT12?`&nbsp;<span class="badge badge-ft" style="font-size:9px">⚡ ${r.ft12Label}</span>`:'';
     return`<tr class="${in12?'hilite':''} ${r.isFT12?'ftrow':''}">
       <td><span class="rb ${rc}">${i+1}</span></td>
       <td><strong>${r.a?.name||'?'}</strong>${ftBadge}</td>
@@ -656,24 +761,27 @@ function renderS2(){
 function setS2(id,val){if(!S.s2[id])S.s2[id]={poll:null};S.s2[id].poll=val===''?null:Math.max(0,parseFloat(val)||0);save();renderS2();}
 function promoteS3(){
   const ft12=getAOTYFT12();
+  const ft12ids=Object.keys(ft12);
   const nonFT=S.top24
-    .filter(id=>!ft12.includes(id))
+    .filter(id=>!ft12ids.includes(id))
     .map(id=>({id,total:s2T(id)||0}))
     .sort((a,b)=>b.total-a.total)
-    .slice(0,12-ft12.length)
+    .slice(0,12-ft12ids.length)
     .map(r=>r.id);
-  S.top12=[...ft12,...nonFT];
+  S.top12=[...ft12ids,...nonFT];
   S.top12.forEach(id=>{if(!S.s3[id])S.s3[id]={h2h_raw:null};});
   save();go('stage3',7);toast('Top 12 → Stage 3','✅');
 }
 
 function renderS3(){
-  if(!S.top12.length){document.getElementById('s3-body').innerHTML='<tr><td colspan="7" style="text-align:center;color:var(--text-light);padding:24px">Promote Top 12 from Stage 2 first.</td></tr>';return;}
+  if(!S.top12.length){document.getElementById('s3-body').innerHTML='<tr><td colspan="8" style="text-align:center;color:var(--text-light);padding:24px">Promote Top 12 from Stage 2 first.</td></tr>';return;}
   const topN=parseInt(document.getElementById('s3-topn').value)||null;
+  const bm3=h2hBm();
+  document.getElementById('s3-bench').innerHTML=bm3?`<div class="bench-pill">H2H Benchmark <span>${bm3.toLocaleString()}</span></div>`:'';
   const rows=S.top12.map(id=>{const a=S.authors.find(a=>a.id===id);return{id,a,base:s2T(id)||0,total:s3T(id)||0};}).sort((a,b)=>b.total-a.total);
   const top8=rows.slice(0,8).map(r=>r.id);const disp=topN?rows.slice(0,topN):rows;const mx=Math.max(...rows.map(r=>r.total),0.01);
-  document.getElementById('s3-head').innerHTML=`<tr><th>#</th><th>Author</th><th>Handle</th><th>S2 Score</th><th>H2H (/10)</th><th>S3 Total</th><th>Top 8?</th></tr>`;
-  document.getElementById('s3-body').innerHTML=disp.map((r,i)=>{const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';const in8=top8.includes(r.id);const h=S.s3[r.id]?.h2h;return`<tr class="${in8?'hilite':''}"><td><span class="rb ${rc}">${i+1}</span></td><td><strong>${r.a?.name||'?'}</strong></td><td style="font-size:11px;color:var(--text-light)">${r.a?.handle||''}</td><td>${r.base.toFixed(2)}</td><td><input type="number" min="0" max="10" step="0.5" value="${h??''}" placeholder="0.0" class="${h!==null&&h!==''?'has-val':''}" style="width:74px;text-align:center" oninput="setS3('${r.id}',this.value)"></td><td>${bar(r.total,mx)}</td><td><span class="badge ${in8?'badge-pass':'badge-fail'}">${in8?'✔ Top 8':'❌'}</span></td></tr>`;}).join('');
+  document.getElementById('s3-head').innerHTML=`<tr><th>#</th><th>Author</th><th>Handle</th><th>S2 Score</th><th>H2H Raw Votes</th><th>H2H /10</th><th>S3 Total</th><th>Top 8?</th></tr>`;
+  document.getElementById('s3-body').innerHTML=disp.map((r,i)=>{const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';const in8=top8.includes(r.id);const h=S.s3[r.id]?.h2h_raw;const hw=h2hW(h);return`<tr class="${in8?'hilite':''}"><td><span class="rb ${rc}">${i+1}</span></td><td><strong>${r.a?.name||'?'}</strong></td><td style="font-size:11px;color:var(--text-light)">${r.a?.handle||''}</td><td>${r.base.toFixed(2)}</td><td><input type="number" min="0" value="${h??''}" placeholder="0" class="${h!==null&&h!==''?'has-val':''}" style="width:88px;text-align:center" oninput="setS3('${r.id}',this.value)"></td><td style="text-align:center;color:var(--text-mid)">${hw!==null?hw.toFixed(2):'—'}</td><td>${bar(r.total,mx)}</td><td><span class="badge ${in8?'badge-pass':'badge-fail'}">${in8?'✔ Top 8':'❌'}</span></td></tr>`;}).join('');
 }
 function setS3(id,val){if(!S.s3[id])S.s3[id]={h2h_raw:null};S.s3[id].h2h_raw=val===''?null:Math.max(0,parseFloat(val)||0);save();renderS3();}
 function promoteS4(){const s=S.top12.map(id=>({id,total:s3T(id)||0})).sort((a,b)=>b.total-a.total);S.top8=s.slice(0,8).map(r=>r.id);save();go('stage4',8);renderS4();toast('Top 8 → Final','🏆');}
