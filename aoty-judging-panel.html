@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AOTY Judge Portal · Buddies Support Hub 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+<link rel="apple-touch-icon" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+<!-- Search & social preview -->
+<meta property="og:image" content="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+<meta property="og:title" content="Episode Buddies">
+<meta property="og:description" content="Uplifting Episode authors through free community services, monthly contests, and the most celebrated annual competitions on the platform.">
+<meta name="theme-color" content="#0F1B33">
+<style>
+:root {
+  --ink: #0d0d0d;
+  --paper: #faf8f4;
+  --cream: #f2ede4;
+  --gold: #c9a84c;
+  --gold-light: #e8d49a;
+  --gold-dim: rgba(201,168,76,0.12);
+  --rose: #b85c6e;
+  --rose-dim: rgba(184,92,110,0.1);
+  --jade: #2d7a5f;
+  --jade-dim: rgba(45,122,95,0.1);
+  --cobalt: #2a4fa3;
+  --cobalt-dim: rgba(42,79,163,0.1);
+  --plum: #6b3fa0;
+  --plum-dim: rgba(107,63,160,0.1);
+  --border: rgba(13,13,13,0.12);
+  --border-strong: rgba(13,13,13,0.25);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
+  --shadow: 0 2px 20px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.05);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 58px;
+}
+.logo-mark {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+.logo-sep { width: 1px; height: 28px; background: rgba(255,255,255,0.15); }
+.logo-sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.conf-badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+
+/* ── LAYOUT ── */
+.layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+/* ── PAGE HERO ── */
+.page-hero {
+  text-align: center;
+  padding: 48px 0 36px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 36px;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.hero-title {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.hero-sub {
+  font-size: 15px;
+  color: #666;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── TABS ── */
+.tab-bar {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 32px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab {
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #888;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--ink); border-bottom-color: var(--gold); font-weight: 600; }
+.tab-icon { font-size: 15px; }
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── CARDS ── */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.card-header {
+  padding: 18px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.card-header-dark { background: var(--ink); color: var(--paper); }
+.card-header-dark .card-title { color: var(--gold); }
+.card-header-dark .card-sub { color: rgba(255,255,255,0.55); }
+.card-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.card-sub { font-size: 12px; color: #888; }
+.card-body { padding: 24px; }
+
+/* ── FORMS ── */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media(max-width:640px){ .form-grid,.form-grid-3{ grid-template-columns:1fr; } }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field-full { grid-column: 1 / -1; }
+label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #666;
+}
+input[type=text], input[type=number], textarea, select {
+  border: 1.5px solid var(--border-strong);
+  border-radius: 7px;
+  padding: 9px 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--paper);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+}
+input.has-val, textarea.has-val { background: #fffdf5; border-color: var(--gold); }
+textarea { resize: vertical; min-height: 80px; }
+select { cursor: pointer; }
+.hint { font-size: 11px; color: #999; margin-top: 2px; }
+
+/* ── SCORE INPUTS ── */
+.score-section {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.score-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.score-section-desc { font-size: 12px; color: #666; margin-bottom: 16px; }
+
+.criteria-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+}
+.criteria-row:first-of-type { border-top: none; padding-top: 0; }
+.criteria-label { font-size: 13px; font-weight: 500; }
+.criteria-max {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: #999;
+  white-space: nowrap;
+}
+.criteria-input {
+  width: 80px;
+  text-align: center;
+  font-family: var(--mono);
+  font-weight: 500;
+}
+.score-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 8px;
+  margin-top: 14px;
+}
+.score-total-label { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+.score-total-val {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.score-weighted {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  margin-left: 8px;
+}
+
+/* ── NOMINATION GRID ── */
+.nom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:640px){ .nom-grid{ grid-template-columns:1fr; } }
+.nom-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.nom-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.nom-icon { font-size: 20px; }
+.nom-title { font-size: 13px; font-weight: 700; }
+.nom-desc { font-size: 11px; color: #888; margin-bottom: 10px; }
+.nom-slots { display: flex; flex-direction: column; gap: 6px; }
+.nom-slot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nom-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: #bbb;
+  width: 16px;
+  flex-shrink: 0;
+}
+.nom-slot input { flex: 1; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--ink);
+}
+.btn-gold:hover { background: #b8922f; }
+.btn-ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-ink:hover { background: #333; }
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--border-strong);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-rose {
+  background: var(--rose);
+  color: #fff;
+}
+.btn-rose:hover { background: #9c3f51; }
+.btn-sm { padding: 7px 14px; font-size: 12px; }
+.btn-lg { padding: 13px 28px; font-size: 15px; }
+.btn-full { width: 100%; justify-content: center; }
+
+/* ── BADGES & CHIPS ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge-gold { background: var(--gold-dim); color: #8a6010; border: 1px solid rgba(201,168,76,0.3); }
+.badge-rose { background: var(--rose-dim); color: var(--rose); border: 1px solid rgba(184,92,110,0.25); }
+.badge-jade { background: var(--jade-dim); color: var(--jade); border: 1px solid rgba(45,122,95,0.25); }
+.badge-cobalt { background: var(--cobalt-dim); color: var(--cobalt); border: 1px solid rgba(42,79,163,0.25); }
+.badge-plum { background: var(--plum-dim); color: var(--plum); border: 1px solid rgba(107,63,160,0.25); }
+.badge-gray { background: #f0f0f0; color: #666; border: 1px solid #e0e0e0; }
+
+/* ── INFO BOXES ── */
+.info-box {
+  border-radius: 9px;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 10px;
+}
+.info-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.info-gold { background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.3); }
+.info-jade { background: var(--jade-dim); border: 1px solid rgba(45,122,95,0.25); }
+.info-rose { background: var(--rose-dim); border: 1px solid rgba(184,92,110,0.25); }
+.info-cobalt { background: var(--cobalt-dim); border: 1px solid rgba(42,79,163,0.2); }
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+
+/* ── WEIGHT STRIP ── */
+.weight-strip {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.weight-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+}
+.weight-pct {
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* ── SUBMISSION HISTORY ── */
+.history-table { width: 100%; border-collapse: collapse; }
+.history-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #999;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.history-table td {
+  padding: 10px 12px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.history-table tr:last-child td { border-bottom: none; }
+.history-table tr:hover td { background: var(--cream); }
+.hist-author { font-weight: 600; }
+.hist-cat {
+  font-size: 11px;
+  color: #888;
+}
+.hist-score {
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--jade);
+}
+.hist-time { font-size: 11px; color: #bbb; font-family: var(--mono); }
+
+/* ── TOAST ── */
+#toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  z-index: 1000;
+  white-space: nowrap;
+  pointer-events: none;
+}
+#toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── SCORE PREVIEW BAR ── */
+.preview-bar {
+  background: var(--ink);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-top: 16px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.preview-item { text-align: center; }
+.preview-label { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; }
+.preview-val { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--gold); }
+.preview-sep { width: 1px; height: 36px; background: rgba(255,255,255,0.1); }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #bbb;
+}
+.empty-icon { font-size: 36px; margin-bottom: 10px; }
+.empty-text { font-size: 13px; }
+
+/* ── RESPONSIVE ADJUSTMENTS ── */
+@media(max-width: 768px) {
+  .hero-title { font-size: 28px; }
+  .layout { padding: 20px 16px 60px; }
+  .card-body { padding: 16px; }
+  .form-grid, .form-grid-3 { grid-template-columns: 1fr; }
+  .tab { padding: 10px 14px; font-size: 12px; }
+}
+
+/* ── CATEGORY HEADER BANDS ── */
+.cat-band {
+  padding: 10px 24px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.cat-band-interview { background: linear-gradient(90deg, #1a2e5a, #2a4fa3); color: #afc4ff; }
+.cat-band-aesthetics { background: linear-gradient(90deg, #3a1a2e, #8a2d55); color: #ffb3cc; }
+.cat-band-pfp { background: linear-gradient(90deg, #1a3a2e, #2d7a5f); color: #99e8ca; }
+.cat-band-impact { background: linear-gradient(90deg, #3a2e1a, #a06b2d); color: #ffe0a0; }
+.cat-band-nominations { background: linear-gradient(90deg, #2e1a3a, #6b3fa0); color: #d4b0ff; }
+
+/* ── PROGRESS DOTS (score state) ── */
+.score-dots { display: flex; gap: 4px; align-items: center; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #ddd; }
+.dot.filled { background: var(--jade); }
+
+/* ── ANCHOR LINK ── */
+.anchor-link {
+  font-size: 11px;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(201,168,76,0.4);
+}
+.anchor-link:hover { border-bottom-color: var(--gold); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <span class="logo-mark">Buddies</span>
+    <div class="logo-sep"></div>
+    <span class="logo-sub">AOTY Judge Portal · 2026</span>
+    <div class="header-right">
+      <span class="conf-badge">🔒 Confidential</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <div class="page-hero">
+    <div class="hero-eyebrow">Author of the Year · Official Judging Portal</div>
+    <h1 class="hero-title">AOTY Score Submission</h1>
+    <p class="hero-sub">Submit scores for each author independently. All categories are submitted separately and recorded centrally.</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="tab-bar">
+    <button class="tab active" data-tab="interview" onclick="switchTab('interview',this)">
+      <span class="tab-icon">🎤</span> Author's Interview
+    </button>
+    <button class="tab" data-tab="aesthetics" onclick="switchTab('aesthetics',this)">
+      <span class="tab-icon">✨</span> IG Aesthetics
+    </button>
+    <button class="tab" data-tab="pfp" onclick="switchTab('pfp',this)">
+      <span class="tab-icon">📷</span> Profile Picture
+    </button>
+    <button class="tab" data-tab="impact" onclick="switchTab('impact',this)">
+      <span class="tab-icon">💬</span> Impact Message
+    </button>
+    <button class="tab" data-tab="nominations" onclick="switchTab('nominations',this)">
+      <span class="tab-icon">🏅</span> Nominations
+    </button>
+    <button class="tab" data-tab="history" onclick="switchTab('history',this)">
+      <span class="tab-icon">📋</span> My Submissions
+    </button>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       PANEL 1 — AUTHOR'S INTERVIEW (20%)
+  ═════════════════════════════════════════ -->
+  <div id="tab-interview" class="panel active">
+    <div class="weight-strip">
+      <div class="weight-pill"><span class="weight-pct">20%</span> of final score</div>
+      <div class="weight-pill">Scored out of 100</div>
+      <div class="weight-pill">Stage 1</div>
+      <span class="badge badge-cobalt">⚡ Fast Track eligible — Best Interview</span>
+    </div>
+
+    <div class="info-box info-cobalt">
+      <span class="info-icon">ℹ️</span>
+      <span>Assess the author's full set of Q&amp;A responses across five criteria. Each submission is for <strong>one author at a time</strong>. After submitting, the form clears for the next author.</span>
+    </div>
+
+    <div class="card">
+      <div class="card-header card-header-dark">
+        <div>
+          <div class="card-title">Author Details</div>
+          <div class="card-sub">Identify the author whose Interview you are scoring</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field">
+            <label>Author Name *</label>
+            <input type="text" id="i-author-name" placeholder="e.g. Jane Author" oninput="markFilled(this)">
+          </div>
+          <div class="field">
+            <label>Author Instagram Handle *</label>
+            <input type="text" id="i-author-handle" placeholder="@handle" oninput="markFilled(this)">
+          </div>
+          <div class="field">
+            <label>Your (Judge) Name *</label>
+            <input type="text" id="i-judge-name" placeholder="Your full name" oninput="markFilled(this)">
+          </div>
+          <div class="field">
+            <label>Interview Date</label>
+            <input type="text" id="i-interview-date" placeholder="e.g. 12 May 2026" oninput="markFilled(this)">
+          </div>
+          <div class="field field-full">
+            <label>Notes (optional)</label>
+            <textarea id="i-notes" placeholder="Any additional observations about this interview session…" rows="2" oninput="markFilled(this)"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="cat-band cat-band-interview">Interview Scoring Rubric — 100 Points Total</div>
+      <div class="card-body">
+
+        <!-- PRO -->
+        <div class="score-section">
+          <div class="score-section-title">Professionalism (PRO) — 30 pts</div>
+          <div class="score-section-desc">Is the tone respectful, composed, and appropriate for AOTY? Look for confidence, maturity, and awareness of what the competition represents.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            <strong style="color:var(--ink)">Score guide:</strong><br>
+            25–30 · Highly professional, respectful, confident<br>19–24 · Professional with only minor slips<br>13–18 · Adequate tone but inconsistent<br>7–12 · Mostly unprofessional or inappropriate<br>0–6 · Careless or inappropriate throughout
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Professionalism Score</span>
+            <span class="criteria-max">/ 30</span>
+            <input type="number" class="criteria-input" id="i-pro" min="0" max="30" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <!-- RC -->
+        <div class="score-section">
+          <div class="score-section-title">Response Composure (RC) — 10 pts</div>
+          <div class="score-section-desc">Are answers calm, structured, and focused? Well-composed responses address questions directly without rambling. Tricky questions handled with grace.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            9–10 · Calm, focused, well-structured <br> 7–8 · Mostly composed, minor rambling<br>5–6 · Somewhat structured but loses focus <br> 3–4 · Disorganized, hard to follow <br> 0–2 · Scattered or flustered
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Response Composure Score</span>
+            <span class="criteria-max">/ 10</span>
+            <input type="number" class="criteria-input" id="i-rc" min="0" max="10" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <!-- G&S -->
+        <div class="score-section">
+          <div class="score-section-title">Grammar &amp; Spelling (G&amp;S) — 20 pts</div>
+          <div class="score-section-desc">Grammar, spelling, sentence flow, and readability. Does not need to be formal, but should meet professional standards where errors don't distract.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · No noticeable errors, fluent <br> 13–16 · Few minor errors, clear overall<br>9–12 · Noticeable errors, still readable <br> 5–8 · Frequent errors affecting clarity <br> 0–4 · Very poor, hard to read
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Grammar &amp; Spelling Score</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="i-gs" min="0" max="20" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <!-- RS -->
+        <div class="score-section">
+          <div class="score-section-title">Response Strength (RS) — 10 pts</div>
+          <div class="score-section-desc">The substance and depth of each answer. Strong responses are clear, impactful, and demonstrate genuine thought. Shallow or vague answers score poorly.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            9–10 · Strong, clear, and insightful <br> 7–8 · Solid with minor gaps<br>5–6 · Adequate but surface-level <br> 3–4 · Vague or lacking depth <br> 0–2 · Weak or non-answers
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Response Strength Score</span>
+            <span class="criteria-max">/ 10</span>
+            <input type="number" class="criteria-input" id="i-rs" min="0" max="10" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <!-- OA -->
+        <div class="score-section">
+          <div class="score-section-title">Overall Appeal (OA) — 20 pts</div>
+          <div class="score-section-desc">Overall impression left by the author's responses taken as a whole. Engaging, authentic answers that reflect personality and leave a memorable impression score highest.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · Engaging, authentic, memorable <br> 13–16 · Decent appeal, somewhat memorable<br>9–12 · Passable but unremarkable <br> 5–8 · Bland, generic responses <br> 0–4 · Unengaging or forgettable
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Overall Appeal Score</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="i-oa" min="0" max="20" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <!-- TOTAL ROW -->
+        <div class="score-total-row">
+          <span class="score-total-label">Interview Total</span>
+          <div>
+            <span class="score-total-val" id="i-total">0</span>
+            <span style="color:rgba(255,255,255,0.4);font-size:13px"> / 100</span>
+            <span class="score-weighted" id="i-weighted">(→ 0.00 / 20 pts)</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="field" style="margin-bottom:16px">
+          <label>Judge Name (confirm) *</label>
+          <input type="text" id="i-judge-confirm" placeholder="Your name — required before submission" oninput="markFilled(this)">
+        </div>
+        <button class="btn btn-cobalt btn-full btn-lg" style="background:var(--cobalt);color:#fff" onclick="submitForm('interview')">
+          📤 Submit Interview Score
+        </button>
+        <p class="hint" style="text-align:center;margin-top:10px">Score is sent to the judging record. Form clears after submission.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       PANEL 2 — IG AESTHETICS (5%)
+  ═════════════════════════════════════════ -->
+  <div id="tab-aesthetics" class="panel">
+    <div class="weight-strip">
+      <div class="weight-pill"><span class="weight-pct">5%</span> of final score</div>
+      <div class="weight-pill">Scored out of 100</div>
+      <div class="weight-pill">Stage 1</div>
+      <span class="badge badge-rose">⚡ Fast Track eligible — Best IG Aesthetics</span>
+    </div>
+
+    <div class="info-box info-rose">
+      <span class="info-icon">📱</span>
+      <span>Visit each author's Instagram profile directly before scoring. Do not score from memory. Profile must be evaluated fresh during the judging period.</span>
+    </div>
+
+    <div class="card">
+      <div class="card-header card-header-dark">
+        <div><div class="card-title">Author Details</div><div class="card-sub">Author whose Instagram page you are evaluating</div></div>
+      </div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field"><label>Author Name *</label><input type="text" id="a-author-name" placeholder="Author name" oninput="markFilled(this)"></div>
+          <div class="field"><label>Author IG Handle *</label><input type="text" id="a-author-handle" placeholder="@instagram_handle" oninput="markFilled(this)"></div>
+          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="a-judge-name" placeholder="Your full name" oninput="markFilled(this)"></div>
+          <div class="field"><label>Evaluation Date</label><input type="text" id="a-date" placeholder="e.g. 12 May 2026" oninput="markFilled(this)"></div>
+          <div class="field field-full"><label>Notes (optional)</label><textarea id="a-notes" placeholder="Observations about this author's Instagram presence…" rows="2" oninput="markFilled(this)"></textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="cat-band cat-band-aesthetics">IG Aesthetics Scoring — 100 Points Total</div>
+      <div class="card-body">
+
+        <div class="score-section">
+          <div class="score-section-title">Profile Cohesion &amp; Theme — 20 pts</div>
+          <div class="score-section-desc">Is there a consistent visual theme (colors, fonts, style) running through the feed? Posts should feel connected, reflecting the author's brand or identity clearly.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · Consistent, professional theme throughout <br> 13–16 · Some cohesion, minor messiness<br>9–12 · Theme present but inconsistent <br> 5–8 · Mostly disconnected <br> 0–4 · Random, chaotic, no theme
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Profile Cohesion &amp; Theme</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="a-cohesion" min="0" max="20" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Content Quality — 20 pts</div>
+          <div class="score-section-desc">Are images, graphics, and post designs clear, well-edited, and visually appealing? Look for attention to detail — readable text, clean layouts, professional presentation.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · High-res, clear, well-edited posts <br> 13–16 · Decent quality, minor flaws<br>9–12 · Acceptable but noticeably rough <br> 5–8 · Poor editing or low quality <br> 0–4 · Blurry, illegible, or careless
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Content Quality</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="a-quality" min="0" max="20" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Creativity &amp; Originality — 15 pts</div>
+          <div class="score-section-desc">Does the feed stand out? Look for unique editing style, distinctive layouts, or creative ideas that show personal touch. Heavy reliance on templates without customization scores lower.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            13–15 · Unique style, creative, personal touch <br> 10–12 · Somewhat creative<br>7–9 · Some originality, mostly generic <br> 4–6 · Little creativity <br> 0–3 · Generic, template-heavy
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Creativity &amp; Originality</span>
+            <span class="criteria-max">/ 15</span>
+            <input type="number" class="criteria-input" id="a-creativity" min="0" max="15" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Consistency — 15 pts</div>
+          <div class="score-section-desc">Is there a similar tone, voice, and visual approach across posts? Look for balance between promotional content and community engagement, and a posting pattern that isn't erratic.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            13–15 · Regular, balanced, cohesive tone <br> 10–12 · Mostly consistent<br>7–9 · Inconsistent at times <br> 4–6 · Irregular with tonal gaps <br> 0–3 · Rare posting, disjointed
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Consistency</span>
+            <span class="criteria-max">/ 15</span>
+            <input type="number" class="criteria-input" id="a-consistency" min="0" max="15" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Relevance to Writing / Community — 15 pts</div>
+          <div class="score-section-desc">Do posts reflect the author's stories, writing journey, or engagement with the Episode community? The page should feel like it belongs to an Episode author.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            13–15 · Clearly highlights writing and brand <br> 10–12 · Some relevance, mixed content<br>7–9 · Writing-adjacent but unfocused <br> 4–6 · Minimal connection <br> 0–3 · No connection to writing
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Relevance to Writing / Community</span>
+            <span class="criteria-max">/ 15</span>
+            <input type="number" class="criteria-input" id="a-relevance" min="0" max="15" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Overall Appeal &amp; Professionalism — 15 pts</div>
+          <div class="score-section-desc">First impression of the page: is it neat, engaging, and memorable? Would a new visitor be impressed enough to follow? Should feel AOTY-worthy.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            13–15 · Engaging, neat, polished, AOTY-worthy <br> 10–12 · Some appeal, mostly professional<br>7–9 · Decent but lacks polish <br> 4–6 · Weak impression <br> 0–3 · Unprofessional, poor impact
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Overall Appeal &amp; Professionalism</span>
+            <span class="criteria-max">/ 15</span>
+            <input type="number" class="criteria-input" id="a-appeal" min="0" max="15" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-total-row">
+          <span class="score-total-label">Aesthetics Total</span>
+          <div>
+            <span class="score-total-val" id="a-total">0</span>
+            <span style="color:rgba(255,255,255,0.4);font-size:13px"> / 100</span>
+            <span class="score-weighted" id="a-weighted">(→ 0.00 / 5 pts)</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="field" style="margin-bottom:16px">
+          <label>Judge Name (confirm) *</label>
+          <input type="text" id="a-judge-confirm" placeholder="Your name — required before submission" oninput="markFilled(this)">
+        </div>
+        <button class="btn btn-full btn-lg" style="background:var(--rose);color:#fff" onclick="submitForm('aesthetics')">
+          📤 Submit Aesthetics Score
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       PANEL 3 — BEST PROFILE PICTURE (Award only)
+  ═════════════════════════════════════════ -->
+  <div id="tab-pfp" class="panel">
+    <div class="weight-strip">
+      <div class="weight-pill"><span class="weight-pct">Award Only</span></div>
+      <div class="weight-pill">Scored out of 100</div>
+      <div class="weight-pill">Stage 1</div>
+      <span class="badge badge-jade">⚡ Fast Track → Top 24 (does not affect cumulative score)</span>
+    </div>
+
+    <div class="info-box info-jade">
+      <span class="info-icon">📷</span>
+      <span><strong>Award only — not cumulative.</strong> The author with the highest PFP score wins the Best Profile Picture Award and a Top 24 Fast Track spot. This score is NOT added to their running total. Evaluate with the same rigor regardless.</span>
+    </div>
+
+    <div class="card">
+      <div class="card-header card-header-dark">
+        <div><div class="card-title">Author Details</div><div class="card-sub">Author whose profile picture you are evaluating</div></div>
+      </div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field"><label>Author Name *</label><input type="text" id="p-author-name" placeholder="Author name" oninput="markFilled(this)"></div>
+          <div class="field"><label>Author IG Handle *</label><input type="text" id="p-author-handle" placeholder="@handle" oninput="markFilled(this)"></div>
+          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="p-judge-name" placeholder="Your full name" oninput="markFilled(this)"></div>
+          <div class="field"><label>Notes (optional)</label><input type="text" id="p-notes" placeholder="Optional observations" oninput="markFilled(this)"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="cat-band cat-band-pfp">Best Profile Picture Scoring — 100 Points Total</div>
+      <div class="card-body">
+
+        <div class="score-section">
+          <div class="score-section-title">Clarity &amp; Quality — 20 pts</div>
+          <div class="score-section-desc">Is the profile picture high resolution, properly cropped, and centered? Sharp and clearly visible at small sizes (as it appears in stories and the app).</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · Very clear, sharp, well-cropped <br> 13–16 · Slightly grainy or off-crop, acceptable<br>9–12 · Noticeable quality issues, still usable <br> 5–8 · Blurry or poorly cropped <br> 0–4 · Pixelated, unviewable
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Clarity &amp; Quality</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="p-clarity" min="0" max="20" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Professionalism &amp; Presentation — 20 pts</div>
+          <div class="score-section-desc">Is the image neat and well-presented — even if the style is casual? Look for effort and intentionality. Overcrowded backgrounds or careless presentation score lower.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · Clean, intentional, neat <br> 13–16 · Decent, minor messiness<br>9–12 · Passable but noticeably rough <br> 5–8 · Distracting or careless <br> 0–4 · Unprofessional
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Professionalism &amp; Presentation</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="p-prof" min="0" max="20" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Relevance to Author Identity — 20 pts</div>
+          <div class="score-section-desc">Does the profile picture match the author's personal brand, writing style, or genre identity? Should feel authentic and recognizable as theirs — not generic or disconnected.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · Strongly reflects identity or brand <br> 13–16 · Clearly connected<br>9–12 · Somewhat connected <br> 5–8 · Weak link to identity <br> 0–4 · No link to author identity
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Relevance to Author Identity</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="p-relevance" min="0" max="20" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Originality &amp; Creativity — 15 pts</div>
+          <div class="score-section-desc">Does the image stand out from common stock or default profile pictures? Look for thought in the design or choice — something that feels deliberate and distinctive.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            13–15 · Unique, creative, clearly stands out <br> 10–12 · Somewhat creative<br>7–9 · Some originality, mostly familiar <br> 4–6 · Little creativity <br> 0–3 · Generic or stock image
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Originality &amp; Creativity</span>
+            <span class="criteria-max">/ 15</span>
+            <input type="number" class="criteria-input" id="p-originality" min="0" max="15" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Consistency with Event / Audience — 15 pts</div>
+          <div class="score-section-desc">Is the profile picture appropriate for AOTY-level recognition? Should represent the author positively and align with how they present themselves to the Episode community.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            13–15 · Fully appropriate for AOTY <br> 10–12 · Mostly appropriate<br>7–9 · Acceptable with minor concerns <br> 4–6 · Questionable for this platform <br> 0–3 · Unfitting or off-brand
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Consistency with Event / Audience</span>
+            <span class="criteria-max">/ 15</span>
+            <input type="number" class="criteria-input" id="p-consistency" min="0" max="15" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Overall Impact — 10 pts</div>
+          <div class="score-section-desc">First impression: is the image memorable or striking? Best profile pictures balance simplicity with personality — they say something about the author in a single glance.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            9–10 · Memorable, striking first impression <br> 7–8 · Moderately memorable<br>5–6 · Acceptable but unremarkable <br> 3–4 · Weak impression <br> 0–2 · Forgettable
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Overall Impact</span>
+            <span class="criteria-max">/ 10</span>
+            <input type="number" class="criteria-input" id="p-impact" min="0" max="10" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-total-row">
+          <span class="score-total-label">PFP Total</span>
+          <div>
+            <span class="score-total-val" id="p-total">0</span>
+            <span style="color:rgba(255,255,255,0.4);font-size:13px"> / 100</span>
+            <span class="score-weighted" style="color:rgba(255,255,255,0.4);font-size:11px">&nbsp;(Award only — not added to cumulative score)</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="field" style="margin-bottom:16px">
+          <label>Judge Name (confirm) *</label>
+          <input type="text" id="p-judge-confirm" placeholder="Your name — required before submission" oninput="markFilled(this)">
+        </div>
+        <button class="btn btn-full btn-lg" style="background:var(--jade);color:#fff" onclick="submitForm('pfp')">
+          📤 Submit Profile Picture Score
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       PANEL 4 — COMMUNITY IMPACT MESSAGE (10%)
+  ═════════════════════════════════════════ -->
+  <div id="tab-impact" class="panel">
+    <div class="weight-strip">
+      <div class="weight-pill"><span class="weight-pct">10%</span> of final score</div>
+      <div class="weight-pill">Scored out of 100</div>
+      <div class="weight-pill">Stage 3 — Top 12</div>
+      <span class="badge badge-gold">Judge-scored only · No public vote</span>
+    </div>
+
+    <div class="info-box info-gold">
+      <span class="info-icon">💬</span>
+      <span>The Community Impact Message is submitted by Top 12 authors at Stage 3. All five selection team members evaluate all 12 messages. Scores are averaged across the panel and contribute 10% to each author's cumulative AOTY score.</span>
+    </div>
+
+    <div class="card">
+      <div class="card-header card-header-dark">
+        <div><div class="card-title">Author Details</div><div class="card-sub">Author whose Impact Message you are evaluating</div></div>
+      </div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field"><label>Author Name *</label><input type="text" id="im-author-name" placeholder="Author name" oninput="markFilled(this)"></div>
+          <div class="field"><label>Author IG Handle *</label><input type="text" id="im-author-handle" placeholder="@handle" oninput="markFilled(this)"></div>
+          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="im-judge-name" placeholder="Your full name" oninput="markFilled(this)"></div>
+          <div class="field"><label>Evaluation Date</label><input type="text" id="im-date" placeholder="e.g. 15 June 2026" oninput="markFilled(this)"></div>
+          <div class="field field-full"><label>Notes (optional)</label><textarea id="im-notes" placeholder="Optional observations about this author's message…" rows="2" oninput="markFilled(this)"></textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="cat-band cat-band-impact">Community Impact Message Scoring — 100 Points Total</div>
+      <div class="card-body">
+
+        <div class="score-section">
+          <div class="score-section-title">Authenticity — 20 pts</div>
+          <div class="score-section-desc">Does the message feel genuine? Does it reflect the author's real voice and lived experience in the community, or does it feel performative and generic?</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · Wholly genuine, personal, unmistakably the author's voice <br> 13–16 · Mostly authentic, minor generic moments<br>9–12 · Some sincerity but noticeably templated <br> 5–8 · Feels performative or rehearsed <br> 0–4 · No genuine voice present
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Authenticity</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="im-authenticity" min="0" max="20" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Depth of Impact — 20 pts</div>
+          <div class="score-section-desc">Is the contribution meaningful, broad, and sustained? Evidence of real and lasting community impact scores highest.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · Meaningful, broad, sustained contribution clearly evidenced <br> 13–16 · Solid contribution, slightly limited<br>9–12 · Some impact but surface-level or one-off <br> 5–8 · Minimal impact described <br> 0–4 · No tangible impact evident
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Depth of Impact</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="im-depth" min="0" max="20" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Clarity &amp; Expression — 20 pts</div>
+          <div class="score-section-desc">Is the message clear, compelling, and well-structured throughout? A strong message is easy to follow and builds naturally to a conclusion.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · Clear, compelling, well-structured throughout <br> 13–16 · Mostly clear with minor lapses<br>9–12 · Readable but disorganised or wordy <br> 5–8 · Hard to follow, weak structure <br> 0–4 · Incoherent or unreadable
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Clarity &amp; Expression</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="im-clarity" min="0" max="20" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Community Awareness — 20 pts</div>
+          <div class="score-section-desc">Does the message demonstrate a deep, grounded understanding of the Episode community? Specific references and genuine insight score highest; vague generics score lowest.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · Deep, grounded understanding of the community context <br>> 13–16 · Good awareness with some broad statements<br>9–12 · Vague references, generic community language <br> 5–8 · Minimal awareness <br> 0–4 · No community context shown
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Community Awareness</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="im-awareness" min="0" max="20" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-section">
+          <div class="score-section-title">Overall Impression — 20 pts</div>
+          <div class="score-section-desc">Taken as a whole, is the message resonant, memorable, and fully AOTY-worthy? The overall impression left after reading the message in full.</div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
+            17–20 · Resonant, memorable, fully AOTY-worthy <br> 13–16 · Solid overall, moderately memorable<br>9–12 · Acceptable but unremarkable <br> 5–8 · Weak impression overall <br> 0–4 · No impact or effort evident
+          </div>
+          <div class="criteria-row">
+            <span class="criteria-label">Overall Impression</span>
+            <span class="criteria-max">/ 20</span>
+            <input type="number" class="criteria-input" id="im-impression" min="0" max="20" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
+          </div>
+        </div>
+
+        <div class="score-total-row">
+          <span class="score-total-label">Impact Message Total</span>
+          <div>
+            <span class="score-total-val" id="im-total">0</span>
+            <span style="color:rgba(255,255,255,0.4);font-size:13px"> / 100</span>
+            <span class="score-weighted" id="im-weighted">(→ 0.00 / 10 pts)</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="field" style="margin-bottom:16px">
+          <label>Judge Name (confirm) *</label>
+          <input type="text" id="im-judge-confirm" placeholder="Your name — required before submission" oninput="markFilled(this)">
+        </div>
+        <button class="btn btn-full btn-lg" style="background:var(--gold);color:var(--ink)" onclick="submitForm('impact')">
+          📤 Submit Impact Message Score
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       PANEL 5 — NOMINATION AWARDS
+  ═════════════════════════════════════════ -->
+  <div id="tab-nominations" class="panel">
+    <div class="weight-strip">
+      <div class="weight-pill"><span class="weight-pct">6 Awards</span></div>
+      <div class="weight-pill">Nomination-based</div>
+      <div class="weight-pill">Stages 1–4</div>
+      <span class="badge badge-plum">Judge deliberation · No public vote · 5 nominees each</span>
+    </div>
+
+    <div class="info-box info-cobalt">
+      <span class="info-icon">🏅</span>
+      <span>Nominate <strong>up to 5 authors</strong> for each award. These are deliberation-based and do not affect cumulative scores. The committee finalizes winners through deliberation. Submit your nominations independently.</span>
+    </div>
+
+    <div class="card">
+      <div class="card-header card-header-dark">
+        <div><div class="card-title">Your Judge Details</div><div class="card-sub">Identify yourself before submitting nominations</div></div>
+      </div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="n-judge-name" placeholder="Your full name" oninput="markFilled(this)"></div>
+          <div class="field"><label>Submission Date</label><input type="text" id="n-date" placeholder="e.g. 20 June 2026" oninput="markFilled(this)"></div>
+          <div class="field field-full"><label>General Notes (optional)</label><textarea id="n-notes" placeholder="Any overall notes about your nominations…" rows="2" oninput="markFilled(this)"></textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="cat-band cat-band-nominations">Nomination Awards — 5 Nominees Each</div>
+      <div class="card-body">
+        <div class="nom-grid">
+
+          <!-- Rising Star -->
+          <div class="nom-card">
+            <div class="nom-card-head">
+              <span class="nom-icon">🕊️</span>
+              <div>
+                <div class="nom-title">Rising Star Award</div>
+                <span class="badge badge-gray" style="font-size:10px">Stage 1–4</span>
+              </div>
+            </div>
+            <div class="nom-desc">Honors a new or emerging author whose debut or breakout story demonstrates exceptional potential, originality, and creativity. The spark that lights the path for future storytelling greatness.</div>
+            <div class="nom-slots" id="slots-rising">
+              <div class="nom-slot"><span class="nom-num">1.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">2.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">3.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">4.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">5.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+            </div>
+          </div>
+
+          <!-- Lifetime Achievement -->
+          <div class="nom-card">
+            <div class="nom-card-head">
+              <span class="nom-icon">🏅</span>
+              <div>
+                <div class="nom-title">Lifetime Achievement Award</div>
+                <span class="badge badge-gray" style="font-size:10px">Stage 1–4</span>
+              </div>
+            </div>
+            <div class="nom-desc">Celebrates long-standing authors whose continuous contributions, mentorship, and artistic evolution have defined and uplifted the community over the years. Not just stories — a legacy.</div>
+            <div class="nom-slots" id="slots-lifetime">
+              <div class="nom-slot"><span class="nom-num">1.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">2.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">3.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">4.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">5.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+            </div>
+          </div>
+
+          <!-- Community Service -->
+          <div class="nom-card">
+            <div class="nom-card-head">
+              <span class="nom-icon">💖</span>
+              <div>
+                <div class="nom-title">Community Service Award</div>
+                <span class="badge badge-gray" style="font-size:10px">Stage 1–4</span>
+              </div>
+            </div>
+            <div class="nom-desc">Acknowledges authors who go above and beyond to support, empower, and unite the community — through events, initiatives, collaborations, or mentorship. Compassion, teamwork, and uplifting others.</div>
+            <div class="nom-slots" id="slots-service">
+              <div class="nom-slot"><span class="nom-num">1.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">2.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">3.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">4.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">5.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+            </div>
+          </div>
+
+          <!-- Creative Excellence -->
+          <div class="nom-card">
+            <div class="nom-card-head">
+              <span class="nom-icon">✨</span>
+              <div>
+                <div class="nom-title">Creative Excellence Award</div>
+                <span class="badge badge-gray" style="font-size:10px">Stage 1–4</span>
+              </div>
+            </div>
+            <div class="nom-desc">Given to creators who consistently demonstrate innovation in writing, directing, or visual storytelling — setting new artistic benchmarks on the Episode platform. Creative mastery where imagination meets skill.</div>
+            <div class="nom-slots" id="slots-creative">
+              <div class="nom-slot"><span class="nom-num">1.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">2.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">3.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">4.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">5.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+            </div>
+          </div>
+
+          <!-- Honorary Recognition -->
+          <div class="nom-card">
+            <div class="nom-card-head">
+              <span class="nom-icon">🌺</span>
+              <div>
+                <div class="nom-title">Honorary Recognition</div>
+                <span class="badge badge-gray" style="font-size:10px">Stage 1–4</span>
+              </div>
+            </div>
+            <div class="nom-desc">Awarded to authors whose leadership, mentorship, or dedication behind the scenes has strengthened creative bonds within the community. Quiet brilliance — the author who uplifts others without seeking the spotlight.</div>
+            <div class="nom-slots" id="slots-honorary">
+              <div class="nom-slot"><span class="nom-num">1.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">2.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">3.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">4.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">5.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+            </div>
+          </div>
+
+          <!-- Most Devoted Author (Fast Track) -->
+          <div class="nom-card" style="border-color:rgba(201,168,76,0.4);background:var(--gold-dim)">
+            <div class="nom-card-head">
+              <span class="nom-icon">🙏</span>
+              <div>
+                <div class="nom-title">Most Devoted Author Award</div>
+                <span class="badge badge-gold" style="font-size:10px">⚡ Fast Track → Top 24</span>
+              </div>
+            </div>
+            <div class="nom-desc">Identifies the author who best exemplifies unwavering dedication and consistency — whose love for storytelling shows in every update, interaction, and project. Selected through judging committee nomination.</div>
+            <div class="nom-slots" id="slots-devoted">
+              <div class="nom-slot"><span class="nom-num">1.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">2.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">3.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">4.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+              <div class="nom-slot"><span class="nom-num">5.</span><input type="text" placeholder="Author name" class="nom-input" oninput="markFilled(this)"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="divider"></div>
+        <div class="field" style="margin-bottom:16px">
+          <label>Judge Name (confirm) *</label>
+          <input type="text" id="n-judge-confirm" placeholder="Your name — required before submission" oninput="markFilled(this)">
+        </div>
+        <button class="btn btn-full btn-lg" style="background:var(--plum);color:#fff" onclick="submitForm('nominations')">
+          📤 Submit All Nominations
+        </button>
+        <p class="hint" style="text-align:center;margin-top:10px">All six nomination lists are submitted together in one batch.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       PANEL 6 — SUBMISSION HISTORY
+  ═════════════════════════════════════════ -->
+  <div id="tab-history" class="panel">
+    <div class="info-box info-jade">
+      <span class="info-icon">📋</span>
+      <span>Your locally recorded submissions are shown below. Each entry also gets sent to the central Google Sheet. Scores are stored per author per category — submitting a second score for the same author &amp; category will appear as a new record in the sheet.</span>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">My Submission Log</div>
+          <div class="card-sub">Everything you've submitted this session and in previous sessions (stored locally)</div>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="clearHistory()">🗑 Clear Local Log</button>
+      </div>
+      <div id="history-container">
+        <div class="empty-state" id="history-empty">
+          <div class="empty-icon">📭</div>
+          <div class="empty-text">No submissions yet. Use the scoring tabs to submit your first evaluation.</div>
+        </div>
+        <div style="overflow-x:auto;display:none" id="history-table-wrap">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Score</th>
+                <th>Weighted</th>
+                <th>Judge</th>
+                <th>Submitted</th>
+              </tr>
+            </thead>
+            <tbody id="history-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Per-author summary -->
+    <div class="card" id="author-summary-card" style="display:none">
+      <div class="card-header">
+        <div><div class="card-title">Per-Author Summary</div><div class="card-sub">Scores you've submitted, grouped by author</div></div>
+      </div>
+      <div class="card-body" id="author-summary-body"></div>
+    </div>
+  </div>
+
+</div><!-- /layout -->
+
+<div id="toast"></div>
+
+<script>
+// ─────────────────────────────────────────────────────
+// GOOGLE SHEETS INTEGRATION
+// Replace with your actual Google Apps Script Web App URL
+// To set up: Tools → Script editor → deploy as Web App
+// ─────────────────────────────────────────────────────
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbysUerMBUK9u6yqM4Bg0D4RBCzLf8za8v2sCHSdcrIi_bjao4IuQjs3fEIdULxyR_sbzg/exec';
+// If you haven't set up a Sheet yet, submissions are still stored locally
+// and you can export them. Replace the URL above when ready.
+
+// ─────────────────────────────────────────────────────
+// TAB SWITCHING
+// ─────────────────────────────────────────────────────
+function switchTab(name, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  if (name === 'history') renderHistory();
+}
+
+// ─────────────────────────────────────────────────────
+// FORM HELPERS
+// ─────────────────────────────────────────────────────
+function markFilled(el) {
+  if (el.value.trim()) el.classList.add('has-val');
+  else el.classList.remove('has-val');
+}
+
+function getVal(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+function numVal(id) {
+  const v = parseFloat(getVal(id));
+  return isNaN(v) ? 0 : v;
+}
+
+function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
+
+function clearFields(ids) {
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.value = ''; el.classList.remove('has-val'); }
+  });
+}
+
+function clearNomSlots() {
+  document.querySelectorAll('.nom-input').forEach(el => { el.value = ''; el.classList.remove('has-val'); });
+}
+
+// ─────────────────────────────────────────────────────
+// SCORE CALCULATORS
+// ─────────────────────────────────────────────────────
+function calcInterviewTotal() {
+  const pro = clamp(numVal('i-pro'), 0, 30);
+  const rc  = clamp(numVal('i-rc'),  0, 10);
+  const gs  = clamp(numVal('i-gs'),  0, 20);
+  const rs  = clamp(numVal('i-rs'),  0, 10);
+  const oa  = clamp(numVal('i-oa'),  0, 20);
+  const tot = pro + rc + gs + rs + oa;
+  document.getElementById('i-total').textContent = tot;
+  document.getElementById('i-weighted').textContent = `(→ ${(tot / 100 * 20).toFixed(2)} / 20 pts)`;
+}
+
+function calcAestheticsTotal() {
+  const coh = clamp(numVal('a-cohesion'),    0, 20);
+  const qu  = clamp(numVal('a-quality'),     0, 20);
+  const cr  = clamp(numVal('a-creativity'), 0, 15);
+  const con = clamp(numVal('a-consistency'),0, 15);
+  const rel = clamp(numVal('a-relevance'),  0, 15);
+  const app = clamp(numVal('a-appeal'),     0, 15);
+  const tot = coh + qu + cr + con + rel + app;
+  document.getElementById('a-total').textContent = tot;
+  document.getElementById('a-weighted').textContent = `(→ ${(tot / 100 * 5).toFixed(2)} / 5 pts)`;
+}
+
+function calcPFPTotal() {
+  const cl  = clamp(numVal('p-clarity'),    0, 20);
+  const pr  = clamp(numVal('p-prof'),       0, 20);
+  const re  = clamp(numVal('p-relevance'),  0, 20);
+  const or  = clamp(numVal('p-originality'),0, 15);
+  const co  = clamp(numVal('p-consistency'),0, 15);
+  const im  = clamp(numVal('p-impact'),     0, 10);
+  const tot = cl + pr + re + or + co + im;
+  document.getElementById('p-total').textContent = tot;
+}
+
+function calcImpactTotal() {
+  const au = clamp(numVal('im-authenticity'), 0, 20);
+  const de = clamp(numVal('im-depth'),        0, 20);
+  const cl = clamp(numVal('im-clarity'),      0, 20);
+  const aw = clamp(numVal('im-awareness'),    0, 20);
+  const im = clamp(numVal('im-impression'),   0, 20);
+  const tot = au + de + cl + aw + im;
+  document.getElementById('im-total').textContent = tot;
+  document.getElementById('im-weighted').textContent = `(→ ${(tot / 100 * 10).toFixed(2)} / 10 pts)`;
+}
+
+// ─────────────────────────────────────────────────────
+// LOCAL STORAGE
+// ─────────────────────────────────────────────────────
+function loadHistory() {
+  try { return JSON.parse(localStorage.getItem('aoty_submissions') || '[]'); }
+  catch(e) { return []; }
+}
+
+function saveHistory(data) {
+  try { localStorage.setItem('aoty_submissions', JSON.stringify(data)); }
+  catch(e) {}
+}
+
+function addToHistory(entry) {
+  const hist = loadHistory();
+  hist.unshift(entry);
+  saveHistory(hist);
+}
+
+// ─────────────────────────────────────────────────────
+// SEND TO GOOGLE SHEET
+// ─────────────────────────────────────────────────────
+async function sendToSheet(payload) {
+  if (!SHEET_URL || SHEET_URL === 'https://script.google.com/macros/s/AKfycbysUerMBUK9u6yqM4Bg0D4RBCzLf8za8v2sCHSdcrIi_bjao4IuQjs3fEIdULxyR_sbzg/exec') {
+    console.log('[AOTY Portal] Sheet URL not configured. Data stored locally only.', payload);
+    return true; // gracefully skip
+  }
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    return true;
+  } catch(e) {
+    console.warn('[AOTY Portal] Sheet send failed:', e);
+    return false;
+  }
+}
+
+// ─────────────────────────────────────────────────────
+// FORM SUBMISSION HANDLERS
+// ─────────────────────────────────────────────────────
+async function submitForm(type) {
+  const now = new Date().toLocaleString('en-GB', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+
+  if (type === 'interview') {
+    const authorName   = getVal('i-author-name');
+    const authorHandle = getVal('i-author-handle');
+    const judgeName    = getVal('i-judge-confirm') || getVal('i-judge-name');
+    if (!authorName || !judgeName) { showToast('⚠ Please fill in Author Name and your Judge Name'); return; }
+    const pro = clamp(numVal('i-pro'), 0, 30);
+    const rc  = clamp(numVal('i-rc'),  0, 10);
+    const gs  = clamp(numVal('i-gs'),  0, 20);
+    const rs  = clamp(numVal('i-rs'),  0, 10);
+    const oa  = clamp(numVal('i-oa'),  0, 20);
+    const total = pro + rc + gs + rs + oa;
+    const weighted = +(total / 100 * 20).toFixed(2);
+    const payload = {
+      type: 'interview', timestamp: now, judgeName,
+      authorName, authorHandle,
+      scores: { professionalism: pro, responseComposure: rc, grammarSpelling: gs, responseStrength: rs, overallAppeal: oa },
+      total, weighted,
+      notes: getVal('i-notes'),
+      interviewDate: getVal('i-interview-date')
+    };
+    addToHistory({ ...payload, category: "Author's Interview", display: `${total}/100`, weightedDisplay: `${weighted}/20` });
+    await sendToSheet(payload);
+    clearFields(['i-author-name','i-author-handle','i-judge-name','i-interview-date','i-notes','i-judge-confirm','i-pro','i-rc','i-gs','i-rs','i-oa']);
+    calcInterviewTotal();
+    showToast(`✅ Interview score for ${authorName} submitted`);
+  }
+
+  else if (type === 'aesthetics') {
+    const authorName   = getVal('a-author-name');
+    const authorHandle = getVal('a-author-handle');
+    const judgeName    = getVal('a-judge-confirm') || getVal('a-judge-name');
+    if (!authorName || !judgeName) { showToast('⚠ Please fill in Author Name and your Judge Name'); return; }
+    const coh = clamp(numVal('a-cohesion'), 0, 20);
+    const qu  = clamp(numVal('a-quality'),  0, 20);
+    const cr  = clamp(numVal('a-creativity'),0,15);
+    const con = clamp(numVal('a-consistency'),0,15);
+    const rel = clamp(numVal('a-relevance'), 0,15);
+    const app = clamp(numVal('a-appeal'),    0,15);
+    const total = coh + qu + cr + con + rel + app;
+    const weighted = +(total / 100 * 5).toFixed(2);
+    const payload = {
+      type: 'aesthetics', timestamp: now, judgeName,
+      authorName, authorHandle,
+      scores: { profileCohesion: coh, contentQuality: qu, creativityOriginality: cr, consistency: con, relevance: rel, overallAppeal: app },
+      total, weighted,
+      notes: getVal('a-notes'), date: getVal('a-date')
+    };
+    addToHistory({ ...payload, category: 'IG Aesthetics', display: `${total}/100`, weightedDisplay: `${weighted}/5` });
+    await sendToSheet(payload);
+    clearFields(['a-author-name','a-author-handle','a-judge-name','a-date','a-notes','a-judge-confirm','a-cohesion','a-quality','a-creativity','a-consistency','a-relevance','a-appeal']);
+    calcAestheticsTotal();
+    showToast(`✅ Aesthetics score for ${authorName} submitted`);
+  }
+
+  else if (type === 'pfp') {
+    const authorName   = getVal('p-author-name');
+    const authorHandle = getVal('p-author-handle');
+    const judgeName    = getVal('p-judge-confirm') || getVal('p-judge-name');
+    if (!authorName || !judgeName) { showToast('⚠ Please fill in Author Name and your Judge Name'); return; }
+    const cl = clamp(numVal('p-clarity'),    0,20);
+    const pr = clamp(numVal('p-prof'),       0,20);
+    const re = clamp(numVal('p-relevance'),  0,20);
+    const or = clamp(numVal('p-originality'),0,15);
+    const co = clamp(numVal('p-consistency'),0,15);
+    const im = clamp(numVal('p-impact'),     0,10);
+    const total = cl + pr + re + or + co + im;
+    const payload = {
+      type: 'pfp', timestamp: now, judgeName,
+      authorName, authorHandle,
+      scores: { clarityQuality: cl, professionalism: pr, relevanceIdentity: re, originalityCreativity: or, consistencyEvent: co, overallImpact: im },
+      total,
+      note: 'Award only — not cumulative',
+      notes: getVal('p-notes')
+    };
+    addToHistory({ ...payload, category: 'Best Profile Picture', display: `${total}/100`, weightedDisplay: 'Award only' });
+    await sendToSheet(payload);
+    clearFields(['p-author-name','p-author-handle','p-judge-name','p-notes','p-judge-confirm','p-clarity','p-prof','p-relevance','p-originality','p-consistency','p-impact']);
+    calcPFPTotal();
+    showToast(`✅ PFP score for ${authorName} submitted`);
+  }
+
+  else if (type === 'impact') {
+    const authorName   = getVal('im-author-name');
+    const authorHandle = getVal('im-author-handle');
+    const judgeName    = getVal('im-judge-confirm') || getVal('im-judge-name');
+    if (!authorName || !judgeName) { showToast('⚠ Please fill in Author Name and your Judge Name'); return; }
+    const au = clamp(numVal('im-authenticity'), 0,20);
+    const de = clamp(numVal('im-depth'),        0,20);
+    const cl = clamp(numVal('im-clarity'),      0,20);
+    const aw = clamp(numVal('im-awareness'),    0,20);
+    const im = clamp(numVal('im-impression'),   0,20);
+    const total = au + de + cl + aw + im;
+    const weighted = +(total / 100 * 10).toFixed(2);
+    const payload = {
+      type: 'impact', timestamp: now, judgeName,
+      authorName, authorHandle,
+      scores: { authenticity: au, depthOfImpact: de, clarityExpression: cl, communityAwareness: aw, overallImpression: im },
+      total, weighted,
+      notes: getVal('im-notes'), date: getVal('im-date')
+    };
+    addToHistory({ ...payload, category: 'Community Impact Message', display: `${total}/100`, weightedDisplay: `${weighted}/10` });
+    await sendToSheet(payload);
+    clearFields(['im-author-name','im-author-handle','im-judge-name','im-date','im-notes','im-judge-confirm','im-authenticity','im-depth','im-clarity','im-awareness','im-impression']);
+    calcImpactTotal();
+    showToast(`✅ Impact Message score for ${authorName} submitted`);
+  }
+
+  else if (type === 'nominations') {
+    const judgeName = getVal('n-judge-confirm') || getVal('n-judge-name');
+    if (!judgeName) { showToast('⚠ Please enter your Judge Name'); return; }
+
+    const getNoms = (slotsId) => {
+      const slots = document.querySelectorAll(`#${slotsId} .nom-input`);
+      return Array.from(slots).map(el => el.value.trim()).filter(Boolean);
+    };
+
+    const payload = {
+      type: 'nominations', timestamp: now, judgeName,
+      nominations: {
+        risingStarAward:        getNoms('slots-rising'),
+        lifetimeAchievement:    getNoms('slots-lifetime'),
+        communityServiceAward:  getNoms('slots-service'),
+        creativeExcellenceAward:getNoms('slots-creative'),
+        honoraryRecognition:    getNoms('slots-honorary'),
+        mostDevotedAuthor:      getNoms('slots-devoted')
+      },
+      notes: getVal('n-notes')
+    };
+
+    const totalNoms = Object.values(payload.nominations).flat().length;
+    if (totalNoms === 0) { showToast('⚠ Please add at least one nomination before submitting'); return; }
+
+    addToHistory({ ...payload, category: 'Nomination Awards', authorName: `(${totalNoms} nominations)`, display: `${totalNoms} noms`, weightedDisplay: 'Deliberation' });
+    await sendToSheet(payload);
+    clearFields(['n-judge-name','n-date','n-notes','n-judge-confirm']);
+    clearNomSlots();
+    showToast(`✅ ${totalNoms} nominations submitted by ${judgeName}`);
+  }
+}
+
+// ─────────────────────────────────────────────────────
+// HISTORY RENDERING
+// ─────────────────────────────────────────────────────
+function renderHistory() {
+  const hist = loadHistory();
+  const empty = document.getElementById('history-empty');
+  const wrap  = document.getElementById('history-table-wrap');
+  const tbody = document.getElementById('history-tbody');
+  const summaryCard = document.getElementById('author-summary-card');
+  const summaryBody = document.getElementById('author-summary-body');
+
+  if (!hist.length) {
+    empty.style.display = 'block';
+    wrap.style.display = 'none';
+    summaryCard.style.display = 'none';
+    return;
+  }
+
+  empty.style.display = 'none';
+  wrap.style.display = 'block';
+  summaryCard.style.display = 'block';
+
+  tbody.innerHTML = hist.map(h => `
+    <tr>
+      <td>
+        <div class="hist-author">${h.authorName || '—'}</div>
+        <div class="hist-cat">${h.authorHandle || ''}</div>
+      </td>
+      <td><div class="hist-cat">${h.category || h.type}</div></td>
+      <td><span class="hist-score">${h.display || '—'}</span></td>
+      <td><span style="font-size:12px;color:#888">${h.weightedDisplay || '—'}</span></td>
+      <td><span style="font-size:12px">${h.judgeName || '—'}</span></td>
+      <td><span class="hist-time">${h.timestamp || '—'}</span></td>
+    </tr>
+  `).join('');
+
+  // Group by author for summary
+  const byAuthor = {};
+  hist.forEach(h => {
+    if (h.type === 'nominations') return;
+    const key = h.authorName || 'Unknown';
+    if (!byAuthor[key]) byAuthor[key] = { handle: h.authorHandle || '', scores: [] };
+    byAuthor[key].scores.push({ cat: h.category || h.type, display: h.display, weighted: h.weightedDisplay });
+  });
+
+  const catColors = {
+    "Author's Interview": '#2a4fa3', 'IG Aesthetics': '#b85c6e',
+    'Best Profile Picture': '#2d7a5f', 'Community Impact Message': '#c9a84c',
+    'Nomination Awards': '#6b3fa0'
+  };
+
+  summaryBody.innerHTML = Object.entries(byAuthor).map(([author, data]) => `
+    <div style="border:1px solid var(--border);border-radius:9px;padding:16px;margin-bottom:12px;">
+      <div style="font-weight:700;font-size:15px;margin-bottom:4px">${author}</div>
+      <div style="font-size:12px;color:#888;margin-bottom:10px">${data.handle}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${data.scores.map(s => `
+          <div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:8px 12px;min-width:130px">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:${catColors[s.cat]||'#888'};margin-bottom:3px">${s.cat}</div>
+            <div style="font-family:var(--mono);font-weight:600;font-size:16px;color:var(--ink)">${s.display}</div>
+            <div style="font-size:11px;color:#999">${s.weighted}</div>
+          </div>`).join('')}
+      </div>
+    </div>
+  `).join('') || '<p style="color:#bbb;font-size:13px">No scored submissions yet.</p>';
+}
+
+function clearHistory() {
+  if (!confirm('Clear all locally stored submission records? This does not affect records already sent to the Google Sheet.')) return;
+  localStorage.removeItem('aoty_submissions');
+  renderHistory();
+  showToast('🗑 Local log cleared');
+}
+
+// ─────────────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+// ─────────────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────────────
+calcInterviewTotal();
+calcAestheticsTotal();
+calcPFPTotal();
+calcImpactTotal();
+</script>
+</body>
+</html>
