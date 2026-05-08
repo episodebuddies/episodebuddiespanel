@@ -5,14 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SOTY Judge Portal · Buddies Support Hub 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
-  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
-  <!-- Search & social preview -->
-  <meta property="og:image" content="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
-  <meta property="og:title" content="Episode Buddies">
-  <meta property="og:description" content="Uplifting Episode authors through free community services, monthly contests, and the most celebrated annual competitions on the platform.">
-  <meta name="theme-color" content="#0F1B33">
 <style>
 :root {
   --ink: #0d0d0d;
@@ -145,8 +137,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 /* ── DESCRIPTOR TOOLTIP PANEL ── */
 .desc-panel{display:none;background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin:0 18px 12px;font-size:12px;line-height:1.65;color:#555;}
 .desc-panel.open{display:block;}
-.desc-panel strong{color:var(--ink);flex-shrink:0;width:48px;}
-.desc-row{display:flex;gap:8px;margin-bottom:4px;}
+.desc-panel strong{color:var(--ink);display:inline-block;width:80px;}
 
 /* ── SUBSECTION TOTAL ── */
 .sub-total-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:rgba(13,13,13,0.04);border-top:1px solid var(--border);}
@@ -299,9 +290,6 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
     <button class="pnav-btn" id="pnav-F" onclick="goSection('F')">
       <span class="pnav-dot">F</span>Review &amp; Submit
     </button>
-    <button class="pnav-btn" id="pnav-N" onclick="goSection('N')">
-      <span class="pnav-dot">🏅</span>Nominations
-    </button>
     <button class="pnav-btn" id="pnav-H" onclick="goSection('H')">
       <span class="pnav-dot">📋</span>My Submissions
     </button>
@@ -356,7 +344,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
           </div>
           <div class="field">
             <label>Your (Judge) Name <span style="color:var(--rose)">*</span></label>
-            <input type="text" id="a-judge" placeholder="Your username" oninput="markFilled(this);autoSave()">
+            <input type="text" id="a-judge" placeholder="Your full name" oninput="markFilled(this);autoSave()">
           </div>
           <div class="field">
             <label>Evaluation Date</label>
@@ -408,7 +396,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
                 <td class="radio-cell"><input class="score-radio" type="radio" name="b1-1" value="1" id="b1-1-1" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-1-1">1</label></td>
                 <td class="radio-cell"><input class="score-radio" type="radio" name="b1-1" value="0" id="b1-1-0" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-1-0">0</label></td>
               </tr>
-              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-1"><div class="desc-row"><strong>5 —</strong><span>Fluid, intentional, cinematic zooms and pans serving a narrative purpose.</span></div><div class="desc-row"><strong>4 —</strong><span>Mostly smooth with minor inconsistencies.</span></div><div class="desc-row"><strong>3 —</strong><span>Mechanical or generic rather than thoughtfully placed.</span></div><div class="desc-row"><strong>2 —</strong><span>Abrupt, repetitive, or unpolished movements.</span></div><div class="desc-row"><strong>1 —</strong><span>Barely any camera movement attempted.</span></div><div class="desc-row"><strong>0 —</strong><span>None, or movements disrupt the reading experience.</span></div></div></td></tr>
+              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-1"><strong>5 —</strong> Fluid, intentional, cinematic zooms and pans serving a narrative purpose.<br><strong>4 —</strong> Mostly smooth with minor inconsistencies.<br><strong>3 —</strong> Mechanical or generic rather than thoughtfully placed.<br><strong>2 —</strong> Abrupt, repetitive, or unpolished movements.<br><strong>1 —</strong> Barely any camera movement attempted.<br><strong>0 —</strong> None, or movements disrupt the reading experience.</div></td></tr>
               <tr>
                 <td><span class="crit-name" onclick="toggleDesc('b1-2')">Scene Framing</span></td>
                 <td class="radio-cell"><input class="score-radio" type="radio" name="b1-2" value="5" id="b1-2-5" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-2-5">5</label></td>
@@ -418,7 +406,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
                 <td class="radio-cell"><input class="score-radio" type="radio" name="b1-2" value="1" id="b1-2-1" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-2-1">1</label></td>
                 <td class="radio-cell"><input class="score-radio" type="radio" name="b1-2" value="0" id="b1-2-0" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-2-0">0</label></td>
               </tr>
-              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-2"><div class="desc-row"><strong>5 —</strong><span>Characters consistently well-framed; background, foreground and placement create compelling scenes.</span></div><div class="desc-row"><strong>4 —</strong><span>Generally strong with occasional lapses in spatial awareness.</span></div><div class="desc-row"><strong>3 —</strong><span>Basic framing but characters often randomly placed.</span></div><div class="desc-row"><strong>2 —</strong><span>Poor use of space; characters awkwardly positioned or cut off.</span></div><div class="desc-row"><strong>1 —</strong><span>Framing appears accidental.</span></div><div class="desc-row"><strong>0 —</strong><span>No attention to framing.</span></div></div></td></tr>
+              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-2"><strong>5 —</strong> Characters consistently well-framed; background, foreground and placement create compelling scenes.<br><strong>4 —</strong> Generally strong with occasional lapses in spatial awareness.<br><strong>3 —</strong> Basic framing but characters often randomly placed.<br><strong>2 —</strong> Poor use of space; characters awkwardly positioned or cut off.<br><strong>1 —</strong> Framing appears accidental.<br><strong>0 —</strong> No attention to framing.</div></td></tr>
               <tr>
                 <td><span class="crit-name" onclick="toggleDesc('b1-3')">Creative Camera Angles</span></td>
                 <td class="radio-cell"><input class="score-radio" type="radio" name="b1-3" value="5" id="b1-3-5" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-3-5">5</label></td>
@@ -428,7 +416,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
                 <td class="radio-cell"><input class="score-radio" type="radio" name="b1-3" value="1" id="b1-3-1" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-3-1">1</label></td>
                 <td class="radio-cell"><input class="score-radio" type="radio" name="b1-3" value="0" id="b1-3-0" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-3-0">0</label></td>
               </tr>
-              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-3"><div class="desc-row"><strong>5 —</strong><span>Varied, inventive angles enhancing storytelling deliberately.</span></div><div class="desc-row"><strong>4 —</strong><span>Good variety used confidently, elevating key scenes.</span></div><div class="desc-row"><strong>3 —</strong><span>Some variety but defaults to standard shots mostly.</span></div><div class="desc-row"><strong>2 —</strong><span>Limited or repetitive angles throughout.</span></div><div class="desc-row"><strong>1 —</strong><span>Almost entirely static or default angles.</span></div><div class="desc-row"><strong>0 —</strong><span>No variation; single default shot throughout.</span></div></div></td></tr>
+              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-3"><strong>5 —</strong> Varied, inventive angles enhancing storytelling deliberately.<br><strong>4 —</strong> Good variety used confidently, elevating key scenes.<br><strong>3 —</strong> Some variety but defaults to standard shots mostly.<br><strong>2 —</strong> Limited or repetitive angles throughout.<br><strong>1 —</strong> Almost entirely static or default angles.<br><strong>0 —</strong> No variation; single default shot throughout.</div></td></tr>
               <tr>
                 <td><span class="crit-name" onclick="toggleDesc('b1-4')">Transitions Between Scenes</span></td>
                 <td class="radio-cell"><input class="score-radio" type="radio" name="b1-4" value="5" id="b1-4-5" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-4-5">5</label></td>
@@ -438,7 +426,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
                 <td class="radio-cell"><input class="score-radio" type="radio" name="b1-4" value="1" id="b1-4-1" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-4-1">1</label></td>
                 <td class="radio-cell"><input class="score-radio" type="radio" name="b1-4" value="0" id="b1-4-0" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-4-0">0</label></td>
               </tr>
-              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-4"><div class="desc-row"><strong>5 —</strong><span>Seamless, carefully chosen transitions matching each scene's tone.</span></div><div class="desc-row"><strong>4 —</strong><span>Mostly smooth with occasional jarring choices.</span></div><div class="desc-row"><strong>3 —</strong><span>Basic transitions, inconsistently applied.</span></div><div class="desc-row"><strong>2 —</strong><span>Abrupt or out-of-place transitions, scene changes are disorienting.</span></div><div class="desc-row"><strong>1 —</strong><span>Very few transitions; most scene changes are blunt cuts.</span></div><div class="desc-row"><strong>0 —</strong><span>No transitions or transitions break immersion.</span></div></div></td></tr>
+              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-4"><strong>5 —</strong> Seamless, carefully chosen transitions matching each scene's tone.<br><strong>4 —</strong> Mostly smooth with occasional jarring choices.<br><strong>3 —</strong> Basic transitions, inconsistently applied.<br><strong>2 —</strong> Abrupt or out-of-place transitions, scene changes are disorienting.<br><strong>1 —</strong> Very few transitions; most scene changes are blunt cuts.<br><strong>0 —</strong> No transitions or transitions break immersion.</div></td></tr>
             </tbody>
           </table>
           <div class="sub-total-bar"><span class="sub-total-label">B.1 Subtotal</span><span class="sub-total-val"><span id="b1-sub">0</span> / 20</span></div>
@@ -663,7 +651,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
             <div class="form-grid">
               <div class="field">
                 <label>Your Name (confirm) <span style="color:var(--rose)">*</span></label>
-                <input type="text" id="f-judge-confirm" placeholder="Your username" oninput="markFilled(this)">
+                <input type="text" id="f-judge-confirm" placeholder="Your full name" oninput="markFilled(this)">
               </div>
               <div class="field">
                 <label>Additional Notes (optional)</label>
@@ -694,119 +682,6 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
         <div class="nav-row" style="border-top:none;padding-top:8px;">
           <button class="btn btn-outline btn-nav" onclick="goSection('E')">← Back to Story Cover</button>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════
-       SECTION N — NOMINATION AWARDS
-  ════════════════════════════════════ -->
-  <div id="sec-N" class="section-panel">
-    <div class="section-banner" style="background:linear-gradient(135deg,#2a1a3a,#6b3fa0);border-radius:var(--r) var(--r) 0 0;">
-      <div class="section-banner-label">Special Awards</div>
-      <div class="section-banner-title">Nomination Awards</div>
-      <div class="section-banner-sub">Judge-decided awards submitted independently from the 4-category evaluation</div>
-      <div class="weight-chip">🏅 Deliberation-based · Not tied to evaluation scores · 5 nominees each</div>
-    </div>
-    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
-      <div class="card-body">
-
-        <div class="info-box info-cobalt">
-          <span class="info-icon">ℹ️</span>
-          <span>These two awards are <strong>entirely separate</strong> from the Directing, Plot, Interactivity, and Cover evaluation. Nominate up to <strong>5 stories</strong> for each. The judging committee deliberates to select the winner. Neither award carries a Fast Track spot.</span>
-        </div>
-
-        <div class="info-box info-gold" style="margin-bottom:20px">
-          <span class="info-icon">📌</span>
-          <span>Submit nominations at any point during the judging period — you do not need to have completed all story evaluations first. Nominations are sent as a separate record to the central sheet.</span>
-        </div>
-
-        <!-- Judge ID -->
-        <div class="card" style="margin-bottom:20px;">
-          <div class="card-header" style="background:var(--ink);">
-            <div><div class="card-title" style="color:var(--gold);">Your Judge Details</div><div class="card-sub" style="color:rgba(255,255,255,0.45);">Identify yourself before submitting nominations</div></div>
-          </div>
-          <div class="card-body">
-            <div class="form-grid">
-              <div class="field">
-                <label>Your (Judge) Name <span style="color:var(--rose)">*</span></label>
-                <input type="text" id="n-judge-name" placeholder="Your username" oninput="markFilled(this)">
-              </div>
-              <div class="field">
-                <label>Submission Date</label>
-                <input type="text" id="n-date" placeholder="e.g. 25 June 2026" oninput="markFilled(this)">
-              </div>
-              <div class="field field-full">
-                <label>General Notes (optional)</label>
-                <textarea id="n-notes" placeholder="Any observations about your nominations…" rows="2" oninput="markFilled(this)"></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- AWARD 1: Most Innovative Concept -->
-        <div class="rubric-block" style="margin-bottom:20px;">
-          <div class="rubric-block-head">
-            <span class="rubric-block-title" style="font-size:15px;">💡 Most Innovative Concept Award</span>
-            <span class="rubric-block-pts" style="font-size:12px;">5 nominees</span>
-          </div>
-          <div class="rubric-block-desc" style="font-size:13px;line-height:1.65;">
-            Awarded to the story that breaks creative boundaries through a unique premise, bold format, or experimental approach to storytelling on Episode. The judging committee nominates a shortlist and selects the winner through deliberation. <em>This award does not carry a Fast Track spot.</em>
-          </div>
-          <div style="padding:0 18px 16px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:10px;">Your 5 Nominees</div>
-            <div style="display:flex;flex-direction:column;gap:8px;" id="nom-innovative-slots">
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">1.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">2.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">3.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">4.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">5.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- AWARD 2: Best Dialogue & Characterization -->
-        <div class="rubric-block" style="margin-bottom:24px;">
-          <div class="rubric-block-head">
-            <span class="rubric-block-title" style="font-size:15px;">🗣️ Best Dialogue &amp; Characterization Award</span>
-            <span class="rubric-block-pts" style="font-size:12px;">5 nominees</span>
-          </div>
-          <div class="rubric-block-desc" style="font-size:13px;line-height:1.65;">
-            Awarded to the story that best demonstrates authentic, natural dialogue and multidimensional characters who feel genuinely real to the reader. The judging committee nominates a shortlist of stories and selects the winner through deliberation. <em>This award does not carry a Fast Track spot.</em>
-          </div>
-          <div style="padding:0 18px 16px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:10px;">Your 5 Nominees</div>
-            <div style="display:flex;flex-direction:column;gap:8px;" id="nom-dialogue-slots">
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">1.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">2.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">3.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">4.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">5.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Judge confirm + submit -->
-        <div class="card" style="margin-bottom:16px;">
-          <div class="card-body">
-            <div class="field" style="margin-bottom:14px;">
-              <label>Judge Name (confirm) <span style="color:var(--rose)">*</span></label>
-              <input type="text" id="n-judge-confirm" placeholder="Your name — required before submission" oninput="markFilled(this)">
-            </div>
-            <!-- Affirmation for nominations -->
-            <div class="affirm-wrap" style="margin-bottom:16px;">
-              <div class="affirm-inner" onclick="toggleNomAffirm()">
-                <div class="affirm-cb" id="nom-affirm-cb"></div>
-                <div class="affirm-text">By checking this box, I affirm that my nominations reflect my honest, independent assessment of each story's merits. <span class="affirm-required">*Required</span></div>
-              </div>
-            </div>
-            <button class="btn btn-full btn-lg" style="background:var(--plum);color:#fff;font-size:15px;padding:15px;" onclick="submitNominations()">
-              🏅 Submit Nominations
-            </button>
-            <p style="text-align:center;font-size:12px;color:#aaa;margin-top:10px;">Nominations are sent as a separate record. Form clears after submission.</p>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -850,664 +725,133 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 // ─────────────────────────────────────────────────────
 // CONFIG — Replace with your Google Apps Script URL
 // ─────────────────────────────────────────────────────
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyemojB746PplEo_-hsjgbit66VHOTvmF7vFu5Wq3riga9czewW7X-6HFbAhqOFb_Q8/exec';
+const SHEET_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEBHOOK_URL';
 
 // ─────────────────────────────────────────────────────
 // CRITERIA DATA — complete per-criterion descriptors
+// Arrays are ordered index 0 = score 0 description, index 5 = score 5 description
 // ─────────────────────────────────────────────────────
-// descs arrays: index 0 = score 5, index 1 = score 4, ... index 5 = score 0
-// Text taken verbatim from the Buddies Judges Manual 2026
 const CRITERIA = {
   b2:[
-    {id:'b2-1',label:'Accurate Animation Usage',descs:[
-      'Animations match the character\'s emotions, tone, and dialogue throughout. Every animation feels intentional and fitting.',
-      'Animations are mostly well-matched with only occasional misalignments between expression and context.',
-      'Animations are present but sometimes feel generic or inconsistent with the character\'s state.',
-      'Animations frequently feel wrong for the moment — characters laughing during tense scenes, or idle during emotional exchanges.',
-      'Very limited animation variety. Most characters remain static or default throughout.',
-      'Animations are absent, broken, or actively contradict the emotional content of the scene.'
-    ]},
-    {id:'b2-2',label:'Smooth Spot Placement & Shifting',descs:[
-      'Characters move between spots naturally. Walking animations, shifting, and repositioning all feel grounded and realistic.',
-      'Spot placement is generally natural with minor teleporting or awkward transitions.',
-      'Characters are placed correctly but movement between spots is sometimes robotic or instant without animation.',
-      'Characters frequently appear to teleport or are placed at inconsistent sizes and heights.',
-      'Little to no spot direction. Characters appear to float, overlap, or snap around the scene.',
-      'No intentional spot direction. Characters are misplaced or appear in default screen positions throughout.'
-    ]},
-    {id:'b2-3',label:'Group Scene Fluidity',descs:[
-      'Multi-character and crowd scenes are managed with clear coordination. Each character\'s position and animation is distinct and purposeful.',
-      'Group scenes are handled well overall, with minor overlaps or inconsistencies in larger setups.',
-      'Group scenes work but feel flat or static, with limited differentiation between characters.',
-      'Group scenes are cluttered, with characters overlapping, incorrectly sized, or performing identical animations.',
-      'Group scenes are attempted but visually confusing or poorly managed.',
-      'Group scenes are absent or so poorly executed they are distracting.'
-    ]},
-    {id:'b2-4',label:'Layering & Depth Management',descs:[
-      'Layering is expertly managed. Characters walk in front of and behind each other and objects naturally, creating genuine depth.',
-      'Layering is mostly correct with only isolated instances of characters appearing on the wrong layer.',
-      'Basic layering is in place but depth effects are rarely used to create visual dimension.',
-      'Frequent layering errors. Characters appear in front of objects they should be behind, or vice versa.',
-      'Layering is largely incorrect throughout.',
-      'No evidence of layering awareness. All characters appear on the same flat plane.'
-    ]}
+    {id:'b2-1',label:'Accurate Animation Usage',descs:['Animations absent, broken, or actively contradict emotional content.','Very limited animation variety; most characters static or default.','Animations feel wrong, with characters laughing in tense scenes or idle during emotional ones.','Present but sometimes generic or inconsistent with character state.','Mostly well-matched with only occasional misalignments.','Animations match emotions, tone, and dialogue throughout. Every animation intentional.']},
+    {id:'b2-2',label:'Smooth Spot Placement & Shifting',descs:['No intentional spot direction; characters misplaced or default positions.','Little to no spot direction; characters float, overlap, or snap.','Characters frequently appear to teleport or are placed at inconsistent sizes and heights.','Characters placed correctly but movement between spots sometimes robotic.','Spot placement generally natural with minor teleporting or awkward transitions.','Characters move between spots naturally; walking, shifting all feel grounded.']},
+    {id:'b2-3',label:'Group Scene Fluidity',descs:['Group scenes absent or so poorly executed they distract.','Group scenes attempted but visually confusing or poorly managed.','Group scenes are cluttered, with characters overlapping, misized, or sharing animations.','Group scenes work but flat or static, limited differentiation.','Group scenes handled well overall, with minor overlaps or inconsistencies.','Multi-character scenes managed with clear coordination; each position distinct.']},
+    {id:'b2-4',label:'Layering & Depth Management',descs:['No evidence of layering awareness; all characters on same flat plane.','Layering largely incorrect throughout.','Layering errors are common, with characters appearing in front of objects they should be behind.','Basic layering in place but depth effects rarely used.','Layering mostly correct with only isolated instances of wrong layers.','Layering expertly managed; characters walk in front and behind objects naturally.']}
   ],
   b3:[
-    {id:'b3-1',label:'Overlay Placement & Scaling',descs:[
-      'All overlays are sized and positioned precisely. They integrate seamlessly into the scene without appearing misaligned or out of scale.',
-      'Overlays are mostly well-placed, with minor scaling or positioning inconsistencies.',
-      'Overlays are present and functional but sometimes noticeably misaligned or incorrectly scaled.',
-      'Overlay placement is frequently off. Overlays float, appear too large or small, or break the visual coherence of the scene.',
-      'Overlays are placed with little care. Most feel like afterthoughts.',
-      'No overlays used, or overlays are so poorly placed they are visually disruptive.'
-    ]},
-    {id:'b3-2',label:'Creative Use of Overlays',descs:[
-      'Overlays are used imaginatively to build environments, convey action, or enhance atmosphere in ways that go beyond standard usage.',
-      'Overlays enhance several scenes creatively with genuine thought behind their selection and placement.',
-      'Overlays are used but serve mainly functional rather than creative purposes.',
-      'Overlays are limited and used repetitively or in generic ways.',
-      'Minimal overlay use with no evident creative intent.',
-      'No overlays present, or overlays serve no purpose.'
-    ]},
-    {id:'b3-3',label:'Tappable or Animated Overlays',descs:[
-      'Tappable or animated overlays are used meaningfully and function flawlessly. They add genuine interactivity or visual dynamism.',
-      'Tappable or animated overlays work well and contribute to the experience with minor issues.',
-      'Present but used sparingly or function without adding meaningful value.',
-      'Attempted but buggy, confusing, or used in a way that feels out of place.',
-      'Only one instance present or barely functional.',
-      'Not used at all.'
-    ]},
-    {id:'b3-4',label:'Special Visual Effects',descs:[
-      'Filters, lighting changes, blurs, or unique transitions are used with intention and skill, significantly elevating the visual experience.',
-      'Special effects are used effectively in key moments and feel purposeful.',
-      'Some effects are present but used inconsistently or without clear thematic reason.',
-      'Effects are minimal, basic, or used in ways that feel accidental rather than deliberate.',
-      'Only one or two instances of visual effects with little impact.',
-      'No special visual effects used.'
-    ]}
+    {id:'b3-1',label:'Overlay Placement & Scaling',descs:['No overlays, or so poorly placed they are visually disruptive.','Overlays placed with little care; most feel like afterthoughts.','Overlays are often misplaced, floating or wrongly sized, breaking the scene\'s visual flow.','Overlays present and functional but sometimes noticeably misaligned.','Overlays mostly well-placed, with minor scaling or positioning inconsistencies.','All overlays sized and positioned precisely; integrate seamlessly into scene.']},
+    {id:'b3-2',label:'Creative Use of Overlays',descs:['No overlays present, or overlays serve no purpose.','Minimal overlay use with no evident creative intent.','Overlays are limited and used repetitively or in generic ways.','Overlays used but mainly functional rather than creative.','Overlays enhance several scenes creatively with genuine thought.','Overlays used imaginatively to build environments, convey action, or enhance atmosphere.']},
+    {id:'b3-3',label:'Tappable or Animated Overlays',descs:['Not used at all.','Only one instance present or barely functional.','Attempted but buggy, confusing, or used in a way that feels out of place','Present but used sparingly or without adding meaningful value.','Work well and contribute to the experience with minor issues.','Used meaningfully and function flawlessly; add genuine interactivity or visual dynamism.']},
+    {id:'b3-4',label:'Special Visual Effects',descs:['No special visual effects used.','Only one or two instances with little impact.','Effects are minimal, basic, or used in ways that feel accidental rather than deliberate.','Some effects present but inconsistently used without clear thematic reason.','Special effects used effectively in key moments and feel purposeful.','Filters, lighting, blurs used with intention and skill; significantly elevate visual experience.']}
   ],
   b4:[
-    {id:'b4-1',label:'Thematic Visuals',descs:[
-      'The directing unmistakably reflects and elevates the story\'s tone and genre. Every visual choice reinforces the narrative.',
-      'Strong thematic alignment between visuals and story, with only occasional disconnects.',
-      'The visuals are appropriate for the genre but do not particularly enhance or reflect the story\'s specific themes.',
-      'Visuals feel generic and could belong to any story. Little connection to tone or genre.',
-      'Visual choices seem random or at odds with the story\'s mood.',
-      'No visible connection between the directing style and the story\'s tone or genre.'
-    ]},
-    {id:'b4-2',label:'Symbolism or Metaphorical Shots',descs:[
-      'Visual symbolism is used thoughtfully and consistently. Shots carry layered meaning that enriches the reading experience.',
-      'Several instances of meaningful visual symbolism that add depth to specific scenes.',
-      'One or two symbolic moments present but not a consistent directorial choice.',
-      'Symbolism is largely absent. Visuals are descriptive rather than expressive.',
-      'One accidental or unclear instance of a potentially symbolic shot.',
-      'No use of visual symbolism or metaphorical framing.'
-    ]},
-    {id:'b4-3',label:'Directorial Creativity',descs:[
-      'The directing approach feels fresh and distinctly authored. It would be recognisable as unique compared to most Episode stories.',
-      'Clear creative identity in the directing with multiple standout choices that go beyond convention.',
-      'Competent directing with occasional creative moments, but largely follows standard Episode conventions.',
-      'Mostly conventional directing with little evidence of a personal creative style.',
-      'Entirely standard or formulaic directing throughout.',
-      'No creative direction evident. The story uses default or minimal directing throughout.'
-    ]},
-    {id:'b4-4',label:'Consistency in Style',descs:[
-      'The visual tone is cohesive and consistent across all three episodes. The story has a clear and maintained aesthetic identity.',
-      'Visual style is largely consistent with minor shifts between episodes.',
-      'Some consistency in style but noticeable variation across episodes.',
-      'The visual tone shifts significantly between episodes, creating a disjointed experience.',
-      'Very little consistency. Each episode feels visually disconnected from the last.',
-      'No consistent visual style whatsoever.'
-    ]}
+    {id:'b4-1',label:'Thematic Visuals',descs:['No visible connection between directing style and story tone or genre.','Visual choices seem random or at odds with story\'s mood.','Visuals feel generic and could belong to any story. Little connection to tone or genre.','Visuals are appropriate for genre but don\'t particularly enhance specific themes.','Strong thematic alignment with only occasional disconnects.','Directing unmistakably reflects and elevates story\'s tone and genre; every visual choice reinforces narrative.']},
+    {id:'b4-2',label:'Symbolism or Metaphorical Shots',descs:['No use of visual symbolism or metaphorical framing.','One accidental or unclear instance of a potentially symbolic shot.','Symbolism is largely absent. Visuals are descriptive rather than expressive.','One or two symbolic moments present but not a consistent choice.','Several instances of meaningful visual symbolism adding depth.','Visual symbolism used thoughtfully and consistently; shots carry layered meaning.']},
+    {id:'b4-3',label:'Directorial Creativity',descs:['No creative direction evident; default or minimal directing throughout.','Entirely standard or formulaic directing throughout.','Mostly conventional directing with little evidence of a personal creative style.','Competent directing with occasional creative moments, largely follows conventions.','Clear creative identity with multiple standout choices going beyond convention.','Directing approach feels fresh and distinctly authored; recognisable as unique.']},
+    {id:'b4-4',label:'Consistency in Style',descs:['No consistent visual style whatsoever.','Very little consistency; each episode feels visually disconnected.','The visual tone shifts significantly between episodes, creating a disjointed experience.','Some consistency in style but noticeable variation across episodes.','Visual style largely consistent with minor shifts between episodes.','Visual tone cohesive and consistent across all three episodes; clear aesthetic identity.']}
   ],
   b5:[
-    {id:'b5-1',label:'Sound Effects and Music Use',descs:[
-      'Music and sound effects are perfectly matched to each scene\'s emotional register. They actively elevate tension, drama, or warmth.',
-      'Sound design is mostly well-matched and contributes positively to the reading experience.',
-      'Sound and music are present but sometimes feel mismatched or overly generic.',
-      'Sound choices are inconsistent or distracting — music that clashes with tone or scenes played in silence where sound would add value.',
-      'Very limited sound use. Only one or two tracks used throughout all three episodes.',
-      'No music or sound effects used.'
-    ]},
-    {id:'b5-2',label:'Sound Transitions',descs:[
-      'Music transitions smoothly between scenes and moods. Tracks fade in and out naturally without jarring cuts.',
-      'Most sound transitions are handled well with only occasional abrupt switches.',
-      'Some sound transitions feel smooth but others cut off abruptly or switch without warning.',
-      'Sound transitions are largely abrupt. Music cuts out suddenly or changes without connection to the scene shift.',
-      'Sound appears and disappears randomly with no apparent effort at transition.',
-      'No evidence of any attention to sound transitions.'
-    ]},
-    {id:'b5-3',label:'Speech Bubble Placement & Tail Direction',descs:[
-      'Bubbles are consistently placed away from faces, tails point accurately to the correct speaker, and text never obstructs the visual.',
-      'Bubble placement is mostly correct with only occasional misaligned tails or minor obstructions.',
-      'Bubbles are generally placed appropriately but some tails point incorrectly or positioning is inconsistent.',
-      'Frequent errors in bubble placement. Tails often point to the wrong character or bubbles obscure faces.',
-      'Bubble placement appears random. Tails are frequently incorrect throughout.',
-      'No visible awareness of speech bubble placement. Bubbles are placed over faces or attributed to wrong characters.'
-    ]},
-    {id:'b5-4',label:'Attention to Detail (No Bugs/Glitches)',descs:[
-      'The story is clean and polished throughout. No layering mistakes, freezing, incorrect backgrounds, or coding errors.',
-      'Very minor technical issues that do not interrupt the reading experience.',
-      'A few noticeable bugs or glitches that briefly disrupt immersion but do not break the story.',
-      'Several technical errors across episodes that noticeably affect the experience.',
-      'Frequent bugs and glitches throughout. The story feels unfinished or unpolished.',
-      'Significant technical errors that make the story difficult or impossible to read properly.'
-    ]}
+    {id:'b5-1',label:'Sound Effects and Music Use',descs:['No music or sound effects used.','Very limited sound use; only one or two tracks across all episodes.','Sound and music present but sometimes mismatched or overly generic.','Sound design mostly well-matched and contributes positively.','Music and sound perfectly matched to each scene\'s emotional register; actively elevate tension, drama, or warmth.']},
+    {id:'b5-2',label:'Sound Transitions',descs:['No evidence of any attention to sound transitions.','Sound appears and disappears randomly with no apparent effort at transition.','Some sound transitions smooth but others cut off abruptly.','Most sound transitions handled well with only occasional abrupt switches.','Music transitions smoothly between scenes and moods; tracks fade in and out naturally.']},
+    {id:'b5-3',label:'Speech Bubble Placement & Tail Direction',descs:['No visible awareness of speech bubble placement; bubbles over faces or wrong characters.','Bubble placement appears random; tails frequently incorrect throughout.','Bubbles generally placed appropriately but some tails point incorrectly.','Bubble placement mostly correct with only occasional misaligned tails.','Bubbles consistently placed away from faces; tails point accurately; text never obstructs visuals.']},
+    {id:'b5-4',label:'Attention to Detail (No Bugs/Glitches)',descs:['Significant technical errors making story difficult or impossible to read.','Frequent bugs and glitches throughout; story feels unfinished.','A few noticeable bugs that briefly disrupt immersion but don\'t break the story.','Very minor technical issues that don\'t interrupt the reading experience.','Story is clean and polished throughout; no layering mistakes, freezing, or coding errors.']}
   ],
   c1:[
-    {id:'c1-1',label:'Unique Premise or Setting',descs:[
-      'The story\'s central idea feels genuinely fresh. The premise or setting has not been seen countless times on the platform and immediately stands out.',
-      'A familiar concept executed with a clear and interesting twist that sets it apart.',
-      'The premise is recognisable but competently handled, with minor elements that differentiate it.',
-      'A well-worn concept with little to distinguish it from similar stories.',
-      'The premise feels entirely unoriginal with no distinguishing features.',
-      'The premise is derivative or indistinguishable from other stories on the platform.'
-    ]},
-    {id:'c1-2',label:'Genre Execution',descs:[
-      'The story embraces its genre fully while introducing something that feels innovative within it. Genre conventions are understood and thoughtfully engaged with.',
-      'The genre is handled with confidence and some fresh elements, even if not groundbreaking.',
-      'The genre is present but executed conventionally without much creative engagement.',
-      'The story\'s genre identity is unclear or inconsistently executed.',
-      'The genre is barely recognisable or is handled in a way that undermines the story.',
-      'No discernible genre identity or execution.'
-    ]},
-    {id:'c1-3',label:'World-Building or Lore',descs:[
-      'The story\'s world, setting, or lore is richly developed. The reader feels grounded in a fully realised environment with its own rules, history, or texture.',
-      'World-building is solid and detailed in key areas, creating a believable setting.',
-      'The setting is functional but underdeveloped. The world exists but does not feel lived-in.',
-      'Minimal attention to setting. The story could take place anywhere with little consequence.',
-      'No meaningful world-building present. The setting is generic and unexplored.',
-      'The world or setting is entirely absent or incoherent.'
-    ]},
-    {id:'c1-4',label:'Conceptual Depth',descs:[
-      'The story explores meaningful themes or ideas that give it resonance beyond its surface plot. There is something to think about.',
-      'Clear thematic intent is present and explored with some depth.',
-      'Themes are hinted at but not consistently developed.',
-      'The story operates primarily on a surface level with little apparent thematic depth.',
-      'No discernible themes or deeper meaning.',
-      'The story has no conceptual depth and does not attempt to explore ideas.'
-    ]}
+    {id:'c1-1',label:'Unique Premise or Setting',descs:['Premise derivative or indistinguishable from other stories.','Premise entirely unoriginal with no distinguishing features.','Recognisable premise, competently handled, minor elements that differentiate.','Familiar concept with a clear and interesting twist that sets it apart.','Story\'s central idea feels genuinely fresh; premise or setting immediately stands out.']},
+    {id:'c1-2',label:'Genre Execution',descs:['No discernible genre identity or execution.','Genre barely recognisable or undermines the story.','Genre present but executed conventionally without much creative engagement.','Genre handled with confidence and some fresh elements.','Story embraces its genre fully while introducing something that feels innovative within it.']},
+    {id:'c1-3',label:'World-Building or Lore',descs:['World or setting entirely absent or incoherent.','No meaningful world-building; setting generic and unexplored.','Setting functional but underdeveloped; world exists but doesn\'t feel lived-in.','World-building solid and detailed in key areas, creating a believable setting.','Story\'s world, setting, or lore richly developed; reader feels grounded in a fully realised environment.']},
+    {id:'c1-4',label:'Conceptual Depth',descs:['Story has no conceptual depth and doesn\'t attempt to explore ideas.','No discernible themes or deeper meaning.','Themes hinted at but not consistently developed.','Clear thematic intent present and explored with some depth.','Story explores meaningful themes or ideas that give it resonance beyond its surface plot.']}
   ],
   c2:[
-    {id:'c2-1',label:'Strong Hook in First Episode',descs:[
-      'The opening episode grips the reader immediately. By the end of Episode 1, there is a compelling reason to keep reading.',
-      'A strong opening that establishes intrigue, even if the hook takes a little time to develop.',
-      'The first episode is adequate but does not create a strong pull to continue.',
-      'The opening is slow, unclear, or fails to establish enough interest.',
-      'The first episode offers almost no reason to continue reading.',
-      'The opening is so weak or confusing that it actively discourages the reader.'
-    ]},
-    {id:'c2-2',label:'Balanced Episode Pacing',descs:[
-      'Each episode moves at a pace that feels natural and engaging. Neither rushed nor padded. Each episode earns its length.',
-      'Pacing is mostly well-managed with only minor stretches that drag or rush.',
-      'Pacing is functional but uneven, with some episodes feeling noticeably longer or shorter than they should.',
-      'Pacing is a clear weakness. Episodes drag significantly or skip past important moments.',
-      'Very poor pacing. The story feels structurally undisciplined.',
-      'No apparent pacing control whatsoever.'
-    ]},
-    {id:'c2-3',label:'Scene Transitions & Cohesion',descs:[
-      'Scene and episode transitions are smooth and logical. The story flows as a coherent whole.',
-      'Transitions are mostly effective with only occasional confusion between scenes.',
-      'Some transitions are handled well but others feel abrupt or unexplained.',
-      'Transitions are frequently jarring. The story jumps between scenes without clear connection.',
-      'Very little cohesion between scenes. The story feels fragmented.',
-      'Scenes change randomly with no apparent narrative logic connecting them.'
-    ]},
-    {id:'c2-4',label:'Progression Toward Climax',descs:[
-      'The plot builds meaningfully and steadily. By the end of Episode 3, there is clear dramatic momentum toward something significant.',
-      'Good narrative build with clear direction, even if the escalation is not perfectly calibrated.',
-      'Some progression is present but the story has not clearly built toward anything by Episode 3.',
-      'Little sense of escalation or direction. The story feels like it is waiting to begin.',
-      'No narrative momentum. The plot has not developed over the three episodes.',
-      'The plot has regressed or remained entirely static.'
-    ]}
+    {id:'c2-1',label:'Strong Hook in First Episode',descs:['Opening so weak or confusing it actively discourages the reader.','First episode offers almost no reason to continue reading.','First episode adequate but does not create a strong pull to continue.','Strong opening that establishes intrigue, even if hook takes a little time.','Opening episode grips the reader immediately; compelling reason to keep reading by end of episode 1.']},
+    {id:'c2-2',label:'Balanced Episode Pacing',descs:['No apparent pacing control whatsoever.','Very poor pacing; story feels structurally undisciplined.','Pacing functional but uneven; some episodes noticeably longer or shorter.','Pacing mostly well-managed with only minor stretches that drag or rush.','Each episode moves at a pace that feels natural and engaging; neither rushed nor padded.']},
+    {id:'c2-3',label:'Scene Transitions & Cohesion',descs:['Scenes change randomly with no apparent narrative logic.','Very little cohesion between scenes; story feels fragmented.','Some transitions handled well but others feel abrupt or unexplained.','Transitions mostly effective with only occasional confusion between scenes.','Scene and episode transitions smooth and logical; story flows as a coherent whole.']},
+    {id:'c2-4',label:'Progression Toward Climax',descs:['Plot has regressed or remained entirely static.','No narrative momentum; plot has not developed over three episodes.','Some progression present but story has not clearly built toward anything by episode 3.','Good narrative build with clear direction, even if escalation not perfectly calibrated.','Plot builds meaningfully and steadily; clear dramatic momentum toward something significant by end of episode 3.']}
   ],
   c3:[
-    {id:'c3-1',label:'Clear Central Conflict',descs:[
-      'The central conflict is established clearly and compellingly within the first episode. The reader knows exactly what drives the story forward.',
-      'The conflict is present and clear, even if it takes a little longer to fully define itself.',
-      'A conflict exists but is vague or not yet clearly articulated by Episode 3.',
-      'The conflict is unclear, underdeveloped, or too passive to generate tension.',
-      'A conflict is barely discernible.',
-      'No clear central conflict has been established.'
-    ]},
-    {id:'c3-2',label:'High or Emotional Stakes',descs:[
-      'The stakes feel real, significant, and personal. The reader understands what is at risk and genuinely cares about the outcome.',
-      'Stakes are well-established and emotionally engaging, even if not perfectly sustained.',
-      'Some stakes are present but do not feel particularly weighty or personal yet.',
-      'Stakes are either absent or too low to create meaningful tension.',
-      'No real sense of consequence or risk in the story.',
-      'The story creates no stakes whatsoever.'
-    ]},
-    {id:'c3-3',label:'Well-Executed Plot Twists',descs:[
-      'Plot twists are surprising yet feel earned and believable in retrospect. They recontextualise the story effectively.',
-      'A well-executed twist or revelation that adds genuine intrigue.',
-      'A twist is attempted but is either predictable or not quite earned.',
-      'Twists feel forced, random, or do not land with any real impact.',
-      'A twist is attempted but undermines rather than enhances the story.',
-      'No plot twists, or twists that are incoherent or contradict established story logic.'
-    ]},
-    {id:'c3-4',label:'Subplot Integration',descs:[
-      'Subplots enrich the main narrative. They feel connected and add texture, depth, or thematic resonance.',
-      'Subplots are present and mostly serve the main narrative without feeling disconnected.',
-      'Subplots exist but feel somewhat tangential or underdeveloped within three episodes.',
-      'Subplots feel like distractions rather than enhancements.',
-      'Only the vaguest hint of a subplot with no real development.',
-      'No subplots present.'
-    ]}
+    {id:'c3-1',label:'Clear Central Conflict',descs:['No clear central conflict established.','Conflict barely discernible.','Conflict exists but vague or not yet clearly articulated by episode 3.','Conflict present and clear, even if it takes a little longer to define.','Central conflict established clearly and compellingly within the first episode; reader knows exactly what drives the story.']},
+    {id:'c3-2',label:'High or Emotional Stakes',descs:['Story creates no stakes whatsoever.','No real sense of consequence or risk.','Some stakes present but don\'t feel particularly weighty or personal.','Stakes well-established and emotionally engaging, even if not perfectly sustained.','Stakes feel real, significant, and personal; reader understands what is at risk and genuinely cares.']},
+    {id:'c3-3',label:'Well-Executed Plot Twists',descs:['No plot twists, or twists incoherent and contradicting story logic.','A twist attempted but undermines rather than enhances the story.','A twist attempted but either predictable or not quite earned.','A well-executed twist or revelation that adds genuine intrigue.','Plot twists surprising yet feel earned and believable in retrospect; recontextualise the story effectively.']},
+    {id:'c3-4',label:'Subplot Integration',descs:['No subplots present.','Only the vaguest hint of a subplot with no real development.','Subplots exist but feel somewhat tangential or underdeveloped within three episodes.','Subplots present and mostly serve the main narrative without feeling disconnected.','Subplots enrich the main narrative; feel connected and add texture, depth, or thematic resonance.']}
   ],
   c4:[
-    {id:'c4-1',label:'Internal Plot Logic',descs:[
-      'Events and outcomes follow consistently from the story\'s established rules and world. Nothing happens without logical cause.',
-      'Strong internal logic with only minor moments that stretch plausibility.',
-      'Generally logical but with one or two moments that feel unexplained or inconsistent.',
-      'Several instances where events happen without clear cause or contradict established facts.',
-      'The story\'s internal logic breaks down regularly.',
-      'Events occur seemingly at random with no logical coherence.'
-    ]},
-    {id:'c4-2',label:'Realistic Character Decisions',descs:[
-      'Characters act in ways that feel true to who they are and to the situations they face. Decisions are grounded and believable.',
-      'Character decisions are mostly logical and consistent with their established personality.',
-      'Characters generally act reasonably but occasionally make choices that feel out of character or convenient for the plot.',
-      'Character decisions frequently feel contrived or inconsistent with what we know about them.',
-      'Characters act illogically throughout. Their choices seem to serve the plot rather than emerge from character.',
-      'Character behaviour is incoherent and bears no relationship to their established traits.'
-    ]},
-    {id:'c4-3',label:'Conflicts and Consequences',descs:[
-      'Conflicts lead to meaningful consequences that ripple forward in the story. Actions have visible outcomes.',
-      'Consequences generally follow from conflicts with only minor inconsistencies.',
-      'Some consequences are present but not all conflicts result in meaningful outcomes.',
-      'Consequences are rare. Conflicts arise and are largely forgotten without impact.',
-      'Events occur without consequence. Nothing the characters do seems to matter.',
-      'No sense of cause and effect in the story at all.'
-    ]},
-    {id:'c4-4',label:'Avoidance of Plot Holes',descs:[
-      'No plot holes identified across the three episodes. The story is tight and consistent.',
-      'The story is largely coherent with only one minor unanswered question.',
-      'A couple of noticeable gaps or contradictions that could be resolved but are distracting.',
-      'Several clear plot holes that undermine confidence in the story\'s construction.',
-      'The story is riddled with contradictions and gaps.',
-      'Fundamental plot holes that make the story incoherent.'
-    ]}
+    {id:'c4-1',label:'Internal Plot Logic',descs:['Events occur seemingly at random with no logical coherence.','Story\'s internal logic breaks down regularly.','Generally logical but with one or two moments that feel unexplained or inconsistent.','Strong internal logic with only minor moments that stretch plausibility.','Events and outcomes follow consistently from story\'s established rules; nothing happens without logical cause.']},
+    {id:'c4-2',label:'Realistic Character Decisions',descs:['Character behaviour incoherent and bears no relationship to established traits.','Characters act illogically throughout; choices serve plot rather than emerge from character.','Characters generally act reasonably but occasionally make choices that feel out of character.','Character decisions mostly logical and consistent with established personality.','Characters act in ways that feel true to who they are and the situations they face; decisions grounded and believable.']},
+    {id:'c4-3',label:'Conflicts and Consequences',descs:['No sense of cause and effect in the story at all.','Events occur without consequence; nothing the characters do seems to matter.','Some consequences present but not all conflicts result in meaningful outcomes.','Consequences generally follow from conflicts with only minor inconsistencies.','Conflicts lead to meaningful consequences that ripple forward; actions have visible outcomes.']},
+    {id:'c4-4',label:'Avoidance of Plot Holes',descs:['Fundamental plot holes make the story incoherent.','Story riddled with contradictions and gaps.','A couple of noticeable gaps or contradictions that could be resolved but are distracting.','Story largely coherent with only one minor unanswered question.','No plot holes identified across the three episodes; story is tight and consistent.']}
   ],
   c5:[
-    {id:'c5-1',label:'Emotional Resonance',descs:[
-      'The story moves the reader. Whether through sadness, joy, tension, or humour, it creates a genuine emotional response.',
-      'Several emotionally resonant moments that connect meaningfully with the reader.',
-      'Some emotional beats land but others fall flat or feel underdeveloped.',
-      'Limited emotional impact. The story describes events without making the reader feel them.',
-      'Virtually no emotional engagement.',
-      'The story is entirely emotionally inert.'
-    ]},
-    {id:'c5-2',label:'Memorable Moments/Scenes',descs:[
-      'At least one scene across the three episodes is genuinely memorable — the kind you think about after you put the story down.',
-      'A standout scene or moment that elevates the story above the average.',
-      'Some scenes are engaging but none are particularly distinctive.',
-      'The story is competent but forgettable. No scenes stand out.',
-      'Nothing memorable across the three episodes.',
-      'The story leaves no impression whatsoever.'
-    ]},
-    {id:'c5-3',label:'Effective Dialogue',descs:[
-      'Dialogue feels natural, purposeful, and character-specific. Every line of dialogue does something — reveals character, advances plot, or builds atmosphere.',
-      'Dialogue is mostly well-written and functional, with only occasional stilted or expository lines.',
-      'Dialogue is serviceable but sometimes feels generic or on-the-nose.',
-      'Dialogue is frequently unnatural, overly explanatory, or interchangeable between characters.',
-      'Dialogue is largely wooden, unconvincing, or clearly written to move plot rather than to sound like real speech.',
-      'Dialogue is actively bad — unnatural, confusing, or completely disconnected from character.'
-    ]},
-    {id:'c5-4',label:'Narrative Voice & Style',descs:[
-      'The story has a distinct, consistent voice and writing style that feels intentional and owned. It sounds like nobody else.',
-      'A clear and engaging narrative voice that gives the story personality.',
-      'Some personality in the writing, but the voice is inconsistent across episodes.',
-      'The writing is functional but largely voiceless — competent without being distinctive.',
-      'No discernible voice or style. The writing feels generic throughout.',
-      'The writing has no style or voice and is difficult or unpleasant to read.'
-    ]}
+    {id:'c5-1',label:'Emotional Resonance',descs:['Story entirely emotionally inert.','Virtually no emotional engagement.','Some emotional beats land but others fall flat or feel underdeveloped.','Several emotionally resonant moments that connect meaningfully with the reader.','Story moves the reader; creates a genuine emotional response through sadness, joy, tension, or humour.']},
+    {id:'c5-2',label:'Memorable Moments/Scenes',descs:['Story leaves no impression whatsoever.','Nothing memorable across the three episodes.','Some scenes engaging but none particularly distinctive.','A standout scene or moment that elevates the story above the average.','At least one scene is genuinely memorable across the three episodes — the kind you think about after.']},
+    {id:'c5-3',label:'Effective Dialogue',descs:['Dialogue actively bad — unnatural, confusing, or disconnected from character.','Dialogue largely wooden, unconvincing, or clearly written to move plot rather than sound like real speech.','Dialogue serviceable but sometimes generic or on-the-nose.','Dialogue mostly well-written and functional, with only occasional stilted or expository lines.','Dialogue feels natural, purposeful, and character-specific; every line reveals character, advances plot, or builds atmosphere.']},
+    {id:'c5-4',label:'Narrative Voice & Style',descs:['Writing has no style or voice and is difficult or unpleasant to read.','No discernible voice or style; writing feels generic throughout.','Some personality in the writing, but voice inconsistent across episodes.','A clear and engaging narrative voice that gives the story personality.','Story has a distinct, consistent voice and writing style that feels intentional and owned; sounds like nobody else.']}
   ],
   d1:[
-    {id:'d1-1',label:'Meaningful Branching Choices',descs:[
-      'Choices lead to visibly different outcomes. The story branches in ways that feel significant and genuinely divergent.',
-      'Most choices produce different outcomes with only occasional choices that converge too quickly.',
-      'Some branching exists but most paths reconverge rapidly without visible consequence.',
-      'Choices are present but lead to the same outcome regardless of what the reader selects.',
-      'Almost no branching. Choices are cosmetic.',
-      'Choices either do not exist or lead to identical outcomes.'
-    ]},
-    {id:'d1-2',label:'Reader Influence on Plot',descs:[
-      'Reader decisions genuinely shape story events. Choices have a clear causal relationship with what happens next.',
-      'Choices influence the plot in several meaningful ways.',
-      'Some choices influence the plot but the story mostly proceeds on rails.',
-      'Choices rarely affect the plot in any substantive way.',
-      'Reader choices have almost no impact on events.',
-      'The reader has no influence on the plot whatsoever.'
-    ]},
-    {id:'d1-3',label:'Replayability',descs:[
-      'The story has multiple routes, endings, or richly varied paths that make replaying feel worthwhile and rewarding.',
-      'Clear replay value with enough variation to justify a second read.',
-      'Some replay value exists but the differences between paths are modest.',
-      'Very limited replay value. A second read would be largely identical.',
-      'No meaningful replay value.',
-      'The story offers nothing different on a second read.'
-    ]},
-    {id:'d1-4',label:'Consequences with Weight',descs:[
-      'Choices carry real weight. The reader feels the consequences of their decisions, making selection feel significant.',
-      'Most choices feel consequential, with outcomes that matter to the story or characters.',
-      'Some consequences are present but the majority of choices feel low-stakes.',
-      'Choices rarely produce any felt consequence.',
-      'No sense of consequence. All choices feel equally insignificant.',
-      'No consequences to any choices made.'
-    ]}
+    {id:'d1-1',label:'Meaningful Branching Choices',descs:['Choices don\'t exist or lead to identical outcomes.','Almost no branching; choices are cosmetic.','Some branching exists but most paths reconverge rapidly without visible consequence.','Most choices produce different outcomes with only occasional quick convergence.','Choices lead to visibly different outcomes; story branches in ways that feel significant and genuinely divergent.']},
+    {id:'d1-2',label:'Reader Influence on Plot',descs:['Reader has no influence on the plot whatsoever.','Reader choices have almost no impact on events.','Some choices influence the plot but story mostly proceeds on rails.','Choices influence the plot in several meaningful ways.','Reader decisions genuinely shape story events; choices have a clear causal relationship with what happens next.']},
+    {id:'d1-3',label:'Replayability',descs:['Story offers nothing different on a second read.','No meaningful replay value.','Some replay value exists but differences between paths are modest.','Clear replay value with enough variation to justify a second read.','Story has multiple routes, endings, or richly varied paths making replaying feel worthwhile and rewarding.']},
+    {id:'d1-4',label:'Consequences with Weight',descs:['No consequences to any choices made.','No sense of consequence; all choices feel equally insignificant.','Some consequences present but majority of choices feel low-stakes.','Most choices feel consequential, with outcomes that matter to the story or characters.','Choices carry real weight; reader feels the consequences of their decisions, making selection feel significant.']}
   ],
   d2:[
-    {id:'d2-1',label:'Outfit Choices',descs:[
-      'Outfit choices are coded flawlessly. Options are varied, visually appropriate, and outfits are correctly referenced and displayed throughout the story.',
-      'Outfit choices work well with minor coding inconsistencies that do not disrupt the experience.',
-      'Outfit choices are present but occasionally buggy or not referenced when they should be.',
-      'Outfit coding has noticeable errors. Outfits change unexpectedly or are not carried through the story.',
-      'Outfit choices are present but mostly broken or irrelevant.',
-      'No outfit choices, or they are so broken as to be non-functional.'
-    ]},
-    {id:'d2-2',label:'Functionality & Clarity of Games',descs:[
-      'Mini-games or challenges are intuitive, clearly explained, and bug-free. They add genuine enjoyment and purpose.',
-      'Games function well overall with minor clarity issues.',
-      'Games are present and mostly functional but feel slightly confusing or incomplete.',
-      'Games exist but are buggy, unclear, or frustrating to play.',
-      'A game is attempted but mostly non-functional.',
-      'No games or challenges present, or they are entirely broken.'
-    ]},
-    {id:'d2-3',label:'Point Systems or Timed Choices',descs:[
-      'Points or timed choices are tracked accurately and used in a meaningful way that influences the story.',
-      'Point or timed systems work effectively with only minor inconsistencies.',
-      'A system exists but is inconsistently applied or has limited narrative impact.',
-      'Point or timed systems are present but buggy or feel tacked on.',
-      'Only the most basic attempt at a system that barely functions.',
-      'No point or timed choice systems, or they are completely broken.'
-    ]},
-    {id:'d2-4',label:'Gains/Flags for Story Impact',descs:[
-      'Reader choices are recorded using gains or flags and meaningfully referenced later in the story. The story remembers what the reader did.',
-      'Gains and flags are used well in most instances with only occasional missed opportunities.',
-      'Some flags or gains are used but their impact on the story is limited.',
-      'Flags or gains exist but are rarely referenced in a way that matters.',
-      'Only the most superficial use of flags with no real story integration.',
-      'No gains or flags used.'
-    ]}
+    {id:'d2-1',label:'Outfit Choices',descs:['No outfit choices, or so broken as to be non-functional.','Outfit choices present but mostly broken or irrelevant.','Outfit choices present but occasionally buggy or not referenced when they should be.','Outfit choices work well with minor coding inconsistencies that don\'t disrupt the experience.','Outfit choices coded flawlessly; options varied, visually appropriate, and correctly referenced and displayed throughout.']},
+    {id:'d2-2',label:'Functionality & Clarity of Games',descs:['No games or challenges present, or they are entirely broken.','A game is attempted but mostly non-functional.','Games present and mostly functional but feel slightly confusing or incomplete.','Games function well overall with minor clarity issues.','Mini-games or challenges are intuitive, clearly explained, and bug-free; add genuine enjoyment and purpose.']},
+    {id:'d2-3',label:'Point Systems or Timed Choices',descs:['No point or timed choice systems, or completely broken.','Only the most basic attempt at a system that barely functions.','A system exists but inconsistently applied or has limited narrative impact.','Point or timed systems work effectively with only minor inconsistencies.','Points or timed choices tracked accurately and used in a meaningful way that influences the story.']},
+    {id:'d2-4',label:'Gains/Flags for Story Impact',descs:['No gains or flags used.','Only the most superficial use of flags with no real story integration.','Some flags or gains are used but their impact on the story is limited.','Gains and flags are used well in most instances with only occasional missed opportunities.','Reader choices recorded using gains or flags and meaningfully referenced later; story remembers what the reader did.']}
   ],
   d3:[
-    {id:'d3-1',label:'Regular Choice Prompts',descs:[
-      'Choices appear at a well-paced, consistent rhythm across all three episodes. The reader never goes too long without an opportunity to engage.',
-      'Choices are regular with only occasional long stretches between prompts.',
-      'Choice frequency is uneven. Some episodes are heavy with choices while others have very few.',
-      'Choices are infrequent. Long reading stretches occur between any form of interactivity.',
-      'Only one or two choices across the three episodes.',
-      'No choices present, or so rare as to be negligible.'
-    ]},
-    {id:'d3-2',label:'Personality or Relationship Choices',descs:[
-      'The reader can meaningfully shape their MC\'s personality and/or build or affect relationships through choices. These feel impactful.',
-      'Good personality and relationship choices are available and clearly influence character dynamics.',
-      'Some personality or relationship choices exist but their impact is limited.',
-      'Very few opportunities to shape the MC or relationships.',
-      'Barely any influence over character or relationships.',
-      'No personality or relationship choices whatsoever.'
-    ]},
-    {id:'d3-3',label:'Balance Between Dialogue and Action',descs:[
-      'Choices appear in both dialogue and critical moments. The reader has agency in how their character speaks and what they do.',
-      'A good balance with choices in most types of scenes.',
-      'Choices are present but skewed heavily toward dialogue or action, with limited variety.',
-      'Choices appear in only one context — either all dialogue or all action — creating a one-dimensional interactive experience.',
-      'Choices are so limited that balance is irrelevant.',
-      'No meaningful balance. Choices are absent from most scenes.'
-    ]},
-    {id:'d3-4',label:'Filler Choices',descs:[
-      'Every choice serves a purpose. No choices feel random, pointless, or included merely to appear interactive.',
-      'Most choices are purposeful with only one or two that feel like padding.',
-      'Some choices feel meaningful while others are clearly just filler with no real function.',
-      'A significant portion of choices are filler that do not influence the story or reader experience.',
-      'Most choices are filler.',
-      'All choices are pointless or purely cosmetic with no narrative purpose.'
-    ]}
+    {id:'d3-1',label:'Regular Choice Prompts',descs:['No choices present, or so rare as to be negligible.','Only one or two choices across the three episodes.','Choice frequency uneven; some episodes heavy with choices while others have very few.','Choices regular with only occasional long stretches between prompts.','Choices appear at a well-paced, consistent rhythm across all three episodes; reader never goes too long without engagement.']},
+    {id:'d3-2',label:'Personality or Relationship Choices',descs:['No personality or relationship choices whatsoever.','Barely any influence over character or relationships.','Some personality or relationship choices exist but their impact is limited.','Good personality and relationship choices available and clearly influence character dynamics.','Reader can meaningfully shape MC\'s personality and/or build relationships; these feel impactful.']},
+    {id:'d3-3',label:'Balance Between Dialogue and Action',descs:['No meaningful balance; choices absent from most scenes.','Choices so limited that balance is irrelevant.','Choices present but skewed heavily toward dialogue or action with limited variety.','A good balance with choices in most types of scenes.','Choices appear in both dialogue and critical moments; reader has agency in how character speaks and what they do.']},
+    {id:'d3-4',label:'Filler Choices',descs:['All choices pointless or purely cosmetic with no narrative purpose.','Most choices are filler.','Some choices meaningful while others are clearly just filler.','Most choices purposeful with only one or two that feel like padding.','Every choice serves a purpose; no choices feel random, pointless, or included merely to appear interactive.']}
   ],
   d4:[
-    {id:'d4-1',label:'MC Customization',descs:[
-      'The main character is fully customizable. Appearance and/or name options are broad, bug-free, and carried consistently throughout the story.',
-      'Solid MC customization with good options, minor bugs, or occasional inconsistencies.',
-      'Basic customization is present but limited in scope.',
-      'MC customization is attempted but buggy, limited, or inconsistently applied.',
-      'Minimal customization — name only, or one cosmetic option.',
-      'No MC customization offered.'
-    ]},
-    {id:'d4-2',label:'LI or Supporting Character Customization',descs:[
-      'Love interests or supporting characters can be meaningfully customized by the reader and appear consistently throughout.',
-      'Good secondary character customization with minor issues.',
-      'Limited customization for supporting characters.',
-      'Secondary character customization is attempted but poorly implemented.',
-      'Only a token customization option for one secondary character.',
-      'No customization available for any character other than the MC.'
-    ]},
-    {id:'d4-3',label:'Inclusivity Options',descs:[
-      'Diverse features are thoughtfully and thoroughly represented. The story considers a wide range of reader identities including gender, race, body type, and sexual orientation.',
-      'Good inclusivity coverage with only minor gaps in representation.',
-      'Some inclusive options are offered but the range is narrow.',
-      'Minimal inclusivity. Default options dominate with very limited diversity.',
-      'Almost no inclusivity considered.',
-      'No inclusive options offered whatsoever.'
-    ]},
-    {id:'d4-4',label:'Genre-Specific Options',descs:[
-      'Interactive elements are tailored meaningfully to the story\'s genre. A mystery includes clue-gathering; a romance includes relationship-building; a fantasy may include skill or faction choices.',
-      'Genre-specific interactivity is present and well-executed in most areas.',
-      'Some genre-appropriate interactivity is included but it is not a consistent feature.',
-      'Generic choices dominate with only minimal genre-specific customization.',
-      'No meaningful genre adaptation in the interactive elements.',
-      'No genre-specific options or consideration.'
-    ]}
+    {id:'d4-1',label:'MC Customization',descs:['No MC customization offered.','Minimal customization — name only, or one cosmetic option.','Basic customization present but limited in scope.','Solid MC customization with good options; minor bugs or occasional inconsistencies.','Main character fully customizable; appearance and/or name options broad, bug-free, and carried consistently throughout.']},
+    {id:'d4-2',label:'LI or Supporting Character Customization',descs:['No customization available for any character other than the MC.','Only a token customization option for one secondary character.','Limited customization for supporting characters.','Good secondary character customization with minor issues.','Love interests or supporting characters can be meaningfully customized and appear consistently throughout.']},
+    {id:'d4-3',label:'Inclusivity Options',descs:['No inclusive options offered whatsoever.','Almost no inclusivity considered.','Some inclusive options offered but the range is narrow.','Good inclusivity coverage with only minor gaps in representation.','Diverse features thoughtfully and thoroughly represented; story considers a wide range of reader identities.']},
+    {id:'d4-4',label:'Genre-Specific Options',descs:['No genre-specific options or consideration.','No meaningful genre adaptation in the interactive elements.','Some genre-appropriate interactivity included but not a consistent feature.','Genre-specific interactivity present and well-executed in most areas.','Interactive elements meaningfully tailored to story\'s genre; mysteries include clue-gathering, romances include relationship-building, etc.']}
   ],
   d5:[
-    {id:'d5-1',label:'Coding Precision',descs:[
-      'All choices, gains, and branches are coded cleanly and without error. The interactive experience is smooth and professional.',
-      'Coding is mostly precise with only isolated minor bugs.',
-      'Functional coding with a few noticeable errors that briefly disrupt the experience.',
-      'Coding errors appear regularly and affect the quality of the interactive experience.',
-      'Significant coding problems throughout. Choices misdirect, loop, or break the story.',
-      'Coding is so broken that the interactivity is largely non-functional.'
-    ]},
-    {id:'d5-2',label:'Visual Choice Presentation',descs:[
-      'Tappables, overlays, and visual menus are used creatively to present choices. The interactive elements look polished and feel intentional.',
-      'Visual choice presentation is attractive and mostly well-executed.',
-      'Some visual flair in choice presentation but mostly standard text prompts.',
-      'Very little visual creativity in how choices are presented.',
-      'All choices are basic text prompts with no visual engagement.',
-      'No effort at visual choice presentation.'
-    ]},
-    {id:'d5-3',label:'Innovation in Interactivity',descs:[
-      'The story introduces interactive mechanics or features that feel genuinely unique on the platform. It does something others have not thought to do.',
-      'Some innovative interactive elements that go beyond standard Episode conventions.',
-      'Standard interactive features are used competently, with one or two moments of creative flair.',
-      'Interactivity follows convention closely with no meaningful innovation.',
-      'Entirely standard interactive setup with nothing distinguishing it.',
-      'No innovation of any kind. Interactivity is entirely baseline or absent.'
-    ]},
-    {id:'d5-4',label:'Consistency & User Experience',descs:[
-      'The interactive experience is smooth, clear, and enjoyable from start to finish across all three episodes. Nothing confuses or frustrates the reader.',
-      'Consistently good user experience with only minor rough spots.',
-      'The experience is mostly smooth but occasionally confusing or inconsistent.',
-      'The user experience is frequently bumpy. Confusing prompts, unclear branching, or inconsistent feedback.',
-      'Poor user experience throughout. The interactive elements feel poorly thought out.',
-      'The interactive experience is broken or so confusing as to be unusable.'
-    ]}
+    {id:'d5-1',label:'Coding Precision',descs:['Coding so broken that interactivity is largely non-functional.','Significant coding problems throughout; choices misdirect, loop, or break the story.','Functional coding with a few noticeable errors that briefly disrupt the experience.','Coding mostly precise with only isolated minor bugs.','All choices, gains, and branches coded cleanly and without error; interactive experience smooth and professional.']},
+    {id:'d5-2',label:'Visual Choice Presentation',descs:['No effort at visual choice presentation.','All choices basic text prompts with no visual engagement.','Some visual flair in choice presentation but mostly standard text prompts.','Visual choice presentation attractive and mostly well-executed.','Tappables, overlays, and visual menus used creatively to present choices; interactive elements look polished and feel intentional.']},
+    {id:'d5-3',label:'Innovation in Interactivity',descs:['No innovation of any kind; interactivity entirely baseline or absent.','Entirely standard interactive setup with nothing distinguishing it.','Standard interactive features used competently, with one or two moments of creative flair.','Some innovative interactive elements that go beyond standard Episode conventions.','Story introduces interactive mechanics or features that feel genuinely unique on the platform.']},
+    {id:'d5-4',label:'Consistency & User Experience',descs:['Interactive experience broken or so confusing as to be unusable.','Poor user experience throughout; interactive elements feel poorly thought out.','Experience mostly smooth but occasionally confusing or inconsistent.','Consistently good user experience with only minor rough spots.','Interactive experience smooth, clear, and enjoyable from start to finish across all three episodes.']}
   ],
   e1:[
-    {id:'e1-1',label:'Balance & Structure',descs:[
-      'The layout is visually balanced with clear focal points. The eye is drawn naturally to the most important element.',
-      'Strong balance and structure with minor compositional imbalances.',
-      'The layout is functional but feels slightly crowded, too sparse, or unevenly weighted.',
-      'The composition lacks clear structure. Elements feel randomly placed.',
-      'Very poor balance. The design feels chaotic or empty.',
-      'No apparent awareness of composition or layout.'
-    ]},
-    {id:'e1-2',label:'Character & Element Placement',descs:[
-      'Characters and objects are deliberately and effectively positioned. Nothing feels accidental or cluttered.',
-      'Placement is mostly intentional and well-considered.',
-      'Elements are placed adequately but without strong visual intention.',
-      'The cover is overcrowded or elements are placed without spatial awareness.',
-      'Characters or objects appear randomly positioned.',
-      'No consideration for placement. The cover looks accidental.'
-    ]},
-    {id:'e1-3',label:'Text Readability',descs:[
-      'The story title and author name are immediately legible, well-positioned, and do not clash with the background or visual elements.',
-      'Text is readable with only minor issues with colour contrast or positioning.',
-      'Text is readable but awkwardly placed or slightly hard to distinguish from the background.',
-      'Text is difficult to read due to poor contrast, sizing, or placement.',
-      'Text is barely legible.',
-      'Text is unreadable or absent.'
-    ]},
-    {id:'e1-4',label:'Proportions & Spacing',descs:[
-      'All elements are sized and spaced in proportion to each other. Nothing feels oversized, undersized, or cramped.',
-      'Generally well-proportioned with only minor spacing inconsistencies.',
-      'Proportions are mostly acceptable but some elements are oddly sized or poorly spaced.',
-      'Several elements are noticeably misproportioned.',
-      'Proportions are largely off throughout the design.',
-      'No attention to proportions or spacing.'
-    ]}
+    {id:'e1-1',label:'Balance & Structure',descs:['No apparent awareness of composition or layout.','Very poor balance; design feels chaotic or empty.','Layout functional but slightly crowded, too sparse, or unevenly weighted.','Strong balance and structure with minor compositional imbalances.','Layout visually balanced with clear focal points; eye drawn naturally to the most important element.']},
+    {id:'e1-2',label:'Character & Element Placement',descs:['No consideration for placement; cover looks accidental.','Characters or objects appear randomly positioned.','Elements placed adequately but without strong visual intention.','Placement mostly intentional and well-considered.','Characters and objects deliberately and effectively positioned; nothing feels accidental or cluttered.']},
+    {id:'e1-3',label:'Text Readability',descs:['Text unreadable or absent.','Text barely legible.','Text readable but awkwardly placed or slightly hard to distinguish from background.','Text readable with only minor issues with colour contrast or positioning.','Story title and author name immediately legible, well-positioned, not clashing with background or visual elements.']},
+    {id:'e1-4',label:'Proportions & Spacing',descs:['No attention to proportions or spacing.','Proportions largely off throughout the design.','Proportions mostly acceptable but some elements oddly sized or poorly spaced.','Generally well-proportioned with only minor spacing inconsistencies.','All elements sized and spaced in proportion to each other; nothing feels oversized, undersized, or cramped.']}
   ],
   e2:[
-    {id:'e2-1',label:'Illustration or Editing Quality',descs:[
-      'The cover is clean, high resolution, and well-rendered. It looks polished and professional.',
-      'High quality overall with only minor imperfections in rendering or editing.',
-      'Acceptable quality but with visible imperfections — pixelation, rough edges, or basic editing.',
-      'Noticeably low quality. The cover appears rushed or unfinished.',
-      'Poor quality throughout. The cover looks amateurish.',
-      'The cover is of such poor quality it is difficult to assess.'
-    ]},
-    {id:'e2-2',label:'Color Harmony',descs:[
-      'Colors complement each other beautifully. The palette feels intentional and enhances the cover\'s aesthetic impact.',
-      'Good color choices overall with only occasional clashing or weak combinations.',
-      'Colors are acceptable but the palette feels generic or uninspired.',
-      'Colors clash noticeably or feel chosen without thought.',
-      'Color choices actively undermine the cover\'s appeal.',
-      'No awareness of color harmony.'
-    ]},
-    {id:'e2-3',label:'Lighting & Shadows',descs:[
-      'Lighting and shadow work is skillfully handled, adding depth, dimension, and mood to the cover.',
-      'Good attention to lighting and shadows with only minor inconsistencies.',
-      'Some lighting or shadow work is present but it is basic or inconsistently applied.',
-      'Little attention to lighting or shadow. The cover feels flat.',
-      'No meaningful lighting or shadow work.',
-      'No lighting or shadow consideration at all.'
-    ]},
-    {id:'e2-4',label:'Overall Polish',descs:[
-      'The cover looks professionally made or artistically refined. It could stand alongside high-quality published covers.',
-      'Well-polished with a finished feel. Minor rough edges do not detract significantly.',
-      'Reasonably polished but clearly a work in progress in certain areas.',
-      'Unpolished overall. The cover feels incomplete or carelessly finished.',
-      'Very little polish. The cover looks rough throughout.',
-      'No polish whatsoever. The cover appears unfinished.'
-    ]}
+    {id:'e2-1',label:'Illustration or Editing Quality',descs:['Cover of such poor quality it is difficult to assess.','Poor quality throughout; cover looks amateurish.','Acceptable quality but with visible imperfections — pixelation, rough edges, or basic editing.','High quality overall with only minor imperfections in rendering or editing.','Cover is clean, high resolution, and well-rendered; looks polished and professional.']},
+    {id:'e2-2',label:'Color Harmony',descs:['No awareness of color harmony.','Color choices actively undermine the cover\'s appeal.','Colors acceptable but palette feels generic or uninspired.','Good color choices overall with only occasional clashing or weak combinations.','Colors complement each other beautifully; palette feels intentional and enhances the cover\'s aesthetic impact.']},
+    {id:'e2-3',label:'Lighting & Shadows',descs:['No lighting or shadow consideration at all.','No meaningful lighting or shadow work.','Some lighting or shadow work present but basic or inconsistently applied.','Good attention to lighting and shadows with only minor inconsistencies.','Lighting and shadow work skillfully handled, adding depth, dimension, and mood to the cover.']},
+    {id:'e2-4',label:'Overall Polish',descs:['No polish whatsoever; cover appears unfinished.','Very little polish; cover looks rough throughout.','Reasonably polished but clearly a work in progress in certain areas.','Well-polished with a finished feel; minor rough edges don\'t detract significantly.','Cover looks professionally made or artistically refined; could stand alongside high-quality published covers.']}
   ],
   e3:[
-    {id:'e3-1',label:'Genre Appropriateness',descs:[
-      'A reader can identify the genre immediately from the cover alone. Visual cues, colour, and design clearly signal the story\'s type.',
-      'Genre is clearly communicated with only minor ambiguity.',
-      'The genre is suggested but not immediately obvious.',
-      'The cover does not clearly represent the genre. It could belong to a different kind of story.',
-      'The cover gives almost no indication of genre.',
-      'The cover actively misrepresents the genre.'
-    ]},
-    {id:'e3-2',label:'Mood & Tone Conveyed',descs:[
-      'The cover immediately communicates the story\'s atmosphere. Before reading a word, the reader knows whether to expect romance, tension, whimsy, or darkness.',
-      'Mood is clearly conveyed with only minor tonal inconsistency.',
-      'Some mood is communicated but it is vague or not particularly distinctive.',
-      'The cover has a generic feel with little tonal identity.',
-      'Almost no mood conveyed.',
-      'The cover conveys no mood or atmosphere.'
-    ]},
-    {id:'e3-3',label:'Thematic Symbols',descs:[
-      'Visual elements hint meaningfully at the story\'s themes or plot. The cover rewards closer inspection.',
-      'At least one thematic symbol is effectively incorporated.',
-      'A symbolic element is present but vague or not clearly connected to the story.',
-      'Little to no symbolic content. The cover is primarily decorative.',
-      'No meaningful thematic symbols.',
-      'No symbolic content of any kind.'
-    ]},
-    {id:'e3-4',label:'Emotional Impact',descs:[
-      'The cover evokes curiosity or emotion immediately. It creates a response before a single word is read.',
-      'The cover is engaging and creates a clear emotional or aesthetic response.',
-      'Some mood is communicated but the emotional response is mild or vague.',
-      'The cover has a generic feel with little emotional resonance.',
-      'Almost no emotional impact.',
-      'The cover evokes no curiosity or emotion whatsoever.'
-    ]}
+    {id:'e3-1',label:'Genre Appropriateness',descs:['Cover actively misrepresents the genre.','Cover gives almost no indication of genre.','Genre suggested but not immediately obvious.','Genre clearly communicated with only minor ambiguity.','Reader can identify the genre immediately from the cover alone; visual cues clearly signal the story\'s type.']},
+    {id:'e3-2',label:'Mood & Tone Conveyed',descs:['Cover conveys no mood or atmosphere.','Almost no mood conveyed.','Some mood is communicated but vague or not particularly distinctive.','Mood clearly conveyed with only minor tonal inconsistency.','Cover immediately communicates the story\'s atmosphere; before reading a word, reader knows whether to expect romance, tension, whimsy, or darkness.']},
+    {id:'e3-3',label:'Thematic Symbols',descs:['No symbolic content of any kind.','No meaningful thematic symbols.','A symbolic element present but vague or not clearly connected to the story.','At least one thematic symbol effectively incorporated.','Visual elements hint meaningfully at the story\'s themes or plot; cover rewards closer inspection.']},
+    {id:'e3-4',label:'Emotional Impact',descs:['Cover evokes no emotion whatsoever.','Cover leaves almost no emotional impression.','Cover creates a mild emotional or aesthetic reaction.','Cover is engaging and creates a clear emotional response in most viewers.','Cover evokes strong curiosity or emotion; immediately compels the viewer to want to know more.']}
   ],
   e4:[
-    {id:'e4-1',label:'Unique Artistic Style or Concept',descs:[
-      'The cover stands out with originality. The artistic style or concept is distinctive and immediately recognisable as creative.',
-      'A clear artistic concept with some distinguishing elements that set it apart.',
-      'Some hints of a personal style but largely conventional.',
-      'The cover is generic with very little originality in style or concept.',
-      'No originality. The cover could belong to any story on the platform.',
-      'No artistic style or creative concept evident whatsoever.'
-    ]},
-    {id:'e4-2',label:'Non-Generic Design Choices',descs:[
-      'Poses, expressions, or composition are creative rather than overused. Design choices feel deliberately chosen and fresh.',
-      'Several non-generic design choices that distinguish the cover from average entries.',
-      'Some creative choices but most elements are familiar or commonly used.',
-      'Design choices are mostly clichéd or genre-default with little creative risk.',
-      'Entirely generic design from start to finish.',
-      'All design choices are overused, predictable, or copied from common templates.'
-    ]},
-    {id:'e4-3',label:'Symbolism or Subtle Details',descs:[
-      'There are small, clever touches that add meaning or depth. The cover rewards closer inspection.',
-      'Several deliberate subtle touches that add some depth when noticed.',
-      'One or two small details but they do not add significant meaning.',
-      'Little to no detail layering. The cover is purely surface-level.',
-      'No subtle details or symbolic elements of any kind.',
-      'No depth whatsoever. What you see is exactly and only what is there.'
-    ]},
-    {id:'e4-4',label:'Fresh Take on Genre Norms',descs:[
-      'The cover is innovative for its genre without being confusing. It breathes fresh life into genre visual conventions.',
-      'A clear attempt to innovate within the genre that largely succeeds.',
-      'Minor deviation from genre norms; mostly conventional.',
-      'The cover follows genre norms entirely without any innovation.',
-      'Cover is so deeply conventional it feels like a genre template.',
-      'Cover actively contradicts genre expectations in a confusing or misleading way.'
-    ]}
+    {id:'e4-1',label:'Unique Artistic Style or Concept',descs:['No originality; cover could belong to any story.','Cover feels completely generic with no distinguishing style.','Some hints of a personal style but largely conventional.','A clear artistic concept with some distinguishing elements.','Cover stands out with a truly distinctive artistic style or concept; immediately recognisable as different.']},
+    {id:'e4-2',label:'Non-Generic Design Choices',descs:['All design choices are clichéd or overused.','Very few choices that deviate from genre conventions.','Some creative choices but most elements are common.','Poses, expressions, or composition show creativity in key areas.','Character poses, expressions, and composition are creative, fresh, and clearly avoid overused conventions.']},
+    {id:'e4-3',label:'Symbolism or Subtle Details',descs:['No subtle details or symbolic elements.','Only the most surface-level design with no detail layering.','One or two small details but they don\'t add significant meaning or depth.','Several deliberate subtle touches that reward attention and add some depth.','Small, clever touches throughout that add meaning or depth; cover rewards closer examination.']},
+    {id:'e4-4',label:'Fresh Take on Genre Norms',descs:['Cover actively contradicts genre expectations in a confusing way.','Cover follows genre norms entirely without any innovation.','Minor deviation from genre norms; mostly conventional.','A clear attempt to innovate within the genre that largely succeeds.','Cover innovates meaningfully for its genre without being confusing; feels fresh while remaining readable.']}
   ],
   e5:[
-    {id:'e5-1',label:'Marketability',descs:[
-      'Would this cover attract readers on the app or a shelf? Yes, immediately and broadly.',
-      'The cover would attract readers interested in the genre or style; has moderate broad appeal.',
-      'Cover might attract interest from genre fans but not broadly appealing beyond that.',
-      'The cover is unlikely to attract much attention on the app.',
-      'Cover would be passed over by most readers without a second glance.',
-      'Cover would actively discourage readers from clicking.'
-    ]},
-    {id:'e5-2',label:'Clarity of Focus',descs:[
-      'It is clear who or what the story is about just from the cover.',
-      'Cover communicates the story\'s focus clearly enough with only minor ambiguity.',
-      'Some focus visible but the story\'s subject is not immediately clear.',
-      'Very little clarity; cover is confusing or misleading about the story.',
-      'The cover gives almost no indication of who or what the story is about.',
-      'It is impossible to tell who or what the story is about from the cover.'
-    ]},
-    {id:'e5-3',label:'Consistency with Story Title',descs:[
-      'Does the imagery reflect the title in tone or theme? Yes — cover and title feel made for each other.',
-      'Imagery reflects the title\'s tone or theme clearly.',
-      'Some connection to the title but largely surface-level.',
-      'Very little connection between imagery and the title.',
-      'Imagery has almost no relationship to the title.',
-      'Imagery actively contradicts or has no relationship to the title.'
-    ]},
-    {id:'e5-4',label:'Immediate Interest Factor',descs:[
-      'Does the cover make you want to click and read the story? Absolutely — impossible to scroll past.',
-      'Cover creates a genuine interest in learning more about the story.',
-      'Cover is noticeable but not particularly compelling.',
-      'Cover is unremarkable; might be glanced at but generates no real curiosity.',
-      'Cover fails to create any interest in clicking.',
-      'Cover makes you want to scroll past immediately; no interest generated.'
-    ]}
+    {id:'e5-1',label:'Marketability',descs:['Cover would actively discourage readers from clicking.','Cover unlikely to attract any attention on the app.','Cover might attract interest from fans of the genre but not broadly appealing.','Cover would attract readers interested in the genre or style.','Cover would attract readers immediately on the app or a shelf; compelling and broadly appealing.']},
+    {id:'e5-2',label:'Clarity of Focus',descs:['It is impossible to tell who or what the story is about from the cover.','Very little clarity; cover is confusing or misleading about the story.','Some focus but the story\'s subject is not immediately clear.','Cover communicates the story\'s focus clearly enough.','It is immediately clear who or what the story is about just from the cover.']},
+    {id:'e5-3',label:'Consistency with Story Title',descs:['Imagery actively contradicts or has no relationship to the title.','Very little connection between imagery and title.','Some connection to the title but largely surface-level.','Imagery reflects the title\'s tone or theme clearly.','Imagery deeply reflects the title in both tone and theme; cover and title feel made for each other.']},
+    {id:'e5-4',label:'Immediate Interest Factor',descs:['Cover makes you want to close the app; no interest generated.','Cover fails to create any interest in clicking.','Cover is unremarkable; might be noticed but not compelling.','Cover creates a genuine interest in learning more about the story.','Cover immediately makes you want to click and read the story; impossible to scroll past without noticing.']}
   ]
 };
 
 // ─────────────────────────────────────────────────────
 // BUILD DYNAMIC TBODY ROWS
+// Descriptors are stored index 0 = score 0, index 4 = score 4.
+// We render them in reverse (5→0) to match the B1 format.
 // ─────────────────────────────────────────────────────
 function buildCriteriaRows(tbodyId, key) {
   const tbody = document.getElementById(tbodyId);
@@ -1521,9 +865,10 @@ function buildCriteriaRows(tbodyId, key) {
       html += `<td class="radio-cell"><input class="score-radio" type="radio" name="${c.id}" value="${v}" id="${c.id}-${v}" onchange="calcSection(getSection('${c.id}'));autoSave()"><label class="score-label" for="${c.id}-${v}">${v}</label></td>`;
     }
     html += `</tr><tr><td colspan="7"><div class="desc-panel" id="desc-${c.id}">`;
-    c.descs.forEach((d, i) => {
-      const labels = ['5 —','4 —','3 —','2 —','1 —','0 —'];
-      html += `<div class="desc-row"><strong>${labels[i]}</strong><span>${d}</span></div>`;
+    // Render descriptors 5→0 to match the B1 hardcoded format
+    const labels = ['5 —','4 —','3 —','2 —','1 —','0 —'];
+    [...c.descs].reverse().forEach((d, i) => {
+      html += `<strong>${labels[i]}</strong> ${d}<br>`;
     });
     html += `</div></td></tr>`;
   });
@@ -1647,7 +992,7 @@ function getVal(id) {
 // ─────────────────────────────────────────────────────
 // NAVIGATION
 // ─────────────────────────────────────────────────────
-const SECTIONS = ['A','B','C','D','E','F','N','H'];
+const SECTIONS = ['A','B','C','D','E','F','H'];
 function goSection(key) {
   SECTIONS.forEach(s => {
     const p = document.getElementById('sec-' + s);
@@ -1804,19 +1149,8 @@ function renderHistory() {
   const cards = document.getElementById('hist-cards');
   if (!hist.length) { empty.style.display='block'; content.style.display='none'; return; }
   empty.style.display = 'none'; content.style.display = 'block';
-  tbody.innerHTML = hist.map(h => {
-    const isNom = h.type === 'nominations';
-    if (isNom) {
-      const inno = (h.nominations?.mostInnovativeConcept||[]).join(', ') || '—';
-      const dial = (h.nominations?.bestDialogueCharacterization||[]).join(', ') || '—';
-      return `<tr style="background:#faf5ff;">
-        <td><div class="hist-story">🏅 Nominations</div><div style="font-size:11px;color:#888">Innovative: ${inno}</div><div style="font-size:11px;color:#888">Dialogue: ${dial}</div></td>
-        <td colspan="6" style="color:#888;font-size:12px;">Deliberation-based · No scores</td>
-        <td><span style="font-size:12px">${h.judgeName||'—'}</span></td>
-        <td><span style="font-size:11px;color:#bbb;font-family:var(--mono)">${h.timestamp||'—'}</span></td>
-      </tr>`;
-    }
-    return `<tr>
+  tbody.innerHTML = hist.map(h => `
+    <tr>
       <td><div class="hist-story">${h.story?.title||'—'}</div></td>
       <td><span style="font-size:12px;color:#888">${h.story?.genre||'—'}</span></td>
       <td><span style="font-size:12px">${h.story?.author||'—'}</span></td>
@@ -1827,13 +1161,12 @@ function renderHistory() {
       <td><strong>${h.display?.combined??'—'}/60</strong></td>
       <td><span style="font-size:12px">${h.judgeName||'—'}</span></td>
       <td><span style="font-size:11px;color:#bbb;font-family:var(--mono)">${h.timestamp||'—'}</span></td>
-    </tr>`;
-  }).join('');
+    </tr>`).join('');
 
   const catColors = { B:'#2a4fa3', C:'#8a3055', D:'#6b3fa0', E:'#c9a84c' };
   const catLabels = { B:'🎬 Directing', C:'📖 Plot', D:'🎮 Interactivity', E:'🎨 Story Cover' };
   const catWeights = { B:20, C:20, D:10, E:10 };
-  cards.innerHTML = hist.filter(h => h.type !== 'nominations').map(h => `
+  cards.innerHTML = hist.map(h => `
     <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
       <div style="padding:14px 18px;background:var(--ink);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
         <div>
@@ -1876,66 +1209,6 @@ async function sendToSheet(payload) {
   try {
     await fetch(SHEET_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
   } catch(e) { console.warn('[SOTY Portal] Sheet send failed:', e); }
-}
-
-// ─────────────────────────────────────────────────────
-// NOMINATIONS
-// ─────────────────────────────────────────────────────
-let nomAffirmed = false;
-function toggleNomAffirm() {
-  nomAffirmed = !nomAffirmed;
-  document.getElementById('nom-affirm-cb').classList.toggle('checked', nomAffirmed);
-}
-
-function getNomSlots(slotsId) {
-  return Array.from(document.querySelectorAll(`#${slotsId} .nom-input`))
-    .map(el => el.value.trim()).filter(Boolean);
-}
-
-async function submitNominations() {
-  const judge = (document.getElementById('n-judge-confirm').value.trim()) ||
-                (document.getElementById('n-judge-name').value.trim());
-  if (!judge) { toast('⚠ Please enter your Judge Name'); return; }
-  if (!nomAffirmed) { toast('⚠ Please check the affirmation box'); return; }
-
-  const innovative = getNomSlots('nom-innovative-slots');
-  const dialogue   = getNomSlots('nom-dialogue-slots');
-  const total = innovative.length + dialogue.length;
-  if (total === 0) { toast('⚠ Please add at least one nomination before submitting'); return; }
-
-  const now = new Date().toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
-  const payload = {
-    type: 'nominations',
-    timestamp: now,
-    judgeName: judge,
-    nominations: {
-      mostInnovativeConcept: innovative,
-      bestDialogueCharacterization: dialogue
-    },
-    notes: document.getElementById('n-notes').value.trim(),
-    date: document.getElementById('n-date').value.trim()
-  };
-
-  addToHistory({
-    ...payload,
-    story: { title: `Nominations (${total} total)`, genre: '—', author: '—' },
-    display: { B: '—', C: '—', D: '—', E: '—', combined: 'Noms' },
-    weightedScores: {}
-  });
-
-  await sendToSheet(payload);
-
-  // Clear nomination fields
-  document.querySelectorAll('#nom-innovative-slots .nom-input, #nom-dialogue-slots .nom-input')
-    .forEach(el => { el.value = ''; el.classList.remove('has-val'); });
-  ['n-judge-name','n-judge-confirm','n-date','n-notes'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.value = ''; el.classList.remove('has-val'); }
-  });
-  nomAffirmed = false;
-  document.getElementById('nom-affirm-cb').classList.remove('checked');
-  document.getElementById('pnav-N').classList.add('done');
-  toast(`✅ ${total} nominations submitted by ${judge}`);
 }
 
 // ─────────────────────────────────────────────────────

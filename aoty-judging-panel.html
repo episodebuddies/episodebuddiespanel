@@ -6,13 +6,13 @@
 <title>AOTY Judge Portal · Buddies Support Hub 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
-<link rel="apple-touch-icon" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
-<!-- Search & social preview -->
-<meta property="og:image" content="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
-<meta property="og:title" content="Episode Buddies">
-<meta property="og:description" content="Uplifting Episode authors through free community services, monthly contests, and the most celebrated annual competitions on the platform.">
-<meta name="theme-color" content="#0F1B33">
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+  <!-- Search & social preview -->
+  <meta property="og:image" content="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+  <meta property="og:title" content="Episode Buddies">
+  <meta property="og:description" content="Uplifting Episode authors through free community services, monthly contests, and the most celebrated annual competitions on the platform.">
+  <meta name="theme-color" content="#0F1B33">
 <style>
 :root {
   --ink: #0d0d0d;
@@ -228,7 +228,21 @@ input:focus, textarea:focus, select:focus {
   border-color: var(--gold);
   box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
 }
-input.has-val, textarea.has-val { background: #fffdf5; border-color: var(--gold); }
+input.over-limit {
+  border-color: var(--rose) !important;
+  background: #fff5f5 !important;
+  box-shadow: 0 0 0 3px rgba(184,92,110,0.15) !important;
+}
+input.over-limit + .limit-warn { display: inline-block; }
+.limit-warn {
+  display: none;
+  font-size: 10px;
+  color: var(--rose);
+  font-weight: 600;
+  margin-top: 3px;
+}
+input.has-val { background: #fffdf5; border-color: var(--gold); }
+textarea.has-val { background: #fffdf5; border-color: var(--gold); }
 textarea { resize: vertical; min-height: 80px; }
 select { cursor: pointer; }
 .hint { font-size: 11px; color: #999; margin-top: 2px; }
@@ -625,7 +639,7 @@ select { cursor: pointer; }
           </div>
           <div class="field">
             <label>Your (Judge) Name *</label>
-            <input type="text" id="i-judge-name" placeholder="Your full name" oninput="markFilled(this)">
+            <input type="text" id="i-judge-name" placeholder="Your username" oninput="markFilled(this)">
           </div>
           <div class="field">
             <label>Interview Date</label>
@@ -654,21 +668,21 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Professionalism Score</span>
             <span class="criteria-max">/ 30</span>
-            <input type="number" class="criteria-input" id="i-pro" min="0" max="30" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="i-pro" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
           </div>
         </div>
 
         <!-- RC -->
         <div class="score-section">
-          <div class="score-section-title">Response Composure (RC) — 10 pts</div>
+          <div class="score-section-title">Response Composure (RC) — 15 pts</div>
           <div class="score-section-desc">Are answers calm, structured, and focused? Well-composed responses address questions directly without rambling. Tricky questions handled with grace.</div>
           <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
             9–10 · Calm, focused, well-structured <br> 7–8 · Mostly composed, minor rambling<br>5–6 · Somewhat structured but loses focus <br> 3–4 · Disorganized, hard to follow <br> 0–2 · Scattered or flustered
           </div>
           <div class="criteria-row">
             <span class="criteria-label">Response Composure Score</span>
-            <span class="criteria-max">/ 10</span>
-            <input type="number" class="criteria-input" id="i-rc" min="0" max="10" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
+            <span class="criteria-max">/ 15</span>
+            <input type="text" inputmode="numeric" class="criteria-input" id="i-rc" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
           </div>
         </div>
 
@@ -682,21 +696,21 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Grammar &amp; Spelling Score</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="i-gs" min="0" max="20" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="i-gs" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
           </div>
         </div>
 
         <!-- RS -->
         <div class="score-section">
-          <div class="score-section-title">Response Strength (RS) — 10 pts</div>
+          <div class="score-section-title">Response Strength (RS) — 15 pts</div>
           <div class="score-section-desc">The substance and depth of each answer. Strong responses are clear, impactful, and demonstrate genuine thought. Shallow or vague answers score poorly.</div>
           <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
             9–10 · Strong, clear, and insightful <br> 7–8 · Solid with minor gaps<br>5–6 · Adequate but surface-level <br> 3–4 · Vague or lacking depth <br> 0–2 · Weak or non-answers
           </div>
           <div class="criteria-row">
             <span class="criteria-label">Response Strength Score</span>
-            <span class="criteria-max">/ 10</span>
-            <input type="number" class="criteria-input" id="i-rs" min="0" max="10" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
+            <span class="criteria-max">/ 15</span>
+            <input type="text" inputmode="numeric" class="criteria-input" id="i-rs" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
           </div>
         </div>
 
@@ -710,7 +724,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Overall Appeal Score</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="i-oa" min="0" max="20" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="i-oa" placeholder="0" oninput="calcInterviewTotal();markFilled(this)">
           </div>
         </div>
 
@@ -761,7 +775,7 @@ select { cursor: pointer; }
         <div class="form-grid">
           <div class="field"><label>Author Name *</label><input type="text" id="a-author-name" placeholder="Author name" oninput="markFilled(this)"></div>
           <div class="field"><label>Author IG Handle *</label><input type="text" id="a-author-handle" placeholder="@instagram_handle" oninput="markFilled(this)"></div>
-          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="a-judge-name" placeholder="Your full name" oninput="markFilled(this)"></div>
+          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="a-judge-name" placeholder="Your username" oninput="markFilled(this)"></div>
           <div class="field"><label>Evaluation Date</label><input type="text" id="a-date" placeholder="e.g. 12 May 2026" oninput="markFilled(this)"></div>
           <div class="field field-full"><label>Notes (optional)</label><textarea id="a-notes" placeholder="Observations about this author's Instagram presence…" rows="2" oninput="markFilled(this)"></textarea></div>
         </div>
@@ -781,7 +795,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Profile Cohesion &amp; Theme</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="a-cohesion" min="0" max="20" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="a-cohesion" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
           </div>
         </div>
 
@@ -794,7 +808,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Content Quality</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="a-quality" min="0" max="20" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="a-quality" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
           </div>
         </div>
 
@@ -807,7 +821,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Creativity &amp; Originality</span>
             <span class="criteria-max">/ 15</span>
-            <input type="number" class="criteria-input" id="a-creativity" min="0" max="15" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="a-creativity" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
           </div>
         </div>
 
@@ -820,7 +834,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Consistency</span>
             <span class="criteria-max">/ 15</span>
-            <input type="number" class="criteria-input" id="a-consistency" min="0" max="15" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="a-consistency" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
           </div>
         </div>
 
@@ -833,7 +847,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Relevance to Writing / Community</span>
             <span class="criteria-max">/ 15</span>
-            <input type="number" class="criteria-input" id="a-relevance" min="0" max="15" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="a-relevance" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
           </div>
         </div>
 
@@ -846,7 +860,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Overall Appeal &amp; Professionalism</span>
             <span class="criteria-max">/ 15</span>
-            <input type="number" class="criteria-input" id="a-appeal" min="0" max="15" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="a-appeal" placeholder="0" oninput="calcAestheticsTotal();markFilled(this)">
           </div>
         </div>
 
@@ -895,7 +909,7 @@ select { cursor: pointer; }
         <div class="form-grid">
           <div class="field"><label>Author Name *</label><input type="text" id="p-author-name" placeholder="Author name" oninput="markFilled(this)"></div>
           <div class="field"><label>Author IG Handle *</label><input type="text" id="p-author-handle" placeholder="@handle" oninput="markFilled(this)"></div>
-          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="p-judge-name" placeholder="Your full name" oninput="markFilled(this)"></div>
+          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="p-judge-name" placeholder="Your username" oninput="markFilled(this)"></div>
           <div class="field"><label>Notes (optional)</label><input type="text" id="p-notes" placeholder="Optional observations" oninput="markFilled(this)"></div>
         </div>
       </div>
@@ -914,7 +928,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Clarity &amp; Quality</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="p-clarity" min="0" max="20" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="p-clarity" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
           </div>
         </div>
 
@@ -927,7 +941,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Professionalism &amp; Presentation</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="p-prof" min="0" max="20" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="p-prof" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
           </div>
         </div>
 
@@ -940,7 +954,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Relevance to Author Identity</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="p-relevance" min="0" max="20" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="p-relevance" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
           </div>
         </div>
 
@@ -953,7 +967,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Originality &amp; Creativity</span>
             <span class="criteria-max">/ 15</span>
-            <input type="number" class="criteria-input" id="p-originality" min="0" max="15" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="p-originality" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
           </div>
         </div>
 
@@ -966,7 +980,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Consistency with Event / Audience</span>
             <span class="criteria-max">/ 15</span>
-            <input type="number" class="criteria-input" id="p-consistency" min="0" max="15" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="p-consistency" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
           </div>
         </div>
 
@@ -979,7 +993,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Overall Impact</span>
             <span class="criteria-max">/ 10</span>
-            <input type="number" class="criteria-input" id="p-impact" min="0" max="10" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="p-impact" placeholder="0" oninput="calcPFPTotal();markFilled(this)">
           </div>
         </div>
 
@@ -1028,7 +1042,7 @@ select { cursor: pointer; }
         <div class="form-grid">
           <div class="field"><label>Author Name *</label><input type="text" id="im-author-name" placeholder="Author name" oninput="markFilled(this)"></div>
           <div class="field"><label>Author IG Handle *</label><input type="text" id="im-author-handle" placeholder="@handle" oninput="markFilled(this)"></div>
-          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="im-judge-name" placeholder="Your full name" oninput="markFilled(this)"></div>
+          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="im-judge-name" placeholder="Your username" oninput="markFilled(this)"></div>
           <div class="field"><label>Evaluation Date</label><input type="text" id="im-date" placeholder="e.g. 15 June 2026" oninput="markFilled(this)"></div>
           <div class="field field-full"><label>Notes (optional)</label><textarea id="im-notes" placeholder="Optional observations about this author's message…" rows="2" oninput="markFilled(this)"></textarea></div>
         </div>
@@ -1048,7 +1062,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Authenticity</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="im-authenticity" min="0" max="20" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="im-authenticity" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
           </div>
         </div>
 
@@ -1061,7 +1075,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Depth of Impact</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="im-depth" min="0" max="20" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="im-depth" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
           </div>
         </div>
 
@@ -1074,7 +1088,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Clarity &amp; Expression</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="im-clarity" min="0" max="20" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="im-clarity" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
           </div>
         </div>
 
@@ -1082,12 +1096,12 @@ select { cursor: pointer; }
           <div class="score-section-title">Community Awareness — 20 pts</div>
           <div class="score-section-desc">Does the message demonstrate a deep, grounded understanding of the Episode community? Specific references and genuine insight score highest; vague generics score lowest.</div>
           <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:12px;line-height:1.7;color:#555">
-            17–20 · Deep, grounded understanding of the community context <br>> 13–16 · Good awareness with some broad statements<br>9–12 · Vague references, generic community language <br> 5–8 · Minimal awareness <br> 0–4 · No community context shown
+            17–20 · Deep, grounded understanding of the community context <br> 13–16 · Good awareness with some broad statements<br>9–12 · Vague references, generic community language <br> 5–8 · Minimal awareness <br> 0–4 · No community context shown
           </div>
           <div class="criteria-row">
             <span class="criteria-label">Community Awareness</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="im-awareness" min="0" max="20" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="im-awareness" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
           </div>
         </div>
 
@@ -1100,7 +1114,7 @@ select { cursor: pointer; }
           <div class="criteria-row">
             <span class="criteria-label">Overall Impression</span>
             <span class="criteria-max">/ 20</span>
-            <input type="number" class="criteria-input" id="im-impression" min="0" max="20" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
+            <input type="text" inputmode="numeric" class="criteria-input" id="im-impression" placeholder="0" oninput="calcImpactTotal();markFilled(this)">
           </div>
         </div>
 
@@ -1147,7 +1161,7 @@ select { cursor: pointer; }
       </div>
       <div class="card-body">
         <div class="form-grid">
-          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="n-judge-name" placeholder="Your full name" oninput="markFilled(this)"></div>
+          <div class="field"><label>Your (Judge) Name *</label><input type="text" id="n-judge-name" placeholder="Your username" oninput="markFilled(this)"></div>
           <div class="field"><label>Submission Date</label><input type="text" id="n-date" placeholder="e.g. 20 June 2026" oninput="markFilled(this)"></div>
           <div class="field field-full"><label>General Notes (optional)</label><textarea id="n-notes" placeholder="Any overall notes about your nominations…" rows="2" oninput="markFilled(this)"></textarea></div>
         </div>
@@ -1385,7 +1399,7 @@ function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
 function clearFields(ids) {
   ids.forEach(id => {
     const el = document.getElementById(id);
-    if (el) { el.value = ''; el.classList.remove('has-val'); }
+    if (el) { el.value = ''; el.classList.remove('has-val', 'over-limit'); }
   });
 }
 
@@ -1394,49 +1408,70 @@ function clearNomSlots() {
 }
 
 // ─────────────────────────────────────────────────────
+// LIMIT CHECKING — marks field red if over max,
+// never rewrites the typed value mid-entry
+// ─────────────────────────────────────────────────────
+function checkLimit(el, max) {
+  if (!el) return;
+  const v = parseFloat(el.value);
+  const over = !isNaN(v) && v > max;
+  el.classList.toggle('over-limit', over);
+  if (!over && el.value.trim()) el.classList.add('has-val');
+}
+
+// Returns the value clamped for use in totals only — never touches the DOM
+function safeVal(id, max) {
+  const el = document.getElementById(id);
+  if (!el || el.value.trim() === '') return 0;
+  const v = parseFloat(el.value);
+  if (isNaN(v) || v < 0) return 0;
+  return Math.min(v, max);
+}
+
+// ─────────────────────────────────────────────────────
 // SCORE CALCULATORS
 // ─────────────────────────────────────────────────────
 function calcInterviewTotal() {
-  const pro = clamp(numVal('i-pro'), 0, 30);
-  const rc  = clamp(numVal('i-rc'),  0, 10);
-  const gs  = clamp(numVal('i-gs'),  0, 20);
-  const rs  = clamp(numVal('i-rs'),  0, 10);
-  const oa  = clamp(numVal('i-oa'),  0, 20);
-  const tot = pro + rc + gs + rs + oa;
+  checkLimit(document.getElementById('i-pro'), 30);
+  checkLimit(document.getElementById('i-rc'),  15);
+  checkLimit(document.getElementById('i-gs'),  20);
+  checkLimit(document.getElementById('i-rs'),  15);
+  checkLimit(document.getElementById('i-oa'),  20);
+  const tot = safeVal('i-pro',30) + safeVal('i-rc',15) + safeVal('i-gs',20) + safeVal('i-rs',15) + safeVal('i-oa',20);
   document.getElementById('i-total').textContent = tot;
   document.getElementById('i-weighted').textContent = `(→ ${(tot / 100 * 20).toFixed(2)} / 20 pts)`;
 }
 
 function calcAestheticsTotal() {
-  const coh = clamp(numVal('a-cohesion'),    0, 20);
-  const qu  = clamp(numVal('a-quality'),     0, 20);
-  const cr  = clamp(numVal('a-creativity'), 0, 15);
-  const con = clamp(numVal('a-consistency'),0, 15);
-  const rel = clamp(numVal('a-relevance'),  0, 15);
-  const app = clamp(numVal('a-appeal'),     0, 15);
-  const tot = coh + qu + cr + con + rel + app;
+  checkLimit(document.getElementById('a-cohesion'),    20);
+  checkLimit(document.getElementById('a-quality'),     20);
+  checkLimit(document.getElementById('a-creativity'),  15);
+  checkLimit(document.getElementById('a-consistency'), 15);
+  checkLimit(document.getElementById('a-relevance'),   15);
+  checkLimit(document.getElementById('a-appeal'),      15);
+  const tot = safeVal('a-cohesion',20) + safeVal('a-quality',20) + safeVal('a-creativity',15) + safeVal('a-consistency',15) + safeVal('a-relevance',15) + safeVal('a-appeal',15);
   document.getElementById('a-total').textContent = tot;
   document.getElementById('a-weighted').textContent = `(→ ${(tot / 100 * 5).toFixed(2)} / 5 pts)`;
 }
 
 function calcPFPTotal() {
-  const cl  = clamp(numVal('p-clarity'),    0, 20);
-  const pr  = clamp(numVal('p-prof'),       0, 20);
-  const re  = clamp(numVal('p-relevance'),  0, 20);
-  const or  = clamp(numVal('p-originality'),0, 15);
-  const co  = clamp(numVal('p-consistency'),0, 15);
-  const im  = clamp(numVal('p-impact'),     0, 10);
-  const tot = cl + pr + re + or + co + im;
+  checkLimit(document.getElementById('p-clarity'),     20);
+  checkLimit(document.getElementById('p-prof'),        20);
+  checkLimit(document.getElementById('p-relevance'),   20);
+  checkLimit(document.getElementById('p-originality'), 15);
+  checkLimit(document.getElementById('p-consistency'), 15);
+  checkLimit(document.getElementById('p-impact'),      10);
+  const tot = safeVal('p-clarity',20) + safeVal('p-prof',20) + safeVal('p-relevance',20) + safeVal('p-originality',15) + safeVal('p-consistency',15) + safeVal('p-impact',10);
   document.getElementById('p-total').textContent = tot;
 }
 
 function calcImpactTotal() {
-  const au = clamp(numVal('im-authenticity'), 0, 20);
-  const de = clamp(numVal('im-depth'),        0, 20);
-  const cl = clamp(numVal('im-clarity'),      0, 20);
-  const aw = clamp(numVal('im-awareness'),    0, 20);
-  const im = clamp(numVal('im-impression'),   0, 20);
-  const tot = au + de + cl + aw + im;
+  checkLimit(document.getElementById('im-authenticity'), 20);
+  checkLimit(document.getElementById('im-depth'),        20);
+  checkLimit(document.getElementById('im-clarity'),      20);
+  checkLimit(document.getElementById('im-awareness'),    20);
+  checkLimit(document.getElementById('im-impression'),   20);
+  const tot = safeVal('im-authenticity',20) + safeVal('im-depth',20) + safeVal('im-clarity',20) + safeVal('im-awareness',20) + safeVal('im-impression',20);
   document.getElementById('im-total').textContent = tot;
   document.getElementById('im-weighted').textContent = `(→ ${(tot / 100 * 10).toFixed(2)} / 10 pts)`;
 }
@@ -1464,7 +1499,7 @@ function addToHistory(entry) {
 // SEND TO GOOGLE SHEET
 // ─────────────────────────────────────────────────────
 async function sendToSheet(payload) {
-  if (!SHEET_URL || SHEET_URL === 'https://script.google.com/macros/s/AKfycbysUerMBUK9u6yqM4Bg0D4RBCzLf8za8v2sCHSdcrIi_bjao4IuQjs3fEIdULxyR_sbzg/exec') {
+  if (!SHEET_URL || SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEBHOOK_URL') {
     console.log('[AOTY Portal] Sheet URL not configured. Data stored locally only.', payload);
     return true; // gracefully skip
   }
@@ -1486,6 +1521,13 @@ async function sendToSheet(payload) {
 // FORM SUBMISSION HANDLERS
 // ─────────────────────────────────────────────────────
 async function submitForm(type) {
+  // Block submission if any field is over its limit
+  const overFields = document.querySelectorAll(`#tab-${type} .over-limit`);
+  if (overFields.length) {
+    showToast('⚠ One or more scores exceed the maximum — please correct the red fields');
+    overFields[0].focus();
+    return;
+  }
   const now = new Date().toLocaleString('en-GB', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
 
   if (type === 'interview') {
@@ -1494,9 +1536,9 @@ async function submitForm(type) {
     const judgeName    = getVal('i-judge-confirm') || getVal('i-judge-name');
     if (!authorName || !judgeName) { showToast('⚠ Please fill in Author Name and your Judge Name'); return; }
     const pro = clamp(numVal('i-pro'), 0, 30);
-    const rc  = clamp(numVal('i-rc'),  0, 10);
+    const rc  = clamp(numVal('i-rc'),  0, 15);
     const gs  = clamp(numVal('i-gs'),  0, 20);
-    const rs  = clamp(numVal('i-rs'),  0, 10);
+    const rs  = clamp(numVal('i-rs'),  0, 15);
     const oa  = clamp(numVal('i-oa'),  0, 20);
     const total = pro + rc + gs + rs + oa;
     const weighted = +(total / 100 * 20).toFixed(2);
