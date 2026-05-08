@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOTY Judge Portal · Buddies Support Hub 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<!-- Favicon -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOTY 2026 — Evaluation Tool · Buddies Support Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
   <link rel="apple-touch-icon" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
   <!-- Search & social preview -->
@@ -13,1958 +13,1140 @@
   <meta property="og:title" content="Episode Buddies">
   <meta property="og:description" content="Uplifting Episode authors through free community services, monthly contests, and the most celebrated annual competitions on the platform.">
   <meta name="theme-color" content="#0F1B33">
-<style>
-:root {
-  --ink: #0d0d0d;
-  --paper: #faf8f4;
-  --cream: #f2ede4;
-  --gold: #c9a84c;
-  --gold-light: #e8d49a;
-  --gold-dim: rgba(201,168,76,0.12);
-  --rose: #b85c6e;
-  --rose-dim: rgba(184,92,110,0.1);
-  --jade: #2d7a5f;
-  --jade-dim: rgba(45,122,95,0.1);
-  --cobalt: #2a4fa3;
-  --cobalt-dim: rgba(42,79,163,0.1);
-  --plum: #6b3fa0;
-  --plum-dim: rgba(107,63,160,0.1);
-  --amber: #d97706;
-  --amber-dim: rgba(217,119,6,0.1);
-  --border: rgba(13,13,13,0.12);
-  --border-strong: rgba(13,13,13,0.25);
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans: 'DM Sans', system-ui, sans-serif;
-  --mono: 'DM Mono', monospace;
-  --shadow: 0 2px 20px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.05);
-  --shadow-lg: 0 8px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
-  --r: 12px;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:var(--sans);background:var(--paper);color:var(--ink);min-height:100vh;font-size:14px;line-height:1.6;}
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#1B2A4A;--deep-navy:#0F1B33;--gold:#C9A84C;--gold-light:#E8C97A;
+      --white:#FFFFFF;--off-white:#F7F5F0;--text-dark:#0F1B33;--text-mid:#4A5568;--text-light:#8896A6;
+      --green:#16a34a;--red:#dc2626;--border:rgba(27,42,74,0.12);
+      --serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--off-white);color:var(--text-dark);font-size:14px;min-height:100vh}
 
-/* ── HEADER ── */
-.site-header{background:var(--ink);color:var(--paper);padding:0 32px;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
-.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:18px;height:58px;}
-.logo-mark{font-family:var(--serif);font-size:22px;font-weight:900;color:var(--gold);letter-spacing:-0.02em;flex-shrink:0;}
-.logo-sep{width:1px;height:28px;background:rgba(255,255,255,0.15);}
-.logo-sub{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
-.header-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
-.conf-badge{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.4);border-radius:20px;padding:3px 10px;}
+    /* HEADER */
+    .app-header{background:var(--deep-navy);border-bottom:1px solid rgba(201,168,76,0.25);padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+    .ah-left{display:flex;align-items:center;gap:10px}
+    .ah-left img{height:28px;width:28px;object-fit:contain}
+    .app-title{font-family:var(--serif);font-size:15px;color:var(--white);font-weight:700;line-height:1.2}
+    .app-sub{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase}
+    .ah-right{display:flex;gap:6px}
 
-/* ── PROGRESS NAV (sticky below header) ── */
-.progress-nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:58px;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
-.progress-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
-.progress-inner::-webkit-scrollbar{display:none;}
-.pnav-btn{display:flex;align-items:center;gap:8px;padding:13px 18px;border:none;background:none;cursor:pointer;font-family:var(--sans);font-size:12px;font-weight:500;color:#999;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;position:relative;}
-.pnav-btn:hover{color:var(--ink);}
-.pnav-btn.active{color:var(--ink);border-bottom-color:var(--gold);font-weight:700;}
-.pnav-btn.done{color:var(--jade);}
-.pnav-btn.done::after{content:'✓';position:absolute;top:8px;right:6px;font-size:9px;color:var(--jade);}
-.pnav-dot{width:22px;height:22px;border-radius:50%;border:2px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;transition:all 0.2s;}
-.pnav-btn.active .pnav-dot{background:var(--gold);border-color:var(--gold);color:var(--ink);}
-.pnav-btn.done .pnav-dot{background:var(--jade);border-color:var(--jade);color:#fff;}
+    /* STAGE TABS */
+    .stage-tabs{background:var(--navy);padding:0 20px;display:flex;align-items:center;gap:0;overflow-x:auto;border-bottom:1px solid rgba(201,168,76,0.15);scrollbar-width:none}
+    .stage-tabs::-webkit-scrollbar{display:none}
+    .stab{font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.45);padding:13px 14px;border:none;background:none;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+    .stab:hover{color:rgba(255,255,255,0.8)}
+    .stab.active{color:var(--gold);border-bottom-color:var(--gold)}
 
-/* ── LAYOUT ── */
-.layout{max-width:1100px;margin:0 auto;padding:36px 24px 100px;}
+    /* MAIN */
+    .app-main{max-width:1380px;margin:0 auto;padding:18px 20px 60px}
 
-/* ── HERO ── */
-.page-hero{text-align:center;padding:40px 0 32px;border-bottom:1px solid var(--border);margin-bottom:36px;}
-.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-.hero-title{font-family:var(--serif);font-size:40px;font-weight:900;line-height:1.1;margin-bottom:10px;}
-.hero-sub{font-size:15px;color:#666;max-width:580px;margin:0 auto;}
+    /* PANELS */
+    .panel{display:none}.panel.active{display:block}
 
-/* ── SECTION PANELS ── */
-.section-panel{display:none;}
-.section-panel.active{display:block;}
+    /* CARD */
+    .card{background:var(--white);border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden}
+    .card-hd{background:var(--navy);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .card-hd h3{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--white)}
+    .card-hd p{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px}
+    .card-body{padding:18px}
 
-/* ── SECTION INTRO BANNER ── */
-.section-banner{border-radius:var(--r) var(--r) 0 0;padding:24px 28px;margin-bottom:0;color:#fff;position:relative;overflow:hidden;}
-.section-banner::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none;}
-.banner-a{background:linear-gradient(135deg,#1a2e1a,#2d7a5f);}
-.banner-b{background:linear-gradient(135deg,#1a1a3a,#2a4fa3);}
-.banner-c{background:linear-gradient(135deg,#3a1a2e,#8a3055);}
-.banner-d{background:linear-gradient(135deg,#2a1a3a,#6b3fa0);}
-.banner-e{background:linear-gradient(135deg,#3a2a1a,#c9a84c);}
-.banner-f{background:linear-gradient(135deg,#1a2e1a,#2d5a3f);}
-.section-banner-label{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;opacity:0.7;margin-bottom:6px;}
-.section-banner-title{font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:4px;}
-.section-banner-sub{font-size:13px;opacity:0.65;}
-.weight-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;margin-top:12px;}
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:8px 14px;border-radius:4px;border:none;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .btn-gold{background:var(--gold);color:var(--deep-navy)}.btn-gold:hover{background:var(--gold-light)}
+    .btn-navy{background:var(--navy);color:var(--white)}.btn-navy:hover{background:var(--deep-navy)}
+    .btn-outline{background:transparent;color:var(--navy);border:1px solid var(--border)}.btn-outline:hover{background:var(--navy);color:var(--white)}
+    .btn-red{background:#fee2e2;color:var(--red);border:1px solid #fca5a5}.btn-red:hover{background:#fca5a5}
+    .btn-sm{padding:5px 10px;font-size:10px}
+    .btn-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 
-/* ── CARDS ── */
-.card{background:#fff;border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden;}
-.card-header{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
-.card-title{font-family:var(--serif);font-size:16px;font-weight:700;margin-bottom:2px;}
-.card-sub{font-size:12px;color:#888;}
-.card-body{padding:22px;}
+    /* INPUTS */
+    input[type=number],input[type=text],select{font-family:var(--sans);font-size:13px;color:var(--text-dark);border:1px solid var(--border);border-radius:4px;padding:6px 8px;background:var(--white);width:100%;transition:border-color .2s}
+    input:focus,select:focus{outline:none;border-color:var(--gold)}
+    input.has-val{border-color:rgba(22,163,74,0.5);background:#f0fdf4}
+    input.bad{border-color:var(--red);background:#fff5f5}
+    label{font-size:11px;font-weight:600;color:var(--text-mid);display:block;margin-bottom:3px}
 
-/* ── FORM FIELDS ── */
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.form-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
-@media(max-width:640px){.form-grid,.form-grid-3{grid-template-columns:1fr;}}
-.field{display:flex;flex-direction:column;gap:5px;}
-.field-full{grid-column:1/-1;}
-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#666;}
-input[type=text],input[type=number],textarea,select{border:1.5px solid var(--border-strong);border-radius:7px;padding:9px 12px;font-family:var(--sans);font-size:14px;color:var(--ink);background:var(--paper);transition:border-color 0.2s,box-shadow 0.2s;width:100%;}
-input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.15);}
-input.has-val,select.has-val{background:#fffdf5;border-color:var(--gold);}
-textarea{resize:vertical;min-height:72px;}
-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
+    /* GRIDS */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .flex{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 
-/* ── RUBRIC SUBSECTION ── */
-.rubric-block{background:var(--cream);border:1px solid var(--border);border-radius:10px;margin-bottom:16px;overflow:hidden;}
-.rubric-block-head{padding:14px 18px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
-.rubric-block-title{font-size:13px;font-weight:700;color:var(--ink);}
-.rubric-block-pts{font-family:var(--mono);font-size:11px;color:var(--gold);font-weight:600;white-space:nowrap;background:var(--gold-dim);border:1px solid rgba(201,168,76,0.3);border-radius:20px;padding:2px 9px;}
-.rubric-block-desc{font-size:12px;color:#666;padding:6px 18px 12px;line-height:1.55;}
+    /* TABLES */
+    .twrap{overflow-x:auto;border:1px solid var(--border);border-radius:8px}
+    table.st{width:100%;border-collapse:collapse;font-size:13px}
+    table.st th{background:var(--deep-navy);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:9px 11px;text-align:left;white-space:nowrap}
+    table.st td{padding:8px 11px;border-bottom:1px solid var(--border);vertical-align:middle}
+    table.st tr:last-child td{border-bottom:none}
+    table.st tr:hover td{background:rgba(201,168,76,0.03)}
+    table.st tr.hilite td{background:rgba(201,168,76,0.06)}
+    table.st tr.ftrow td{background:rgba(22,163,74,0.05)}
 
-/* ── CRITERION ROWS — 0-5 RADIO GRID ── */
-.criteria-table{width:100%;border-collapse:collapse;}
-.criteria-table th{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#999;padding:8px 10px;text-align:center;border-top:1px solid var(--border);}
-.criteria-table th:first-child{text-align:left;padding-left:18px;}
-.criteria-table td{padding:6px 10px;border-top:1px solid var(--border);vertical-align:middle;}
-.criteria-table td:first-child{padding-left:18px;font-size:12px;font-weight:500;color:var(--ink);}
-.criteria-table tbody tr:hover td{background:rgba(201,168,76,0.04);}
-.radio-cell{text-align:center;}
+    /* SCORE BAR */
+    .score-bar-wrap{display:flex;align-items:center;gap:8px;min-width:120px}
+    .score-bar-track{flex:1;height:5px;background:rgba(27,42,74,0.1);border-radius:3px;overflow:hidden;min-width:60px}
+    .score-bar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+    .bar-gold{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+    .bar-green{background:linear-gradient(90deg,#22c55e,#4ade80)}
+    .bar-red{background:linear-gradient(90deg,#f87171,#fca5a5)}
+    .score-bar-val{font-family:var(--serif);font-size:14px;font-weight:700;min-width:40px;text-align:right}
 
-/* Custom radio */
-.score-radio{display:none;}
-.score-label{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:2px solid var(--border-strong);font-family:var(--mono);font-size:12px;font-weight:600;color:#999;cursor:pointer;margin:0 auto;transition:all 0.15s;}
-.score-radio:checked + .score-label{border-color:var(--gold);background:var(--gold);color:var(--ink);}
-.score-label:hover{border-color:var(--gold-light);color:var(--gold);}
+    /* RANK BADGE */
+    .rb{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:12px;font-weight:700;background:rgba(27,42,74,0.1);color:var(--navy)}
+    .rb.r1{background:var(--gold);color:var(--deep-navy)}
+    .rb.r2{background:rgba(201,168,76,0.5);color:var(--deep-navy)}
+    .rb.r3{background:rgba(201,168,76,0.25);color:var(--navy)}
 
-/* Score 5 = exceptional green tint when selected */
-.score-radio[value="5"]:checked + .score-label{background:#22c55e;border-color:#22c55e;color:#fff;}
-.score-radio[value="4"]:checked + .score-label{background:#84cc16;border-color:#84cc16;color:#fff;}
-.score-radio[value="3"]:checked + .score-label{background:var(--amber);border-color:var(--amber);color:#fff;}
-.score-radio[value="2"]:checked + .score-label{background:#f97316;border-color:#f97316;color:#fff;}
-.score-radio[value="1"]:checked + .score-label{background:#ef4444;border-color:#ef4444;color:#fff;}
-.score-radio[value="0"]:checked + .score-label{background:#6b7280;border-color:#6b7280;color:#fff;}
+    /* BADGES */
+    .badge{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+    .badge-pass{background:#dcfce7;color:var(--green)}
+    .badge-fail{background:#fee2e2;color:var(--red)}
+    .badge-ft{background:rgba(201,168,76,0.15);color:#8a6f3a;border:1px solid rgba(201,168,76,0.3)}
+    .badge-adv{background:rgba(37,99,235,0.1);color:#1d4ed8}
 
-/* ── DESCRIPTOR TOOLTIP PANEL ── */
-.desc-panel{display:none;background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin:0 18px 12px;font-size:12px;line-height:1.65;color:#555;}
-.desc-panel.open{display:block;}
-.desc-panel strong{color:var(--ink);flex-shrink:0;width:48px;}
-.desc-row{display:flex;gap:8px;margin-bottom:4px;}
+    .view-toggle{display:flex;gap:4px;background:var(--off-white);border:1px solid var(--border);border-radius:6px;padding:3px}
+    .vt-btn{font-size:14px;padding:5px 9px;border:none;background:transparent;cursor:pointer;border-radius:4px;transition:all .2s;color:var(--text-light)}
+    .vt-btn.active{background:var(--white);color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,0.08)}
 
-/* ── SUBSECTION TOTAL ── */
-.sub-total-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:rgba(13,13,13,0.04);border-top:1px solid var(--border);}
-.sub-total-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;}
-.sub-total-val{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--ink);}
+    .author-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}
+    .author-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:0 1px 4px rgba(15,27,51,0.06);display:flex;flex-direction:column;gap:10px;transition:transform .2s,box-shadow .2s}
+    .author-card:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(15,27,51,0.12)}
+    .author-card.top-card{border-color:rgba(201,168,76,0.4);background:linear-gradient(160deg,#fffdf5,var(--white))}
+    .ac-rank{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.06em}
+    .ac-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy)}
+    .ac-handle{font-size:12px;color:var(--text-light)}
+    .ac-score{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--navy)}
+    .ac-score-null{font-family:var(--serif);font-size:18px;font-weight:700;color:rgba(27,42,74,0.25)}
+    .ac-bar-track{width:100%;height:6px;background:rgba(27,42,74,0.08);border-radius:999px;overflow:hidden}
+    .ac-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .7s ease}
+    .ac-badges{display:flex;gap:6px;flex-wrap:wrap}
 
-/* ── SECTION TOTAL ── */
-.section-total{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;background:var(--ink);color:var(--paper);border-radius:10px;margin:20px 0;}
-.section-total-label{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;}
-.section-total-right{text-align:right;}
-.section-total-score{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--gold);line-height:1;}
-.section-total-weighted{font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px;}
+    /* FILTER BAR */
+    .fbar{background:var(--off-white);border:1px solid var(--border);border-radius:6px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .fbar label{margin:0;white-space:nowrap}
+    .topn{width:66px}
+    .fbar-info{font-size:12px;color:var(--text-mid);margin-left:auto}
 
-/* ── MANUAL TOTAL INPUT ── */
-.manual-total-wrap{background:var(--cream);border:1.5px solid var(--border-strong);border-radius:9px;padding:14px 18px;margin:14px 0;}
-.manual-total-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:6px;}
-.manual-total-note{font-size:11px;color:#aaa;margin-top:4px;}
-.manual-input-row{display:flex;align-items:center;gap:12px;}
-.manual-total-input{width:100px;font-family:var(--mono);font-size:18px;font-weight:700;text-align:center;border:2px solid var(--gold);border-radius:7px;padding:8px 10px;background:#fff;}
-.manual-auto-val{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--jade);}
-.manual-slash{font-size:14px;color:#bbb;margin:0 4px;}
+    /* SUB-TABS */
+    .stabs{display:flex;gap:5px;margin-bottom:14px;flex-wrap:wrap}
+    .subtab{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:6px 13px;border-radius:4px;border:1px solid var(--border);background:var(--white);color:var(--text-mid);cursor:pointer;transition:all .2s}
+    .subtab:hover,.subtab.active{background:var(--navy);color:var(--white);border-color:var(--navy)}
 
-/* ── INFO BOX ── */
-.info-box{border-radius:9px;padding:13px 16px;font-size:13px;line-height:1.55;margin-bottom:16px;display:flex;gap:10px;align-items:flex-start;}
-.info-icon{font-size:16px;flex-shrink:0;}
-.info-gold{background:var(--gold-dim);border:1px solid rgba(201,168,76,0.3);}
-.info-jade{background:var(--jade-dim);border:1px solid rgba(45,122,95,0.25);}
-.info-rose{background:var(--rose-dim);border:1px solid rgba(184,92,110,0.25);}
-.info-cobalt{background:var(--cobalt-dim);border:1px solid rgba(42,79,163,0.2);}
+    /* STAT CARDS */
+    .statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+    .stat{background:var(--off-white);border:1px solid var(--border);border-radius:6px;padding:10px 12px;text-align:center}
+    .stat-lbl{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:3px}
+    .stat-val{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy)}
+    .stat-sub{font-size:10px;color:var(--text-light)}
 
-/* ── BUTTONS ── */
-.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;border:none;cursor:pointer;transition:all 0.2s;text-decoration:none;}
-.btn-gold{background:var(--gold);color:var(--ink);}
-.btn-gold:hover{background:#b8922f;}
-.btn-ink{background:var(--ink);color:var(--paper);}
-.btn-ink:hover{background:#333;}
-.btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--border-strong);}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-.btn-jade{background:var(--jade);color:#fff;}
-.btn-jade:hover{background:#1f5a44;}
-.btn-sm{padding:7px 14px;font-size:12px;}
-.btn-lg{padding:13px 28px;font-size:15px;}
-.btn-full{width:100%;justify-content:center;}
-.btn-nav{padding:11px 22px;font-size:13px;}
+    /* INFO BANNER */
+    .info{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);border-radius:6px;padding:11px 15px;font-size:13px;color:#7a6030;margin-bottom:14px;line-height:1.65}
+    .info strong{color:var(--navy)}
 
-/* ── NAV ROW ── */
-.nav-row{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:8px;gap:12px;}
+    /* STORY SETUP ROWS */
+    .srow{display:grid;grid-template-columns:34px 1fr 130px 44px;gap:6px;align-items:center;background:var(--off-white);border:1px solid var(--border);border-radius:6px;padding:7px 10px;margin-bottom:6px}
+    .srow-num{font-family:var(--serif);font-size:16px;font-weight:700;color:rgba(201,168,76,0.4);text-align:center}
 
-/* ── AFFIRMATION CHECKBOX ── */
-.affirm-wrap{background:var(--cream);border:1.5px solid var(--border-strong);border-radius:10px;padding:18px 20px;margin:20px 0;}
-.affirm-inner{display:flex;align-items:flex-start;gap:14px;cursor:pointer;}
-.affirm-cb{width:22px;height:22px;border:2px solid var(--border-strong);border-radius:5px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;background:#fff;}
-.affirm-cb.checked{background:var(--jade);border-color:var(--jade);}
-.affirm-cb.checked::after{content:'✓';color:#fff;font-size:13px;font-weight:700;}
-.affirm-text{font-size:13px;line-height:1.6;font-weight:500;}
-.affirm-required{font-size:11px;color:var(--rose);margin-left:4px;}
+    /* JUDGE INPUTS */
+    .jinputs{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+    .jcol{text-align:center}
+    .jcol label{font-size:9px}
+    .jcol input{text-align:center;padding:5px 3px;font-size:12px;font-weight:700}
 
-/* ── SUBMISSION SUMMARY ── */
-.submit-summary{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:20px;}
-.summary-header{background:var(--ink);color:var(--paper);padding:18px 22px;}
-.summary-title{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--gold);}
-.summary-sub{font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px;}
-.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
-@media(max-width:560px){.summary-grid{grid-template-columns:1fr;}}
-.summary-cat{padding:16px 22px;border-bottom:1px solid var(--border);}
-.summary-cat:nth-child(odd){border-right:1px solid var(--border);}
-.summary-cat-name{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:4px;}
-.summary-cat-score{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--ink);}
-.summary-cat-max{font-size:13px;color:#bbb;font-weight:400;}
-.summary-cat-weighted{font-size:12px;color:var(--jade);margin-top:2px;font-weight:600;}
-.summary-total-row{padding:18px 22px;background:var(--gold-dim);display:flex;align-items:center;justify-content:space-between;}
-.summary-total-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;}
-.summary-total-score{font-family:var(--serif);font-size:32px;font-weight:900;color:var(--gold);}
+    /* TOAST */
+    .toast{position:fixed;bottom:20px;right:20px;background:var(--navy);color:var(--white);padding:11px 18px;border-radius:6px;font-size:13px;font-weight:600;z-index:9999;transform:translateY(80px);opacity:0;transition:all .3s;border-left:3px solid var(--gold);pointer-events:none}
+    .toast.show{transform:translateY(0);opacity:1}
 
-/* ── HISTORY ── */
-.history-table{width:100%;border-collapse:collapse;}
-.history-table th{text-align:left;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#999;padding:8px 12px;border-bottom:1px solid var(--border);}
-.history-table td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:top;}
-.history-table tr:last-child td{border-bottom:none;}
-.history-table tr:hover td{background:var(--cream);}
-.hist-story{font-weight:600;}
-.hist-genre{font-size:11px;color:#888;}
-.hist-score{font-family:var(--mono);font-weight:600;color:var(--jade);}
+    /* REF TABLE */
+    .ref-table{width:100%;border-collapse:collapse;font-size:12px}
+    .ref-table th{background:rgba(27,42,74,0.08);padding:7px 10px;text-align:left;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-mid)}
+    .ref-table td{padding:7px 10px;border-bottom:1px solid var(--border)}
+    .ref-table tr:last-child td{border-bottom:none}
 
-/* ── TABS (History panel) ── */
-.tab-bar{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px;overflow-x:auto;scrollbar-width:none;}
-.tab-bar::-webkit-scrollbar{display:none;}
-.tab-btn{padding:11px 18px;font-size:13px;font-weight:500;color:#888;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all 0.2s;font-family:var(--sans);}
-.tab-btn:hover{color:var(--ink);}
-.tab-btn.active{color:var(--ink);border-bottom-color:var(--gold);font-weight:700;}
-
-/* ── DIVIDER ── */
-.divider{height:1px;background:var(--border);margin:20px 0;}
-
-/* ── BADGE ── */
-.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;}
-.badge-gold{background:var(--gold-dim);color:#8a6010;border:1px solid rgba(201,168,76,0.3);}
-.badge-jade{background:var(--jade-dim);color:var(--jade);border:1px solid rgba(45,122,95,0.25);}
-.badge-cobalt{background:var(--cobalt-dim);color:var(--cobalt);border:1px solid rgba(42,79,163,0.2);}
-.badge-rose{background:var(--rose-dim);color:var(--rose);border:1px solid rgba(184,92,110,0.25);}
-
-/* ── EMPTY STATE ── */
-.empty-state{text-align:center;padding:48px 20px;color:#bbb;}
-.empty-icon{font-size:40px;margin-bottom:10px;}
-.empty-text{font-size:13px;}
-
-/* ── TOAST ── */
-#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--paper);padding:12px 24px;border-radius:30px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);z-index:1000;white-space:nowrap;pointer-events:none;}
-#toast.show{transform:translateX(-50%) translateY(0);}
-
-/* ── LOADING SPINNER ── */
-.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:inline-block;}
-@keyframes spin{to{transform:rotate(360deg);}}
-
-@media(max-width:768px){.hero-title{font-size:28px;}.layout{padding:20px 16px 80px;}.section-banner-title{font-size:18px;}.summary-grid{grid-template-columns:1fr;}.summary-cat:nth-child(odd){border-right:none;}}
-</style>
+    @media(max-width:768px){
+      .app-main{padding:12px 12px 60px}
+      .g2,.g4{grid-template-columns:1fr}
+      .jinputs{grid-template-columns:repeat(3,1fr)}
+      .statgrid{grid-template-columns:1fr 1fr}
+      .srow{grid-template-columns:30px 1fr auto auto;gap:4px;padding:8px 8px}
+      .srow input[type=text]{min-width:0}
+      .srow select,.srow .del-btn{font-size:11px;padding:6px 8px}
+      .btn-row{flex-direction:column;gap:8px}
+      .btn{width:100%;justify-content:center}
+      input[type=number],input[type=text],select{font-size:16px;padding:8px 10px}
+      .card-hd{flex-direction:column;align-items:flex-start}
+      .card-hd h3{margin-bottom:8px}
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-inner">
-    <span class="logo-mark">Buddies</span>
-    <div class="logo-sep"></div>
-    <span class="logo-sub">SOTY Judge Portal · 2026</span>
-    <div class="header-right">
-      <span class="conf-badge">🔒 Confidential</span>
+<header class="app-header">
+  <div class="ah-left">
+    <img src="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png" alt="BSH">
+    <div>
+      <div class="app-title">SOTY 2026 — Evaluation Tool</div>
+      <div class="app-sub">Buddies Support Hub · Internal</div>
     </div>
+  </div>
+  <div class="ah-right">
+    <button class="btn btn-ghost btn-sm" onclick="exportJSON()">⬇ Export</button>
+    <button class="btn btn-ghost btn-sm" onclick="document.getElementById('imp').click()">⬆ Import</button>
+    <button class="btn btn-red btn-sm" onclick="confirmReset()">↺ Reset</button>
   </div>
 </header>
 
-<!-- PROGRESS NAV -->
-<nav class="progress-nav">
-  <div class="progress-inner">
-    <button class="pnav-btn active" id="pnav-A" onclick="goSection('A')">
-      <span class="pnav-dot">A</span>Story Details
-    </button>
-    <button class="pnav-btn" id="pnav-B" onclick="goSection('B')">
-      <span class="pnav-dot">B</span>Directing
-    </button>
-    <button class="pnav-btn" id="pnav-C" onclick="goSection('C')">
-      <span class="pnav-dot">C</span>Plot &amp; Writing
-    </button>
-    <button class="pnav-btn" id="pnav-D" onclick="goSection('D')">
-      <span class="pnav-dot">D</span>Interactivity
-    </button>
-    <button class="pnav-btn" id="pnav-E" onclick="goSection('E')">
-      <span class="pnav-dot">E</span>Story Cover
-    </button>
-    <button class="pnav-btn" id="pnav-F" onclick="goSection('F')">
-      <span class="pnav-dot">F</span>Review &amp; Submit
-    </button>
-    <button class="pnav-btn" id="pnav-N" onclick="goSection('N')">
-      <span class="pnav-dot">🏅</span>Nominations
-    </button>
-    <button class="pnav-btn" id="pnav-H" onclick="goSection('H')">
-      <span class="pnav-dot">📋</span>My Submissions
-    </button>
-  </div>
+<nav class="stage-tabs">
+  <button class="stab active" data-p="setup"       onclick="go('setup')">⚙ Setup</button>
+  <button class="stab"        data-p="judging"      onclick="go('judging')">Stage 1 · Judging</button>
+  <button class="stab"        data-p="voting"       onclick="go('voting')">Stage 1 · Voting</button>
+  <button class="stab"        data-p="combined"     onclick="go('combined')">Stage 1 · Combined</button>
+  <button class="stab"        data-p="awards"       onclick="go('awards')">Special Awards</button>
+  <button class="stab"        data-p="top24"        onclick="go('top24')">Top 24 Builder</button>
+  <button class="stab"        data-p="stage2"       onclick="go('stage2')">Stage 2</button>
+  <button class="stab"        data-p="stage3"       onclick="go('stage3')">Stage 3</button>
+  <button class="stab"        data-p="stage4"       onclick="go('stage4')">Stage 4 · Final</button>
 </nav>
 
-<div class="layout">
+<main class="app-main">
 
-  <div class="page-hero">
-    <div class="hero-eyebrow">Story of the Year · Official Judging Portal</div>
-    <h1 class="hero-title">SOTY Score Submission</h1>
-    <p class="hero-sub">All four categories are scored together in one submission per story. Read the story fully before scoring. Follow each rubric faithfully.</p>
-  </div>
-
-  <!-- ═══════════════════════════════════
-       SECTION A — STORY DETAILS
-  ════════════════════════════════════ -->
-  <div id="sec-A" class="section-panel active">
-    <div class="section-banner banner-a">
-      <div class="section-banner-label">Section A</div>
-      <div class="section-banner-title">Story Details</div>
-      <div class="section-banner-sub">Make sure to input the correct details to prevent scores from being incorrectly assigned to a different story.</div>
+<!-- ═══════ SETUP ═══════ -->
+<div id="p-setup" class="panel active">
+  <div class="card">
+    <div class="card-hd">
+      <div><h3>Story Setup</h3><p>Add all qualifying stories before scoring</p></div>
+      <div class="btn-row">
+        <button class="btn btn-gold btn-sm" onclick="loadDefaults()">Load 2026 Stories</button>
+        <button class="btn btn-navy btn-sm" onclick="addStory()">+ Add Story</button>
+        <button class="btn btn-red btn-sm" onclick="clearAll()">Clear</button>
+      </div>
     </div>
-    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
-      <div class="card-body">
-        <div class="info-box info-gold">
-          <span class="info-icon">📌</span>
-          <span><strong>Before proceeding to grading,</strong> kindly provide the story details. Double-check the title, genre, and author name before moving on. Your contribution to the 2026 SOTY event is greatly appreciated.</span>
-        </div>
-        <div class="form-grid" style="gap:16px;">
-          <div class="field field-full">
-            <label>Story Title <span style="color:var(--rose)">*</span></label>
-            <input type="text" id="a-title" placeholder="Enter the exact story title" oninput="markFilled(this);autoSave()">
-          </div>
-          <div class="field">
-            <label>Genre <span style="color:var(--rose)">*</span></label>
-            <select id="a-genre" onchange="markFilled(this);autoSave()">
-              <option value="">— Select genre —</option>
-              <option>Action</option><option>Adventure</option><option>Comedy</option>
-              <option>Drama</option><option>Fantasy</option><option>Horror</option>
-              <option>LGBTQ+</option><option>Mystery</option><option>Romance</option>
-              <option>Sci-Fi</option><option>Thriller</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Author's Name <span style="color:var(--rose)">*</span></label>
-            <input type="text" id="a-author" placeholder="Story author's name" oninput="markFilled(this);autoSave()">
-          </div>
-          <div class="field">
-            <label>Author's IG Handle</label>
-            <input type="text" id="a-handle" placeholder="@instagram_handle" oninput="markFilled(this);autoSave()">
-          </div>
-          <div class="field">
-            <label>Your (Judge) Name <span style="color:var(--rose)">*</span></label>
-            <input type="text" id="a-judge" placeholder="Your username" oninput="markFilled(this);autoSave()">
-          </div>
-          <div class="field">
-            <label>Evaluation Date</label>
-            <input type="text" id="a-date" placeholder="e.g. 20 June 2026" oninput="markFilled(this);autoSave()">
-          </div>
-          <div class="field field-full">
-            <label>General Notes (optional)</label>
-            <textarea id="a-notes" placeholder="Any preliminary observations before scoring…" rows="2" oninput="autoSave()"></textarea>
-          </div>
-        </div>
-        <div class="nav-row">
-          <span style="font-size:12px;color:#bbb">Fields marked <span style="color:var(--rose)">*</span> are required</span>
-          <button class="btn btn-gold btn-nav" onclick="nextSection('A','B')">Next: Directing →</button>
-        </div>
+    <div class="card-body">
+      <div class="info"><strong>Quick start:</strong> Click "Load 2026 Stories" to pre-fill all 39 qualifying stories, then proceed to Stage 1 Judging. All data saves automatically to your browser.</div>
+      <div id="slist"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <span id="scount" style="font-size:13px;color:var(--text-mid)"></span>
+        <button class="btn btn-gold" onclick="go('judging')">Continue to Judging →</button>
       </div>
     </div>
   </div>
-
-  <!-- ═══════════════════════════════════
-       SECTION B — DIRECTING (20%)
-  ════════════════════════════════════ -->
-  <div id="sec-B" class="section-panel">
-    <div class="section-banner banner-b">
-      <div class="section-banner-label">Section B</div>
-      <div class="section-banner-title">Directing Grading Rubric</div>
-      <div class="section-banner-sub">Camera work, animation, overlays, visual storytelling, and sound design</div>
-      <div class="weight-chip">⚖ 20% of final SOTY score · 100 points total</div>
-    </div>
-    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
-      <div class="card-body">
-        <div class="info-box info-cobalt">
-          <span class="info-icon">🎬</span>
-          <span>Score each criterion from <strong>0 to 5</strong>. Click any criterion name to expand the full scoring descriptor. Each sub-section totals 20 points (4 criteria × 5 pts). The section auto-totals as you score.</span>
-        </div>
-
-        <!-- B1 -->
-        <div class="rubric-block">
-          <div class="rubric-block-head"><span class="rubric-block-title">B.1 · Camera Work &amp; Scene Composition</span><span class="rubric-block-pts">20 pts</span></div>
-          <div class="rubric-block-desc">Dynamic zooms, scene framing, creative camera angles, and scene transitions.</div>
-          <table class="criteria-table">
-            <thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+  <div class="card">
+    <div class="card-hd"><div><h3>Scoring Formula Reference</h3></div></div>
+    <div class="card-body">
+      <div class="g2">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Judging Panel — 60% Total</div>
+          <table class="ref-table">
+            <thead><tr><th>Category</th><th>Weight</th><th>Formula</th></tr></thead>
             <tbody>
-              <tr>
-                <td><span class="crit-name" onclick="toggleDesc('b1-1')">Dynamic Zooms &amp; Pans</span></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-1" value="5" id="b1-1-5" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-1-5">5</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-1" value="4" id="b1-1-4" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-1-4">4</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-1" value="3" id="b1-1-3" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-1-3">3</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-1" value="2" id="b1-1-2" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-1-2">2</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-1" value="1" id="b1-1-1" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-1-1">1</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-1" value="0" id="b1-1-0" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-1-0">0</label></td>
-              </tr>
-              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-1"><div class="desc-row"><strong>5 —</strong><span>Fluid, intentional, cinematic zooms and pans serving a narrative purpose.</span></div><div class="desc-row"><strong>4 —</strong><span>Mostly smooth with minor inconsistencies.</span></div><div class="desc-row"><strong>3 —</strong><span>Mechanical or generic rather than thoughtfully placed.</span></div><div class="desc-row"><strong>2 —</strong><span>Abrupt, repetitive, or unpolished movements.</span></div><div class="desc-row"><strong>1 —</strong><span>Barely any camera movement attempted.</span></div><div class="desc-row"><strong>0 —</strong><span>None, or movements disrupt the reading experience.</span></div></div></td></tr>
-              <tr>
-                <td><span class="crit-name" onclick="toggleDesc('b1-2')">Scene Framing</span></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-2" value="5" id="b1-2-5" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-2-5">5</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-2" value="4" id="b1-2-4" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-2-4">4</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-2" value="3" id="b1-2-3" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-2-3">3</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-2" value="2" id="b1-2-2" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-2-2">2</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-2" value="1" id="b1-2-1" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-2-1">1</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-2" value="0" id="b1-2-0" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-2-0">0</label></td>
-              </tr>
-              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-2"><div class="desc-row"><strong>5 —</strong><span>Characters consistently well-framed; background, foreground and placement create compelling scenes.</span></div><div class="desc-row"><strong>4 —</strong><span>Generally strong with occasional lapses in spatial awareness.</span></div><div class="desc-row"><strong>3 —</strong><span>Basic framing but characters often randomly placed.</span></div><div class="desc-row"><strong>2 —</strong><span>Poor use of space; characters awkwardly positioned or cut off.</span></div><div class="desc-row"><strong>1 —</strong><span>Framing appears accidental.</span></div><div class="desc-row"><strong>0 —</strong><span>No attention to framing.</span></div></div></td></tr>
-              <tr>
-                <td><span class="crit-name" onclick="toggleDesc('b1-3')">Creative Camera Angles</span></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-3" value="5" id="b1-3-5" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-3-5">5</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-3" value="4" id="b1-3-4" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-3-4">4</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-3" value="3" id="b1-3-3" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-3-3">3</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-3" value="2" id="b1-3-2" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-3-2">2</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-3" value="1" id="b1-3-1" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-3-1">1</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-3" value="0" id="b1-3-0" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-3-0">0</label></td>
-              </tr>
-              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-3"><div class="desc-row"><strong>5 —</strong><span>Varied, inventive angles enhancing storytelling deliberately.</span></div><div class="desc-row"><strong>4 —</strong><span>Good variety used confidently, elevating key scenes.</span></div><div class="desc-row"><strong>3 —</strong><span>Some variety but defaults to standard shots mostly.</span></div><div class="desc-row"><strong>2 —</strong><span>Limited or repetitive angles throughout.</span></div><div class="desc-row"><strong>1 —</strong><span>Almost entirely static or default angles.</span></div><div class="desc-row"><strong>0 —</strong><span>No variation; single default shot throughout.</span></div></div></td></tr>
-              <tr>
-                <td><span class="crit-name" onclick="toggleDesc('b1-4')">Transitions Between Scenes</span></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-4" value="5" id="b1-4-5" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-4-5">5</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-4" value="4" id="b1-4-4" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-4-4">4</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-4" value="3" id="b1-4-3" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-4-3">3</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-4" value="2" id="b1-4-2" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-4-2">2</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-4" value="1" id="b1-4-1" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-4-1">1</label></td>
-                <td class="radio-cell"><input class="score-radio" type="radio" name="b1-4" value="0" id="b1-4-0" onchange="calcSection('B');autoSave()"><label class="score-label" for="b1-4-0">0</label></td>
-              </tr>
-              <tr><td colspan="7"><div class="desc-panel" id="desc-b1-4"><div class="desc-row"><strong>5 —</strong><span>Seamless, carefully chosen transitions matching each scene's tone.</span></div><div class="desc-row"><strong>4 —</strong><span>Mostly smooth with occasional jarring choices.</span></div><div class="desc-row"><strong>3 —</strong><span>Basic transitions, inconsistently applied.</span></div><div class="desc-row"><strong>2 —</strong><span>Abrupt or out-of-place transitions, scene changes are disorienting.</span></div><div class="desc-row"><strong>1 —</strong><span>Very few transitions; most scene changes are blunt cuts.</span></div><div class="desc-row"><strong>0 —</strong><span>No transitions or transitions break immersion.</span></div></div></td></tr>
+              <tr><td>Directing</td><td><strong>20%</strong></td><td>(avg ÷ 100) × 20</td></tr>
+              <tr><td>Plot & Writing</td><td><strong>20%</strong></td><td>(avg ÷ 100) × 20</td></tr>
+              <tr><td>Interactivity</td><td><strong>10%</strong></td><td>(avg ÷ 100) × 10</td></tr>
+              <tr><td>Story Cover</td><td><strong>10%</strong></td><td>(avg ÷ 100) × 10</td></tr>
             </tbody>
           </table>
-          <div class="sub-total-bar"><span class="sub-total-label">B.1 Subtotal</span><span class="sub-total-val"><span id="b1-sub">0</span> / 20</span></div>
         </div>
-
-        <!-- B2 -->
-        <div class="rubric-block">
-          <div class="rubric-block-head"><span class="rubric-block-title">B.2 · Character Movement &amp; Animation</span><span class="rubric-block-pts">20 pts</span></div>
-          <div class="rubric-block-desc">Animation accuracy, spot placement, group scene management, and layering depth.</div>
-          <table class="criteria-table">
-            <thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
-            <tbody id="b2-tbody"></tbody>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Public Voting — 40% Total</div>
+          <table class="ref-table">
+            <thead><tr><th>Category</th><th>Weight</th><th>Formula</th></tr></thead>
+            <tbody>
+              <tr><td>Poll Vote</td><td><strong>10%</strong></td><td>(total ÷ benchmark) × 10</td></tr>
+              <tr><td>Feed Vote</td><td><strong>10%</strong></td><td>(total ÷ benchmark) × 10</td></tr>
+              <tr><td>Qualifier Vote</td><td><strong>10%</strong></td><td>(total ÷ benchmark) × 10</td></tr>
+              <tr><td>Popularity Vote</td><td><strong>10%</strong></td><td>(total ÷ benchmark) × 10</td></tr>
+            </tbody>
           </table>
-          <div class="sub-total-bar"><span class="sub-total-label">B.2 Subtotal</span><span class="sub-total-val"><span id="b2-sub">0</span> / 20</span></div>
-        </div>
-
-        <!-- B3 -->
-        <div class="rubric-block">
-          <div class="rubric-block-head"><span class="rubric-block-title">B.3 · Overlay Usage &amp; Visual Effects</span><span class="rubric-block-pts">20 pts</span></div>
-          <div class="rubric-block-desc">Overlay placement, creative use, tappable/animated overlays, and special visual effects.</div>
-          <table class="criteria-table">
-            <thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
-            <tbody id="b3-tbody"></tbody>
-          </table>
-          <div class="sub-total-bar"><span class="sub-total-label">B.3 Subtotal</span><span class="sub-total-val"><span id="b3-sub">0</span> / 20</span></div>
-        </div>
-
-        <!-- B4 -->
-        <div class="rubric-block">
-          <div class="rubric-block-head"><span class="rubric-block-title">B.4 · Visual Storytelling &amp; Innovation</span><span class="rubric-block-pts">20 pts</span></div>
-          <div class="rubric-block-desc">Thematic visuals, symbolism, directorial creativity, and consistency in visual style.</div>
-          <table class="criteria-table">
-            <thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
-            <tbody id="b4-tbody"></tbody>
-          </table>
-          <div class="sub-total-bar"><span class="sub-total-label">B.4 Subtotal</span><span class="sub-total-val"><span id="b4-sub">0</span> / 20</span></div>
-        </div>
-
-        <!-- B5 -->
-        <div class="rubric-block">
-          <div class="rubric-block-head"><span class="rubric-block-title">B.5 · Sound Design &amp; User Interface Polish</span><span class="rubric-block-pts">20 pts</span></div>
-          <div class="rubric-block-desc">Sound effects, music use, sound transitions, speech bubble placement, and bug-free polish.</div>
-          <table class="criteria-table">
-            <thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
-            <tbody id="b5-tbody"></tbody>
-          </table>
-          <div class="sub-total-bar"><span class="sub-total-label">B.5 Subtotal</span><span class="sub-total-val"><span id="b5-sub">0</span> / 20</span></div>
-        </div>
-
-        <div class="section-total">
-          <div><div class="section-total-label">Total Score From Directing</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px">Auto-calculated from criteria above</div></div>
-          <div class="section-total-right">
-            <div class="section-total-score"><span id="B-total">0</span><span style="font-size:16px;color:rgba(255,255,255,0.3)"> / 100</span></div>
-            <div class="section-total-weighted" id="B-weighted">→ 0.00 / 20 pts weighted</div>
-          </div>
-        </div>
-
-        <div class="manual-total-wrap">
-          <div class="manual-total-label">Confirm Total Score From Directing <span style="color:var(--rose)">*</span></div>
-          <div class="manual-input-row">
-            <div class="manual-auto-val" id="B-auto-confirm">0</div>
-            <div class="manual-slash">/ 100</div>
-            <div style="font-size:12px;color:#aaa;margin-left:8px">Auto-calculated · verify before proceeding</div>
-          </div>
-          <div class="manual-total-note">If you spot a discrepancy, review your individual criterion selections above.</div>
-        </div>
-
-        <div class="nav-row">
-          <button class="btn btn-outline btn-nav" onclick="goSection('A')">← Back</button>
-          <button class="btn btn-gold btn-nav" onclick="nextSection('B','C')">Next: Plot &amp; Writing →</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ═══════════════════════════════════
-       SECTION C — PLOT & WRITING (20%)
-  ════════════════════════════════════ -->
-  <div id="sec-C" class="section-panel">
-    <div class="section-banner banner-c">
-      <div class="section-banner-label">Section C</div>
-      <div class="section-banner-title">Plot &amp; Writing Grading Rubric</div>
-      <div class="section-banner-sub">Originality, structure, conflict, logic, and emotional impact</div>
-      <div class="weight-chip">⚖ 20% of final SOTY score · 100 points total</div>
+<!-- ═══════ JUDGING ═══════ -->
+<div id="p-judging" class="panel">
+  <div class="card">
+    <div class="card-hd">
+      <div><h3>Stage 1 — Judging Panel</h3><p>Enter each judge's score 0–100. Leave blank if judge did not score that story.</p></div>
     </div>
-    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
-      <div class="card-body">
-        <div class="info-box info-rose">
-          <span class="info-icon">📖</span>
-          <span>Evaluate the story's narrative across its first three episodes. Score each criterion from <strong>0 to 5</strong>. Click criterion names to expand the scoring descriptor.</span>
+    <div class="card-body">
+      <div class="info"><strong>Judges:</strong> CXR (Xavier) · CTA (Tali) · CRL (R. Lewis) · CNL (Nillette) · CMY (Mercy)<br>
+      <strong>Directing & Plot</strong> are multiplied ×20%. <strong>Interactivity & Cover</strong> are multiplied ×10%. Blank scores are excluded from the average.</div>
+      <div class="stabs">
+        <button class="subtab active" onclick="jTab('directing',this)">Directing ×20%</button>
+        <button class="subtab" onclick="jTab('plot',this)">Plot ×20%</button>
+        <button class="subtab" onclick="jTab('interactivity',this)">Interactivity ×10%</button>
+        <button class="subtab" onclick="jTab('cover',this)">Cover ×10%</button>
+      </div>
+      <div class="fbar">
+        <label>Top N:</label>
+        <input type="number" class="topn" id="j-topn" min="1" placeholder="All" oninput="renderJ()">
+        <button class="btn btn-outline btn-sm" onclick="setTopN('j-topn','');renderJ()">All</button>
+        <span class="fbar-info" id="j-info"></span>
+      </div>
+      <div class="twrap"><table class="st"><thead id="j-head"></thead><tbody id="j-body"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ VOTING ═══════ -->
+<div id="p-voting" class="panel">
+  <div class="card">
+    <div class="card-hd">
+      <div><h3>Stage 1 — Public Voting</h3><p>Enter raw vote totals. Benchmark auto-detects from highest score.</p></div>
+    </div>
+    <div class="card-body">
+      <div class="info"><strong>Poll Vote:</strong> up to 2 rounds (sum auto-calculated). <strong>Feed Vote:</strong> up to 2 counts (sum auto-calculated). <strong>Qualifier & Popularity:</strong> enter the final cumulative total. Benchmark = highest total in each category.</div>
+      <div class="stabs">
+        <button class="subtab active" onclick="vTab('poll',this)">Poll Vote</button>
+        <button class="subtab" onclick="vTab('feed',this)">Feed Vote</button>
+        <button class="subtab" onclick="vTab('qualifier',this)">Qualifier Vote</button>
+        <button class="subtab" onclick="vTab('popularity',this)">Popularity Vote</button>
+      </div>
+      <div class="fbar">
+        <label>Top N:</label>
+        <input type="number" class="topn" id="v-topn" min="1" placeholder="All" oninput="renderV()">
+        <button class="btn btn-outline btn-sm" onclick="setTopN('v-topn','');renderV()">All</button>
+        <span id="v-bench" style="font-size:12px;color:var(--text-mid);margin-left:auto"></span>
+        <span class="fbar-info" id="v-info"></span>
+      </div>
+      <div class="twrap"><table class="st"><thead id="v-head"></thead><tbody id="v-body"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ COMBINED ═══════ -->
+<div id="p-combined" class="panel">
+  <div class="card">
+    <div class="card-hd">
+      <div><h3>Stage 1 — Combined Scores</h3><p>Judging (60%) + Public Voting (40%) = Total out of 100</p></div>
+      <div class="btn-row">
+        <div class="view-toggle">
+          <button class="vt-btn active" id="vt-t" onclick="setView('table')" title="Table">☰</button>
+          <button class="vt-btn" id="vt-c" onclick="setView('cards')" title="Cards">⊞</button>
         </div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">C.1 · Originality &amp; Concept</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Unique premise, genre execution, world-building, and conceptual depth.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="c1-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">C.1 Subtotal</span><span class="sub-total-val"><span id="c1-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">C.2 · Structure, Flow &amp; Pacing</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Hook strength, episode pacing, scene transitions and cohesion, progression toward climax.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="c2-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">C.2 Subtotal</span><span class="sub-total-val"><span id="c2-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">C.3 · Conflict, Stakes &amp; Twists</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Central conflict clarity, emotional stakes, plot twists, and subplot integration.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="c3-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">C.3 Subtotal</span><span class="sub-total-val"><span id="c3-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">C.4 · Consistency, Logic &amp; Realism</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Internal plot logic, realistic character decisions, conflicts and consequences, avoidance of plot holes.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="c4-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">C.4 Subtotal</span><span class="sub-total-val"><span id="c4-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">C.5 · Impact, Dialogue &amp; Emotion</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Emotional resonance, memorable scenes, effective dialogue, and narrative voice and style.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="c5-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">C.5 Subtotal</span><span class="sub-total-val"><span id="c5-sub">0</span> / 20</span></div></div>
-        <div class="section-total"><div><div class="section-total-label">Total Score From Plot</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px">Auto-calculated from criteria above</div></div><div class="section-total-right"><div class="section-total-score"><span id="C-total">0</span><span style="font-size:16px;color:rgba(255,255,255,0.3)"> / 100</span></div><div class="section-total-weighted" id="C-weighted">→ 0.00 / 20 pts weighted</div></div></div>
-        <div class="manual-total-wrap"><div class="manual-total-label">Confirm Total Score From Plot <span style="color:var(--rose)">*</span></div><div class="manual-input-row"><div class="manual-auto-val" id="C-auto-confirm">0</div><div class="manual-slash">/ 100</div><div style="font-size:12px;color:#aaa;margin-left:8px">Auto-calculated · verify before proceeding</div></div></div>
-        <div class="nav-row"><button class="btn btn-outline btn-nav" onclick="goSection('B')">← Directing</button><button class="btn btn-gold btn-nav" onclick="nextSection('C','D')">Next: Interactivity →</button></div>
+        <button class="btn btn-gold btn-sm" onclick="go('top24')">Build Top 24 →</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="statgrid" id="c-stats"></div>
+      <div class="fbar">
+        <label>Top N:</label>
+        <input type="number" class="topn" id="c-topn" min="1" placeholder="All" oninput="renderC()">
+        <button class="btn btn-outline btn-sm" onclick="setTopN('c-topn',20);renderC()">Top 20</button>
+        <button class="btn btn-outline btn-sm" onclick="setTopN('c-topn',24);renderC()">Top 24</button>
+        <button class="btn btn-outline btn-sm" onclick="setTopN('c-topn','');renderC()">All</button>
+        <span class="fbar-info" id="c-info"></span>
+      </div>
+      <div id="c-tv" class="twrap"><table class="st"><thead id="c-head"></thead><tbody id="c-body"></tbody></table></div>
+      <div id="c-cv" style="display:none"><div class="author-cards-grid" id="c-cards"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ AWARDS ═══════ -->
+<div id="p-awards" class="panel">
+  <div class="card">
+    <div class="card-hd"><div><h3>Special Awards</h3><p>Top N per judging category — winners earn Fast Track to Top 24</p></div></div>
+    <div class="card-body">
+      <div class="info"><strong>Fast Track:</strong> The top scorer in Best Directing, Best Plot, Best Interactivity, and Best Cover that is NOT already in the Top 20 earns an automatic spot in the Top 24.</div>
+      <div class="fbar">
+        <label>Top N:</label>
+        <input type="number" class="topn" id="a-topn" min="1" max="20" value="4" oninput="renderA()">
+        <button class="btn btn-outline btn-sm" onclick="setTopN('a-topn',4);renderA()">Top 4</button>
+        <button class="btn btn-outline btn-sm" onclick="setTopN('a-topn',8);renderA()">Top 8</button>
+        <button class="btn btn-outline btn-sm" onclick="setTopN('a-topn',12);renderA()">Top 12</button>
+        <button class="btn btn-outline btn-sm" onclick="setTopN('a-topn',20);renderA()">Top 20</button>
+      </div>
+      <div class="g2" id="awards-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ TOP 24 ═══════ -->
+<div id="p-top24" class="panel">
+  <div class="card">
+    <div class="card-hd">
+      <div><h3>Top 24 Builder</h3><p>Top 20 by combined score + 4 Fast Track award winners (retained regardless of Top 20 status)</p></div>
+      <button class="btn btn-gold btn-sm" onclick="buildTop24()">⚡ Auto-Build Top 24</button>
+    </div>
+    <div class="card-body">
+      <div class="info"><strong>How it works:</strong> Stories ranked 1–20 by Stage 1 combined score advance automatically. Each special award (Directing, Plot, Interactivity, Cover) is won by its top scorer — <em>regardless of whether they are already in the Top 20</em>. Award winners keep their award title. Any spots still needed to reach 24 are auto-filled by the next highest scorers not yet included.</div>
+      <div id="top24-out"><p style="color:var(--text-light);font-size:13px">Click "Auto-Build Top 24" to generate. Ensure all Stage 1 scores are entered first.</p></div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <button class="btn btn-navy" onclick="promoteS2()">Promote Top 24 to Stage 2 →</button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ═══════════════════════════════════
-       SECTION D — INTERACTIVITY (10%)
-  ════════════════════════════════════ -->
-  <div id="sec-D" class="section-panel">
-    <div class="section-banner banner-d">
-      <div class="section-banner-label">Section D</div>
-      <div class="section-banner-title">Interactivity Grading Rubric</div>
-      <div class="section-banner-sub">Choice depth, customization, frequency, technical execution, and reader agency</div>
-      <div class="weight-chip">⚖ 10% of final SOTY score · 100 points total</div>
-    </div>
-    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
-      <div class="card-body">
-        <div class="info-box info-cobalt"><span class="info-icon">🎮</span><span>Consider not just whether interactive elements are present, but whether they add genuine value to the reader experience. Meaningful choices score higher than superficial ones.</span></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">D.1 · Choice Depth &amp; Story Impact</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Meaningful branching, reader influence on plot, replayability, and consequences with weight.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="d1-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">D.1 Subtotal</span><span class="sub-total-val"><span id="d1-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">D.2 · Outfit Choices, Challenges &amp; Score Systems</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Outfit choices, mini-game functionality, point/timed systems, and gains/flags for story impact.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="d2-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">D.2 Subtotal</span><span class="sub-total-val"><span id="d2-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">D.3 · Frequency &amp; Variety of Choices</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Regular choice prompts, personality/relationship choices, dialogue vs. action balance, filler choices.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="d3-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">D.3 Subtotal</span><span class="sub-total-val"><span id="d3-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">D.4 · Customization &amp; Reader Agency</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">MC customization, LI/supporting character customization, inclusivity options, genre-specific options.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="d4-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">D.4 Subtotal</span><span class="sub-total-val"><span id="d4-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">D.5 · Technical Execution &amp; Creativity</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Coding precision, visual choice presentation, innovation in interactivity, and user experience consistency.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="d5-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">D.5 Subtotal</span><span class="sub-total-val"><span id="d5-sub">0</span> / 20</span></div></div>
-        <div class="section-total"><div><div class="section-total-label">Total Score From Interactivity</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px">Auto-calculated</div></div><div class="section-total-right"><div class="section-total-score"><span id="D-total">0</span><span style="font-size:16px;color:rgba(255,255,255,0.3)"> / 100</span></div><div class="section-total-weighted" id="D-weighted">→ 0.00 / 10 pts weighted</div></div></div>
-        <div class="manual-total-wrap"><div class="manual-total-label">Confirm Total Score From Interactivity <span style="color:var(--rose)">*</span></div><div class="manual-input-row"><div class="manual-auto-val" id="D-auto-confirm">0</div><div class="manual-slash">/ 100</div><div style="font-size:12px;color:#aaa;margin-left:8px">Auto-calculated · verify before proceeding</div></div></div>
-        <div class="nav-row"><button class="btn btn-outline btn-nav" onclick="goSection('C')">← Plot &amp; Writing</button><button class="btn btn-gold btn-nav" onclick="nextSection('D','E')">Next: Story Cover →</button></div>
+<!-- ═══════ STAGE 2 ═══════ -->
+<div id="p-stage2" class="panel">
+  <div class="card">
+    <div class="card-hd"><div><h3>Stage 2 — Top 24</h3><p>S2S Vote (÷bench×10) + 2nd Poll Vote (÷bench×10) added to Stage 1 carry-over</p></div></div>
+    <div class="card-body">
+      <div class="info"><strong>Stage 2 rules:</strong> All 24 stories compete. Enter S2S and Poll raw scores for every story.<br>
+      <strong>Fast Track to Top 12:</strong> Top 2 S2S scorers + Popularity Vote winner advance automatically (S2S fast tracks skip Poll).<br>
+      <strong>Promotion ranking</strong> uses <strong>S1 + S2S only</strong> — Poll score is shown for reference but does not count toward Top 12 promotion.<br>
+      The remaining spots fill from the non-fast-tracked stories ranked by S1+S2S score.</div>
+      <div class="fbar">
+        <label>Top N:</label>
+        <input type="number" class="topn" id="s2-topn" min="1" placeholder="All" oninput="renderS2()">
+        <button class="btn btn-outline btn-sm" onclick="setTopN('s2-topn',12);renderS2()">Top 12</button>
+        <button class="btn btn-outline btn-sm" onclick="setTopN('s2-topn','');renderS2()">All</button>
+      </div>
+      <div class="twrap"><table class="st"><thead id="s2-head"></thead><tbody id="s2-body"></tbody></table></div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <button class="btn btn-navy" onclick="promoteS3()">Promote Top 12 to Stage 3 →</button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ═══════════════════════════════════
-       SECTION E — STORY COVER (10%)
-  ════════════════════════════════════ -->
-  <div id="sec-E" class="section-panel">
-    <div class="section-banner banner-e">
-      <div class="section-banner-label">Section E</div>
-      <div class="section-banner-title">Story Cover Grading Rubric</div>
-      <div class="section-banner-sub">Visual composition, art quality, genre mood, creativity, and audience appeal</div>
-      <div class="weight-chip">⚖ 10% of final SOTY score · 100 points total</div>
-    </div>
-    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
-      <div class="card-body">
-        <div class="info-box info-gold"><span class="info-icon">🎨</span><span>Evaluate the cover as a standalone piece of visual communication. Ask: does it intrigue, and does it accurately represent the story it belongs to?</span></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">E.1 · Visual Composition &amp; Layout</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Balance and structure, character and element placement, text readability, proportions and spacing.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="e1-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">E.1 Subtotal</span><span class="sub-total-val"><span id="e1-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">E.2 · Art Quality &amp; Execution</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Illustration or editing quality, color harmony, lighting and shadows, overall polish.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="e2-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">E.2 Subtotal</span><span class="sub-total-val"><span id="e2-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">E.3 · Genre Representation &amp; Mood</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Genre appropriateness, mood and tone conveyed, thematic symbols, emotional impact.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="e3-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">E.3 Subtotal</span><span class="sub-total-val"><span id="e3-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">E.4 · Creativity &amp; Originality</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Unique artistic style, non-generic design choices, symbolism and subtle details, fresh take on genre norms.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="e4-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">E.4 Subtotal</span><span class="sub-total-val"><span id="e4-sub">0</span> / 20</span></div></div>
-        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">E.5 · Branding &amp; Audience Appeal</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Marketability, clarity of focus, consistency with story title, immediate interest factor.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="e5-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">E.5 Subtotal</span><span class="sub-total-val"><span id="e5-sub">0</span> / 20</span></div></div>
-        <div class="section-total"><div><div class="section-total-label">Total Score From Story Cover</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px">Auto-calculated</div></div><div class="section-total-right"><div class="section-total-score"><span id="E-total">0</span><span style="font-size:16px;color:rgba(255,255,255,0.3)"> / 100</span></div><div class="section-total-weighted" id="E-weighted">→ 0.00 / 10 pts weighted</div></div></div>
-        <div class="manual-total-wrap"><div class="manual-total-label">Confirm Total Score From Story Cover <span style="color:var(--rose)">*</span></div><div class="manual-input-row"><div class="manual-auto-val" id="E-auto-confirm">0</div><div class="manual-slash">/ 100</div><div style="font-size:12px;color:#aaa;margin-left:8px">Auto-calculated · verify before proceeding</div></div></div>
-        <div class="nav-row"><button class="btn btn-outline btn-nav" onclick="goSection('D')">← Interactivity</button><button class="btn btn-gold btn-nav" onclick="nextSection('E','F')">Review &amp; Submit →</button></div>
+<!-- ═══════ STAGE 3 ═══════ -->
+<div id="p-stage3" class="panel">
+  <div class="card">
+    <div class="card-hd"><div><h3>Stage 3 — Top 12 · Head-to-Head</h3><p>H2H Vote (out of 10, entered directly) added to S2 score → Top 8</p></div></div>
+    <div class="card-body">
+      <div class="info"><strong>Stage 3 formula:</strong> S2 Promo Score (S1+S2S) + H2H Vote weighted = S3 Total. Top 8 advance to the Final.<br>
+      <strong>H2H scoring:</strong> Enter the raw H2H vote total for each story. The tool auto-converts to out of 10 using the highest raw score as the benchmark (same method as public voting).</div>
+      <div class="fbar">
+        <label>Top N:</label>
+        <input type="number" class="topn" id="s3-topn" min="1" placeholder="All" oninput="renderS3()">
+        <button class="btn btn-outline btn-sm" onclick="setTopN('s3-topn',8);renderS3()">Top 8</button>
+        <button class="btn btn-outline btn-sm" onclick="setTopN('s3-topn','');renderS3()">All</button>
+      </div>
+      <div class="twrap"><table class="st"><thead id="s3-head"></thead><tbody id="s3-body"></tbody></table></div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <button class="btn btn-navy" onclick="promoteS4()">Promote Top 8 to Final →</button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ═══════════════════════════════════
-       SECTION F — REVIEW & SUBMIT
-  ════════════════════════════════════ -->
-  <div id="sec-F" class="section-panel">
-    <div class="section-banner banner-f">
-      <div class="section-banner-label">Section F</div>
-      <div class="section-banner-title">Review &amp; Submit</div>
-      <div class="section-banner-sub">Confirm your scores and certify your assessment before submitting</div>
-    </div>
-    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
-      <div class="card-body">
-
-        <div class="info-box info-jade">
-          <span class="info-icon">✅</span>
-          <span>Review your totals below. Once submitted, scores are sent to the judging record and <strong>this form clears for the next story</strong>. You cannot edit a submitted entry from this portal.</span>
-        </div>
-
-        <!-- Story header -->
-        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:20px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:6px;">Story Being Scored</div>
-          <div style="font-family:var(--serif);font-size:20px;font-weight:700;" id="review-title">—</div>
-          <div style="font-size:13px;color:#888;margin-top:3px;" id="review-meta">—</div>
-        </div>
-
-        <!-- Score summary grid -->
-        <div class="submit-summary">
-          <div class="summary-header">
-            <div class="summary-title">Score Summary</div>
-            <div class="summary-sub">All four judging categories · Combined judge score = 60% of SOTY total</div>
-          </div>
-          <div class="summary-grid">
-            <div class="summary-cat">
-              <div class="summary-cat-name">🎬 Directing</div>
-              <div><span class="summary-cat-score" id="rev-B">0</span><span class="summary-cat-max"> / 100</span></div>
-              <div class="summary-cat-weighted" id="rev-B-w">→ 0.00 / 20 pts</div>
-            </div>
-            <div class="summary-cat">
-              <div class="summary-cat-name">📖 Plot &amp; Writing</div>
-              <div><span class="summary-cat-score" id="rev-C">0</span><span class="summary-cat-max"> / 100</span></div>
-              <div class="summary-cat-weighted" id="rev-C-w">→ 0.00 / 20 pts</div>
-            </div>
-            <div class="summary-cat">
-              <div class="summary-cat-name">🎮 Interactivity</div>
-              <div><span class="summary-cat-score" id="rev-D">0</span><span class="summary-cat-max"> / 100</span></div>
-              <div class="summary-cat-weighted" id="rev-D-w">→ 0.00 / 10 pts</div>
-            </div>
-            <div class="summary-cat">
-              <div class="summary-cat-name">🎨 Story Cover</div>
-              <div><span class="summary-cat-score" id="rev-E">0</span><span class="summary-cat-max"> / 100</span></div>
-              <div class="summary-cat-weighted" id="rev-E-w">→ 0.00 / 10 pts</div>
-            </div>
-          </div>
-          <div class="summary-total-row">
-            <div>
-              <div class="summary-total-label">Combined Judge Score</div>
-              <div style="font-size:11px;color:#888;margin-top:2px">Directing 20% + Plot 20% + Interactivity 10% + Cover 10%</div>
-            </div>
-            <div style="text-align:right">
-              <div class="summary-total-score" id="rev-combined">0.00</div>
-              <div style="font-size:12px;color:#888">/ 60 pts</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Judge confirmation -->
-        <div class="card" style="margin-bottom:16px;">
-          <div class="card-header"><div><div class="card-title">Judge Confirmation</div><div class="card-sub">Confirm your identity before submitting</div></div></div>
-          <div class="card-body">
-            <div class="form-grid">
-              <div class="field">
-                <label>Your Name (confirm) <span style="color:var(--rose)">*</span></label>
-                <input type="text" id="f-judge-confirm" placeholder="Your username" oninput="markFilled(this)">
-              </div>
-              <div class="field">
-                <label>Additional Notes (optional)</label>
-                <input type="text" id="f-notes" placeholder="Any final notes for this evaluation…" oninput="markFilled(this)">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- AFFIRMATION -->
-        <div class="affirm-wrap">
-          <div class="affirm-inner" onclick="toggleAffirm()">
-            <div class="affirm-cb" id="affirm-cb"></div>
-            <div class="affirm-text">
-              By checking this box, I affirm that the assessment was carried out <strong>fairly and independently</strong> by me, without influence from other judges, public opinion, or personal relationships with the author. <span class="affirm-required">*Required</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SUBMIT BUTTON -->
-        <button class="btn btn-jade btn-full btn-lg" onclick="submitAll()" id="submit-btn" style="font-size:16px;padding:16px;">
-          📤 Submit All Scores
-        </button>
-        <p style="text-align:center;font-size:12px;color:#aaa;margin-top:10px">
-          Scores are sent to the central judging record. The form resets after successful submission.
-        </p>
-
-        <div class="nav-row" style="border-top:none;padding-top:8px;">
-          <button class="btn btn-outline btn-nav" onclick="goSection('E')">← Back to Story Cover</button>
-        </div>
-      </div>
-    </div>
+<!-- ═══════ STAGE 4 ═══════ -->
+<div id="p-stage4" class="panel">
+  <div class="card">
+    <div class="card-hd"><div><h3>Stage 4 — Final Placements</h3><p>Top 8 ranked by Stage 3 total score</p></div></div>
+    <div class="card-body"><div id="s4-out"><p style="color:var(--text-light);font-size:13px">Promote Top 8 from Stage 3 to see final placements.</p></div></div>
   </div>
+</div>
 
-  <!-- ═══════════════════════════════════
-       SECTION N — NOMINATION AWARDS
-  ════════════════════════════════════ -->
-  <div id="sec-N" class="section-panel">
-    <div class="section-banner" style="background:linear-gradient(135deg,#2a1a3a,#6b3fa0);border-radius:var(--r) var(--r) 0 0;">
-      <div class="section-banner-label">Special Awards</div>
-      <div class="section-banner-title">Nomination Awards</div>
-      <div class="section-banner-sub">Judge-decided awards submitted independently from the 4-category evaluation</div>
-      <div class="weight-chip">🏅 Deliberation-based · Not tied to evaluation scores · 5 nominees each</div>
-    </div>
-    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
-      <div class="card-body">
+</main>
 
-        <div class="info-box info-cobalt">
-          <span class="info-icon">ℹ️</span>
-          <span>These two awards are <strong>entirely separate</strong> from the Directing, Plot, Interactivity, and Cover evaluation. Nominate up to <strong>5 stories</strong> for each. The judging committee deliberates to select the winner. Neither award carries a Fast Track spot.</span>
-        </div>
-
-        <div class="info-box info-gold" style="margin-bottom:20px">
-          <span class="info-icon">📌</span>
-          <span>Submit nominations at any point during the judging period — you do not need to have completed all story evaluations first. Nominations are sent as a separate record to the central sheet.</span>
-        </div>
-
-        <!-- Judge ID -->
-        <div class="card" style="margin-bottom:20px;">
-          <div class="card-header" style="background:var(--ink);">
-            <div><div class="card-title" style="color:var(--gold);">Your Judge Details</div><div class="card-sub" style="color:rgba(255,255,255,0.45);">Identify yourself before submitting nominations</div></div>
-          </div>
-          <div class="card-body">
-            <div class="form-grid">
-              <div class="field">
-                <label>Your (Judge) Name <span style="color:var(--rose)">*</span></label>
-                <input type="text" id="n-judge-name" placeholder="Your username" oninput="markFilled(this)">
-              </div>
-              <div class="field">
-                <label>Submission Date</label>
-                <input type="text" id="n-date" placeholder="e.g. 25 June 2026" oninput="markFilled(this)">
-              </div>
-              <div class="field field-full">
-                <label>General Notes (optional)</label>
-                <textarea id="n-notes" placeholder="Any observations about your nominations…" rows="2" oninput="markFilled(this)"></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- AWARD 1: Most Innovative Concept -->
-        <div class="rubric-block" style="margin-bottom:20px;">
-          <div class="rubric-block-head">
-            <span class="rubric-block-title" style="font-size:15px;">💡 Most Innovative Concept Award</span>
-            <span class="rubric-block-pts" style="font-size:12px;">5 nominees</span>
-          </div>
-          <div class="rubric-block-desc" style="font-size:13px;line-height:1.65;">
-            Awarded to the story that breaks creative boundaries through a unique premise, bold format, or experimental approach to storytelling on Episode. The judging committee nominates a shortlist and selects the winner through deliberation. <em>This award does not carry a Fast Track spot.</em>
-          </div>
-          <div style="padding:0 18px 16px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:10px;">Your 5 Nominees</div>
-            <div style="display:flex;flex-direction:column;gap:8px;" id="nom-innovative-slots">
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">1.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">2.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">3.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">4.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">5.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- AWARD 2: Best Dialogue & Characterization -->
-        <div class="rubric-block" style="margin-bottom:24px;">
-          <div class="rubric-block-head">
-            <span class="rubric-block-title" style="font-size:15px;">🗣️ Best Dialogue &amp; Characterization Award</span>
-            <span class="rubric-block-pts" style="font-size:12px;">5 nominees</span>
-          </div>
-          <div class="rubric-block-desc" style="font-size:13px;line-height:1.65;">
-            Awarded to the story that best demonstrates authentic, natural dialogue and multidimensional characters who feel genuinely real to the reader. The judging committee nominates a shortlist of stories and selects the winner through deliberation. <em>This award does not carry a Fast Track spot.</em>
-          </div>
-          <div style="padding:0 18px 16px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:10px;">Your 5 Nominees</div>
-            <div style="display:flex;flex-direction:column;gap:8px;" id="nom-dialogue-slots">
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">1.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">2.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">3.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">4.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-size:11px;color:#bbb;width:18px;flex-shrink:0;">5.</span><input type="text" class="nom-input" placeholder="Story title" oninput="markFilled(this)"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Judge confirm + submit -->
-        <div class="card" style="margin-bottom:16px;">
-          <div class="card-body">
-            <div class="field" style="margin-bottom:14px;">
-              <label>Judge Name (confirm) <span style="color:var(--rose)">*</span></label>
-              <input type="text" id="n-judge-confirm" placeholder="Your name — required before submission" oninput="markFilled(this)">
-            </div>
-            <!-- Affirmation for nominations -->
-            <div class="affirm-wrap" style="margin-bottom:16px;">
-              <div class="affirm-inner" onclick="toggleNomAffirm()">
-                <div class="affirm-cb" id="nom-affirm-cb"></div>
-                <div class="affirm-text">By checking this box, I affirm that my nominations reflect my honest, independent assessment of each story's merits. <span class="affirm-required">*Required</span></div>
-              </div>
-            </div>
-            <button class="btn btn-full btn-lg" style="background:var(--plum);color:#fff;font-size:15px;padding:15px;" onclick="submitNominations()">
-              🏅 Submit Nominations
-            </button>
-            <p style="text-align:center;font-size:12px;color:#aaa;margin-top:10px;">Nominations are sent as a separate record. Form clears after submission.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════
-       SECTION H — MY SUBMISSIONS
-  ════════════════════════════════════ -->
-  <div id="sec-H" class="section-panel">
-    <div class="section-banner" style="background:linear-gradient(135deg,#1a1a1a,#333);border-radius:var(--r) var(--r) 0 0;">
-      <div class="section-banner-label">Judge Log</div>
-      <div class="section-banner-title">My Submissions</div>
-      <div class="section-banner-sub">All stories you have scored in this and previous sessions</div>
-    </div>
-    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
-      <div class="card-header">
-        <div><div class="card-title">Submission Log</div><div class="card-sub">Stored locally and sent to the central record</div></div>
-        <button class="btn btn-outline btn-sm" onclick="clearHistory()">🗑 Clear Local Log</button>
-      </div>
-      <div class="card-body">
-        <div id="hist-empty" class="empty-state"><div class="empty-icon">📭</div><div class="empty-text">No submissions yet. Score a story to see your log here.</div></div>
-        <div id="hist-content" style="display:none">
-          <div style="overflow-x:auto;">
-            <table class="history-table">
-              <thead><tr><th>Story</th><th>Genre</th><th>Author</th><th>Directing</th><th>Plot</th><th>Interactivity</th><th>Cover</th><th>Combined</th><th>Judge</th><th>Submitted</th></tr></thead>
-              <tbody id="hist-tbody"></tbody>
-            </table>
-          </div>
-
-          <div class="divider"></div>
-          <div class="card-title" style="font-size:15px;margin-bottom:14px">Per-Story Breakdown</div>
-          <div id="hist-cards"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /layout -->
-<div id="toast"></div>
+<div class="toast" id="toast"></div>
+<input type="file" id="imp" accept=".json" style="display:none" onchange="importJSON(event)">
 
 <script>
-// ─────────────────────────────────────────────────────
-// CONFIG — Replace with your Google Apps Script URL
-// ─────────────────────────────────────────────────────
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyemojB746PplEo_-hsjgbit66VHOTvmF7vFu5Wq3riga9czewW7X-6HFbAhqOFb_Q8/exec';
+// ═══════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════
+const SK = 'bsh_soty2026_eval_v2';
+const JUDGES = ['CXR','CTA','CRL','CNL','CMY'];
+const JNAMES = {CXR:'Xavier',CTA:'Tali',CRL:'R. Lewis',CNL:'Nillette',CMY:'Mercy'};
+const GENRES = ['Action','Adventure','Comedy','Drama','Fantasy','Horror','LGBTQ+','Mystery','Romance','Sci-Fi','Thriller'];
+const PLACEMENTS = ['🏆 Winner','1st Runner Up','2nd Runner Up','3rd Runner Up','4th Runner Up','5th Runner Up','6th Runner Up','7th Runner Up'];
 
-// ─────────────────────────────────────────────────────
-// CRITERIA DATA — complete per-criterion descriptors
-// ─────────────────────────────────────────────────────
-// descs arrays: index 0 = score 5, index 1 = score 4, ... index 5 = score 0
-// Text taken verbatim from the Buddies Judges Manual 2026
-const CRITERIA = {
-  b2:[
-    {id:'b2-1',label:'Accurate Animation Usage',descs:[
-      'Animations match the character\'s emotions, tone, and dialogue throughout. Every animation feels intentional and fitting.',
-      'Animations are mostly well-matched with only occasional misalignments between expression and context.',
-      'Animations are present but sometimes feel generic or inconsistent with the character\'s state.',
-      'Animations frequently feel wrong for the moment — characters laughing during tense scenes, or idle during emotional exchanges.',
-      'Very limited animation variety. Most characters remain static or default throughout.',
-      'Animations are absent, broken, or actively contradict the emotional content of the scene.'
-    ]},
-    {id:'b2-2',label:'Smooth Spot Placement & Shifting',descs:[
-      'Characters move between spots naturally. Walking animations, shifting, and repositioning all feel grounded and realistic.',
-      'Spot placement is generally natural with minor teleporting or awkward transitions.',
-      'Characters are placed correctly but movement between spots is sometimes robotic or instant without animation.',
-      'Characters frequently appear to teleport or are placed at inconsistent sizes and heights.',
-      'Little to no spot direction. Characters appear to float, overlap, or snap around the scene.',
-      'No intentional spot direction. Characters are misplaced or appear in default screen positions throughout.'
-    ]},
-    {id:'b2-3',label:'Group Scene Fluidity',descs:[
-      'Multi-character and crowd scenes are managed with clear coordination. Each character\'s position and animation is distinct and purposeful.',
-      'Group scenes are handled well overall, with minor overlaps or inconsistencies in larger setups.',
-      'Group scenes work but feel flat or static, with limited differentiation between characters.',
-      'Group scenes are cluttered, with characters overlapping, incorrectly sized, or performing identical animations.',
-      'Group scenes are attempted but visually confusing or poorly managed.',
-      'Group scenes are absent or so poorly executed they are distracting.'
-    ]},
-    {id:'b2-4',label:'Layering & Depth Management',descs:[
-      'Layering is expertly managed. Characters walk in front of and behind each other and objects naturally, creating genuine depth.',
-      'Layering is mostly correct with only isolated instances of characters appearing on the wrong layer.',
-      'Basic layering is in place but depth effects are rarely used to create visual dimension.',
-      'Frequent layering errors. Characters appear in front of objects they should be behind, or vice versa.',
-      'Layering is largely incorrect throughout.',
-      'No evidence of layering awareness. All characters appear on the same flat plane.'
-    ]}
-  ],
-  b3:[
-    {id:'b3-1',label:'Overlay Placement & Scaling',descs:[
-      'All overlays are sized and positioned precisely. They integrate seamlessly into the scene without appearing misaligned or out of scale.',
-      'Overlays are mostly well-placed, with minor scaling or positioning inconsistencies.',
-      'Overlays are present and functional but sometimes noticeably misaligned or incorrectly scaled.',
-      'Overlay placement is frequently off. Overlays float, appear too large or small, or break the visual coherence of the scene.',
-      'Overlays are placed with little care. Most feel like afterthoughts.',
-      'No overlays used, or overlays are so poorly placed they are visually disruptive.'
-    ]},
-    {id:'b3-2',label:'Creative Use of Overlays',descs:[
-      'Overlays are used imaginatively to build environments, convey action, or enhance atmosphere in ways that go beyond standard usage.',
-      'Overlays enhance several scenes creatively with genuine thought behind their selection and placement.',
-      'Overlays are used but serve mainly functional rather than creative purposes.',
-      'Overlays are limited and used repetitively or in generic ways.',
-      'Minimal overlay use with no evident creative intent.',
-      'No overlays present, or overlays serve no purpose.'
-    ]},
-    {id:'b3-3',label:'Tappable or Animated Overlays',descs:[
-      'Tappable or animated overlays are used meaningfully and function flawlessly. They add genuine interactivity or visual dynamism.',
-      'Tappable or animated overlays work well and contribute to the experience with minor issues.',
-      'Present but used sparingly or function without adding meaningful value.',
-      'Attempted but buggy, confusing, or used in a way that feels out of place.',
-      'Only one instance present or barely functional.',
-      'Not used at all.'
-    ]},
-    {id:'b3-4',label:'Special Visual Effects',descs:[
-      'Filters, lighting changes, blurs, or unique transitions are used with intention and skill, significantly elevating the visual experience.',
-      'Special effects are used effectively in key moments and feel purposeful.',
-      'Some effects are present but used inconsistently or without clear thematic reason.',
-      'Effects are minimal, basic, or used in ways that feel accidental rather than deliberate.',
-      'Only one or two instances of visual effects with little impact.',
-      'No special visual effects used.'
-    ]}
-  ],
-  b4:[
-    {id:'b4-1',label:'Thematic Visuals',descs:[
-      'The directing unmistakably reflects and elevates the story\'s tone and genre. Every visual choice reinforces the narrative.',
-      'Strong thematic alignment between visuals and story, with only occasional disconnects.',
-      'The visuals are appropriate for the genre but do not particularly enhance or reflect the story\'s specific themes.',
-      'Visuals feel generic and could belong to any story. Little connection to tone or genre.',
-      'Visual choices seem random or at odds with the story\'s mood.',
-      'No visible connection between the directing style and the story\'s tone or genre.'
-    ]},
-    {id:'b4-2',label:'Symbolism or Metaphorical Shots',descs:[
-      'Visual symbolism is used thoughtfully and consistently. Shots carry layered meaning that enriches the reading experience.',
-      'Several instances of meaningful visual symbolism that add depth to specific scenes.',
-      'One or two symbolic moments present but not a consistent directorial choice.',
-      'Symbolism is largely absent. Visuals are descriptive rather than expressive.',
-      'One accidental or unclear instance of a potentially symbolic shot.',
-      'No use of visual symbolism or metaphorical framing.'
-    ]},
-    {id:'b4-3',label:'Directorial Creativity',descs:[
-      'The directing approach feels fresh and distinctly authored. It would be recognisable as unique compared to most Episode stories.',
-      'Clear creative identity in the directing with multiple standout choices that go beyond convention.',
-      'Competent directing with occasional creative moments, but largely follows standard Episode conventions.',
-      'Mostly conventional directing with little evidence of a personal creative style.',
-      'Entirely standard or formulaic directing throughout.',
-      'No creative direction evident. The story uses default or minimal directing throughout.'
-    ]},
-    {id:'b4-4',label:'Consistency in Style',descs:[
-      'The visual tone is cohesive and consistent across all three episodes. The story has a clear and maintained aesthetic identity.',
-      'Visual style is largely consistent with minor shifts between episodes.',
-      'Some consistency in style but noticeable variation across episodes.',
-      'The visual tone shifts significantly between episodes, creating a disjointed experience.',
-      'Very little consistency. Each episode feels visually disconnected from the last.',
-      'No consistent visual style whatsoever.'
-    ]}
-  ],
-  b5:[
-    {id:'b5-1',label:'Sound Effects and Music Use',descs:[
-      'Music and sound effects are perfectly matched to each scene\'s emotional register. They actively elevate tension, drama, or warmth.',
-      'Sound design is mostly well-matched and contributes positively to the reading experience.',
-      'Sound and music are present but sometimes feel mismatched or overly generic.',
-      'Sound choices are inconsistent or distracting — music that clashes with tone or scenes played in silence where sound would add value.',
-      'Very limited sound use. Only one or two tracks used throughout all three episodes.',
-      'No music or sound effects used.'
-    ]},
-    {id:'b5-2',label:'Sound Transitions',descs:[
-      'Music transitions smoothly between scenes and moods. Tracks fade in and out naturally without jarring cuts.',
-      'Most sound transitions are handled well with only occasional abrupt switches.',
-      'Some sound transitions feel smooth but others cut off abruptly or switch without warning.',
-      'Sound transitions are largely abrupt. Music cuts out suddenly or changes without connection to the scene shift.',
-      'Sound appears and disappears randomly with no apparent effort at transition.',
-      'No evidence of any attention to sound transitions.'
-    ]},
-    {id:'b5-3',label:'Speech Bubble Placement & Tail Direction',descs:[
-      'Bubbles are consistently placed away from faces, tails point accurately to the correct speaker, and text never obstructs the visual.',
-      'Bubble placement is mostly correct with only occasional misaligned tails or minor obstructions.',
-      'Bubbles are generally placed appropriately but some tails point incorrectly or positioning is inconsistent.',
-      'Frequent errors in bubble placement. Tails often point to the wrong character or bubbles obscure faces.',
-      'Bubble placement appears random. Tails are frequently incorrect throughout.',
-      'No visible awareness of speech bubble placement. Bubbles are placed over faces or attributed to wrong characters.'
-    ]},
-    {id:'b5-4',label:'Attention to Detail (No Bugs/Glitches)',descs:[
-      'The story is clean and polished throughout. No layering mistakes, freezing, incorrect backgrounds, or coding errors.',
-      'Very minor technical issues that do not interrupt the reading experience.',
-      'A few noticeable bugs or glitches that briefly disrupt immersion but do not break the story.',
-      'Several technical errors across episodes that noticeably affect the experience.',
-      'Frequent bugs and glitches throughout. The story feels unfinished or unpolished.',
-      'Significant technical errors that make the story difficult or impossible to read properly.'
-    ]}
-  ],
-  c1:[
-    {id:'c1-1',label:'Unique Premise or Setting',descs:[
-      'The story\'s central idea feels genuinely fresh. The premise or setting has not been seen countless times on the platform and immediately stands out.',
-      'A familiar concept executed with a clear and interesting twist that sets it apart.',
-      'The premise is recognisable but competently handled, with minor elements that differentiate it.',
-      'A well-worn concept with little to distinguish it from similar stories.',
-      'The premise feels entirely unoriginal with no distinguishing features.',
-      'The premise is derivative or indistinguishable from other stories on the platform.'
-    ]},
-    {id:'c1-2',label:'Genre Execution',descs:[
-      'The story embraces its genre fully while introducing something that feels innovative within it. Genre conventions are understood and thoughtfully engaged with.',
-      'The genre is handled with confidence and some fresh elements, even if not groundbreaking.',
-      'The genre is present but executed conventionally without much creative engagement.',
-      'The story\'s genre identity is unclear or inconsistently executed.',
-      'The genre is barely recognisable or is handled in a way that undermines the story.',
-      'No discernible genre identity or execution.'
-    ]},
-    {id:'c1-3',label:'World-Building or Lore',descs:[
-      'The story\'s world, setting, or lore is richly developed. The reader feels grounded in a fully realised environment with its own rules, history, or texture.',
-      'World-building is solid and detailed in key areas, creating a believable setting.',
-      'The setting is functional but underdeveloped. The world exists but does not feel lived-in.',
-      'Minimal attention to setting. The story could take place anywhere with little consequence.',
-      'No meaningful world-building present. The setting is generic and unexplored.',
-      'The world or setting is entirely absent or incoherent.'
-    ]},
-    {id:'c1-4',label:'Conceptual Depth',descs:[
-      'The story explores meaningful themes or ideas that give it resonance beyond its surface plot. There is something to think about.',
-      'Clear thematic intent is present and explored with some depth.',
-      'Themes are hinted at but not consistently developed.',
-      'The story operates primarily on a surface level with little apparent thematic depth.',
-      'No discernible themes or deeper meaning.',
-      'The story has no conceptual depth and does not attempt to explore ideas.'
-    ]}
-  ],
-  c2:[
-    {id:'c2-1',label:'Strong Hook in First Episode',descs:[
-      'The opening episode grips the reader immediately. By the end of Episode 1, there is a compelling reason to keep reading.',
-      'A strong opening that establishes intrigue, even if the hook takes a little time to develop.',
-      'The first episode is adequate but does not create a strong pull to continue.',
-      'The opening is slow, unclear, or fails to establish enough interest.',
-      'The first episode offers almost no reason to continue reading.',
-      'The opening is so weak or confusing that it actively discourages the reader.'
-    ]},
-    {id:'c2-2',label:'Balanced Episode Pacing',descs:[
-      'Each episode moves at a pace that feels natural and engaging. Neither rushed nor padded. Each episode earns its length.',
-      'Pacing is mostly well-managed with only minor stretches that drag or rush.',
-      'Pacing is functional but uneven, with some episodes feeling noticeably longer or shorter than they should.',
-      'Pacing is a clear weakness. Episodes drag significantly or skip past important moments.',
-      'Very poor pacing. The story feels structurally undisciplined.',
-      'No apparent pacing control whatsoever.'
-    ]},
-    {id:'c2-3',label:'Scene Transitions & Cohesion',descs:[
-      'Scene and episode transitions are smooth and logical. The story flows as a coherent whole.',
-      'Transitions are mostly effective with only occasional confusion between scenes.',
-      'Some transitions are handled well but others feel abrupt or unexplained.',
-      'Transitions are frequently jarring. The story jumps between scenes without clear connection.',
-      'Very little cohesion between scenes. The story feels fragmented.',
-      'Scenes change randomly with no apparent narrative logic connecting them.'
-    ]},
-    {id:'c2-4',label:'Progression Toward Climax',descs:[
-      'The plot builds meaningfully and steadily. By the end of Episode 3, there is clear dramatic momentum toward something significant.',
-      'Good narrative build with clear direction, even if the escalation is not perfectly calibrated.',
-      'Some progression is present but the story has not clearly built toward anything by Episode 3.',
-      'Little sense of escalation or direction. The story feels like it is waiting to begin.',
-      'No narrative momentum. The plot has not developed over the three episodes.',
-      'The plot has regressed or remained entirely static.'
-    ]}
-  ],
-  c3:[
-    {id:'c3-1',label:'Clear Central Conflict',descs:[
-      'The central conflict is established clearly and compellingly within the first episode. The reader knows exactly what drives the story forward.',
-      'The conflict is present and clear, even if it takes a little longer to fully define itself.',
-      'A conflict exists but is vague or not yet clearly articulated by Episode 3.',
-      'The conflict is unclear, underdeveloped, or too passive to generate tension.',
-      'A conflict is barely discernible.',
-      'No clear central conflict has been established.'
-    ]},
-    {id:'c3-2',label:'High or Emotional Stakes',descs:[
-      'The stakes feel real, significant, and personal. The reader understands what is at risk and genuinely cares about the outcome.',
-      'Stakes are well-established and emotionally engaging, even if not perfectly sustained.',
-      'Some stakes are present but do not feel particularly weighty or personal yet.',
-      'Stakes are either absent or too low to create meaningful tension.',
-      'No real sense of consequence or risk in the story.',
-      'The story creates no stakes whatsoever.'
-    ]},
-    {id:'c3-3',label:'Well-Executed Plot Twists',descs:[
-      'Plot twists are surprising yet feel earned and believable in retrospect. They recontextualise the story effectively.',
-      'A well-executed twist or revelation that adds genuine intrigue.',
-      'A twist is attempted but is either predictable or not quite earned.',
-      'Twists feel forced, random, or do not land with any real impact.',
-      'A twist is attempted but undermines rather than enhances the story.',
-      'No plot twists, or twists that are incoherent or contradict established story logic.'
-    ]},
-    {id:'c3-4',label:'Subplot Integration',descs:[
-      'Subplots enrich the main narrative. They feel connected and add texture, depth, or thematic resonance.',
-      'Subplots are present and mostly serve the main narrative without feeling disconnected.',
-      'Subplots exist but feel somewhat tangential or underdeveloped within three episodes.',
-      'Subplots feel like distractions rather than enhancements.',
-      'Only the vaguest hint of a subplot with no real development.',
-      'No subplots present.'
-    ]}
-  ],
-  c4:[
-    {id:'c4-1',label:'Internal Plot Logic',descs:[
-      'Events and outcomes follow consistently from the story\'s established rules and world. Nothing happens without logical cause.',
-      'Strong internal logic with only minor moments that stretch plausibility.',
-      'Generally logical but with one or two moments that feel unexplained or inconsistent.',
-      'Several instances where events happen without clear cause or contradict established facts.',
-      'The story\'s internal logic breaks down regularly.',
-      'Events occur seemingly at random with no logical coherence.'
-    ]},
-    {id:'c4-2',label:'Realistic Character Decisions',descs:[
-      'Characters act in ways that feel true to who they are and to the situations they face. Decisions are grounded and believable.',
-      'Character decisions are mostly logical and consistent with their established personality.',
-      'Characters generally act reasonably but occasionally make choices that feel out of character or convenient for the plot.',
-      'Character decisions frequently feel contrived or inconsistent with what we know about them.',
-      'Characters act illogically throughout. Their choices seem to serve the plot rather than emerge from character.',
-      'Character behaviour is incoherent and bears no relationship to their established traits.'
-    ]},
-    {id:'c4-3',label:'Conflicts and Consequences',descs:[
-      'Conflicts lead to meaningful consequences that ripple forward in the story. Actions have visible outcomes.',
-      'Consequences generally follow from conflicts with only minor inconsistencies.',
-      'Some consequences are present but not all conflicts result in meaningful outcomes.',
-      'Consequences are rare. Conflicts arise and are largely forgotten without impact.',
-      'Events occur without consequence. Nothing the characters do seems to matter.',
-      'No sense of cause and effect in the story at all.'
-    ]},
-    {id:'c4-4',label:'Avoidance of Plot Holes',descs:[
-      'No plot holes identified across the three episodes. The story is tight and consistent.',
-      'The story is largely coherent with only one minor unanswered question.',
-      'A couple of noticeable gaps or contradictions that could be resolved but are distracting.',
-      'Several clear plot holes that undermine confidence in the story\'s construction.',
-      'The story is riddled with contradictions and gaps.',
-      'Fundamental plot holes that make the story incoherent.'
-    ]}
-  ],
-  c5:[
-    {id:'c5-1',label:'Emotional Resonance',descs:[
-      'The story moves the reader. Whether through sadness, joy, tension, or humour, it creates a genuine emotional response.',
-      'Several emotionally resonant moments that connect meaningfully with the reader.',
-      'Some emotional beats land but others fall flat or feel underdeveloped.',
-      'Limited emotional impact. The story describes events without making the reader feel them.',
-      'Virtually no emotional engagement.',
-      'The story is entirely emotionally inert.'
-    ]},
-    {id:'c5-2',label:'Memorable Moments/Scenes',descs:[
-      'At least one scene across the three episodes is genuinely memorable — the kind you think about after you put the story down.',
-      'A standout scene or moment that elevates the story above the average.',
-      'Some scenes are engaging but none are particularly distinctive.',
-      'The story is competent but forgettable. No scenes stand out.',
-      'Nothing memorable across the three episodes.',
-      'The story leaves no impression whatsoever.'
-    ]},
-    {id:'c5-3',label:'Effective Dialogue',descs:[
-      'Dialogue feels natural, purposeful, and character-specific. Every line of dialogue does something — reveals character, advances plot, or builds atmosphere.',
-      'Dialogue is mostly well-written and functional, with only occasional stilted or expository lines.',
-      'Dialogue is serviceable but sometimes feels generic or on-the-nose.',
-      'Dialogue is frequently unnatural, overly explanatory, or interchangeable between characters.',
-      'Dialogue is largely wooden, unconvincing, or clearly written to move plot rather than to sound like real speech.',
-      'Dialogue is actively bad — unnatural, confusing, or completely disconnected from character.'
-    ]},
-    {id:'c5-4',label:'Narrative Voice & Style',descs:[
-      'The story has a distinct, consistent voice and writing style that feels intentional and owned. It sounds like nobody else.',
-      'A clear and engaging narrative voice that gives the story personality.',
-      'Some personality in the writing, but the voice is inconsistent across episodes.',
-      'The writing is functional but largely voiceless — competent without being distinctive.',
-      'No discernible voice or style. The writing feels generic throughout.',
-      'The writing has no style or voice and is difficult or unpleasant to read.'
-    ]}
-  ],
-  d1:[
-    {id:'d1-1',label:'Meaningful Branching Choices',descs:[
-      'Choices lead to visibly different outcomes. The story branches in ways that feel significant and genuinely divergent.',
-      'Most choices produce different outcomes with only occasional choices that converge too quickly.',
-      'Some branching exists but most paths reconverge rapidly without visible consequence.',
-      'Choices are present but lead to the same outcome regardless of what the reader selects.',
-      'Almost no branching. Choices are cosmetic.',
-      'Choices either do not exist or lead to identical outcomes.'
-    ]},
-    {id:'d1-2',label:'Reader Influence on Plot',descs:[
-      'Reader decisions genuinely shape story events. Choices have a clear causal relationship with what happens next.',
-      'Choices influence the plot in several meaningful ways.',
-      'Some choices influence the plot but the story mostly proceeds on rails.',
-      'Choices rarely affect the plot in any substantive way.',
-      'Reader choices have almost no impact on events.',
-      'The reader has no influence on the plot whatsoever.'
-    ]},
-    {id:'d1-3',label:'Replayability',descs:[
-      'The story has multiple routes, endings, or richly varied paths that make replaying feel worthwhile and rewarding.',
-      'Clear replay value with enough variation to justify a second read.',
-      'Some replay value exists but the differences between paths are modest.',
-      'Very limited replay value. A second read would be largely identical.',
-      'No meaningful replay value.',
-      'The story offers nothing different on a second read.'
-    ]},
-    {id:'d1-4',label:'Consequences with Weight',descs:[
-      'Choices carry real weight. The reader feels the consequences of their decisions, making selection feel significant.',
-      'Most choices feel consequential, with outcomes that matter to the story or characters.',
-      'Some consequences are present but the majority of choices feel low-stakes.',
-      'Choices rarely produce any felt consequence.',
-      'No sense of consequence. All choices feel equally insignificant.',
-      'No consequences to any choices made.'
-    ]}
-  ],
-  d2:[
-    {id:'d2-1',label:'Outfit Choices',descs:[
-      'Outfit choices are coded flawlessly. Options are varied, visually appropriate, and outfits are correctly referenced and displayed throughout the story.',
-      'Outfit choices work well with minor coding inconsistencies that do not disrupt the experience.',
-      'Outfit choices are present but occasionally buggy or not referenced when they should be.',
-      'Outfit coding has noticeable errors. Outfits change unexpectedly or are not carried through the story.',
-      'Outfit choices are present but mostly broken or irrelevant.',
-      'No outfit choices, or they are so broken as to be non-functional.'
-    ]},
-    {id:'d2-2',label:'Functionality & Clarity of Games',descs:[
-      'Mini-games or challenges are intuitive, clearly explained, and bug-free. They add genuine enjoyment and purpose.',
-      'Games function well overall with minor clarity issues.',
-      'Games are present and mostly functional but feel slightly confusing or incomplete.',
-      'Games exist but are buggy, unclear, or frustrating to play.',
-      'A game is attempted but mostly non-functional.',
-      'No games or challenges present, or they are entirely broken.'
-    ]},
-    {id:'d2-3',label:'Point Systems or Timed Choices',descs:[
-      'Points or timed choices are tracked accurately and used in a meaningful way that influences the story.',
-      'Point or timed systems work effectively with only minor inconsistencies.',
-      'A system exists but is inconsistently applied or has limited narrative impact.',
-      'Point or timed systems are present but buggy or feel tacked on.',
-      'Only the most basic attempt at a system that barely functions.',
-      'No point or timed choice systems, or they are completely broken.'
-    ]},
-    {id:'d2-4',label:'Gains/Flags for Story Impact',descs:[
-      'Reader choices are recorded using gains or flags and meaningfully referenced later in the story. The story remembers what the reader did.',
-      'Gains and flags are used well in most instances with only occasional missed opportunities.',
-      'Some flags or gains are used but their impact on the story is limited.',
-      'Flags or gains exist but are rarely referenced in a way that matters.',
-      'Only the most superficial use of flags with no real story integration.',
-      'No gains or flags used.'
-    ]}
-  ],
-  d3:[
-    {id:'d3-1',label:'Regular Choice Prompts',descs:[
-      'Choices appear at a well-paced, consistent rhythm across all three episodes. The reader never goes too long without an opportunity to engage.',
-      'Choices are regular with only occasional long stretches between prompts.',
-      'Choice frequency is uneven. Some episodes are heavy with choices while others have very few.',
-      'Choices are infrequent. Long reading stretches occur between any form of interactivity.',
-      'Only one or two choices across the three episodes.',
-      'No choices present, or so rare as to be negligible.'
-    ]},
-    {id:'d3-2',label:'Personality or Relationship Choices',descs:[
-      'The reader can meaningfully shape their MC\'s personality and/or build or affect relationships through choices. These feel impactful.',
-      'Good personality and relationship choices are available and clearly influence character dynamics.',
-      'Some personality or relationship choices exist but their impact is limited.',
-      'Very few opportunities to shape the MC or relationships.',
-      'Barely any influence over character or relationships.',
-      'No personality or relationship choices whatsoever.'
-    ]},
-    {id:'d3-3',label:'Balance Between Dialogue and Action',descs:[
-      'Choices appear in both dialogue and critical moments. The reader has agency in how their character speaks and what they do.',
-      'A good balance with choices in most types of scenes.',
-      'Choices are present but skewed heavily toward dialogue or action, with limited variety.',
-      'Choices appear in only one context — either all dialogue or all action — creating a one-dimensional interactive experience.',
-      'Choices are so limited that balance is irrelevant.',
-      'No meaningful balance. Choices are absent from most scenes.'
-    ]},
-    {id:'d3-4',label:'Filler Choices',descs:[
-      'Every choice serves a purpose. No choices feel random, pointless, or included merely to appear interactive.',
-      'Most choices are purposeful with only one or two that feel like padding.',
-      'Some choices feel meaningful while others are clearly just filler with no real function.',
-      'A significant portion of choices are filler that do not influence the story or reader experience.',
-      'Most choices are filler.',
-      'All choices are pointless or purely cosmetic with no narrative purpose.'
-    ]}
-  ],
-  d4:[
-    {id:'d4-1',label:'MC Customization',descs:[
-      'The main character is fully customizable. Appearance and/or name options are broad, bug-free, and carried consistently throughout the story.',
-      'Solid MC customization with good options, minor bugs, or occasional inconsistencies.',
-      'Basic customization is present but limited in scope.',
-      'MC customization is attempted but buggy, limited, or inconsistently applied.',
-      'Minimal customization — name only, or one cosmetic option.',
-      'No MC customization offered.'
-    ]},
-    {id:'d4-2',label:'LI or Supporting Character Customization',descs:[
-      'Love interests or supporting characters can be meaningfully customized by the reader and appear consistently throughout.',
-      'Good secondary character customization with minor issues.',
-      'Limited customization for supporting characters.',
-      'Secondary character customization is attempted but poorly implemented.',
-      'Only a token customization option for one secondary character.',
-      'No customization available for any character other than the MC.'
-    ]},
-    {id:'d4-3',label:'Inclusivity Options',descs:[
-      'Diverse features are thoughtfully and thoroughly represented. The story considers a wide range of reader identities including gender, race, body type, and sexual orientation.',
-      'Good inclusivity coverage with only minor gaps in representation.',
-      'Some inclusive options are offered but the range is narrow.',
-      'Minimal inclusivity. Default options dominate with very limited diversity.',
-      'Almost no inclusivity considered.',
-      'No inclusive options offered whatsoever.'
-    ]},
-    {id:'d4-4',label:'Genre-Specific Options',descs:[
-      'Interactive elements are tailored meaningfully to the story\'s genre. A mystery includes clue-gathering; a romance includes relationship-building; a fantasy may include skill or faction choices.',
-      'Genre-specific interactivity is present and well-executed in most areas.',
-      'Some genre-appropriate interactivity is included but it is not a consistent feature.',
-      'Generic choices dominate with only minimal genre-specific customization.',
-      'No meaningful genre adaptation in the interactive elements.',
-      'No genre-specific options or consideration.'
-    ]}
-  ],
-  d5:[
-    {id:'d5-1',label:'Coding Precision',descs:[
-      'All choices, gains, and branches are coded cleanly and without error. The interactive experience is smooth and professional.',
-      'Coding is mostly precise with only isolated minor bugs.',
-      'Functional coding with a few noticeable errors that briefly disrupt the experience.',
-      'Coding errors appear regularly and affect the quality of the interactive experience.',
-      'Significant coding problems throughout. Choices misdirect, loop, or break the story.',
-      'Coding is so broken that the interactivity is largely non-functional.'
-    ]},
-    {id:'d5-2',label:'Visual Choice Presentation',descs:[
-      'Tappables, overlays, and visual menus are used creatively to present choices. The interactive elements look polished and feel intentional.',
-      'Visual choice presentation is attractive and mostly well-executed.',
-      'Some visual flair in choice presentation but mostly standard text prompts.',
-      'Very little visual creativity in how choices are presented.',
-      'All choices are basic text prompts with no visual engagement.',
-      'No effort at visual choice presentation.'
-    ]},
-    {id:'d5-3',label:'Innovation in Interactivity',descs:[
-      'The story introduces interactive mechanics or features that feel genuinely unique on the platform. It does something others have not thought to do.',
-      'Some innovative interactive elements that go beyond standard Episode conventions.',
-      'Standard interactive features are used competently, with one or two moments of creative flair.',
-      'Interactivity follows convention closely with no meaningful innovation.',
-      'Entirely standard interactive setup with nothing distinguishing it.',
-      'No innovation of any kind. Interactivity is entirely baseline or absent.'
-    ]},
-    {id:'d5-4',label:'Consistency & User Experience',descs:[
-      'The interactive experience is smooth, clear, and enjoyable from start to finish across all three episodes. Nothing confuses or frustrates the reader.',
-      'Consistently good user experience with only minor rough spots.',
-      'The experience is mostly smooth but occasionally confusing or inconsistent.',
-      'The user experience is frequently bumpy. Confusing prompts, unclear branching, or inconsistent feedback.',
-      'Poor user experience throughout. The interactive elements feel poorly thought out.',
-      'The interactive experience is broken or so confusing as to be unusable.'
-    ]}
-  ],
-  e1:[
-    {id:'e1-1',label:'Balance & Structure',descs:[
-      'The layout is visually balanced with clear focal points. The eye is drawn naturally to the most important element.',
-      'Strong balance and structure with minor compositional imbalances.',
-      'The layout is functional but feels slightly crowded, too sparse, or unevenly weighted.',
-      'The composition lacks clear structure. Elements feel randomly placed.',
-      'Very poor balance. The design feels chaotic or empty.',
-      'No apparent awareness of composition or layout.'
-    ]},
-    {id:'e1-2',label:'Character & Element Placement',descs:[
-      'Characters and objects are deliberately and effectively positioned. Nothing feels accidental or cluttered.',
-      'Placement is mostly intentional and well-considered.',
-      'Elements are placed adequately but without strong visual intention.',
-      'The cover is overcrowded or elements are placed without spatial awareness.',
-      'Characters or objects appear randomly positioned.',
-      'No consideration for placement. The cover looks accidental.'
-    ]},
-    {id:'e1-3',label:'Text Readability',descs:[
-      'The story title and author name are immediately legible, well-positioned, and do not clash with the background or visual elements.',
-      'Text is readable with only minor issues with colour contrast or positioning.',
-      'Text is readable but awkwardly placed or slightly hard to distinguish from the background.',
-      'Text is difficult to read due to poor contrast, sizing, or placement.',
-      'Text is barely legible.',
-      'Text is unreadable or absent.'
-    ]},
-    {id:'e1-4',label:'Proportions & Spacing',descs:[
-      'All elements are sized and spaced in proportion to each other. Nothing feels oversized, undersized, or cramped.',
-      'Generally well-proportioned with only minor spacing inconsistencies.',
-      'Proportions are mostly acceptable but some elements are oddly sized or poorly spaced.',
-      'Several elements are noticeably misproportioned.',
-      'Proportions are largely off throughout the design.',
-      'No attention to proportions or spacing.'
-    ]}
-  ],
-  e2:[
-    {id:'e2-1',label:'Illustration or Editing Quality',descs:[
-      'The cover is clean, high resolution, and well-rendered. It looks polished and professional.',
-      'High quality overall with only minor imperfections in rendering or editing.',
-      'Acceptable quality but with visible imperfections — pixelation, rough edges, or basic editing.',
-      'Noticeably low quality. The cover appears rushed or unfinished.',
-      'Poor quality throughout. The cover looks amateurish.',
-      'The cover is of such poor quality it is difficult to assess.'
-    ]},
-    {id:'e2-2',label:'Color Harmony',descs:[
-      'Colors complement each other beautifully. The palette feels intentional and enhances the cover\'s aesthetic impact.',
-      'Good color choices overall with only occasional clashing or weak combinations.',
-      'Colors are acceptable but the palette feels generic or uninspired.',
-      'Colors clash noticeably or feel chosen without thought.',
-      'Color choices actively undermine the cover\'s appeal.',
-      'No awareness of color harmony.'
-    ]},
-    {id:'e2-3',label:'Lighting & Shadows',descs:[
-      'Lighting and shadow work is skillfully handled, adding depth, dimension, and mood to the cover.',
-      'Good attention to lighting and shadows with only minor inconsistencies.',
-      'Some lighting or shadow work is present but it is basic or inconsistently applied.',
-      'Little attention to lighting or shadow. The cover feels flat.',
-      'No meaningful lighting or shadow work.',
-      'No lighting or shadow consideration at all.'
-    ]},
-    {id:'e2-4',label:'Overall Polish',descs:[
-      'The cover looks professionally made or artistically refined. It could stand alongside high-quality published covers.',
-      'Well-polished with a finished feel. Minor rough edges do not detract significantly.',
-      'Reasonably polished but clearly a work in progress in certain areas.',
-      'Unpolished overall. The cover feels incomplete or carelessly finished.',
-      'Very little polish. The cover looks rough throughout.',
-      'No polish whatsoever. The cover appears unfinished.'
-    ]}
-  ],
-  e3:[
-    {id:'e3-1',label:'Genre Appropriateness',descs:[
-      'A reader can identify the genre immediately from the cover alone. Visual cues, colour, and design clearly signal the story\'s type.',
-      'Genre is clearly communicated with only minor ambiguity.',
-      'The genre is suggested but not immediately obvious.',
-      'The cover does not clearly represent the genre. It could belong to a different kind of story.',
-      'The cover gives almost no indication of genre.',
-      'The cover actively misrepresents the genre.'
-    ]},
-    {id:'e3-2',label:'Mood & Tone Conveyed',descs:[
-      'The cover immediately communicates the story\'s atmosphere. Before reading a word, the reader knows whether to expect romance, tension, whimsy, or darkness.',
-      'Mood is clearly conveyed with only minor tonal inconsistency.',
-      'Some mood is communicated but it is vague or not particularly distinctive.',
-      'The cover has a generic feel with little tonal identity.',
-      'Almost no mood conveyed.',
-      'The cover conveys no mood or atmosphere.'
-    ]},
-    {id:'e3-3',label:'Thematic Symbols',descs:[
-      'Visual elements hint meaningfully at the story\'s themes or plot. The cover rewards closer inspection.',
-      'At least one thematic symbol is effectively incorporated.',
-      'A symbolic element is present but vague or not clearly connected to the story.',
-      'Little to no symbolic content. The cover is primarily decorative.',
-      'No meaningful thematic symbols.',
-      'No symbolic content of any kind.'
-    ]},
-    {id:'e3-4',label:'Emotional Impact',descs:[
-      'The cover evokes curiosity or emotion immediately. It creates a response before a single word is read.',
-      'The cover is engaging and creates a clear emotional or aesthetic response.',
-      'Some mood is communicated but the emotional response is mild or vague.',
-      'The cover has a generic feel with little emotional resonance.',
-      'Almost no emotional impact.',
-      'The cover evokes no curiosity or emotion whatsoever.'
-    ]}
-  ],
-  e4:[
-    {id:'e4-1',label:'Unique Artistic Style or Concept',descs:[
-      'The cover stands out with originality. The artistic style or concept is distinctive and immediately recognisable as creative.',
-      'A clear artistic concept with some distinguishing elements that set it apart.',
-      'Some hints of a personal style but largely conventional.',
-      'The cover is generic with very little originality in style or concept.',
-      'No originality. The cover could belong to any story on the platform.',
-      'No artistic style or creative concept evident whatsoever.'
-    ]},
-    {id:'e4-2',label:'Non-Generic Design Choices',descs:[
-      'Poses, expressions, or composition are creative rather than overused. Design choices feel deliberately chosen and fresh.',
-      'Several non-generic design choices that distinguish the cover from average entries.',
-      'Some creative choices but most elements are familiar or commonly used.',
-      'Design choices are mostly clichéd or genre-default with little creative risk.',
-      'Entirely generic design from start to finish.',
-      'All design choices are overused, predictable, or copied from common templates.'
-    ]},
-    {id:'e4-3',label:'Symbolism or Subtle Details',descs:[
-      'There are small, clever touches that add meaning or depth. The cover rewards closer inspection.',
-      'Several deliberate subtle touches that add some depth when noticed.',
-      'One or two small details but they do not add significant meaning.',
-      'Little to no detail layering. The cover is purely surface-level.',
-      'No subtle details or symbolic elements of any kind.',
-      'No depth whatsoever. What you see is exactly and only what is there.'
-    ]},
-    {id:'e4-4',label:'Fresh Take on Genre Norms',descs:[
-      'The cover is innovative for its genre without being confusing. It breathes fresh life into genre visual conventions.',
-      'A clear attempt to innovate within the genre that largely succeeds.',
-      'Minor deviation from genre norms; mostly conventional.',
-      'The cover follows genre norms entirely without any innovation.',
-      'Cover is so deeply conventional it feels like a genre template.',
-      'Cover actively contradicts genre expectations in a confusing or misleading way.'
-    ]}
-  ],
-  e5:[
-    {id:'e5-1',label:'Marketability',descs:[
-      'Would this cover attract readers on the app or a shelf? Yes, immediately and broadly.',
-      'The cover would attract readers interested in the genre or style; has moderate broad appeal.',
-      'Cover might attract interest from genre fans but not broadly appealing beyond that.',
-      'The cover is unlikely to attract much attention on the app.',
-      'Cover would be passed over by most readers without a second glance.',
-      'Cover would actively discourage readers from clicking.'
-    ]},
-    {id:'e5-2',label:'Clarity of Focus',descs:[
-      'It is clear who or what the story is about just from the cover.',
-      'Cover communicates the story\'s focus clearly enough with only minor ambiguity.',
-      'Some focus visible but the story\'s subject is not immediately clear.',
-      'Very little clarity; cover is confusing or misleading about the story.',
-      'The cover gives almost no indication of who or what the story is about.',
-      'It is impossible to tell who or what the story is about from the cover.'
-    ]},
-    {id:'e5-3',label:'Consistency with Story Title',descs:[
-      'Does the imagery reflect the title in tone or theme? Yes — cover and title feel made for each other.',
-      'Imagery reflects the title\'s tone or theme clearly.',
-      'Some connection to the title but largely surface-level.',
-      'Very little connection between imagery and the title.',
-      'Imagery has almost no relationship to the title.',
-      'Imagery actively contradicts or has no relationship to the title.'
-    ]},
-    {id:'e5-4',label:'Immediate Interest Factor',descs:[
-      'Does the cover make you want to click and read the story? Absolutely — impossible to scroll past.',
-      'Cover creates a genuine interest in learning more about the story.',
-      'Cover is noticeable but not particularly compelling.',
-      'Cover is unremarkable; might be glanced at but generates no real curiosity.',
-      'Cover fails to create any interest in clicking.',
-      'Cover makes you want to scroll past immediately; no interest generated.'
-    ]}
-  ]
-};
+const DEFAULTS = [
+  ['Artemis And The Aetherist','Fantasy'],['Ashborn','Fantasy'],['Beat The Heat','Adventure'],
+  ['Between Silk Sheets And School Ties','Romance'],['Blurring The Lines','LGBTQ+'],['Conning Royalty','LGBTQ+'],
+  ['Cut Like A Knife','Drama'],['Disgraced','Drama'],['Elyndor','Fantasy'],['Enchanted Hearts','Fantasy'],
+  ['Final Act','Mystery'],['Knock-Out','Romance'],['Last Line','Sci-Fi'],['Love Potions Do Not Work!','Romance'],
+  ['Love Rewritten','Adventure'],['Midnight Vigilante','Drama'],['One Latte At A Time','Romance'],
+  ['Only Pretend','Drama'],['Painted Tension','Comedy'],['Prelude To Forever','Fantasy'],
+  ['Put It On Me','Romance'],["Rock'n Stardust",'Fantasy'],['Second Shot','Comedy'],['Shiver','Horror'],
+  ['Signature Love','Drama'],['Stolen Destiny','Fantasy'],['Sunkissed Letters','Romance'],
+  ['Test Me','Comedy'],['The Clique','Drama'],['The Detour','Thriller'],['The Invisible String','Mystery'],
+  ['The Last Dawn','Fantasy'],["The Witch's Task",'Fantasy'],['To The Boldest Liar','Comedy'],
+  ['Under Your Enchantment','Adventure'],['Urban Underworld: Werewolves','Thriller'],
+  ['Veiled Vengeance','Drama'],['Whispers Of Betrayal','Action'],['Writing Her','LGBTQ+'],
+];
 
-// ─────────────────────────────────────────────────────
-// BUILD DYNAMIC TBODY ROWS
-// ─────────────────────────────────────────────────────
-function buildCriteriaRows(tbodyId, key) {
-  const tbody = document.getElementById(tbodyId);
-  if (!tbody) return;
-  const crits = CRITERIA[key];
-  let html = '';
-  crits.forEach(c => {
-    html += `<tr>
-      <td><span class="crit-name" onclick="toggleDesc('${c.id}')" style="cursor:pointer;border-bottom:1px dashed var(--border-strong)">${c.label}</span></td>`;
-    for (let v = 5; v >= 0; v--) {
-      html += `<td class="radio-cell"><input class="score-radio" type="radio" name="${c.id}" value="${v}" id="${c.id}-${v}" onchange="calcSection(getSection('${c.id}'));autoSave()"><label class="score-label" for="${c.id}-${v}">${v}</label></td>`;
-    }
-    html += `</tr><tr><td colspan="7"><div class="desc-panel" id="desc-${c.id}">`;
-    c.descs.forEach((d, i) => {
-      const labels = ['5 —','4 —','3 —','2 —','1 —','0 —'];
-      html += `<div class="desc-row"><strong>${labels[i]}</strong><span>${d}</span></div>`;
-    });
-    html += `</div></td></tr>`;
-  });
-  tbody.innerHTML = html;
+function blankState() {
+  return { stories:[], judging:{}, voting:{}, top24:[], fastTrack:{}, s2:{}, s3:{}, top12:[], top8:[] };
+}
+let S = (() => { try { const d=localStorage.getItem(SK); return d?JSON.parse(d):blankState(); } catch(e){return blankState();} })();
+let jCat='directing', vCat='poll', curView='table';
+
+function save(){ localStorage.setItem(SK, JSON.stringify(S)); }
+
+function initStory(id) {
+  if (!S.judging[id]) S.judging[id]={directing:{},plot:{},interactivity:{},cover:{}};
+  if (!S.voting[id])  S.voting[id]={poll:[null,null],feed:[null,null],qualifier:null,popularity:null};
 }
 
-function getSection(critId) {
-  return critId.charAt(0).toUpperCase();
+// ═══════════════════════════════════════════════════
+// MATH
+// ═══════════════════════════════════════════════════
+function avg(arr) {
+  const v = arr.filter(x=>x!==null&&x!==''&&!isNaN(x)).map(Number);
+  return v.length ? v.reduce((a,b)=>a+b,0)/v.length : null;
 }
 
-// ─────────────────────────────────────────────────────
-// SCORING CALC
-// ─────────────────────────────────────────────────────
-const SECTION_CFG = {
-  B: { subs:['b1','b2','b3','b4','b5'], weight:20 },
-  C: { subs:['c1','c2','c3','c4','c5'], weight:20 },
-  D: { subs:['d1','d2','d3','d4','d5'], weight:10 },
-  E: { subs:['e1','e2','e3','e4','e5'], weight:10 }
-};
+function jAvg(id, cat) {
+  return avg(JUDGES.map(j=>{const v=S.judging[id]?.[cat]?.[j]; return (v!==undefined&&v!==null&&v!=='')?Number(v):null;}));
+}
 
-function getSubTotal(subKey) {
-  const crits = CRITERIA[subKey];
-  if (!crits) {
-    // b1 is hardcoded in HTML
-    if (subKey === 'b1') {
-      let t = 0;
-      ['b1-1','b1-2','b1-3','b1-4'].forEach(n => {
-        const el = document.querySelector(`input[name="${n}"]:checked`);
-        if (el) t += parseInt(el.value);
-      });
-      return t;
-    }
-    return 0;
+function jWeighted(id, cat) {
+  const a=jAvg(id,cat); if(a===null)return null;
+  return +(a/100*((cat==='directing'||cat==='plot')?20:10)).toFixed(2);
+}
+
+function vTotal(id, cat) {
+  const v=S.voting[id]; if(!v)return null;
+  if(cat==='poll'){const vals=(v.poll||[]).filter(x=>x!==null&&x!=='').map(Number);return vals.length?vals.reduce((a,b)=>a+b,0):null;}
+  if(cat==='feed'){const vals=(v.feed||[]).filter(x=>x!==null&&x!=='').map(Number);return vals.length?vals.reduce((a,b)=>a+b,0):null;}
+  const val=v[cat]; return(val!==null&&val!==''&&val!==undefined)?Number(val):null;
+}
+
+function bench(cat) {
+  const t=S.stories.map(s=>vTotal(s.id,cat)).filter(v=>v!==null);
+  return t.length?Math.max(...t):null;
+}
+
+function vWeighted(id, cat) {
+  const t=vTotal(id,cat), b=bench(cat);
+  if(t===null||!b)return null;
+  return +(t/b*10).toFixed(2);
+}
+
+function s1(id) {
+  const cats=['directing','plot','interactivity','cover'];
+  const vcats=['poll','feed','qualifier','popularity'];
+  const j=cats.map(c=>jWeighted(id,c)).filter(v=>v!==null);
+  const v=vcats.map(c=>vWeighted(id,c)).filter(v=>v!==null);
+  if(!j.length&&!v.length)return null;
+  return +(j.reduce((a,b)=>a+b,0)+v.reduce((a,b)=>a+b,0)).toFixed(2);
+}
+
+function s2bench(field) {
+  const v=S.top24.map(id=>{const x=S.s2[id]?.[field];return(x!==null&&x!==undefined&&x!=='')?Number(x):null;}).filter(v=>v!==null);
+  return v.length?Math.max(...v):null;
+}
+
+function s2w(val, field) {
+  const b=s2bench(field); if(val===null||val===undefined||val===''||!b)return null;
+  return +(Number(val)/b*10).toFixed(2);
+}
+
+// S2 PROMOTION score = S1 + S2S only (poll NOT counted for promotion)
+function s2PromoScore(id) {
+  const base=s1(id); if(base===null)return null;
+  const s=S.s2[id];
+  return +(base+(s2w(s?.s2s,'s2s')||0)).toFixed(2);
+}
+
+// S2 DISPLAY score = S1 + S2S + Poll (shown for reference only)
+function s2Total(id) {
+  const base=s1(id); if(base===null)return null;
+  const s=S.s2[id];
+  return +(base+(s2w(s?.s2s,'s2s')||0)+(s2w(s?.poll,'poll')||0)).toFixed(2);
+}
+
+// Fast Track to Top 12: Popularity Vote winner + Top 2 S2S scorers
+function getS2FT12() {
+  const ft=new Set();
+  // Popularity vote winner fast-tracks regardless of S2S score or Top 12 position
+  const popSorted=S.top24
+    .map(id=>({id,pop:vWeighted(id,'popularity')||0}))
+    .sort((a,b)=>b.pop-a.pop);
+  if(popSorted.length&&popSorted[0].pop>0) ft.add(popSorted[0].id);
+  // Top 2 S2S scorers — independent of popularity winner; if pop winner is also top S2S, still count them,
+  // but only add 2 *additional* S2S spots for non-pop-winner stories
+  const s2sSorted=S.top24
+    .map(id=>({id,score:s2w(S.s2[id]?.s2s,'s2s')||0}))
+    .sort((a,b)=>b.score-a.score);
+  let cnt=0;
+  for(const e of s2sSorted){
+    if(cnt>=2)break;
+    if(!ft.has(e.id)&&e.score>0){ft.add(e.id);cnt++;}
   }
-  let t = 0;
-  crits.forEach(c => {
-    const el = document.querySelector(`input[name="${c.id}"]:checked`);
-    if (el) t += parseInt(el.value);
-  });
-  return t;
+  return [...ft];
 }
 
-function calcSection(sec) {
-  const cfg = SECTION_CFG[sec];
-  if (!cfg) return;
-  let total = 0;
-  cfg.subs.forEach(sub => {
-    const st = getSubTotal(sub);
-    const el = document.getElementById(sub + '-sub');
-    if (el) el.textContent = st;
-    total += st;
-  });
-  const weighted = (total / 100 * cfg.weight).toFixed(2);
-  const t = document.getElementById(sec + '-total');
-  const w = document.getElementById(sec + '-weighted');
-  const a = document.getElementById(sec + '-auto-confirm');
-  if (t) t.textContent = total;
-  if (w) w.textContent = `→ ${weighted} / ${cfg.weight} pts weighted`;
-  if (a) a.textContent = total;
-  updateReview();
+// H2H: raw score → benchmark → /10
+function h2hBench() {
+  const vals=S.top12.map(id=>{const v=S.s3[id]?.h2h_raw;return(v!==null&&v!==undefined&&v!=='')?Number(v):null;}).filter(v=>v!==null);
+  return vals.length?Math.max(...vals):null;
 }
 
-function updateReview() {
-  const scores = {};
-  ['B','C','D','E'].forEach(s => {
-    const el = document.getElementById(s + '-total');
-    scores[s] = el ? parseInt(el.textContent) || 0 : 0;
-  });
-  const bW = (scores.B/100*20).toFixed(2);
-  const cW = (scores.C/100*20).toFixed(2);
-  const dW = (scores.D/100*10).toFixed(2);
-  const eW = (scores.E/100*10).toFixed(2);
-  const combined = (+bW + +cW + +dW + +eW).toFixed(2);
-  setText('rev-B', scores.B);
-  setText('rev-B-w', `→ ${bW} / 20 pts`);
-  setText('rev-C', scores.C);
-  setText('rev-C-w', `→ ${cW} / 20 pts`);
-  setText('rev-D', scores.D);
-  setText('rev-D-w', `→ ${dW} / 10 pts`);
-  setText('rev-E', scores.E);
-  setText('rev-E-w', `→ ${eW} / 10 pts`);
-  setText('rev-combined', combined);
-  setText('review-title', getVal('a-title') || '—');
-  setText('review-meta', [getVal('a-genre'),getVal('a-author'),getVal('a-judge')].filter(Boolean).join(' · ') || '—');
+function h2hW(val) {
+  const b=h2hBench();
+  if(val===null||val===undefined||val===''||!b)return null;
+  return +(Number(val)/b*10).toFixed(2);
 }
 
-function setText(id, val) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = val;
+// Stage 3 total = S2 promo score + H2H weighted
+function s3Total(id) {
+  const base=s2PromoScore(id); if(base===null)return null;
+  const h=S.s3[id]?.h2h_raw;
+  return +(base+(h2hW(h)||0)).toFixed(2);
 }
 
-// ─────────────────────────────────────────────────────
-// AFFIRMATION
-// ─────────────────────────────────────────────────────
-let affirmed = false;
-function toggleAffirm() {
-  affirmed = !affirmed;
-  document.getElementById('affirm-cb').classList.toggle('checked', affirmed);
-}
+// PERFORMANCE INDICATOR FUNCTIONS
+function scCol(val,mx){if(val===null)return'var(--text-light)';const p=val/mx*100;return p>=75?'var(--green)':p>=50?'var(--gold)':'var(--red)';}
+function bcls(val,mx){if(val===null)return'bar-gold';const p=val/mx*100;return p>=75?'bar-green':p>=50?'bar-gold':'bar-red';}
+function bar(val,mx,cl){if(val===null)return'<span style="color:#ccc">—</span>';const p=Math.min(100,Math.round(val/mx*100)),c=cl||bcls(val,mx);return`<div class="score-bar-wrap"><div class="score-bar-val" style="color:${scCol(val,mx)}">${val.toFixed(2)}</div><div class="score-bar-track"><div class="score-bar-fill ${c}" style="width:${p}%"></div></div></div>`;}
 
-// ─────────────────────────────────────────────────────
-// DESCRIPTOR TOGGLE
-// ─────────────────────────────────────────────────────
-function toggleDesc(id) {
-  const el = document.getElementById('desc-' + id);
-  if (!el) return;
-  el.classList.toggle('open');
-}
-
-// ─────────────────────────────────────────────────────
-// FORM HELPERS
-// ─────────────────────────────────────────────────────
-function markFilled(el) {
-  el.classList.toggle('has-val', el.value.trim() !== '');
-}
-function getVal(id) {
-  const el = document.getElementById(id);
-  return el ? el.value.trim() : '';
-}
-
-// ─────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════
 // NAVIGATION
-// ─────────────────────────────────────────────────────
-const SECTIONS = ['A','B','C','D','E','F','N','H'];
-function goSection(key) {
-  SECTIONS.forEach(s => {
-    const p = document.getElementById('sec-' + s);
-    const b = document.getElementById('pnav-' + s);
-    if (p) p.classList.toggle('active', s === key);
-    if (b) b.classList.toggle('active', s === key);
-  });
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (key === 'F') updateReview();
-  if (key === 'H') renderHistory();
+// ═══════════════════════════════════════════════════
+function go(name) {
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('p-'+name).classList.add('active');
+  document.querySelector('[data-p="'+name+'"]').classList.add('active');
+  const renders = {judging:renderJ,voting:renderV,combined:renderC,awards:renderA,stage2:renderS2,stage3:renderS3,stage4:renderS4};
+  if(renders[name])renders[name]();
 }
 
-function nextSection(from, to) {
-  if (from === 'A') {
-    if (!getVal('a-title') || !getVal('a-genre') || !getVal('a-author') || !getVal('a-judge')) {
-      toast('⚠ Please fill in Story Title, Genre, Author Name, and your Judge Name');
-      return;
-    }
-  }
-  document.getElementById('pnav-' + from).classList.add('done');
-  goSection(to);
+function setTopN(id,val){document.getElementById(id).value=val;}
+
+function setView(v){
+  curView=v;
+  document.getElementById('vt-t').classList.toggle('active', v==='table');
+  document.getElementById('vt-c').classList.toggle('active', v==='cards');
+  document.getElementById('c-tv').style.display = v==='table' ? 'block' : 'none';
+  document.getElementById('c-cv').style.display = v==='cards' ? 'block' : 'none';
+  if(v==='cards') renderC();
 }
 
-// ─────────────────────────────────────────────────────
-// AUTOSAVE TO LOCALSTORAGE (draft)
-// ─────────────────────────────────────────────────────
-function autoSave() {
-  try {
-    const draft = {
-      title: getVal('a-title'), genre: getVal('a-genre'),
-      author: getVal('a-author'), handle: getVal('a-handle'),
-      judge: getVal('a-judge'), date: getVal('a-date'), notes: getVal('a-notes'),
-      scores: {}
-    };
-    ['B','C','D','E'].forEach(s => {
-      const el = document.getElementById(s + '-total');
-      draft.scores[s] = el ? parseInt(el.textContent) || 0 : 0;
-    });
-    localStorage.setItem('soty_draft', JSON.stringify(draft));
-  } catch(e) {}
+// ═══════════════════════════════════════════════════
+// SETUP
+// ═══════════════════════════════════════════════════
+function loadDefaults() {
+  if(S.stories.length&&!confirm('Replace existing stories? This will clear all scores.'))return;
+  S=blankState();
+  S.stories=DEFAULTS.map((d,i)=>({id:'s'+(i+1),title:d[0],genre:d[1]}));
+  save(); renderSetup(); toast('39 stories loaded ✓');
 }
 
-// ─────────────────────────────────────────────────────
-// ALL RADIO VALUES → object
-// ─────────────────────────────────────────────────────
-function collectAllScores() {
-  const out = {};
-  // B1 hardcoded
-  ['b1-1','b1-2','b1-3','b1-4'].forEach(n => {
-    const el = document.querySelector(`input[name="${n}"]:checked`);
-    out[n] = el ? parseInt(el.value) : null;
-  });
-  // All others
-  Object.values(CRITERIA).flat().forEach(c => {
-    const el = document.querySelector(`input[name="${c.id}"]:checked`);
-    out[c.id] = el ? parseInt(el.value) : null;
-  });
-  return out;
+function addStory() {
+  S.stories.push({id:'s'+Date.now(),title:'',genre:'Drama'});
+  save(); renderSetup();
 }
 
-// ─────────────────────────────────────────────────────
-// SUBMIT
-// ─────────────────────────────────────────────────────
-async function submitAll() {
-  const judge = getVal('f-judge-confirm') || getVal('a-judge');
-  if (!getVal('a-title') || !getVal('a-author') || !judge) {
-    toast('⚠ Please complete Story Details and confirm your Judge Name');
-    return;
-  }
-  if (!affirmed) {
-    toast('⚠ Please check the affirmation box before submitting');
-    return;
-  }
-  const now = new Date().toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
-  const scores = collectAllScores();
-  const B = parseInt(document.getElementById('B-total').textContent)||0;
-  const C = parseInt(document.getElementById('C-total').textContent)||0;
-  const D = parseInt(document.getElementById('D-total').textContent)||0;
-  const E = parseInt(document.getElementById('E-total').textContent)||0;
-  const bW = +(B/100*20).toFixed(2);
-  const cW = +(C/100*20).toFixed(2);
-  const dW = +(D/100*10).toFixed(2);
-  const eW = +(E/100*10).toFixed(2);
-  const combined = +(bW+cW+dW+eW).toFixed(2);
+function clearAll(){if(!confirm('Reset ALL data?'))return;S=blankState();save();renderSetup();}
 
-  const payload = {
-    timestamp: now, judgeName: judge,
-    story: { title: getVal('a-title'), genre: getVal('a-genre'), author: getVal('a-author'), handle: getVal('a-handle') },
-    sectionTotals: { directing: B, plot: C, interactivity: D, cover: E },
-    weightedScores: { directing: bW, plot: cW, interactivity: dW, cover: eW, combined },
-    criteriaScores: scores,
-    notes: getVal('f-notes') || getVal('a-notes'),
-    date: getVal('a-date')
-  };
-
-  // Save to history
-  addToHistory({ ...payload, display: { B, C, D, E, combined } });
-
-  // Send to sheet
-  const btn = document.getElementById('submit-btn');
-  btn.innerHTML = '<span class="spinner"></span> Submitting…';
-  btn.disabled = true;
-  await sendToSheet(payload);
-  btn.innerHTML = '📤 Submit All Scores';
-  btn.disabled = false;
-
-  toast(`✅ Scores submitted for "${payload.story.title}"`);
-  resetForm();
+function delStory(id) {
+  S.stories=S.stories.filter(s=>s.id!==id);
+  delete S.judging[id]; delete S.voting[id];
+  save(); renderSetup();
 }
 
-function resetForm() {
-  // Clear text inputs
-  ['a-title','a-genre','a-author','a-handle','a-judge','a-date','a-notes','f-judge-confirm','f-notes'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.value = ''; el.classList.remove('has-val'); }
-  });
-  // Clear all radios
-  document.querySelectorAll('.score-radio').forEach(r => { r.checked = false; });
-  // Reset totals display
-  ['B','C','D','E'].forEach(s => {
-    ['b1','b2','b3','b4','b5','c1','c2','c3','c4','c5','d1','d2','d3','d4','d5','e1','e2','e3','e4','e5'].forEach(sub => {
-      const el = document.getElementById(sub+'-sub');
-      if (el) el.textContent = '0';
-    });
-    const t = document.getElementById(s+'-total'); if (t) t.textContent = '0';
-    const a = document.getElementById(s+'-auto-confirm'); if (a) a.textContent = '0';
-    const w = document.getElementById(s+'-weighted');
-    if (w) w.textContent = `→ 0.00 / ${SECTION_CFG[s]?.weight||0} pts weighted`;
-  });
-  // Reset affirmation
-  affirmed = false;
-  document.getElementById('affirm-cb').classList.remove('checked');
-  // Reset nav
-  ['B','C','D','E','F'].forEach(s => {
-    const btn = document.getElementById('pnav-'+s);
-    if (btn) btn.classList.remove('done');
-  });
-  try { localStorage.removeItem('soty_draft'); } catch(e) {}
-  goSection('A');
+function updateStory(id,field,val) {
+  const s=S.stories.find(s=>s.id===id);
+  if(s){s[field]=val;save();}
 }
 
-// ─────────────────────────────────────────────────────
-// HISTORY
-// ─────────────────────────────────────────────────────
-function loadHistory() { try { return JSON.parse(localStorage.getItem('soty_submissions')||'[]'); } catch(e) { return []; } }
-function saveHistory(d) { try { localStorage.setItem('soty_submissions', JSON.stringify(d)); } catch(e) {} }
-function addToHistory(e) { const h=loadHistory(); h.unshift(e); saveHistory(h); }
-
-function renderHistory() {
-  const hist = loadHistory();
-  const empty = document.getElementById('hist-empty');
-  const content = document.getElementById('hist-content');
-  const tbody = document.getElementById('hist-tbody');
-  const cards = document.getElementById('hist-cards');
-  if (!hist.length) { empty.style.display='block'; content.style.display='none'; return; }
-  empty.style.display = 'none'; content.style.display = 'block';
-  tbody.innerHTML = hist.map(h => {
-    const isNom = h.type === 'nominations';
-    if (isNom) {
-      const inno = (h.nominations?.mostInnovativeConcept||[]).join(', ') || '—';
-      const dial = (h.nominations?.bestDialogueCharacterization||[]).join(', ') || '—';
-      return `<tr style="background:#faf5ff;">
-        <td><div class="hist-story">🏅 Nominations</div><div style="font-size:11px;color:#888">Innovative: ${inno}</div><div style="font-size:11px;color:#888">Dialogue: ${dial}</div></td>
-        <td colspan="6" style="color:#888;font-size:12px;">Deliberation-based · No scores</td>
-        <td><span style="font-size:12px">${h.judgeName||'—'}</span></td>
-        <td><span style="font-size:11px;color:#bbb;font-family:var(--mono)">${h.timestamp||'—'}</span></td>
-      </tr>`;
-    }
-    return `<tr>
-      <td><div class="hist-story">${h.story?.title||'—'}</div></td>
-      <td><span style="font-size:12px;color:#888">${h.story?.genre||'—'}</span></td>
-      <td><span style="font-size:12px">${h.story?.author||'—'}</span></td>
-      <td><span class="hist-score">${h.display?.B??'—'}/100</span></td>
-      <td><span class="hist-score">${h.display?.C??'—'}/100</span></td>
-      <td><span class="hist-score">${h.display?.D??'—'}/100</span></td>
-      <td><span class="hist-score">${h.display?.E??'—'}/100</span></td>
-      <td><strong>${h.display?.combined??'—'}/60</strong></td>
-      <td><span style="font-size:12px">${h.judgeName||'—'}</span></td>
-      <td><span style="font-size:11px;color:#bbb;font-family:var(--mono)">${h.timestamp||'—'}</span></td>
-    </tr>`;
-  }).join('');
-
-  const catColors = { B:'#2a4fa3', C:'#8a3055', D:'#6b3fa0', E:'#c9a84c' };
-  const catLabels = { B:'🎬 Directing', C:'📖 Plot', D:'🎮 Interactivity', E:'🎨 Story Cover' };
-  const catWeights = { B:20, C:20, D:10, E:10 };
-  cards.innerHTML = hist.filter(h => h.type !== 'nominations').map(h => `
-    <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
-      <div style="padding:14px 18px;background:var(--ink);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
-        <div>
-          <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--gold)">${h.story?.title||'Unknown'}</div>
-          <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:2px">${h.story?.genre||''} · ${h.story?.author||''} · Judge: ${h.judgeName||''}</div>
-        </div>
-        <div style="text-align:right">
-          <div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--gold)">${h.display?.combined||0}/60</div>
-          <div style="font-size:10px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.08em">Combined Score</div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;">
-        ${['B','C','D','E'].map(s => `
-          <div style="padding:12px 16px;border-right:1px solid var(--border);border-top:1px solid var(--border)${s==='E'?';border-right:none':''}">
-            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:${catColors[s]};margin-bottom:4px">${catLabels[s]}</div>
-            <div style="font-family:var(--mono);font-size:18px;font-weight:700">${h.display?.[s]??'—'}<span style="font-size:11px;color:#bbb">/100</span></div>
-            <div style="font-size:11px;color:var(--jade);margin-top:2px">→ ${h.weightedScores?.[s==='B'?'directing':s==='C'?'plot':s==='D'?'interactivity':'cover']||0}/${catWeights[s]} pts</div>
-          </div>`).join('')}
-      </div>
-      ${h.notes?`<div style="padding:10px 16px;border-top:1px solid var(--border);font-size:12px;color:#888;font-style:italic">"${h.notes}"</div>`:''}
-      <div style="padding:8px 16px;border-top:1px solid var(--border);font-size:11px;color:#bbb;font-family:var(--mono)">${h.timestamp||''}</div>
+function renderSetup() {
+  const list=document.getElementById('slist');
+  document.getElementById('scount').textContent=S.stories.length+' stories';
+  list.innerHTML=S.stories.map((s,i)=>`
+    <div class="srow">
+      <div class="srow-num">${String(i+1).padStart(2,'0')}</div>
+      <input type="text" value="${s.title}" placeholder="Story title…" onchange="updateStory('${s.id}','title',this.value)">
+      <select onchange="updateStory('${s.id}','genre',this.value)">
+        ${GENRES.map(g=>`<option${g===s.genre?' selected':''}>${g}</option>`).join('')}
+      </select>
+      <button class="btn btn-red btn-sm del-btn" onclick="delStory('${s.id}')">✕</button>
     </div>`).join('');
 }
 
-function clearHistory() {
-  if (!confirm('Clear all locally stored submission records? Records already sent to the central sheet are not affected.')) return;
-  localStorage.removeItem('soty_submissions');
-  renderHistory();
-  toast('🗑 Local log cleared');
+// ═══════════════════════════════════════════════════
+// JUDGING TABLE
+// ═══════════════════════════════════════════════════
+function jTab(cat,el) {
+  jCat=cat;
+  document.querySelectorAll('#p-judging .subtab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderJ();
 }
 
-// ─────────────────────────────────────────────────────
-// GOOGLE SHEETS SEND
-// ─────────────────────────────────────────────────────
-async function sendToSheet(payload) {
-  if (!SHEET_URL || SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEBHOOK_URL') {
-    console.log('[SOTY Portal] Sheet URL not configured — stored locally only.', payload);
+function renderJ() {
+  const cat=jCat, w=(cat==='directing'||cat==='plot')?20:10;
+  const topN=parseInt(document.getElementById('j-topn').value)||null;
+
+  let rows=S.stories.map(s=>{initStory(s.id);return{s,a:jAvg(s.id,cat),w:jWeighted(s.id,cat)};})
+    .sort((a,b)=>(b.w||0)-(a.w||0));
+  document.getElementById('j-info').textContent=topN?`Top ${Math.min(topN,rows.length)} of ${rows.length}`:`All ${rows.length}`;
+  const disp=topN?rows.slice(0,topN):rows;
+
+  document.getElementById('j-head').innerHTML=`<tr><th>#</th><th>Story</th><th>Genre</th>
+    ${JUDGES.map(j=>`<th>${j}<br><small style="font-weight:400;opacity:.6">${JNAMES[j]}</small></th>`).join('')}
+    <th>Avg %</th><th>/ ${w}</th></tr>`;
+
+  document.getElementById('j-body').innerHTML=disp.map((r,i)=>{
+    const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    const jinp=JUDGES.map(j=>{
+      const v=S.judging[r.s.id]?.[cat]?.[j];
+      const cls=v!==undefined&&v!==null&&v!==''?'has-val':'';
+      return `<td><input type="number" class="${cls}" min="0" max="100" value="${v??''}" placeholder="–"
+        style="width:54px;text-align:center;padding:4px;font-size:12px"
+        oninput="setJ('${r.s.id}','${cat}','${j}',this)"></td>`;
+    }).join('');
+    return `<tr class="${i<(topN||Infinity)?'hilite':''}">
+      <td><span class="rb ${rc}">${i+1}</span></td>
+      <td><strong>${r.s.title}</strong></td>
+      <td style="font-size:11px;color:var(--text-light)">${r.s.genre}</td>
+      ${jinp}
+      <td style="text-align:center;color:var(--text-mid)">${r.a!==null?r.a.toFixed(1)+'%':'—'}</td>
+      <td>${r.w!==null?bar(r.w,w):'<span style="color:#ccc">—</span>'}</td>
+    </tr>`;
+  }).join('');
+}
+
+function setJ(id,cat,judge,inp) {
+  initStory(id);
+  const raw=inp.value;
+  if(raw===''){S.judging[id][cat][judge]=null;inp.className='';save();renderJ();return;}
+  const v=Math.min(100,Math.max(0,parseFloat(raw)));
+  if(isNaN(v)){inp.classList.add('bad');return;}
+  inp.classList.remove('bad'); inp.classList.add('has-val');
+  S.judging[id][cat][judge]=v; save(); renderJ();
+}
+
+// ═══════════════════════════════════════════════════
+// VOTING TABLE
+// ═══════════════════════════════════════════════════
+function vTab(cat,el) {
+  vCat=cat;
+  document.querySelectorAll('#p-voting .subtab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderV();
+}
+
+function renderV() {
+  const cat=vCat;
+  const topN=parseInt(document.getElementById('v-topn').value)||null;
+  const b=bench(cat);
+  document.getElementById('v-bench').textContent=b?`Benchmark: ${b.toLocaleString()}`:'';
+
+  let rows=S.stories.map(s=>{initStory(s.id);return{s,t:vTotal(s.id,cat),w:vWeighted(s.id,cat)};})
+    .sort((a,b)=>(b.t||0)-(a.t||0));
+  document.getElementById('v-info').textContent=topN?`Top ${Math.min(topN,rows.length)} of ${rows.length}`:`All ${rows.length}`;
+  const disp=topN?rows.slice(0,topN):rows;
+
+  let extraH='', extraCells=r=>'';
+  if(cat==='poll'){
+    extraH='<th>Round 1</th><th>Round 2</th>';
+    extraCells=r=>[0,1].map(i=>{
+      const v=S.voting[r.s.id]?.poll?.[i];
+      return `<td><input type="number" min="0" value="${v??''}" placeholder="0"
+        class="${v!==null&&v!==''?'has-val':''}" style="width:68px;text-align:center"
+        oninput="setV('${r.s.id}','poll',${i},this.value)"></td>`;
+    }).join('');
+  } else if(cat==='feed'){
+    extraH='<th>Count 1</th><th>Count 2</th>';
+    extraCells=r=>[0,1].map(i=>{
+      const v=S.voting[r.s.id]?.feed?.[i];
+      return `<td><input type="number" min="0" value="${v??''}" placeholder="0"
+        class="${v!==null&&v!==''?'has-val':''}" style="width:76px;text-align:center"
+        oninput="setV('${r.s.id}','feed',${i},this.value)"></td>`;
+    }).join('');
+  } else {
+    const label=cat==='qualifier'?'Total':'Final Total';
+    extraH=`<th>${label}</th>`;
+    extraCells=r=>{
+      const v=S.voting[r.s.id]?.[cat];
+      return `<td><input type="number" min="0" value="${v??''}" placeholder="0"
+        class="${v!==null&&v!==''?'has-val':''}" style="width:90px;text-align:center"
+        oninput="setV('${r.s.id}','${cat}',null,this.value)"></td>`;
+    };
+  }
+
+  document.getElementById('v-head').innerHTML=`<tr><th>#</th><th>Story</th><th>Genre</th>${extraH}<th>Total</th><th>/ 10</th></tr>`;
+  document.getElementById('v-body').innerHTML=disp.map((r,i)=>{
+    const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    return `<tr>
+      <td><span class="rb ${rc}">${i+1}</span></td>
+      <td><strong>${r.s.title}</strong></td>
+      <td style="font-size:11px;color:var(--text-light)">${r.s.genre}</td>
+      ${extraCells(r)}
+      <td style="text-align:center;color:var(--text-mid)">${r.t!==null?r.t.toLocaleString():'—'}</td>
+      <td>${r.w!==null?bar(r.w,10):'<span style="color:#ccc">—</span>'}</td>
+    </tr>`;
+  }).join('');
+}
+
+function setV(id,cat,idx,val) {
+  initStory(id);
+  const v=val===''?null:Math.max(0,parseFloat(val)||0);
+  if(cat==='poll')     S.voting[id].poll[idx]=v;
+  else if(cat==='feed') S.voting[id].feed[idx]=v;
+  else S.voting[id][cat]=v;
+  save(); renderV();
+}
+
+// ═══════════════════════════════════════════════════
+// COMBINED
+// ═══════════════════════════════════════════════════
+function renderC() {
+  const topN=parseInt(document.getElementById('c-topn').value)||null;
+  let rows=S.stories.map(s=>({s,
+    dir:jWeighted(s.id,'directing'),plt:jWeighted(s.id,'plot'),
+    int:jWeighted(s.id,'interactivity'),cov:jWeighted(s.id,'cover'),
+    poll:vWeighted(s.id,'poll'),feed:vWeighted(s.id,'feed'),
+    qual:vWeighted(s.id,'qualifier'),pop:vWeighted(s.id,'popularity'),
+    total:s1(s.id)
+  })).sort((a,b)=>(b.total||0)-(a.total||0));
+
+  document.getElementById('c-info').textContent=topN?`Top ${Math.min(topN,rows.length)} of ${rows.length}`:`All ${rows.length}`;
+  const scores=rows.map(r=>r.total).filter(v=>v!==null);
+  const mx=scores.length?Math.max(...scores):0, av=scores.length?scores.reduce((a,b)=>a+b,0)/scores.length:0;
+  document.getElementById('c-stats').innerHTML=`
+    <div class="stat"><div class="stat-lbl">Stories</div><div class="stat-val">${S.stories.length}</div><div class="stat-sub">entered</div></div>
+    <div class="stat"><div class="stat-lbl">Highest</div><div class="stat-val">${mx.toFixed(2)}</div><div class="stat-sub">out of 100</div></div>
+    <div class="stat"><div class="stat-lbl">Average</div><div class="stat-val">${av.toFixed(2)}</div><div class="stat-sub">out of 100</div></div>
+    <div class="stat"><div class="stat-lbl">20th Score</div><div class="stat-val">${rows[19]?.total?.toFixed(2)||'—'}</div><div class="stat-sub">cut-off line</div></div>`;
+
+  const top20ids=rows.slice(0,20).map(r=>r.s.id);
+  const disp=topN?rows.slice(0,topN):rows;
+
+  document.getElementById('c-head').innerHTML=`<tr><th>#</th><th>Story</th><th>Genre</th>
+    <th>Dir<br>/20</th><th>Plot<br>/20</th><th>Int<br>/10</th><th>Cov<br>/10</th>
+    <th>Poll<br>/10</th><th>Feed<br>/10</th><th>Qual<br>/10</th><th>Pop<br>/10</th>
+    <th>TOTAL<br>/100</th><th>Top 20?</th></tr>`;
+
+  const f=v=>v!==null?v.toFixed(2):'<span style="color:#ddd">—</span>';
+  document.getElementById('c-body').innerHTML=disp.map((r,i)=>{
+    const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    const in20=top20ids.includes(r.s.id);
+    return `<tr class="${in20?'hilite':''}">
+      <td><span class="rb ${rc}">${i+1}</span></td>
+      <td><strong>${r.s.title}</strong></td>
+      <td style="font-size:11px;color:var(--text-light)">${r.s.genre}</td>
+      <td>${f(r.dir)}</td><td>${f(r.plt)}</td><td>${f(r.int)}</td><td>${f(r.cov)}</td>
+      <td>${f(r.poll)}</td><td>${f(r.feed)}</td><td>${f(r.qual)}</td><td>${f(r.pop)}</td>
+      <td style="background:rgba(201,168,76,0.05)">${r.total!==null?bar(r.total,mx):'<span style="color:#ccc">—</span>'}</td>
+      <td><span class="badge ${in20?'badge-pass':'badge-fail'}">${in20?'✔ Yes':'—'}</span></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('c-cards').innerHTML=disp.map((r,i)=>{
+    const rankLabel=i===0?'🏆 #1':i===1?'🥈 #2':i===2?'🥉 #3':'#'+(i+1);
+    const in20=top20ids.includes(r.s.id);
+    const pct = mx?Math.round((r.total||0)/mx*100):0;
+    return `<div class="author-card ${in20?'top-card':''}">
+      <div class="ac-rank">${rankLabel}</div>
+      <div class="ac-name">${r.s.title}</div>
+      <div class="ac-handle">${r.s.genre}</div>
+      ${r.total!==null?`<div class="ac-score">${r.total.toFixed(2)}</div>`:`<div class="ac-score-null">No score yet</div>`}
+      <div class="ac-bar-track"><div class="ac-bar-fill" style="width:${pct}%"></div></div>
+      <div class="ac-badges">${in20?'<span class="badge badge-pass">Top 20</span>':''}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('c-tv').style.display = curView==='table' ? 'block' : 'none';
+  document.getElementById('c-cv').style.display = curView==='cards' ? 'block' : 'none';
+}
+
+// ═══════════════════════════════════════════════════
+// SPECIAL AWARDS
+// ═══════════════════════════════════════════════════
+function renderA() {
+  const topN=parseInt(document.getElementById('a-topn').value)||4;
+  const ranked=S.stories.map(s=>({id:s.id,total:s1(s.id)||0})).sort((a,b)=>b.total-a.total);
+  const top20ids=ranked.slice(0,20).map(r=>r.id);
+  const cats=[
+    {key:'directing',label:'Best Directing',w:20},
+    {key:'plot',label:'Best Plot & Writing',w:20},
+    {key:'interactivity',label:'Best Interactivity',w:10},
+    {key:'cover',label:'Best Story Cover',w:10},
+  ];
+  document.getElementById('awards-grid').innerHTML=cats.map(cat=>{
+    const rows=S.stories.map(s=>({s,score:jWeighted(s.id,cat.key)||0}))
+      .sort((a,b)=>b.score-a.score).slice(0,topN);
+    return `<div class="card" style="margin-bottom:0">
+      <div class="card-hd"><div><h3>${cat.label}</h3><p>Top ${topN} · max ${cat.w} pts</p></div></div>
+      <div class="twrap"><table class="st">
+        <thead><tr><th>#</th><th>Story</th><th>Score /${cat.w}</th><th>Status</th></tr></thead>
+        <tbody>${rows.map((r,i)=>{
+          const in20=top20ids.includes(r.s.id);
+          return `<tr class="${i===0?'hilite':''}">
+          <td><span class="rb ${i===0?'r1':i===1?'r2':i===2?'r3':''}">${i+1}</span></td>
+          <td><strong>${r.s.title}</strong><br><span style="font-size:11px;color:var(--text-light)">${r.s.genre}</span></td>
+          <td><strong>${r.score.toFixed(2)}</strong></td>
+          <td>${i===0
+            ? (in20
+                ? `<span class="badge badge-pass">🏅 Award Winner · Also in Top 20</span>`
+                : `<span class="badge badge-ft">🏅 Award Winner · Fast Track</span>`)
+            : (in20 ? `<span class="badge" style="background:#e8f5e9;color:#2e7d32">In Top 20</span>` : '')
+          }</td>
+        </tr>`;}).join('')}</tbody>
+      </table></div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════════
+// TOP 24 BUILDER
+// ═══════════════════════════════════════════════════
+function buildTop24() {
+  const ranked=S.stories.map(s=>({id:s.id,title:s.title,genre:s.genre,total:s1(s.id)||0}))
+    .sort((a,b)=>b.total-a.total);
+  const top20ids=ranked.slice(0,20).map(r=>r.id);
+
+  // Each award independently picks its own top scorer — no skipping if already in Top 20
+  const awardCats=['directing','plot','interactivity','cover'];
+  const ft={};
+  for(const cat of awardCats){
+    const sorted=S.stories.map(s=>({id:s.id,score:jWeighted(s.id,cat)||0})).sort((a,b)=>b.score-a.score);
+    if(sorted.length&&sorted[0].score>0){
+      const winnerId=sorted[0].id;
+      ft[winnerId]=(ft[winnerId]?ft[winnerId]+' · Best ':' Best ')+cat.charAt(0).toUpperCase()+cat.slice(1);
+      // trim leading space artifact
+      ft[winnerId]=ft[winnerId].trim();
+    }
+  }
+
+  // Build top24: start with top20, add ft winners not already in top20, then autofill
+  const included=new Set(top20ids);
+  const ftExtras=Object.keys(ft).filter(id=>!top20ids.includes(id));
+  ftExtras.forEach(id=>included.add(id));
+
+  // Autofill remaining spots to reach 24
+  const autofill=[];
+  for(const r of ranked){
+    if(included.size>=24)break;
+    if(!included.has(r.id)){autofill.push(r.id);included.add(r.id);}
+  }
+
+  S.top24=[...top20ids,...ftExtras,...autofill].slice(0,24);
+  S.fastTrack=ft;
+  save();
+
+  const rows=S.top24.map((id,i)=>{
+    const s=S.stories.find(s=>s.id===id);
+    const total=s1(id);
+    const isFTWinner=!!ft[id];
+    const inTop20=top20ids.includes(id);
+    const isAutofill=autofill.includes(id);
+    const rank=top20ids.indexOf(id)+1;
+    const rc=rank===1?'r1':rank===2?'r2':rank===3?'r3':'';
+    const rankCell=rank>0?`<span class="rb ${rc}">${rank}</span>`
+      :isAutofill?`<span class="badge" style="font-size:10px;background:#e3f2fd;color:#1565c0">Auto</span>`
+      :`<span class="badge badge-ft" style="font-size:10px">FT</span>`;
+    const noteCell=isFTWinner
+      ? (inTop20
+          ? `<span class="badge badge-pass" style="font-size:10px">🏅 ${ft[id]} · Also Top 20</span>`
+          : `<span class="badge badge-ft" style="font-size:10px">🏅 ${ft[id]}</span>`)
+      : (isAutofill ? `<span style="font-size:11px;color:var(--text-light)">Auto-fill</span>` : '');
+    return `<tr class="${isFTWinner?'ftrow':isAutofill?'':'hilite'}">
+      <td>${rankCell}</td>
+      <td><strong>${s?.title||'?'}</strong></td>
+      <td style="font-size:11px;color:var(--text-light)">${s?.genre||''}</td>
+      <td>${noteCell}</td>
+      <td><strong>${total!==null?total.toFixed(2):'—'}</strong></td>
+    </tr>`;
+  }).join('');
+
+  const ftInTop20=Object.keys(ft).filter(id=>top20ids.includes(id)).length;
+  const ftOutTop20=ftExtras.length;
+
+  document.getElementById('top24-out').innerHTML=`
+    <div class="info">
+      Top 20 stories (white) + ${ftOutTop20} Fast Track winner${ftOutTop20!==1?'s':''} outside Top 20 (amber)
+      ${ftInTop20?`+ ${ftInTop20} award winner${ftInTop20!==1?'s':''} already in Top 20 (keep badge)`:''}
+      ${autofill.length?`+ ${autofill.length} auto-filled`:''}
+      = <strong>${S.top24.length} stories total</strong>.
+    </div>
+    <div class="twrap"><table class="st">
+      <thead><tr><th>Rank / Status</th><th>Story</th><th>Genre</th><th>Award / Note</th><th>S1 Score</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>`;
+  toast(`Top 24 built ✓`);
+}
+
+function promoteS2() {
+  if(!S.top24.length){toast('Build Top 24 first');return;}
+  S.top24.forEach(id=>{if(!S.s2[id])S.s2[id]={s2s:null,poll:null};});
+  save(); go('stage2'); toast('Top 24 promoted to Stage 2 ✓');
+}
+
+// ═══════════════════════════════════════════════════
+// STAGE 2
+// ═══════════════════════════════════════════════════
+function renderS2() {
+  if(!S.top24.length){
+    document.getElementById('s2-body').innerHTML='<tr><td colspan="10" style="text-align:center;color:var(--text-light);padding:24px">Build and promote Top 24 first.</td></tr>';
     return;
   }
-  try {
-    await fetch(SHEET_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
-  } catch(e) { console.warn('[SOTY Portal] Sheet send failed:', e); }
+  const topN=parseInt(document.getElementById('s2-topn').value)||null;
+  const ft12=getS2FT12();
+
+  // Determine pop winner for labelling
+  const popWinner=S.top24.map(id=>({id,pop:vWeighted(id,'popularity')||0})).sort((a,b)=>b.pop-a.pop)[0]?.id;
+
+  const rows=S.top24.map(id=>{
+    const s=S.stories.find(s=>s.id===id);
+    const isFT12=ft12.includes(id);
+    const isPopFT=id===popWinner&&isFT12;
+    const isS2SFT=isFT12&&!isPopFT;
+    return{id,s,base:s1(id)||0,promo:s2PromoScore(id)||s1(id)||0,display:s2Total(id)||s1(id)||0,isFT12,isPopFT,isS2SFT};
+  }).sort((a,b)=>b.promo-a.promo);
+
+  // Top 12: all FT12 + top (12 - ft12.length) non-FT by promo score
+  const nonFT=rows.filter(r=>!r.isFT12).map(r=>r.id).slice(0,12-ft12.length);
+  const top12ids=[...ft12,...nonFT];
+  const disp=topN?rows.slice(0,topN):rows;
+
+  document.getElementById('s2-head').innerHTML=`<tr>
+    <th>#</th><th>Story</th><th>Genre</th><th>S1 Score</th>
+    <th>S2S Raw</th><th>S2S /10</th>
+    <th>Poll Raw</th><th>Poll /10</th>
+    <th>Promo Score<br><small style="font-weight:400;opacity:.6">S1 + S2S only</small></th>
+    <th>Top 12?</th></tr>`;
+
+  document.getElementById('s2-body').innerHTML=disp.map((r,i)=>{
+    const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    const in12=top12ids.includes(r.id);
+    const s2s=S.s2[r.id]?.s2s, poll=S.s2[r.id]?.poll;
+
+    const ftBadge=r.isFT12
+      ? `&nbsp;<span class="badge badge-ft" style="font-size:9px">${r.isPopFT?'Pop FT':'S2S FT'}</span>`
+      : '';
+
+    // S2S fast trackers skip Poll vote
+    const pollCell=r.isS2SFT
+      ? `<td colspan="2" style="text-align:center;font-size:11px;color:var(--text-light);font-style:italic;background:rgba(27,42,74,0.03)">Not required — S2S Fast Track</td>`
+      : `<td><input type="number" min="0" value="${poll??''}" placeholder="0"
+          class="${poll!==null&&poll!==''?'has-val':''}" style="width:76px;text-align:center"
+          oninput="setS2('${r.id}','poll',this.value)"></td>
+         <td>${s2w(poll,'poll')!==null?s2w(poll,'poll').toFixed(2):'—'}</td>`;
+
+    return`<tr class="${in12?'hilite':''} ${r.isFT12?'ftrow':''}">
+      <td><span class="rb ${rc}">${i+1}</span></td>
+      <td><strong>${r.s?.title||'?'}</strong>${ftBadge}</td>
+      <td style="font-size:11px;color:var(--text-light)">${r.s?.genre||''}</td>
+      <td>${r.base.toFixed(2)}</td>
+      <td><input type="number" min="0" value="${s2s??''}" placeholder="0"
+        class="${s2s!==null&&s2s!==''?'has-val':''}" style="width:76px;text-align:center"
+        oninput="setS2('${r.id}','s2s',this.value)"></td>
+      <td>${s2w(s2s,'s2s')!==null?s2w(s2s,'s2s').toFixed(2):'—'}</td>
+      ${pollCell}
+      <td><strong>${r.promo.toFixed(2)}</strong></td>
+      <td><span class="badge ${in12?'badge-pass':'badge-fail'}">${in12?'✔ Top 12':'❌'}</span></td>
+    </tr>`;
+  }).join('');
 }
 
-// ─────────────────────────────────────────────────────
-// NOMINATIONS
-// ─────────────────────────────────────────────────────
-let nomAffirmed = false;
-function toggleNomAffirm() {
-  nomAffirmed = !nomAffirmed;
-  document.getElementById('nom-affirm-cb').classList.toggle('checked', nomAffirmed);
+function setS2(id,field,val) {
+  if(!S.s2[id])S.s2[id]={s2s:null,poll:null};
+  S.s2[id][field]=val===''?null:Math.max(0,parseFloat(val)||0);
+  save(); renderS2();
 }
 
-function getNomSlots(slotsId) {
-  return Array.from(document.querySelectorAll(`#${slotsId} .nom-input`))
-    .map(el => el.value.trim()).filter(Boolean);
+function promoteS3() {
+  if(!S.top24.length){toast('Build Top 24 first');return;}
+  const ft12=getS2FT12();
+  const nonFT=S.top24
+    .filter(id=>!ft12.includes(id))
+    .map(id=>({id,score:s2PromoScore(id)||0}))
+    .sort((a,b)=>b.score-a.score)
+    .slice(0,12-ft12.length)
+    .map(r=>r.id);
+  S.top12=[...ft12,...nonFT];
+  S.top12.forEach(id=>{if(!S.s3[id])S.s3[id]={h2h_raw:null};});
+  save(); go('stage3'); toast('Top 12 promoted to Stage 3 ✓');
 }
 
-async function submitNominations() {
-  const judge = (document.getElementById('n-judge-confirm').value.trim()) ||
-                (document.getElementById('n-judge-name').value.trim());
-  if (!judge) { toast('⚠ Please enter your Judge Name'); return; }
-  if (!nomAffirmed) { toast('⚠ Please check the affirmation box'); return; }
+// ═══════════════════════════════════════════════════
+// STAGE 3
+// ═══════════════════════════════════════════════════
+function renderS3() {
+  if(!S.top12.length){
+    document.getElementById('s3-body').innerHTML='<tr><td colspan="6" style="text-align:center;color:var(--text-light);padding:24px">Promote Top 12 from Stage 2 first.</td></tr>';
+    return;
+  }
+  const topN=parseInt(document.getElementById('s3-topn').value)||null;
+  const rows=S.top12.map(id=>{
+    const s=S.stories.find(s=>s.id===id);
+    return{id,s,base:s2Total(id)||0,total:s3Total(id)||0};
+  }).sort((a,b)=>b.total-a.total);
 
-  const innovative = getNomSlots('nom-innovative-slots');
-  const dialogue   = getNomSlots('nom-dialogue-slots');
-  const total = innovative.length + dialogue.length;
-  if (total === 0) { toast('⚠ Please add at least one nomination before submitting'); return; }
+  const top8ids=rows.slice(0,8).map(r=>r.id);
+  const disp=topN?rows.slice(0,topN):rows;
 
-  const now = new Date().toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
-  const payload = {
-    type: 'nominations',
-    timestamp: now,
-    judgeName: judge,
-    nominations: {
-      mostInnovativeConcept: innovative,
-      bestDialogueCharacterization: dialogue
-    },
-    notes: document.getElementById('n-notes').value.trim(),
-    date: document.getElementById('n-date').value.trim()
-  };
-
-  addToHistory({
-    ...payload,
-    story: { title: `Nominations (${total} total)`, genre: '—', author: '—' },
-    display: { B: '—', C: '—', D: '—', E: '—', combined: 'Noms' },
-    weightedScores: {}
-  });
-
-  await sendToSheet(payload);
-
-  // Clear nomination fields
-  document.querySelectorAll('#nom-innovative-slots .nom-input, #nom-dialogue-slots .nom-input')
-    .forEach(el => { el.value = ''; el.classList.remove('has-val'); });
-  ['n-judge-name','n-judge-confirm','n-date','n-notes'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.value = ''; el.classList.remove('has-val'); }
-  });
-  nomAffirmed = false;
-  document.getElementById('nom-affirm-cb').classList.remove('checked');
-  document.getElementById('pnav-N').classList.add('done');
-  toast(`✅ ${total} nominations submitted by ${judge}`);
+  const b3=h2hBench();
+  document.getElementById('s3-head').innerHTML=`<tr><th>#</th><th>Story</th><th>Genre</th><th>S2 Promo Score</th><th>H2H Raw</th><th>H2H /10</th><th>Benchmark</th><th>S3 Total</th><th>Top 8?</th></tr>`;
+  document.getElementById('s3-body').innerHTML=disp.map((r,i)=>{
+    const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    const in8=top8ids.includes(r.id);
+    const h=S.s3[r.id]?.h2h_raw;
+    return`<tr class="${in8?'hilite':''}">
+      <td><span class="rb ${rc}">${i+1}</span></td>
+      <td><strong>${r.s?.title||'?'}</strong></td>
+      <td style="font-size:11px;color:var(--text-light)">${r.s?.genre||''}</td>
+      <td>${r.base.toFixed(2)}</td>
+      <td><input type="number" min="0" value="${h??''}" placeholder="0"
+        class="${h!==null&&h!==''?'has-val':''}" style="width:80px;text-align:center"
+        oninput="setS3('${r.id}',this.value)"></td>
+      <td>${h2hW(h)!==null?h2hW(h).toFixed(2):'—'}</td>
+      <td style="font-size:11px;color:var(--text-light)">${b3?b3.toLocaleString():'—'}</td>
+      <td><strong style="font-size:15px">${r.total.toFixed(2)}</strong></td>
+      <td><span class="badge ${in8?'badge-pass':'badge-fail'}">${in8?'✔ Top 8':'❌'}</span></td>
+    </tr>`;
+  }).join('');
 }
 
-// ─────────────────────────────────────────────────────
+function setS3(id,val) {
+  if(!S.s3[id])S.s3[id]={h2h_raw:null};
+  S.s3[id].h2h_raw=val===''?null:Math.max(0,parseFloat(val)||0);
+  save(); renderS3();
+}
+
+function promoteS4() {
+  const sorted=S.top12.map(id=>({id,total:s3Total(id)||0})).sort((a,b)=>b.total-a.total);
+  S.top8=sorted.slice(0,8).map(r=>r.id);
+  save(); go('stage4'); renderS4(); toast('Top 8 promoted to Final ✓');
+}
+
+// ═══════════════════════════════════════════════════
+// STAGE 4
+// ═══════════════════════════════════════════════════
+function renderS4() {
+  if(!S.top8.length){document.getElementById('s4-out').innerHTML='<p style="color:var(--text-light);font-size:13px">Promote Top 8 from Stage 3 first.</p>';return;}
+  const rows=S.top8.map(id=>{
+    const s=S.stories.find(s=>s.id===id);
+    return{id,s,total:s3Total(id)||0};
+  }).sort((a,b)=>b.total-a.total);
+
+  const dnp=S.top12.filter(id=>!S.top8.includes(id)).map(id=>S.stories.find(s=>s.id===id)?.title||'?');
+
+  document.getElementById('s4-out').innerHTML=`
+    <div class="twrap"><table class="st">
+      <thead><tr><th>Placement</th><th>Story</th><th>Genre</th><th>Final Score</th></tr></thead>
+      <tbody>${rows.map((r,i)=>`<tr class="${i===0?'hilite':''}">
+        <td><span class="badge ${i===0?'badge-pass':'badge-fail'}" style="font-size:12px;padding:5px 12px">${PLACEMENTS[i]}</span></td>
+        <td><strong style="font-size:15px">${r.s?.title||'?'}</strong></td>
+        <td style="font-size:12px;color:var(--text-light)">${r.s?.genre||''}</td>
+        <td><strong style="font-family:var(--serif);font-size:18px;color:var(--navy)">${r.total.toFixed(2)}</strong></td>
+      </tr>`).join('')}</tbody>
+    </table></div>
+    <div style="margin-top:12px;padding:12px 14px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:6px;font-size:13px;line-height:1.7">
+      <strong>Did Not Place in Top 8:</strong> ${dnp.join(' · ')||'None'}
+    </div>`;
+}
+
+// ═══════════════════════════════════════════════════
+// EXPORT / IMPORT / RESET
+// ═══════════════════════════════════════════════════
+function exportJSON(){const b=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='soty2026-eval-'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Exported','⬇');}
+function importJSON(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{S=JSON.parse(ev.target.result);save();renderSetup();toast('Imported','⬆');}catch(err){toast('Import failed','⚠️');}};r.readAsText(f);e.target.value='';}
+
+function confirmReset(){if(!confirm('Reset ALL data?'))return;S=blankState();save();renderSetup();toast('Reset','↺');}
+
+// ═══════════════════════════════════════════════════
 // TOAST
-// ─────────────────────────────────────────────────────
-let toastTimer;
-function toast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 3400);
-}
+// ═══════════════════════════════════════════════════
+function toast(msg,icon='✓'){const el=document.getElementById('toast');el.innerHTML=`<span>${icon}</span> ${msg}`;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2800);}
 
-// ─────────────────────────────────────────────────────
-// CRITERION NAME STYLING (cursor)
-// ─────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.crit-name').forEach(el => {
-    el.style.cursor = 'pointer';
-    el.style.borderBottom = '1px dashed rgba(13,13,13,0.25)';
-  });
-});
-
-// ─────────────────────────────────────────────────────
-// INIT — build all dynamic rows
-// ─────────────────────────────────────────────────────
-['b2','b3','b4','b5','c1','c2','c3','c4','c5','d1','d2','d3','d4','d5','e1','e2','e3','e4','e5'].forEach(key => {
-  buildCriteriaRows(key + '-tbody', key);
-});
+// ═══════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════
+renderSetup();
 </script>
 </body>
 </html>
