@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monthly Contest · Buddies Reviewer Portal 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+  <!-- Search & social preview -->
+  <meta property="og:image" content="https://res.cloudinary.com/dgsv4chsi/image/upload/q_auto/f_auto/v1776315572/buddies-logo_t71aki.png">
+  <meta property="og:title" content="Episode Buddies">
+  <meta property="og:description" content="Uplifting Episode authors through free community services, monthly contests, and the most celebrated annual competitions on the platform.">
+  <meta name="theme-color" content="#0F1B33">
+<style>
+:root {
+  --ink: #0d0d0d;
+  --paper: #faf8f4;
+  --cream: #f2ede4;
+  --gold: #c9a84c;
+  --gold-light: #e8d49a;
+  --gold-dim: rgba(201,168,76,0.12);
+  --rose: #b85c6e;
+  --rose-dim: rgba(184,92,110,0.1);
+  --jade: #2d7a5f;
+  --jade-dim: rgba(45,122,95,0.1);
+  --cobalt: #2a4fa3;
+  --cobalt-dim: rgba(42,79,163,0.1);
+  --plum: #6b3fa0;
+  --plum-dim: rgba(107,63,160,0.1);
+  --amber: #d97706;
+  --amber-dim: rgba(217,119,6,0.1);
+  --teal: #0e7490;
+  --teal-dim: rgba(14,116,144,0.1);
+  --border: rgba(13,13,13,0.12);
+  --border-strong: rgba(13,13,13,0.25);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
+  --shadow: 0 2px 20px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.05);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  --r: 12px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);min-height:100vh;font-size:14px;line-height:1.6;}
+
+/* ── HEADER ── */
+.site-header{background:var(--ink);color:var(--paper);padding:0 32px;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:18px;height:58px;}
+.logo-mark{font-family:var(--serif);font-size:22px;font-weight:900;color:var(--gold);letter-spacing:-0.02em;flex-shrink:0;}
+.logo-sep{width:1px;height:28px;background:rgba(255,255,255,0.15);}
+.logo-sub{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.conf-badge{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.4);border-radius:20px;padding:3px 10px;}
+.theme-badge{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#fff;background:var(--plum);border-radius:20px;padding:3px 10px;display:none;}
+.theme-badge.visible{display:inline-block;}
+
+/* ── PROGRESS NAV ── */
+.progress-nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:58px;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
+.progress-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+.progress-inner::-webkit-scrollbar{display:none;}
+.pnav-btn{display:flex;align-items:center;gap:8px;padding:13px 18px;border:none;background:none;cursor:pointer;font-family:var(--sans);font-size:12px;font-weight:500;color:#999;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;position:relative;}
+.pnav-btn:hover{color:var(--ink);}
+.pnav-btn.active{color:var(--ink);border-bottom-color:var(--gold);font-weight:700;}
+.pnav-btn.done{color:var(--jade);}
+.pnav-btn.done::after{content:'✓';position:absolute;top:8px;right:6px;font-size:9px;color:var(--jade);}
+.pnav-dot{width:22px;height:22px;border-radius:50%;border:2px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;transition:all 0.2s;}
+.pnav-btn.active .pnav-dot{background:var(--gold);border-color:var(--gold);color:var(--ink);}
+.pnav-btn.done .pnav-dot{background:var(--jade);border-color:var(--jade);color:#fff;}
+
+/* ── LAYOUT ── */
+.layout{max-width:1100px;margin:0 auto;padding:36px 24px 100px;}
+
+/* ── HERO ── */
+.page-hero{text-align:center;padding:40px 0 32px;border-bottom:1px solid var(--border);margin-bottom:36px;}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.hero-title{font-family:var(--serif);font-size:40px;font-weight:900;line-height:1.1;margin-bottom:10px;}
+.hero-sub{font-size:15px;color:#666;max-width:580px;margin:0 auto;}
+
+/* ── SECTION PANELS ── */
+.section-panel{display:none;}
+.section-panel.active{display:block;}
+
+/* ── SECTION INTRO BANNER ── */
+.section-banner{border-radius:var(--r) var(--r) 0 0;padding:24px 28px;color:#fff;position:relative;overflow:hidden;}
+.section-banner::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none;}
+.banner-intro{background:linear-gradient(135deg,#1a1a3a,#2a4fa3);}
+.banner-a{background:linear-gradient(135deg,#1a2e1a,#2d7a5f);}
+.banner-fi{background:linear-gradient(135deg,#1c1230,#3d1f6e);}
+.banner-b{background:linear-gradient(135deg,#1a1a3a,#2a4fa3);}
+.banner-c{background:linear-gradient(135deg,#3a1a2e,#8a3055);}
+.banner-d{background:linear-gradient(135deg,#2a1a3a,#6b3fa0);}
+.banner-ot{background:linear-gradient(135deg,#3a2a1a,#c9a84c);}
+.banner-th{background:linear-gradient(135deg,#0a2e2a,#0e7490);}
+.banner-f{background:linear-gradient(135deg,#1a2e1a,#2d5a3f);}
+.section-banner-label{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;opacity:0.7;margin-bottom:6px;}
+.section-banner-title{font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:4px;}
+.section-banner-sub{font-size:13px;opacity:0.65;}
+.weight-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;margin-top:12px;}
+
+/* ── INTRO PAGE SPECIFICS ── */
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+@media(max-width:640px){.intro-grid{grid-template-columns:1fr;}}
+.intro-rule{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;}
+.intro-rule-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.intro-rule-title{font-size:13px;font-weight:700;margin-bottom:3px;}
+.intro-rule-text{font-size:12px;color:#666;line-height:1.55;}
+
+.toggle-card{background:#fff;border:2px solid var(--border);border-radius:12px;padding:20px 22px;cursor:pointer;transition:all 0.2s;margin-bottom:12px;}
+.toggle-card:hover{border-color:var(--gold-light);}
+.toggle-card.selected{border-color:var(--gold);background:#fffdf5;}
+.toggle-card-inner{display:flex;align-items:flex-start;gap:16px;}
+.toggle-radio{width:22px;height:22px;border-radius:50%;border:2px solid var(--border-strong);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.toggle-card.selected .toggle-radio{border-color:var(--gold);background:var(--gold);}
+.toggle-card.selected .toggle-radio::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--ink);}
+.toggle-label{font-size:15px;font-weight:700;margin-bottom:4px;}
+.toggle-desc{font-size:13px;color:#666;line-height:1.5;}
+
+/* ── CARDS ── */
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden;}
+.card-header{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.card-title{font-family:var(--serif);font-size:16px;font-weight:700;margin-bottom:2px;}
+.card-sub{font-size:12px;color:#888;}
+.card-body{padding:22px;}
+
+/* ── FORM FIELDS ── */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+@media(max-width:640px){.form-grid,.form-grid-3{grid-template-columns:1fr;}}
+.field{display:flex;flex-direction:column;gap:5px;}
+.field-full{grid-column:1/-1;}
+label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#666;}
+input[type=text],input[type=number],textarea,select{border:1.5px solid var(--border-strong);border-radius:7px;padding:9px 12px;font-family:var(--sans);font-size:14px;color:var(--ink);background:var(--paper);transition:border-color 0.2s,box-shadow 0.2s;width:100%;}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.15);}
+input.has-val,select.has-val{background:#fffdf5;border-color:var(--gold);}
+textarea{resize:vertical;min-height:72px;}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
+
+/* ── RUBRIC SUBSECTION ── */
+.rubric-block{background:var(--cream);border:1px solid var(--border);border-radius:10px;margin-bottom:16px;overflow:hidden;}
+.rubric-block-head{padding:14px 18px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.rubric-block-title{font-size:13px;font-weight:700;color:var(--ink);}
+.rubric-block-pts{font-family:var(--mono);font-size:11px;color:var(--gold);font-weight:600;white-space:nowrap;background:var(--gold-dim);border:1px solid rgba(201,168,76,0.3);border-radius:20px;padding:2px 9px;}
+.rubric-block-desc{font-size:12px;color:#666;padding:6px 18px 12px;line-height:1.55;}
+
+/* ── CRITERION ROWS — 0-5 RADIO GRID ── */
+.criteria-table{width:100%;border-collapse:collapse;}
+.criteria-table th{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#999;padding:8px 10px;text-align:center;border-top:1px solid var(--border);}
+.criteria-table th:first-child{text-align:left;padding-left:18px;}
+.criteria-table td{padding:6px 10px;border-top:1px solid var(--border);vertical-align:middle;}
+.criteria-table td:first-child{padding-left:18px;font-size:12px;font-weight:500;color:var(--ink);}
+.criteria-table tbody tr:hover td{background:rgba(201,168,76,0.04);}
+.radio-cell{text-align:center;}
+.score-radio{display:none;}
+.score-label{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:2px solid var(--border-strong);font-family:var(--mono);font-size:12px;font-weight:600;color:#999;cursor:pointer;margin:0 auto;transition:all 0.15s;}
+.score-radio:checked + .score-label{border-color:var(--gold);background:var(--gold);color:var(--ink);}
+.score-label:hover{border-color:var(--gold-light);color:var(--gold);}
+.score-radio[value="5"]:checked + .score-label{background:#22c55e;border-color:#22c55e;color:#fff;}
+.score-radio[value="4"]:checked + .score-label{background:#84cc16;border-color:#84cc16;color:#fff;}
+.score-radio[value="3"]:checked + .score-label{background:var(--amber);border-color:var(--amber);color:#fff;}
+.score-radio[value="2"]:checked + .score-label{background:#f97316;border-color:#f97316;color:#fff;}
+.score-radio[value="1"]:checked + .score-label{background:#ef4444;border-color:#ef4444;color:#fff;}
+.score-radio[value="0"]:checked + .score-label{background:#6b7280;border-color:#6b7280;color:#fff;}
+
+/* ── DESCRIPTOR TOOLTIP PANEL ── */
+.desc-panel{display:none;background:#fff;border:1px solid var(--border);border-radius:8px;margin:0 18px 12px;font-size:12px;line-height:1.65;color:#555;overflow:hidden;}
+.desc-panel.open{display:block;}
+.desc-panel strong{color:var(--ink);display:inline-block;width:80px;}
+.desc-question{background:var(--gold-dim);border-bottom:1px solid rgba(201,168,76,0.25);padding:9px 14px;font-size:12px;font-weight:600;color:#6b4d10;font-style:italic;display:flex;gap:7px;align-items:flex-start;}
+.desc-question-icon{flex-shrink:0;font-size:13px;}
+.desc-scores{padding:10px 14px;}
+
+/* ── SUBSECTION TOTAL ── */
+.sub-total-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:rgba(13,13,13,0.04);border-top:1px solid var(--border);}
+.sub-total-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;}
+.sub-total-val{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--ink);}
+
+/* ── SECTION TOTAL ── */
+.section-total{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;background:var(--ink);color:var(--paper);border-radius:10px;margin:20px 0;}
+.section-total-label{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;}
+.section-total-right{text-align:right;}
+.section-total-score{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--gold);line-height:1;}
+.section-total-weighted{font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px;}
+
+/* ── MANUAL TOTAL CONFIRM ── */
+.manual-total-wrap{background:var(--cream);border:1.5px solid var(--border-strong);border-radius:9px;padding:14px 18px;margin:14px 0;}
+.manual-total-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:6px;}
+.manual-total-note{font-size:11px;color:#aaa;margin-top:4px;}
+
+/* ── REVIEWER COMMENT BOX ── */
+.comment-box-wrap{background:#fff;border:1.5px solid var(--border-strong);border-radius:10px;padding:18px 20px;margin:16px 0 4px;}
+.comment-box-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:10px;}
+.comment-box-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#666;display:flex;align-items:center;gap:7px;}
+.comment-box-label-icon{font-size:14px;}
+.comment-counter{font-family:var(--mono);font-size:11px;font-weight:600;color:#bbb;transition:color 0.2s;}
+.comment-counter.near-limit{color:var(--amber);}
+.comment-counter.at-limit{color:var(--rose);}
+.comment-box-hint{font-size:11px;color:#aaa;line-height:1.5;margin-bottom:8px;}
+.comment-textarea{border:1.5px solid var(--border-strong);border-radius:7px;padding:10px 13px;font-family:var(--sans);font-size:13px;color:var(--ink);background:var(--paper);width:100%;resize:vertical;min-height:80px;max-height:200px;transition:border-color 0.2s,box-shadow 0.2s;line-height:1.6;}
+.comment-textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.15);}
+.comment-textarea.has-content{background:#fffdf5;border-color:var(--gold);}
+.comment-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(13,13,13,0.05);border:1px solid var(--border);border-radius:20px;padding:2px 9px;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#888;margin-bottom:10px;}
+.comment-pill.has-comment{background:var(--gold-dim);border-color:rgba(201,168,76,0.35);color:#7a5c10;}
+.manual-input-row{display:flex;align-items:center;gap:12px;}
+.manual-auto-val{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--jade);}
+.manual-slash{font-size:14px;color:#bbb;margin:0 4px;}
+
+/* ── INFO BOX ── */
+.info-box{border-radius:9px;padding:13px 16px;font-size:13px;line-height:1.55;margin-bottom:16px;display:flex;gap:10px;align-items:flex-start;}
+.info-icon{font-size:16px;flex-shrink:0;}
+.info-gold{background:var(--gold-dim);border:1px solid rgba(201,168,76,0.3);}
+.info-jade{background:var(--jade-dim);border:1px solid rgba(45,122,95,0.25);}
+.info-rose{background:var(--rose-dim);border:1px solid rgba(184,92,110,0.25);}
+.info-cobalt{background:var(--cobalt-dim);border:1px solid rgba(42,79,163,0.2);}
+.info-plum{background:var(--plum-dim);border:1px solid rgba(107,63,160,0.2);}
+.info-teal{background:var(--teal-dim);border:1px solid rgba(14,116,144,0.2);}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;border:none;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.btn-gold{background:var(--gold);color:var(--ink);}
+.btn-gold:hover{background:#b8922f;}
+.btn-ink{background:var(--ink);color:var(--paper);}
+.btn-ink:hover{background:#333;}
+.btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--border-strong);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.btn-jade{background:var(--jade);color:#fff;}
+.btn-jade:hover{background:#1f5a44;}
+.btn-plum{background:var(--plum);color:#fff;}
+.btn-plum:hover{background:#52277a;}
+.btn-sm{padding:7px 14px;font-size:12px;}
+.btn-lg{padding:13px 28px;font-size:15px;}
+.btn-full{width:100%;justify-content:center;}
+.btn-nav{padding:11px 22px;font-size:13px;}
+
+/* ── NAV ROW ── */
+.nav-row{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-top:1px solid var(--border);margin-top:8px;gap:12px;}
+
+/* ── AFFIRMATION CHECKBOX ── */
+.affirm-wrap{background:var(--cream);border:1.5px solid var(--border-strong);border-radius:10px;padding:18px 20px;margin:20px 0;}
+.affirm-inner{display:flex;align-items:flex-start;gap:14px;cursor:pointer;}
+.affirm-cb{width:22px;height:22px;border:2px solid var(--border-strong);border-radius:5px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;background:#fff;}
+.affirm-cb.checked{background:var(--jade);border-color:var(--jade);}
+.affirm-cb.checked::after{content:'✓';color:#fff;font-size:13px;font-weight:700;}
+.affirm-text{font-size:13px;line-height:1.6;font-weight:500;}
+.affirm-required{font-size:11px;color:var(--rose);margin-left:4px;}
+
+/* ── SUBMISSION SUMMARY ── */
+.submit-summary{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:20px;}
+.summary-header{background:var(--ink);color:var(--paper);padding:18px 22px;}
+.summary-title{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--gold);}
+.summary-sub{font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px;}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+@media(max-width:560px){.summary-grid{grid-template-columns:1fr;}}
+.summary-cat{padding:16px 22px;border-bottom:1px solid var(--border);}
+.summary-cat:nth-child(odd){border-right:1px solid var(--border);}
+.summary-cat-name{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:4px;}
+.summary-cat-score{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--ink);}
+.summary-cat-max{font-size:13px;color:#bbb;font-weight:400;}
+.summary-cat-weighted{font-size:12px;color:var(--jade);margin-top:2px;font-weight:600;}
+.summary-total-row{padding:18px 22px;background:var(--gold-dim);display:flex;align-items:center;justify-content:space-between;}
+.summary-total-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;}
+.summary-total-score{font-family:var(--serif);font-size:32px;font-weight:900;color:var(--gold);}
+
+/* ── HISTORY ── */
+.history-table{width:100%;border-collapse:collapse;}
+.history-table th{text-align:left;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#999;padding:8px 12px;border-bottom:1px solid var(--border);}
+.history-table td{padding:11px 12px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:top;}
+.history-table tr:last-child td{border-bottom:none;}
+.history-table tr:hover td{background:var(--cream);}
+.hist-story{font-weight:600;}
+.hist-score{font-family:var(--mono);font-weight:600;color:var(--jade);}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--border);margin:20px 0;}
+
+/* ── BADGE ── */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;}
+.badge-gold{background:var(--gold-dim);color:#8a6010;border:1px solid rgba(201,168,76,0.3);}
+.badge-jade{background:var(--jade-dim);color:var(--jade);border:1px solid rgba(45,122,95,0.25);}
+.badge-teal{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(14,116,144,0.2);}
+
+/* ── EMPTY STATE ── */
+.empty-state{text-align:center;padding:48px 20px;color:#bbb;}
+.empty-icon{font-size:40px;margin-bottom:10px;}
+.empty-text{font-size:13px;}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--paper);padding:12px 24px;border-radius:30px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);z-index:1000;white-space:nowrap;pointer-events:none;}
+#toast.show{transform:translateX(-50%) translateY(0);}
+
+/* ── SPINNER ── */
+.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:inline-block;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ── THEME SECTION HIDDEN ── */
+.theme-section-wrap{display:none;}
+.theme-section-wrap.visible{display:block;}
+
+.crit-name{cursor:pointer;border-bottom:1px dashed rgba(13,13,13,0.25);}
+
+@media(max-width:768px){.hero-title{font-size:28px;}.layout{padding:20px 16px 80px;}.section-banner-title{font-size:18px;}.summary-grid{grid-template-columns:1fr;}.summary-cat:nth-child(odd){border-right:none;}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <span class="logo-mark">Buddies</span>
+    <div class="logo-sep"></div>
+    <span class="logo-sub">Monthly Contest · Reviewer Portal 2026</span>
+    <div class="header-right">
+      <span class="theme-badge" id="header-theme-badge">Theme-Based</span>
+      <span class="conf-badge">🔒 Confidential</span>
+    </div>
+  </div>
+</header>
+
+<!-- PROGRESS NAV -->
+<nav class="progress-nav">
+  <div class="progress-inner" id="progress-inner">
+    <button class="pnav-btn active" id="pnav-INTRO" onclick="goSection('INTRO')">
+      <span class="pnav-dot">✦</span>Instructions
+    </button>
+    <button class="pnav-btn" id="pnav-A" onclick="goSection('A')">
+      <span class="pnav-dot">A</span>Story Details
+    </button>
+    <button class="pnav-btn" id="pnav-FI" onclick="goSection('FI')">
+      <span class="pnav-dot">B</span>First Impression
+    </button>
+    <button class="pnav-btn" id="pnav-B" onclick="goSection('B')">
+      <span class="pnav-dot">C</span>Directing
+    </button>
+    <button class="pnav-btn" id="pnav-C" onclick="goSection('C')">
+      <span class="pnav-dot">D</span>Plot
+    </button>
+    <button class="pnav-btn" id="pnav-D" onclick="goSection('D')">
+      <span class="pnav-dot">E</span>Interactivity
+    </button>
+    <button class="pnav-btn" id="pnav-OT" onclick="goSection('OT')">
+      <span class="pnav-dot">F</span>Others
+    </button>
+    <button class="pnav-btn theme-section-wrap visible" id="pnav-TH" onclick="goSection('TH')" style="display:none;">
+      <span class="pnav-dot">G</span>Theme Fit
+    </button>
+    <button class="pnav-btn" id="pnav-F" onclick="goSection('F')">
+      <span class="pnav-dot">★</span>Review &amp; Submit
+    </button>
+    <button class="pnav-btn" id="pnav-H" onclick="goSection('H')">
+      <span class="pnav-dot">📋</span>My Submissions
+    </button>
+  </div>
+</nav>
+
+<div class="layout">
+
+  <div class="page-hero">
+    <div class="hero-eyebrow">Episode Buddies · Official Reviewer Portal</div>
+    <h1 class="hero-title">Monthly Contest Score Submission</h1>
+    <p class="hero-sub">Read the full story before scoring. Apply the rubric faithfully. Every score must be justifiable.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       INTRO — INSTRUCTIONS & THEME TOGGLE
+  ════════════════════════════════════ -->
+  <div id="sec-INTRO" class="section-panel active">
+    <div class="section-banner banner-intro">
+      <div class="section-banner-label">Before You Begin</div>
+      <div class="section-banner-title">Reviewer Instructions</div>
+      <div class="section-banner-sub">Read carefully before proceeding to the evaluation. This sets up your scoring session.</div>
+    </div>
+    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
+      <div class="card-body">
+
+        <div class="info-box info-gold">
+          <span class="info-icon">📌</span>
+          <span>This portal is for <strong>authorized contest reviewers only</strong>. All scores, discussions, and materials are confidential until officially released by the Buddies Contest Panel. Do not share results prior to the official announcement.</span>
+        </div>
+
+        <!-- Core Rules Grid -->
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:12px;">Core Review Rules</div>
+        <div class="intro-grid">
+          <div class="intro-rule">
+            <div class="intro-rule-icon">📖</div>
+            <div>
+              <div class="intro-rule-title">Evaluate First 3 Episodes Only</div>
+              <div class="intro-rule-text">Regardless of total episode count, only the first three published episodes are evaluated. Stories with fewer than 3 episodes are ineligible — notify contest admin immediately.</div>
+            </div>
+          </div>
+          <div class="intro-rule">
+            <div class="intro-rule-icon">⚖️</div>
+            <div>
+              <div class="intro-rule-title">Full 0–5 Scale Required</div>
+              <div class="intro-rule-text">Use the complete scoring range. A 5 represents excellence. A 3 represents average. A 0 means absent or severely deficient. Avoid defaulting to 3–4 for every criterion.</div>
+            </div>
+          </div>
+          <div class="intro-rule">
+            <div class="intro-rule-icon">🔒</div>
+            <div>
+              <div class="intro-rule-title">Strict Confidentiality</div>
+              <div class="intro-rule-text">Do not share story content, scores, or reviewer deliberations outside official channels. Breach of confidentiality may result in disqualification from the review team.</div>
+            </div>
+          </div>
+          <div class="intro-rule">
+            <div class="intro-rule-icon">🚫</div>
+            <div>
+              <div class="intro-rule-title">Conflict of Interest</div>
+              <div class="intro-rule-text">Do not evaluate a story you beta-read, edited, or authored. Do not review close friends or collaborators. Request reassignment immediately if a conflict exists.</div>
+            </div>
+          </div>
+          <div class="intro-rule">
+            <div class="intro-rule-icon">🎯</div>
+            <div>
+              <div class="intro-rule-title">Objectivity Over Preference</div>
+              <div class="intro-rule-text">Your personal taste in genre, style, or author must never affect scoring. A genre you dislike can still be executed excellently. Score on rubric criteria alone.</div>
+            </div>
+          </div>
+          <div class="intro-rule">
+            <div class="intro-rule-icon">⚠️</div>
+            <div>
+              <div class="intro-rule-title">Content Violations</div>
+              <div class="intro-rule-text">If you encounter plagiarism, explicit sexual content, hate speech, or glorification of harm — stop immediately, document, and notify contest admin. Do not independently disqualify.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Score Scale Reference -->
+        <div style="margin:24px 0 20px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:12px;">Score Scale Reference (from the Buddies Evaluator Manual)</div>
+          <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;text-align:center;">
+            <div style="background:#dcfce7;border-radius:8px;padding:10px 6px;"><div style="font-family:var(--mono);font-size:18px;font-weight:700;color:#16a34a;">5</div><div style="font-size:11px;font-weight:600;color:#16a34a;margin-top:2px;">Excellent</div><div style="font-size:10px;color:#555;margin-top:4px;">Exceptional, professional-level, mastery</div></div>
+            <div style="background:#f0fdf4;border-radius:8px;padding:10px 6px;"><div style="font-family:var(--mono);font-size:18px;font-weight:700;color:#84cc16;">4</div><div style="font-size:11px;font-weight:600;color:#84cc16;margin-top:2px;">Good</div><div style="font-size:10px;color:#555;margin-top:4px;">Strong, minor flaws, above average</div></div>
+            <div style="background:#fffbeb;border-radius:8px;padding:10px 6px;"><div style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--amber);">3</div><div style="font-size:11px;font-weight:600;color:var(--amber);margin-top:2px;">Average</div><div style="font-size:10px;color:#555;margin-top:4px;">Adequate, meets basic expectations</div></div>
+            <div style="background:#fff7ed;border-radius:8px;padding:10px 6px;"><div style="font-family:var(--mono);font-size:18px;font-weight:700;color:#f97316;">2</div><div style="font-size:11px;font-weight:600;color:#f97316;margin-top:2px;">Weak</div><div style="font-size:10px;color:#555;margin-top:4px;">Below standard, multiple issues</div></div>
+            <div style="background:#fef2f2;border-radius:8px;padding:10px 6px;"><div style="font-family:var(--mono);font-size:18px;font-weight:700;color:#ef4444;">1</div><div style="font-size:11px;font-weight:600;color:#ef4444;margin-top:2px;">Very Weak</div><div style="font-size:10px;color:#555;margin-top:4px;">Significant deficiencies, major improvement needed</div></div>
+            <div style="background:#f3f4f6;border-radius:8px;padding:10px 6px;"><div style="font-family:var(--mono);font-size:18px;font-weight:700;color:#6b7280;">0</div><div style="font-size:11px;font-weight:600;color:#6b7280;margin-top:2px;">Absent</div><div style="font-size:10px;color:#555;margin-top:4px;">Criterion missing or severely broken</div></div>
+          </div>
+        </div>
+
+        <!-- THEME TOGGLE -->
+        <div style="margin:28px 0 8px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:6px;">Contest Type — Required</div>
+          <div style="font-size:13px;color:#666;margin-bottom:16px;">Select whether this contest has a specific theme that entries must align with. This determines whether the <strong>Theme Fit</strong> category is included in the evaluation.</div>
+
+          <div class="toggle-card" id="toggle-no-theme" onclick="setThemeMode(false)">
+            <div class="toggle-card-inner">
+              <div class="toggle-radio"></div>
+              <div>
+                <div class="toggle-label">Standard Contest — No Theme Fit</div>
+                <div class="toggle-desc">This contest does not have a specific required theme. Evaluation covers: First Impression (50pts), Directing (100pts), Plot (100pts), Interactivity (100pts), and Others (100pts). Total: 450 points.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="toggle-card" id="toggle-with-theme" onclick="setThemeMode(true)">
+            <div class="toggle-card-inner">
+              <div class="toggle-radio"></div>
+              <div>
+                <div class="toggle-label">Theme-Based Contest — Include Theme Fit</div>
+                <div class="toggle-desc">This contest has a specific required theme. Theme Fit (50pts) will be added to the evaluation. Total becomes 500 points. You will be asked to enter the contest theme title in Story Details.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box info-rose" id="theme-mode-warning" style="margin-top:16px;display:none;">
+          <span class="info-icon">⚠️</span>
+          <span>Please select a contest type above before proceeding.</span>
+        </div>
+
+        <div class="nav-row" style="border-top:none;padding-top:12px;">
+          <span style="font-size:12px;color:#bbb">Select a contest type to continue</span>
+          <button class="btn btn-gold btn-nav" onclick="proceedFromIntro()">Proceed to Story Details →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION A — STORY DETAILS
+  ════════════════════════════════════ -->
+  <div id="sec-A" class="section-panel">
+    <div class="section-banner banner-a">
+      <div class="section-banner-label">Section A</div>
+      <div class="section-banner-title">Story Details</div>
+      <div class="section-banner-sub">Enter the exact details of the story being evaluated. Double-check before proceeding.</div>
+    </div>
+    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
+      <div class="card-body">
+        <div class="info-box info-gold">
+          <span class="info-icon">📌</span>
+          <span><strong>Before scoring,</strong> provide accurate story information. Incorrect details may result in scores being assigned to the wrong entry. Your contribution to the Buddies Monthly Contest is greatly appreciated.</span>
+        </div>
+        <div class="form-grid" style="gap:16px;">
+          <div class="field field-full">
+            <label>Story Title <span style="color:var(--rose)">*</span></label>
+            <input type="text" id="a-title" placeholder="Enter the exact story title" oninput="markFilled(this);autoSave()">
+          </div>
+          <div class="field">
+            <label>Genre <span style="color:var(--rose)">*</span></label>
+            <select id="a-genre" onchange="markFilled(this);autoSave()">
+              <option value="">— Select genre —</option>
+              <option>Action</option><option>Adventure</option><option>Comedy</option>
+              <option>Drama</option><option>Fantasy</option><option>Horror</option>
+              <option>LGBTQ+</option><option>Mystery</option><option>Romance</option>
+              <option>Sci-Fi</option><option>Thriller</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Author's Name <span style="color:var(--rose)">*</span></label>
+            <input type="text" id="a-author" placeholder="Story author's name" oninput="markFilled(this);autoSave()">
+          </div>
+          <div class="field">
+            <label>Author's IG Handle</label>
+            <input type="text" id="a-handle" placeholder="@instagram_handle" oninput="markFilled(this);autoSave()">
+          </div>
+          <div class="field">
+            <label>Your (Reviewer) Name <span style="color:var(--rose)">*</span></label>
+            <input type="text" id="a-judge" placeholder="Your full name" oninput="markFilled(this);autoSave()">
+          </div>
+          <div class="field">
+            <label>Evaluation Date</label>
+            <input type="text" id="a-date" placeholder="e.g. 20 June 2026" oninput="markFilled(this);autoSave()">
+          </div>
+          <!-- Theme field — only visible when theme mode is on -->
+          <div class="field field-full theme-section-wrap" id="theme-title-wrap">
+            <label>Contest Theme Title <span style="color:var(--rose)">*</span></label>
+            <input type="text" id="a-theme" placeholder="Enter the official contest theme (e.g. Love in the Air, Redemption Arc…)" oninput="markFilled(this);autoSave()">
+            <div style="font-size:11px;color:#888;margin-top:4px;">This theme will be referenced when evaluating Theme Fit in the final section.</div>
+          </div>
+          <div class="field field-full">
+            <label>General Notes (optional)</label>
+            <textarea id="a-notes" placeholder="Any preliminary observations before scoring…" rows="2" oninput="autoSave()"></textarea>
+          </div>
+        </div>
+        <div class="nav-row">
+          <button class="btn btn-outline btn-nav" onclick="goSection('INTRO')">← Instructions</button>
+          <button class="btn btn-gold btn-nav" onclick="nextSection('A','FI')">Next: First Impression →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION FI — FIRST IMPRESSION (50pts)
+  ════════════════════════════════════ -->
+  <div id="sec-FI" class="section-panel">
+    <div class="section-banner banner-fi">
+      <div class="section-banner-label">Section B</div>
+      <div class="section-banner-title">First Impression</div>
+      <div class="section-banner-sub">Book cover quality, story description, opening scenes, and overall first impression</div>
+      <div class="weight-chip">⚖ 50 points total</div>
+    </div>
+    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
+      <div class="card-body">
+        <div class="info-box info-plum">
+          <span class="info-icon">👁️</span>
+          <span>First Impression evaluates how the story presents itself before and during the opening experience. Score each criterion from <strong>0 to 5</strong>. Click criterion names to expand the scoring descriptor.</span>
+        </div>
+
+        <!-- FI.1 -->
+        <div class="rubric-block">
+          <div class="rubric-block-head"><span class="rubric-block-title">FI.1 · Book Cover Quality</span><span class="rubric-block-pts">10 pts</span></div>
+          <div class="rubric-block-desc">Visual appeal and relevance of the story cover to its genre and theme.</div>
+          <table class="criteria-table">
+            <thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+            <tbody id="fi1-tbody"></tbody>
+          </table>
+          <div class="sub-total-bar"><span class="sub-total-label">FI.1 Subtotal</span><span class="sub-total-val"><span id="fi1-sub">0</span> / 10</span></div>
+        </div>
+
+        <!-- FI.2 -->
+        <div class="rubric-block">
+          <div class="rubric-block-head"><span class="rubric-block-title">FI.2 · Story Description</span><span class="rubric-block-pts">15 pts</span></div>
+          <div class="rubric-block-desc">Clarity, engagement, and grammatical correctness of the story description.</div>
+          <table class="criteria-table">
+            <thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+            <tbody id="fi2-tbody"></tbody>
+          </table>
+          <div class="sub-total-bar"><span class="sub-total-label">FI.2 Subtotal</span><span class="sub-total-val"><span id="fi2-sub">0</span> / 15</span></div>
+        </div>
+
+        <!-- FI.3 -->
+        <div class="rubric-block">
+          <div class="rubric-block-head"><span class="rubric-block-title">FI.3 · Opening Scenes</span><span class="rubric-block-pts">15 pts</span></div>
+          <div class="rubric-block-desc">Hook effectiveness, visual presentation of opening, and tone and atmosphere established.</div>
+          <table class="criteria-table">
+            <thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+            <tbody id="fi3-tbody"></tbody>
+          </table>
+          <div class="sub-total-bar"><span class="sub-total-label">FI.3 Subtotal</span><span class="sub-total-val"><span id="fi3-sub">0</span> / 15</span></div>
+        </div>
+
+        <!-- FI.4 -->
+        <div class="rubric-block">
+          <div class="rubric-block-head"><span class="rubric-block-title">FI.4 · Overall First Impression</span><span class="rubric-block-pts">10 pts</span></div>
+          <div class="rubric-block-desc">Overall professionalism and whether the reader would be motivated to continue reading.</div>
+          <table class="criteria-table">
+            <thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+            <tbody id="fi4-tbody"></tbody>
+          </table>
+          <div class="sub-total-bar"><span class="sub-total-label">FI.4 Subtotal</span><span class="sub-total-val"><span id="fi4-sub">0</span> / 10</span></div>
+        </div>
+
+        <div class="section-total">
+          <div><div class="section-total-label">Total Score — First Impression</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px">Auto-calculated from criteria above</div></div>
+          <div class="section-total-right"><div class="section-total-score"><span id="FI-total">0</span><span style="font-size:16px;color:rgba(255,255,255,0.3)"> / 50</span></div></div>
+        </div>
+        <div class="manual-total-wrap"><div class="manual-total-label">Confirm Total — First Impression</div><div class="manual-input-row"><div class="manual-auto-val" id="FI-auto-confirm">0</div><div class="manual-slash">/ 50</div><div style="font-size:12px;color:#aaa;margin-left:8px">Auto-calculated · verify before proceeding</div></div><div class="manual-total-note">If you spot a discrepancy, review your individual criterion selections above.</div></div>
+
+        <div class="comment-box-wrap">
+          <div class="comment-box-header">
+            <div class="comment-box-label"><span class="comment-box-label-icon">💬</span>Reviewer Comments — First Impression <span style="color:#bbb;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;">(optional)</span></div>
+            <span class="comment-counter" id="fi-comment-count">0 / 400</span>
+          </div>
+          <div class="comment-box-hint">Share specific observations about the cover, description, or opening scenes. Reference what stood out — positively or negatively — and tie remarks to the rubric criteria. Be constructive and specific.</div>
+          <textarea class="comment-textarea" id="comment-FI" maxlength="400" placeholder="e.g. The cover is visually striking and genre-appropriate, but the story description lacks urgency. The opening scene establishes tone well, though transitions felt abrupt in places…" oninput="updateCommentCount('FI',400);autoSave()"></textarea>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn btn-outline btn-nav" onclick="goSection('A')">← Story Details</button>
+          <button class="btn btn-gold btn-nav" onclick="nextSection('FI','B')">Next: Directing →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION B — DIRECTING (100pts)
+  ════════════════════════════════════ -->
+  <div id="sec-B" class="section-panel">
+    <div class="section-banner banner-b">
+      <div class="section-banner-label">Section C</div>
+      <div class="section-banner-title">Directing</div>
+      <div class="section-banner-sub">Camera work, character animation, overlays, visual storytelling, and sound design</div>
+      <div class="weight-chip">⚖ 100 points total</div>
+    </div>
+    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
+      <div class="card-body">
+        <div class="info-box info-cobalt">
+          <span class="info-icon">🎬</span>
+          <span>Score each criterion from <strong>0 to 5</strong>. Click any criterion name to expand the scoring descriptor. Each sub-section totals 20 points (4 criteria × 5 pts). The section auto-totals as you score.</span>
+        </div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">B.1 · Camera Work &amp; Scene Composition</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Dynamic zooms and pans, scene framing, creative camera angles, and transitions between scenes.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="b1-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">B.1 Subtotal</span><span class="sub-total-val"><span id="b1-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">B.2 · Character Movement &amp; Animation</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Accurate animation usage, smooth spot placement and shifting, group scene fluidity, and layering depth management.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="b2-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">B.2 Subtotal</span><span class="sub-total-val"><span id="b2-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">B.3 · Overlay Usage &amp; Visual Effects</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Overlay placement and scaling, creative use of overlays, tappable or animated overlays, and special visual effects.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="b3-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">B.3 Subtotal</span><span class="sub-total-val"><span id="b3-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">B.4 · Visual Storytelling &amp; Innovation</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Thematic visuals, symbolism or metaphorical shots, directorial creativity, and consistency in visual style.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="b4-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">B.4 Subtotal</span><span class="sub-total-val"><span id="b4-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">B.5 · Sound Design &amp; UI Polish</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Sound effects and music use, sound transitions, speech bubble placement and tail direction, and attention to detail (bugs/glitches).</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="b5-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">B.5 Subtotal</span><span class="sub-total-val"><span id="b5-sub">0</span> / 20</span></div></div>
+
+        <div class="section-total"><div><div class="section-total-label">Total Score — Directing</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px">Auto-calculated</div></div><div class="section-total-right"><div class="section-total-score"><span id="B-total">0</span><span style="font-size:16px;color:rgba(255,255,255,0.3)"> / 100</span></div></div></div>
+        <div class="manual-total-wrap"><div class="manual-total-label">Confirm Total — Directing</div><div class="manual-input-row"><div class="manual-auto-val" id="B-auto-confirm">0</div><div class="manual-slash">/ 100</div><div style="font-size:12px;color:#aaa;margin-left:8px">Auto-calculated · verify before proceeding</div></div><div class="manual-total-note">If you spot a discrepancy, review your individual criterion selections above.</div></div>
+
+        <div class="comment-box-wrap">
+          <div class="comment-box-header">
+            <div class="comment-box-label"><span class="comment-box-label-icon">💬</span>Reviewer Comments — Directing <span style="color:#bbb;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;">(optional)</span></div>
+            <span class="comment-counter" id="b-comment-count">0 / 400</span>
+          </div>
+          <div class="comment-box-hint">Note specific strengths or weaknesses in camera work, animation, overlay usage, visual storytelling, or sound design. Reference episodes or scenes where possible.</div>
+          <textarea class="comment-textarea" id="comment-B" maxlength="400" placeholder="e.g. Camera angles in Ep. 1 are creative and purposeful. Layering errors in the crowd scene of Ep. 2 were distracting. Sound transitions are smooth throughout but music choices occasionally mismatch the scene tone…" oninput="updateCommentCount('B',400);autoSave()"></textarea>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn btn-outline btn-nav" onclick="goSection('FI')">← First Impression</button>
+          <button class="btn btn-gold btn-nav" onclick="nextSection('B','C')">Next: Plot →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION C — PLOT (100pts)
+  ════════════════════════════════════ -->
+  <div id="sec-C" class="section-panel">
+    <div class="section-banner banner-c">
+      <div class="section-banner-label">Section D</div>
+      <div class="section-banner-title">Plot</div>
+      <div class="section-banner-sub">Originality, structure, conflict, consistency, and emotional impact</div>
+      <div class="weight-chip">⚖ 100 points total</div>
+    </div>
+    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
+      <div class="card-body">
+        <div class="info-box info-rose"><span class="info-icon">📖</span><span>Evaluate the story's narrative across its first three episodes. Score each criterion from <strong>0 to 5</strong>. Click criterion names to expand the full scoring descriptor.</span></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">C.1 · Originality &amp; Concept</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Unique premise or setting, character-driven plot, world-building or lore, and conceptual depth.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="c1-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">C.1 Subtotal</span><span class="sub-total-val"><span id="c1-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">C.2 · Structure, Flow &amp; Pacing</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Subplot integration, conflict development, scene transitions and cohesion, and progression toward climax.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="c2-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">C.2 Subtotal</span><span class="sub-total-val"><span id="c2-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">C.3 · Conflict, Stakes &amp; Twists</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Clear central goal, high or emotional stakes, well-executed plot twists, and cause &amp; effect consistency.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="c3-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">C.3 Subtotal</span><span class="sub-total-val"><span id="c3-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">C.4 · Consistency, Logic &amp; Realism</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Internal plot logic, realistic character decisions, clues &amp; consequences, and avoidance of plot holes.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="c4-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">C.4 Subtotal</span><span class="sub-total-val"><span id="c4-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">C.5 · Impact, Dialogue &amp; Emotion</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Emotional resonance, memorable moments and scenes, effective dialogue, and narrative voice &amp; style.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="c5-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">C.5 Subtotal</span><span class="sub-total-val"><span id="c5-sub">0</span> / 20</span></div></div>
+
+        <div class="section-total"><div><div class="section-total-label">Total Score — Plot</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px">Auto-calculated</div></div><div class="section-total-right"><div class="section-total-score"><span id="C-total">0</span><span style="font-size:16px;color:rgba(255,255,255,0.3)"> / 100</span></div></div></div>
+        <div class="manual-total-wrap"><div class="manual-total-label">Confirm Total — Plot</div><div class="manual-input-row"><div class="manual-auto-val" id="C-auto-confirm">0</div><div class="manual-slash">/ 100</div><div style="font-size:12px;color:#aaa;margin-left:8px">Auto-calculated · verify before proceeding</div></div></div>
+
+        <div class="comment-box-wrap">
+          <div class="comment-box-header">
+            <div class="comment-box-label"><span class="comment-box-label-icon">💬</span>Reviewer Comments — Plot <span style="color:#bbb;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;">(optional)</span></div>
+            <span class="comment-counter" id="c-comment-count">0 / 400</span>
+          </div>
+          <div class="comment-box-hint">Comment on the story's originality, narrative structure, conflict execution, internal logic, and emotional impact across the first three episodes. Be specific and reference the rubric.</div>
+          <textarea class="comment-textarea" id="comment-C" maxlength="400" placeholder="e.g. The central conflict is compelling and well-introduced in Ep. 1. However, pacing slows significantly in Ep. 2 before recovering. Character decisions in Ep. 3 feel inconsistent with established personality…" oninput="updateCommentCount('C',400);autoSave()"></textarea>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn btn-outline btn-nav" onclick="goSection('B')">← Directing</button>
+          <button class="btn btn-gold btn-nav" onclick="nextSection('C','D')">Next: Interactivity →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION D — INTERACTIVITY (100pts)
+  ════════════════════════════════════ -->
+  <div id="sec-D" class="section-panel">
+    <div class="section-banner banner-d">
+      <div class="section-banner-label">Section E</div>
+      <div class="section-banner-title">Interactivity</div>
+      <div class="section-banner-sub">Choice depth, outfit systems, frequency, customization, and technical execution</div>
+      <div class="weight-chip">⚖ 100 points total</div>
+    </div>
+    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
+      <div class="card-body">
+        <div class="info-box info-cobalt"><span class="info-icon">🎮</span><span>Consider not just whether interactive elements are present, but whether they add genuine value to the reader experience. Meaningful choices score higher than superficial ones.</span></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">D.1 · Choice Depth &amp; Story Impact</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Meaningful branching choices, reader influence on plot, replayability, and consequences with weight.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="d1-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">D.1 Subtotal</span><span class="sub-total-val"><span id="d1-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">D.2 · Outfit Choices, Challenges &amp; Score Systems</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Outfit choices (coded and referenced), mini-game functionality and clarity, point/timed choice systems, and gains/flags for story impact.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="d2-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">D.2 Subtotal</span><span class="sub-total-val"><span id="d2-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">D.3 · Frequency &amp; Variety of Choices</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Regular choice prompts, personality or relationship choices, balance between dialogue and action choices, and filler choices avoided.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="d3-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">D.3 Subtotal</span><span class="sub-total-val"><span id="d3-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">D.4 · Customization &amp; Reader Agency</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">MC customization, LI or supporting character customization, inclusivity options, and genre-specific interactive options.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="d4-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">D.4 Subtotal</span><span class="sub-total-val"><span id="d4-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">D.5 · Technical Execution &amp; Creativity</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Coding precision, visual choice presentation, innovation in interactivity, and consistency and user experience.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="d5-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">D.5 Subtotal</span><span class="sub-total-val"><span id="d5-sub">0</span> / 20</span></div></div>
+
+        <div class="section-total"><div><div class="section-total-label">Total Score — Interactivity</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px">Auto-calculated</div></div><div class="section-total-right"><div class="section-total-score"><span id="D-total">0</span><span style="font-size:16px;color:rgba(255,255,255,0.3)"> / 100</span></div></div></div>
+        <div class="manual-total-wrap"><div class="manual-total-label">Confirm Total — Interactivity</div><div class="manual-input-row"><div class="manual-auto-val" id="D-auto-confirm">0</div><div class="manual-slash">/ 100</div><div style="font-size:12px;color:#aaa;margin-left:8px">Auto-calculated · verify before proceeding</div></div></div>
+
+        <div class="comment-box-wrap">
+          <div class="comment-box-header">
+            <div class="comment-box-label"><span class="comment-box-label-icon">💬</span>Reviewer Comments — Interactivity <span style="color:#bbb;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;">(optional)</span></div>
+            <span class="comment-counter" id="d-comment-count">0 / 400</span>
+          </div>
+          <div class="comment-box-hint">Note the quality and meaningfulness of choices, coding precision, customization depth, and whether interactive elements genuinely enhanced the story experience.</div>
+          <textarea class="comment-textarea" id="comment-D" maxlength="400" placeholder="e.g. Outfit choices are well-coded and referenced consistently. Branching paths in Ep. 2 are meaningful. However, Ep. 3 has a long stretch without reader interaction, reducing engagement…" oninput="updateCommentCount('D',400);autoSave()"></textarea>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn btn-outline btn-nav" onclick="goSection('C')">← Plot</button>
+          <button class="btn btn-gold btn-nav" onclick="nextSection('D','OT')">Next: Others →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION OT — OTHERS (100pts)
+  ════════════════════════════════════ -->
+  <div id="sec-OT" class="section-panel">
+    <div class="section-banner banner-ot">
+      <div class="section-banner-label">Section F</div>
+      <div class="section-banner-title">Others</div>
+      <div class="section-banner-sub">Grammar, genre fit, chapter length, diversity, and characterization</div>
+      <div class="weight-chip">⚖ 100 points total</div>
+    </div>
+    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
+      <div class="card-body">
+        <div class="info-box info-gold"><span class="info-icon">✍️</span><span>This section covers the technical and qualitative standards that contribute to overall story quality. Evaluate each criterion carefully using the 0–5 scale.</span></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">OT.1 · Grammar, Spelling &amp; Writing Quality</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Correctness of grammar and spelling, consistency of writing style, dialogue quality, and professionalism of presentation.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="ot1-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">OT.1 Subtotal</span><span class="sub-total-val"><span id="ot1-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">OT.2 · Genre Fit &amp; Tone</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Consistency with genre conventions, tone and mood appropriateness, reader expectation delivery, and genre-specific creativity.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="ot2-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">OT.2 Subtotal</span><span class="sub-total-val"><span id="ot2-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">OT.3 · Chapter Length &amp; Pacing</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Balanced chapter length, flow between chapters, scene pacing (action-to-dialogue ratio), and suspense and tension maintenance.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="ot3-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">OT.3 Subtotal</span><span class="sub-total-val"><span id="ot3-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">OT.4 · Diversity &amp; Representation</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Cultural and ethnic representation, gender and LGBTQ+ inclusivity, body types and abilities, and socioeconomic and life experience diversity.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="ot4-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">OT.4 Subtotal</span><span class="sub-total-val"><span id="ot4-sub">0</span> / 20</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">OT.5 · Characterization</span><span class="rubric-block-pts">20 pts</span></div><div class="rubric-block-desc">Character depth and multi-dimensionality, character consistency, relationships and interactions, and world-building and setting.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="ot5-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">OT.5 Subtotal</span><span class="sub-total-val"><span id="ot5-sub">0</span> / 20</span></div></div>
+
+        <div class="section-total"><div><div class="section-total-label">Total Score — Others</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px">Auto-calculated</div></div><div class="section-total-right"><div class="section-total-score"><span id="OT-total">0</span><span style="font-size:16px;color:rgba(255,255,255,0.3)"> / 100</span></div></div></div>
+        <div class="manual-total-wrap"><div class="manual-total-label">Confirm Total — Others</div><div class="manual-input-row"><div class="manual-auto-val" id="OT-auto-confirm">0</div><div class="manual-slash">/ 100</div><div style="font-size:12px;color:#aaa;margin-left:8px">Auto-calculated · verify before proceeding</div></div></div>
+
+        <div class="comment-box-wrap">
+          <div class="comment-box-header">
+            <div class="comment-box-label"><span class="comment-box-label-icon">💬</span>Reviewer Comments — Others <span style="color:#bbb;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;">(optional)</span></div>
+            <span class="comment-counter" id="ot-comment-count">0 / 400</span>
+          </div>
+          <div class="comment-box-hint">Highlight observations on writing quality, genre fit, pacing, diversity, and characterization. Note anything that particularly strengthened or weakened the story's overall polish.</div>
+          <textarea class="comment-textarea" id="comment-OT" maxlength="400" placeholder="e.g. Grammar is mostly clean with isolated punctuation errors. Genre tone is well-maintained throughout. Characterization is a standout strength — the MC feels layered and consistent. Diversity representation could be more intentional…" oninput="updateCommentCount('OT',400);autoSave()"></textarea>
+        </div>
+
+        <div class="nav-row" id="ot-nav-row">
+          <button class="btn btn-outline btn-nav" onclick="goSection('D')">← Interactivity</button>
+          <button class="btn btn-gold btn-nav" id="ot-next-btn" onclick="nextFromOT()">Next: Theme Fit →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION TH — THEME FIT (50pts)
+  ════════════════════════════════════ -->
+  <div id="sec-TH" class="section-panel">
+    <div class="section-banner banner-th">
+      <div class="section-banner-label">Section G — Theme-Based Contests Only</div>
+      <div class="section-banner-title">Theme Fit</div>
+      <div class="section-banner-sub">Core theme alignment, interpretation, character connection, and contest suitability</div>
+      <div class="weight-chip">⚖ 50 points total · Theme-Based Contests Only</div>
+    </div>
+    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
+      <div class="card-body">
+        <div class="info-box info-teal" id="theme-reminder-box">
+          <span class="info-icon">🎯</span>
+          <span>Evaluating Theme Fit for contest theme: <strong id="theme-name-display">—</strong>. The theme must be narratively significant — not incidental. Superficial or decorative use of the theme does not qualify as alignment.</span>
+        </div>
+        <div class="info-box info-rose"><span class="info-icon">⚠️</span><span>A story may be disqualified if the theme is found only in passing dialogue without narrative relevance, or if it appears only as decoration. Assess thematic significance rigorously.</span></div>
+
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">TH.1 · Core Theme Alignment</span><span class="rubric-block-pts">15 pts</span></div><div class="rubric-block-desc">Presence of theme, natural theme integration into the plot, and theme consistency throughout the story.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="th1-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">TH.1 Subtotal</span><span class="sub-total-val"><span id="th1-sub">0</span> / 15</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">TH.2 · Interpretation of the Theme</span><span class="rubric-block-pts">10 pts</span></div><div class="rubric-block-desc">Creativity in how the theme is interpreted, and depth of theme exploration through events, conflicts, or character experiences.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="th2-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">TH.2 Subtotal</span><span class="sub-total-val"><span id="th2-sub">0</span> / 10</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">TH.3 · Character Connection to Theme</span><span class="rubric-block-pts">10 pts</span></div><div class="rubric-block-desc">Whether character motivations are influenced by the theme, and whether the theme strengthens emotional or narrative weight.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="th3-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">TH.3 Subtotal</span><span class="sub-total-val"><span id="th3-sub">0</span> / 10</span></div></div>
+        <div class="rubric-block"><div class="rubric-block-head"><span class="rubric-block-title">TH.4 · Relevance to Contest Objective &amp; Theme Execution</span><span class="rubric-block-pts">15 pts</span></div><div class="rubric-block-desc">Contest suitability, whether readers would clearly recognize the theme, and overall theme effectiveness as a core narrative element.</div><table class="criteria-table"><thead><tr><th>Criterion</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody id="th4-tbody"></tbody></table><div class="sub-total-bar"><span class="sub-total-label">TH.4 Subtotal</span><span class="sub-total-val"><span id="th4-sub">0</span> / 15</span></div></div>
+
+        <div class="section-total"><div><div class="section-total-label">Total Score — Theme Fit</div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px">Auto-calculated</div></div><div class="section-total-right"><div class="section-total-score"><span id="TH-total">0</span><span style="font-size:16px;color:rgba(255,255,255,0.3)"> / 50</span></div></div></div>
+        <div class="manual-total-wrap"><div class="manual-total-label">Confirm Total — Theme Fit</div><div class="manual-input-row"><div class="manual-auto-val" id="TH-auto-confirm">0</div><div class="manual-slash">/ 50</div><div style="font-size:12px;color:#aaa;margin-left:8px">Auto-calculated · verify before proceeding</div></div></div>
+
+        <div class="comment-box-wrap">
+          <div class="comment-box-header">
+            <div class="comment-box-label"><span class="comment-box-label-icon">💬</span>Reviewer Comments — Theme Fit <span style="color:#bbb;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;">(optional)</span></div>
+            <span class="comment-counter" id="th-comment-count">0 / 400</span>
+          </div>
+          <div class="comment-box-hint">Comment on how effectively the story embodies the contest theme. Is it central to the narrative or merely decorative? How creative is the interpretation? Would a reader clearly associate this story with the theme?</div>
+          <textarea class="comment-textarea" id="comment-TH" maxlength="400" placeholder="e.g. The theme is present but feels incidental in Ep. 1. By Ep. 3 it becomes more central to the conflict. The interpretation is fairly literal — a more creative angle would have elevated this significantly…" oninput="updateCommentCount('TH',400);autoSave()"></textarea>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn btn-outline btn-nav" onclick="goSection('OT')">← Others</button>
+          <button class="btn btn-gold btn-nav" onclick="nextSection('TH','F')">Review &amp; Submit →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION F — REVIEW & SUBMIT
+  ════════════════════════════════════ -->
+  <div id="sec-F" class="section-panel">
+    <div class="section-banner banner-f">
+      <div class="section-banner-label">Final Section</div>
+      <div class="section-banner-title">Review &amp; Submit</div>
+      <div class="section-banner-sub">Confirm your scores and certify your assessment before submitting</div>
+    </div>
+    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
+      <div class="card-body">
+        <div class="info-box info-jade"><span class="info-icon">✅</span><span>Review your totals below. Once submitted, scores are sent to the judging record and <strong>this form clears for the next story</strong>. You cannot edit a submitted entry from this portal.</span></div>
+
+        <!-- Story header -->
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:20px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:6px;">Story Being Scored</div>
+          <div style="font-family:var(--serif);font-size:20px;font-weight:700;" id="review-title">—</div>
+          <div style="font-size:13px;color:#888;margin-top:3px;" id="review-meta">—</div>
+          <div style="font-size:12px;color:var(--teal);margin-top:4px;display:none;" id="review-theme-line">🎯 Theme: <strong id="review-theme-val">—</strong></div>
+        </div>
+
+        <!-- Score summary -->
+        <div class="submit-summary">
+          <div class="summary-header">
+            <div class="summary-title">Score Summary</div>
+            <div class="summary-sub" id="summary-sub-line">All evaluation categories · Total out of 450 points</div>
+          </div>
+          <div class="summary-grid" id="summary-grid">
+            <div class="summary-cat">
+              <div class="summary-cat-name">✦ First Impression</div>
+              <div><span class="summary-cat-score" id="rev-FI">0</span><span class="summary-cat-max"> / 50</span></div>
+            </div>
+            <div class="summary-cat">
+              <div class="summary-cat-name">🎬 Directing</div>
+              <div><span class="summary-cat-score" id="rev-B">0</span><span class="summary-cat-max"> / 100</span></div>
+            </div>
+            <div class="summary-cat">
+              <div class="summary-cat-name">📖 Plot</div>
+              <div><span class="summary-cat-score" id="rev-C">0</span><span class="summary-cat-max"> / 100</span></div>
+            </div>
+            <div class="summary-cat">
+              <div class="summary-cat-name">🎮 Interactivity</div>
+              <div><span class="summary-cat-score" id="rev-D">0</span><span class="summary-cat-max"> / 100</span></div>
+            </div>
+            <div class="summary-cat">
+              <div class="summary-cat-name">✍️ Others</div>
+              <div><span class="summary-cat-score" id="rev-OT">0</span><span class="summary-cat-max"> / 100</span></div>
+            </div>
+            <div class="summary-cat theme-section-wrap" id="rev-TH-wrap" style="display:none;">
+              <div class="summary-cat-name">🎯 Theme Fit</div>
+              <div><span class="summary-cat-score" id="rev-TH">0</span><span class="summary-cat-max"> / 50</span></div>
+            </div>
+          </div>
+          <div class="summary-total-row">
+            <div>
+              <div class="summary-total-label">Grand Total Score</div>
+              <div style="font-size:11px;color:#888;margin-top:2px;" id="summary-total-label-detail">First Impression + Directing + Plot + Interactivity + Others</div>
+            </div>
+            <div style="text-align:right">
+              <div class="summary-total-score" id="rev-grand">0</div>
+              <div style="font-size:12px;color:#888;" id="rev-grand-max">/ 450 pts</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comments Recap -->
+        <div class="card" style="margin-bottom:16px;" id="comments-recap-card">
+          <div class="card-header" style="background:var(--cream);">
+            <div><div class="card-title">Reviewer Comments Summary</div><div class="card-sub">Your section comments — review before submitting. Click any section to edit.</div></div>
+            <span class="badge badge-gold" id="comments-filled-badge">0 of 6 filled</span>
+          </div>
+          <div class="card-body" style="padding:0;">
+            <div id="comments-recap-list"></div>
+          </div>
+        </div>
+
+        <!-- Judge confirmation -->
+        <div class="card" style="margin-bottom:16px;">
+          <div class="card-header"><div><div class="card-title">Reviewer Confirmation</div><div class="card-sub">Confirm your identity before submitting</div></div></div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="field">
+                <label>Your Name (confirm) <span style="color:var(--rose)">*</span></label>
+                <input type="text" id="f-judge-confirm" placeholder="Your full name" oninput="markFilled(this)">
+              </div>
+              <div class="field">
+                <label>Additional Notes (optional)</label>
+                <input type="text" id="f-notes" placeholder="Any final notes for this evaluation…" oninput="markFilled(this)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviewer Oath Affirmation -->
+        <div class="affirm-wrap">
+          <div class="affirm-inner" onclick="toggleAffirm()">
+            <div class="affirm-cb" id="affirm-cb"></div>
+            <div class="affirm-text">
+              In accordance with the Buddies Evaluator Manual Reviewer Oath, I affirm that this assessment was conducted <strong>fairly, independently, and objectively</strong> — without influence from other reviewers, public opinion, personal relationships, or genre bias. I commit to maintaining the confidentiality of these scores until officially released. <span class="affirm-required">*Required</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-jade btn-full btn-lg" onclick="submitAll()" id="submit-btn" style="font-size:16px;padding:16px;">
+          📤 Submit All Scores
+        </button>
+        <p style="text-align:center;font-size:12px;color:#aaa;margin-top:10px">
+          Scores are sent to the central review record. The form resets after successful submission.
+        </p>
+
+        <div class="nav-row" style="border-top:none;padding-top:8px;" id="f-back-nav">
+          <button class="btn btn-outline btn-nav" onclick="goSection('OT')" id="f-back-btn">← Others</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION H — MY SUBMISSIONS
+  ════════════════════════════════════ -->
+  <div id="sec-H" class="section-panel">
+    <div class="section-banner" style="background:linear-gradient(135deg,#1a1a1a,#333);border-radius:var(--r) var(--r) 0 0;">
+      <div class="section-banner-label">Reviewer Log</div>
+      <div class="section-banner-title">My Submissions</div>
+      <div class="section-banner-sub">All stories you have scored in this and previous sessions</div>
+    </div>
+    <div class="card" style="border-radius:0 0 var(--r) var(--r);border-top:none;">
+      <div class="card-header">
+        <div><div class="card-title">Submission Log</div><div class="card-sub">Stored locally and sent to the central record</div></div>
+        <button class="btn btn-outline btn-sm" onclick="clearHistory()">🗑 Clear Local Log</button>
+      </div>
+      <div class="card-body">
+        <div id="hist-empty" class="empty-state"><div class="empty-icon">📭</div><div class="empty-text">No submissions yet. Score a story to see your log here.</div></div>
+        <div id="hist-content" style="display:none">
+          <div style="overflow-x:auto;">
+            <table class="history-table">
+              <thead><tr><th>Story</th><th>Genre</th><th>Author</th><th>1st Imp.</th><th>Directing</th><th>Plot</th><th>Interact.</th><th>Others</th><th>Theme</th><th>Total</th><th>Reviewer</th><th>Submitted</th></tr></thead>
+              <tbody id="hist-tbody"></tbody>
+            </table>
+          </div>
+          <div class="divider"></div>
+          <div class="card-title" style="font-size:15px;margin-bottom:14px">Per-Story Breakdown</div>
+          <div id="hist-cards"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /layout -->
+<div id="toast"></div>
+
+<script>
+// ─────────────────────────────────────────────────────
+// CONFIG
+// ─────────────────────────────────────────────────────
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxQpRqwVtLXIsSN5nRy7eQhnfzJEyE96Ikv5f28InOyb6-7ZAoRkqhZa2p5mlqK7Ui0IA/exec';
+
+// ─────────────────────────────────────────────────────
+// THEME MODE STATE
+// ─────────────────────────────────────────────────────
+let themeMode = null; // null = not selected, false = standard, true = theme
+
+function setThemeMode(val) {
+  themeMode = val;
+  document.getElementById('toggle-no-theme').classList.toggle('selected', val === false);
+  document.getElementById('toggle-with-theme').classList.toggle('selected', val === true);
+  document.getElementById('theme-mode-warning').style.display = 'none';
+
+  // Show/hide theme title field in Story Details
+  document.querySelectorAll('.theme-section-wrap').forEach(el => {
+    el.style.display = val ? 'block' : 'none';
+  });
+  // Show/hide theme nav button
+  const thNav = document.getElementById('pnav-TH');
+  thNav.style.display = val ? 'flex' : 'none';
+  // Show/hide theme badge in header
+  document.getElementById('header-theme-badge').classList.toggle('visible', val);
+  // Update Others next button
+  updateOTNextBtn();
+  // Update submit section
+  updateReview();
+}
+
+function updateOTNextBtn() {
+  const btn = document.getElementById('ot-next-btn');
+  btn.textContent = themeMode ? 'Next: Theme Fit →' : 'Review & Submit →';
+  btn.onclick = () => nextFromOT();
+  // Update back button in submit
+  const fbBtn = document.getElementById('f-back-btn');
+  fbBtn.textContent = themeMode ? '← Theme Fit' : '← Others';
+  fbBtn.onclick = () => goSection(themeMode ? 'TH' : 'OT');
+}
+
+function nextFromOT() {
+  document.getElementById('pnav-OT').classList.add('done');
+  goSection(themeMode ? 'TH' : 'F');
+  if (!themeMode) updateReview();
+}
+
+function proceedFromIntro() {
+  if (themeMode === null) {
+    document.getElementById('theme-mode-warning').style.display = 'flex';
+    return;
+  }
+  document.getElementById('pnav-INTRO').classList.add('done');
+  goSection('A');
+}
+
+// ─────────────────────────────────────────────────────
+// CRITERIA DATA — from Buddies Evaluator Manual 2026
+// ─────────────────────────────────────────────────────
+const CRITERIA = {
+  // FIRST IMPRESSION
+  fi1:[
+    {id:'fi1-1',question:"Does the cover attract attention and reflect the story's tone?",label:'Visual Appeal',descs:[
+      '5 — Professional-level design, eye-catching, emotionally compelling, market-ready.',
+      '4 — Visually strong, well-balanced, genre-appropriate, good typography.',
+      '3 — Clean and readable, moderately attractive but not striking.',
+      '2 — Basic design but lacks balance, weak composition, or poor color choice.',
+      '1 — Very low quality, cluttered, unreadable text, poorly cropped assets.',
+      '0 — No cover, broken image, or extremely poor quality.'
+    ]},
+    {id:'fi1-2',question:'Is the cover relevant to the story theme and genre?',label:'Relevance',descs:[
+      '5 — Perfect thematic alignment; communicates genre, tone, and core premise instantly.',
+      '4 — Strong visual connection to main conflict, characters, or mood.',
+      '3 — Clearly connected to story theme or genre.',
+      '2 — Some thematic relevance but generic or unclear.',
+      '1 — Slightly connected but misleading or confusing.',
+      '0 — Completely unrelated to the story.'
+    ]}
+  ],
+  fi2:[
+    {id:'fi2-1',question:'Does it summarize the story well without spoilers?',label:'Clarity',descs:[
+      '5 — Exceptionally clear, strategically written, builds curiosity without spoilers.',
+      '4 — Well-structured and concise; communicates stakes effectively.',
+      '3 — Clear summary with understandable premise.',
+      '2 — Basic understanding possible but awkward or vague.',
+      '1 — Very unclear; major plot confusion or poor structure.',
+      '0 — Incoherent, confusing, or impossible to understand.'
+    ]},
+    {id:'fi2-2',question:'Is it enticing enough to make a reader want to start?',label:'Engagement',descs:[
+      '5 — Highly compelling; creates emotional or narrative urgency to start immediately.',
+      '4 — Strong hook with visible stakes or tension.',
+      '3 — Moderately engaging; gives a reason to continue.',
+      '2 — Slightly interesting but lacks urgency.',
+      '1 — Minimal intrigue; feels generic.',
+      '0 — No hook; completely flat.'
+    ]},
+    {id:'fi2-3',question:'Is the description free of spelling, punctuation, and grammatical errors?',label:'Grammar & Correctness',descs:[
+      '5 — Completely polished and error-free.',
+      '4 — Nearly flawless; very few minor issues.',
+      '3 — Minor errors; overall readable.',
+      '2 — Some errors that distract but don\'t fully hinder understanding.',
+      '1 — Frequent noticeable errors.',
+      '0 — Multiple major grammatical and spelling errors that affect comprehension.'
+    ]}
+  ],
+  fi3:[
+    {id:'fi3-1',question:'Does it capture interest immediately?',label:'Hook Effectiveness',descs:[
+      '5 — Immediate immersion; high tension or emotional investment from the start.',
+      '4 — Strong hook with visible stakes or emotional pull.',
+      '3 — Engaging introduction with clear direction.',
+      '2 — Understandable but not gripping.',
+      '1 — Weak setup; lacks direction.',
+      '0 — No clear beginning; confusing or slow.'
+    ]},
+    {id:'fi3-2',question:'Are overlays, backgrounds, and animations polished?',label:'Visual Presentation',descs:[
+      '5 — Cinematic quality; seamless directing that enhances storytelling.',
+      '4 — Polished overlays, smooth transitions, thoughtful animation use.',
+      '3 — Clean and functional directing.',
+      '2 — Basic directing with noticeable roughness.',
+      '1 — Minimal effort; poor transitions or awkward positioning.',
+      '0 — Broken scenes, missing backgrounds, technical errors.'
+    ]},
+    {id:'fi3-3',question:'Does it establish mood, setting, and characters?',label:'Tone & Atmosphere',descs:[
+      '5 — Fully immersive mood that strengthens emotional engagement.',
+      '4 — Strong atmosphere; setting and mood feel intentional.',
+      '3 — Clear tone appropriate to genre.',
+      '2 — Some mood present but not sustained.',
+      '1 — Tone feels confusing or misplaced.',
+      '0 — No clear mood or inconsistent tone.'
+    ]}
+  ],
+  fi4:[
+    {id:'fi4-1',question:'Does the story appear polished and ready to read?',label:'Professionalism',descs:[
+      '5 — Highly polished; reflects strong attention to detail.',
+      '4 — Well-prepared and thoughtfully executed.',
+      '3 — Solid and readable presentation.',
+      '2 — Basic effort but lacks refinement.',
+      '1 — Major presentation flaws.',
+      '0 — Unfinished or clearly unpolished.'
+    ]},
+    {id:'fi4-2',question:'Would a reader be motivated to continue?',label:'Reader Engagement',descs:[
+      '5 — Immediate commitment; reader feels compelled to continue.',
+      '4 — Strong desire to see what happens next.',
+      '3 — Moderate interest; reader may continue.',
+      '2 — Mild interest but not compelling.',
+      '1 — Very little curiosity generated.',
+      '0 — No motivation to continue.'
+    ]}
+  ],
+
+  // DIRECTING
+  b1:[
+    {id:'b1-1',question:'Are camera movements smooth and purposeful?',label:'Dynamic Zooms & Pans',descs:[
+      '5 — Cinematic-level execution; zooms and pans feel intentional, immersive, and dynamic.',
+      '4 — Well-timed, smooth, and enhances emotional focus.',
+      '3 — Functional and mostly smooth camera movement.',
+      '2 — Basic zooms but not purposeful or smooth.',
+      '1 — Random or awkward zooms that distract.',
+      '0 — No camera movement or broken/jerky zooms.'
+    ]},
+    {id:'b1-2',question:'Are characters framed well within the scene? (e.g. center focus, background use)',label:'Scene Framing',descs:[
+      '5 — Professionally composed scenes with strong visual balance and intentional focus.',
+      '4 — Thoughtful composition using background and spacing effectively.',
+      '3 — Properly centered and readable scenes.',
+      '2 — Basic framing but lacks visual balance.',
+      '1 — Frequent awkward centering or excessive empty space.',
+      '0 — Poor framing; characters cut off or misplaced.'
+    ]},
+    {id:'b1-3',question:'Is there use of varied angles or cinematic shots that enhance storytelling?',label:'Creative Camera Angles',descs:[
+      '5 — Cinematic, varied angles used strategically to heighten emotion or tension.',
+      '4 — Creative angles that support storytelling.',
+      '3 — Some variation to enhance dialogue or action.',
+      '2 — Limited attempt at variation.',
+      '1 — Rare angle changes; mostly static.',
+      '0 — No variation in camera angles.'
+    ]},
+    {id:'b1-4',question:'Do transitions (cuts, fades, pans) feel seamless and natural?',label:'Transitions Between Scenes',descs:[
+      '5 — Seamless transitions that elevate pacing and immersion.',
+      '4 — Well-paced fades, cuts, or pans that feel natural.',
+      '3 — Smooth and functional transitions.',
+      '2 — Basic transitions but occasionally awkward.',
+      '1 — Rough cuts that feel unpolished.',
+      '0 — Abrupt or broken transitions.'
+    ]}
+  ],
+  b2:[
+    {id:'b2-1',question:"Are animations fitting for the character's dialogue and emotions?",label:'Accurate Animation Usage',descs:[
+      '5 — Highly expressive and intentional animation choices that strengthen characterization.',
+      '4 — Well-matched animations enhancing emotion.',
+      '3 — Mostly fitting animations with minor issues.',
+      '2 — Some mismatches or awkward timing.',
+      '1 — Frequent inappropriate or repetitive animations.',
+      '0 — Animations mismatch dialogue/emotion.'
+    ]},
+    {id:'b2-2',question:'Do characters move naturally from spot to spot?',label:'Smooth Spot Placement & Shifting',descs:[
+      '5 — Exceptionally fluid movement; feels lifelike and polished.',
+      '4 — Natural shifting with good timing.',
+      '3 — Smooth and believable movement.',
+      '2 — Basic placement but noticeable stiffness.',
+      '1 — Frequent awkward movements.',
+      '0 — Characters teleport or overlap incorrectly.'
+    ]},
+    {id:'b2-3',question:'Are crowd or multi-character scenes handled with coordination?',label:'Group Scene Fluidity',descs:[
+      '5 — Complex scenes handled smoothly with dynamic blocking and movement.',
+      '4 — Well-coordinated interactions among multiple characters.',
+      '3 — Organized and readable group scenes.',
+      '2 — Basic handling of multiple characters.',
+      '1 — Poor coordination; characters overlap awkwardly.',
+      '0 — Chaotic or broken group scenes.'
+    ]},
+    {id:'b2-4',question:'Are characters layered correctly (e.g. walking in front or behind others)?',label:'Layering & Depth Management',descs:[
+      '5 — Advanced depth management; layering enhances realism and scene dimension.',
+      '4 — Strong use of depth (foreground/background balance).',
+      '3 — Mostly correct layering.',
+      '2 — Some noticeable depth issues.',
+      '1 — Frequent layering errors.',
+      '0 — Incorrect layering; immersion-breaking mistakes.'
+    ]}
+  ],
+  b3:[
+    {id:'b3-1',question:'Are overlays sized and positioned correctly?',label:'Overlay Placement & Scaling',descs:[
+      '5 — Seamless and professional overlay integration.',
+      '4 — Clean integration into scenes.',
+      '3 — Correct scaling and placement.',
+      '2 — Functional but occasionally distracting.',
+      '1 — Frequent sizing or positioning errors.',
+      '0 — Poorly scaled or misplaced overlays.'
+    ]},
+    {id:'b3-2',question:'Are overlays used to enhance the setting or action creatively?',label:'Creative Use of Overlays',descs:[
+      '5 — Highly innovative overlay usage that strengthens immersion.',
+      '4 — Creative overlays that enrich atmosphere.',
+      '3 — Functional enhancement of scenes.',
+      '2 — Basic overlays with limited creativity.',
+      '1 — Minimal or ineffective use.',
+      '0 — No overlays used when needed.'
+    ]},
+    {id:'b3-3',question:'Are tappable or animated overlays used functionally and well?',label:'Tappable or Animated Overlays',descs:[
+      '5 — Seamless integration that enhances both gameplay and storytelling.',
+      '4 — Engaging and purposeful interactive overlays.',
+      '3 — Smooth and usable tappable features.',
+      '2 — Basic functionality.',
+      '1 — Rare or poorly implemented interaction.',
+      '0 — Broken or non-functional tappables.'
+    ]},
+    {id:'b3-4',question:'Is there use of filters, blurs, lighting changes, or unique transitions?',label:'Special Visual Effects',descs:[
+      '5 — Advanced visual effects that elevate emotional and cinematic impact.',
+      '4 — Well-timed visual enhancements.',
+      '3 — Clean and appropriate use of filters or lighting.',
+      '2 — Minimal/basic effect usage.',
+      '1 — Overuse or distracting effects.',
+      '0 — Visual glitches or inappropriate effects.'
+    ]}
+  ],
+  b4:[
+    {id:'b4-1',question:"Does the directing match and elevate the story's tone or genre?",label:'Thematic Visuals',descs:[
+      '5 — Visuals actively elevate genre and emotional depth.',
+      '4 — Strong thematic reinforcement through visuals.',
+      '3 — Clear visual alignment with tone.',
+      '2 — Basic thematic match.',
+      '1 — Weak alignment with story mood.',
+      '0 — Visuals contradict tone or genre.'
+    ]},
+    {id:'b4-2',question:'Are visuals used to convey meaning or emotion?',label:'Symbolism or Metaphorical Shots',descs:[
+      '5 — Powerful symbolic imagery enhancing narrative layers.',
+      '4 — Thoughtful use of visual metaphors.',
+      '3 — Some intentional symbolic framing.',
+      '2 — Minimal depth in shot meaning.',
+      '1 — Attempted symbolism but unclear.',
+      '0 — No symbolic or meaningful visuals.'
+    ]},
+    {id:'b4-3',question:'Does the directing feel fresh and original compared to standard styles?',label:'Directorial Creativity',descs:[
+      '5 — Unique, memorable directing voice.',
+      '4 — Distinct style and innovation.',
+      '3 — Noticeable creative effort.',
+      '2 — Slight originality.',
+      '1 — Very standard style.',
+      '0 — Completely generic directing.'
+    ]},
+    {id:'b4-4',question:'Is the visual tone maintained across episodes?',label:'Consistency in Style',descs:[
+      '5 — Highly consistent, refined, and recognizable style.',
+      '4 — Strong and cohesive visual identity.',
+      '3 — Generally consistent visual tone.',
+      '2 — Some unevenness across episodes.',
+      '1 — Frequent inconsistencies.',
+      '0 — Inconsistent or chaotic style shifts.'
+    ]}
+  ],
+  b5:[
+    {id:'b5-1',question:'Do sounds and music enhance emotion, tension, or drama?',label:'Sound Effects and Music Use',descs:[
+      '5 — Expert-level sound design enhancing immersion.',
+      '4 — Strong emotional reinforcement through sound.',
+      '3 — Suitable sound enhancing scenes.',
+      '2 — Basic background music only.',
+      '1 — Distracting or poorly timed audio.',
+      '0 — No sound or inappropriate sound use.'
+    ]},
+    {id:'b5-2',question:'Are there smooth transitions between sound tracks or ambient sounds?',label:'Sound Transitions',descs:[
+      '5 — Seamless audio layering that strengthens pacing.',
+      '4 — Well-timed and polished sound shifts.',
+      '3 — Smooth transitions between tracks.',
+      '2 — Basic fade in/out usage.',
+      '1 — Noticeable awkward transitions.',
+      '0 — Abrupt or broken audio cuts.'
+    ]},
+    {id:'b5-3',question:'Are bubbles placed away from faces and pointing correctly?',label:'Speech Bubble Placement & Tail Direction',descs:[
+      '5 — Professionally arranged UI elements enhancing readability.',
+      '4 — Clean and visually balanced bubble positioning.',
+      '3 — Proper and readable placement.',
+      '2 — Occasional awkward placements.',
+      '1 — Frequent placement errors.',
+      '0 — Bubbles cover faces or tails misdirected.'
+    ]},
+    {id:'b5-4',question:'Are there no noticeable errors like layering mistakes, freezing, or glitches?',label:'Attention to Detail (No Bugs/Glitches)',descs:[
+      '5 — Flawless technical execution; no visible errors.',
+      '4 — Very polished with rare minor flaws.',
+      '3 — Minor issues but overall smooth.',
+      '2 — Some noticeable errors.',
+      '1 — Frequent visible glitches.',
+      '0 — Major technical errors throughout.'
+    ]}
+  ],
+
+  // PLOT
+  c1:[
+    {id:'c1-1',question:"Is the story's central idea fresh or a creative twist?",label:'Unique Premise or Setting',descs:[
+      '5 — Highly original premise or uniquely reimagined concept.',
+      '4 — Distinctive angle or creative execution.',
+      '3 — Some fresh elements within a common concept.',
+      '2 — Familiar premise with minimal creative twist.',
+      '1 — Extremely predictable; heavily trope-dependent.',
+      '0 — Completely derivative with no originality.'
+    ]},
+    {id:'c1-2',question:"Do characters' choices and motivations shape the story in an interesting way?",label:'Character-Driven Plot',descs:[
+      '5 — Plot is deeply rooted in character psychology and choices.',
+      '4 — Strong character motivations shape story direction.',
+      '3 — Characters influence major developments.',
+      '2 — Occasional character-driven decisions.',
+      '1 — Minimal character influence on events.',
+      '0 — Plot happens to characters; they have no agency.'
+    ]},
+    {id:'c1-3',question:'Is the setting developed with strong background detail?',label:'World-Building or Lore',descs:[
+      '5 — Rich, immersive world with layered background or lore.',
+      '4 — Well-developed setting with meaningful detail.',
+      '3 — Clear and functional world-building.',
+      '2 — Basic setting with limited depth.',
+      '1 — Vague or underdeveloped world.',
+      '0 — No clear setting or background.'
+    ]},
+    {id:'c1-4',question:'Does the story explore meaningful themes or ideas?',label:'Conceptual Depth',descs:[
+      '5 — Deep exploration of meaningful themes that add complexity.',
+      '4 — Thought-provoking ideas woven into the story.',
+      '3 — Clear theme with moderate depth.',
+      '2 — Basic themes mentioned but not explored.',
+      '1 — Surface-level themes only.',
+      '0 — No thematic exploration.'
+    ]}
+  ],
+  c2:[
+    {id:'c2-1',question:'Do subplots support and enhance the main narrative?',label:'Subplot Integration',descs:[
+      '5 — Seamlessly interwoven subplots enriching the narrative.',
+      '4 — Subplots enhance tension and character arcs.',
+      '3 — Subplots support the main story.',
+      '2 — Weakly connected subplots.',
+      '1 — Subplots distract from main narrative.',
+      '0 — No subplots or irrelevant ones.'
+    ]},
+    {id:'c2-2',question:'Are conflicts introduced, escalated, and resolved logically?',label:'Conflict Development',descs:[
+      '5 — Masterful buildup and satisfying resolution.',
+      '4 — Strong escalation with meaningful turning points.',
+      '3 — Logical development of conflict.',
+      '2 — Basic escalation but inconsistent resolution.',
+      '1 — Conflict introduced but poorly developed.',
+      '0 — No clear conflict.'
+    ]},
+    {id:'c2-3',question:'Are transitions smooth between scenes and episodes?',label:'Scene Transitions & Cohesion',descs:[
+      '5 — Seamless narrative flow throughout.',
+      '4 — Strong cohesion between episodes and scenes.',
+      '3 — Mostly smooth transitions.',
+      '2 — Some uneven flow between scenes.',
+      '1 — Frequent abrupt transitions.',
+      '0 — Disjointed scenes; confusing shifts.'
+    ]},
+    {id:'c2-4',question:'Does the plot build effectively toward key moments?',label:'Progression Toward Climax',descs:[
+      '5 — Expertly paced buildup with powerful payoff.',
+      '4 — Effective tension growth.',
+      '3 — Noticeable build toward major moments.',
+      '2 — Slow or uneven buildup.',
+      '1 — Random pacing; no clear direction.',
+      '0 — No clear buildup.'
+    ]}
+  ],
+  c3:[
+    {id:'c3-1',question:'Is there a driving issue or goal in the story?',label:'Clear Central Goal',descs:[
+      '5 — Compelling, high-impact objective driving the narrative.',
+      '4 — Strong and motivating central goal.',
+      '3 — Clear central objective.',
+      '2 — Basic goal but not compelling.',
+      '1 — Vague or inconsistent goal.',
+      '0 — No identifiable objective.'
+    ]},
+    {id:'c3-2',question:'Are consequences strong enough to keep the reader engaged?',label:'High or Emotional Stakes',descs:[
+      '5 — Intense, emotionally gripping stakes.',
+      '4 — Strong emotional or situational stakes.',
+      '3 — Clear consequences for failure.',
+      '2 — Moderate stakes but limited urgency.',
+      '1 — Very low stakes.',
+      '0 — No meaningful consequences.'
+    ]},
+    {id:'c3-3',question:'Are twists surprising but believable?',label:'Well-Executed Plot Twists',descs:[
+      '5 — Memorable, shocking, and logically earned twist.',
+      '4 — Cleverly foreshadowed and impactful twist.',
+      '3 — Surprising yet understandable twist.',
+      '2 — Mild surprise but poorly set up.',
+      '1 — Predictable or forced twist.',
+      '0 — No twists or illogical twists.'
+    ]},
+    {id:'c3-4',question:'Are plot events logical and outcomes justified?',label:'Cause & Effect Consistency',descs:[
+      '5 — Tight narrative logic with clear consequences.',
+      '4 — Strong cause-and-effect chain.',
+      '3 — Logical progression overall.',
+      '2 — Some inconsistencies.',
+      '1 — Major logical gaps.',
+      '0 — Events feel random.'
+    ]}
+  ],
+  c4:[
+    {id:'c4-1',question:"Do events and outcomes make sense within the story's world?",label:'Internal Plot Logic',descs:[
+      '5 — Exceptionally coherent and well-structured internal logic.',
+      '4 — Strong adherence to story logic.',
+      '3 — Mostly consistent internal rules.',
+      '2 — Some questionable logic.',
+      '1 — Frequent inconsistencies.',
+      '0 — Events contradict story rules.'
+    ]},
+    {id:'c4-2',question:'Do actions match personalities and situations?',label:'Realistic Character Decisions',descs:[
+      '5 — Deep psychological realism in decisions.',
+      '4 — Strong alignment between personality and actions.',
+      '3 — Mostly believable choices.',
+      '2 — Some questionable actions.',
+      '1 — Frequent unrealistic decisions.',
+      '0 — Characters act irrationally without explanation.'
+    ]},
+    {id:'c4-3',question:'Are clues and consequences effectively used?',label:'Clues & Consequences',descs:[
+      '5 — Masterful setup/payoff structure.',
+      '4 — Strong foreshadowing and consequences.',
+      '3 — Clear clues with reasonable payoff.',
+      '2 — Some setup but weak follow-through.',
+      '1 — Weak or disconnected clues.',
+      '0 — No setup or payoff.'
+    ]},
+    {id:'c4-4',question:'Is the story free from contradictions or unexplained gaps?',label:'Avoidance of Plot Holes',descs:[
+      '5 — Completely cohesive with no unexplained gaps.',
+      '4 — Very tight storytelling.',
+      '3 — Mostly consistent with small oversights.',
+      '2 — Minor but distracting gaps.',
+      '1 — Several noticeable plot holes.',
+      '0 — Major unresolved contradictions.'
+    ]}
+  ],
+  c5:[
+    {id:'c5-1',question:'Does the plot move the reader emotionally?',label:'Emotional Resonance',descs:[
+      '5 — Deep, lasting emotional impact.',
+      '4 — Strong emotional investment.',
+      '3 — Noticeable emotional pull.',
+      '2 — Some emotional moments.',
+      '1 — Minimal emotional engagement.',
+      '0 — Emotionally flat.'
+    ]},
+    {id:'c5-2',question:'Are there impactful or standout scenes?',label:'Memorable Moments/Scenes',descs:[
+      '5 — Iconic, unforgettable scenes.',
+      '4 — Multiple standout moments.',
+      '3 — Several engaging scenes.',
+      '2 — One mildly memorable scene.',
+      '1 — Generic moments.',
+      '0 — No standout scenes.'
+    ]},
+    {id:'c5-3',question:'Is dialogue purposeful, natural, and plot-enhancing?',label:'Effective Dialogue',descs:[
+      '5 — Sharp, impactful dialogue that advances plot and emotion.',
+      '4 — Dynamic, character-driven exchanges.',
+      '3 — Natural and purposeful dialogue.',
+      '2 — Functional but flat conversations.',
+      '1 — Repetitive or forced dialogue.',
+      '0 — Unnatural or confusing dialogue.'
+    ]},
+    {id:'c5-4',question:'Is the tone or writing style consistent and compelling?',label:'Narrative Voice & Style',descs:[
+      '5 — Distinctive, compelling, and polished storytelling style.',
+      '4 — Strong and engaging narrative voice.',
+      '3 — Clear and consistent tone.',
+      '2 — Basic writing style.',
+      '1 — Weak or unstable narrative voice.',
+      '0 — Inconsistent or confusing tone.'
+    ]}
+  ],
+
+  // INTERACTIVITY
+  d1:[
+    {id:'d1-1',question:'Do choices lead to visibly different outcomes?',label:'Meaningful Branching Choices',descs:[
+      '5 — Significant branching leading to distinct routes or outcomes.',
+      '4 — Noticeable branching affecting scenes or relationships.',
+      '3 — Some visible variation in scenes or responses.',
+      '2 — Minor dialogue changes only.',
+      '1 — Cosmetic choices only; no impact.',
+      '0 — No choices available.'
+    ]},
+    {id:'d1-2',question:'Can readers impact story events through decisions?',label:'Reader Influence on Plot',descs:[
+      '5 — Plot direction meaningfully shifts based on reader decisions.',
+      '4 — Reader choices shape key moments.',
+      '3 — Readers influence certain story developments.',
+      '2 — Small variations in minor scenes.',
+      '1 — Very limited influence.',
+      '0 — Reader decisions do not affect events.'
+    ]},
+    {id:'d1-3',question:'Are there multiple routes or endings that encourage replaying?',label:'Replayability',descs:[
+      '5 — High replay value with distinct routes or rewarding alternate experiences.',
+      '4 — Strong incentive to replay for alternative scenes/endings.',
+      '3 — Multiple interesting paths.',
+      '2 — Small differences across routes.',
+      '1 — Minimal variation; predictable outcomes.',
+      '0 — No reason to replay.'
+    ]},
+    {id:'d1-4',question:'Do readers feel the importance of their choices?',label:'Consequences with Weight',descs:[
+      '5 — High-impact consequences that shape long-term narrative.',
+      '4 — Strong emotional or situational consequences.',
+      '3 — Clear but moderate consequences.',
+      '2 — Mild short-term effects only.',
+      '1 — Consequences mentioned but not shown.',
+      '0 — No consequences.'
+    ]}
+  ],
+  d2:[
+    {id:'d2-1',question:'Are there options to change outfits and are they coded without bugs and referenced properly?',label:'Outfit Choices',descs:[
+      '5 — Seamless outfit system with meaningful narrative or gameplay impact.',
+      '4 — Well-coded outfits integrated into scenes.',
+      '3 — Functional outfit changes referenced occasionally.',
+      '2 — Basic outfit selection with minor issues.',
+      '1 — Bugged or improperly referenced outfits.',
+      '0 — No outfit choices when relevant.'
+    ]},
+    {id:'d2-2',question:'Are mini-games intuitive and bug-free?',label:'Functionality & Clarity of Games',descs:[
+      '5 — Highly intuitive, polished, and creatively integrated challenges.',
+      '4 — Smooth and engaging mini-games.',
+      '3 — Clear and functional games.',
+      '2 — Playable but slightly confusing.',
+      '1 — Frequent bugs or unclear instructions.',
+      '0 — Broken or confusing mini-games.'
+    ]},
+    {id:'d2-3',question:'Are points tracked and used meaningfully?',label:'Point Systems or Timed Choices',descs:[
+      '5 — Well-structured system influencing major story paths or endings.',
+      '4 — Points meaningfully affect scenes or outcomes.',
+      '3 — Points used in limited but clear ways.',
+      '2 — Points tracked but rarely used.',
+      '1 — Broken or inconsistent point tracking.',
+      '0 — No tracking system when intended.'
+    ]},
+    {id:'d2-4',question:'Are reader choices recorded and reused effectively?',label:'Gains/Flags for Story Impact',descs:[
+      '5 — Strategic and consistent reuse of gains shaping the narrative.',
+      '4 — Gains influence character behavior or events.',
+      '3 — Gains reused in some future scenes.',
+      '2 — Gains recorded but rarely referenced.',
+      '1 — Incorrect or inconsistent flag usage.',
+      '0 — No gains or flags used.'
+    ]}
+  ],
+  d3:[
+    {id:'d3-1',question:'Are choices spaced out well and not too rare?',label:'Regular Choice Prompts',descs:[
+      '5 — Strategically placed choices enhancing pacing and tension.',
+      '4 — Well-timed choices that maintain engagement.',
+      '3 — Regular and balanced choice spacing.',
+      '2 — Occasional but uneven placement.',
+      '1 — Long stretches without interaction.',
+      '0 — Extremely rare choices.'
+    ]},
+    {id:'d3-2',question:'Can readers shape MC behavior or relationships?',label:'Personality or Relationship Choices',descs:[
+      '5 — Deep character shaping through meaningful decisions.',
+      '4 — Clear personality or relationship development paths.',
+      '3 — Readers influence relationships moderately.',
+      '2 — Minor personality shifts.',
+      '1 — Very limited relationship influence.',
+      '0 — No personality shaping options.'
+    ]},
+    {id:'d3-3',question:'Are choices available both in dialogue and in critical moments?',label:'Balance Between Dialogue and Action',descs:[
+      '5 — Excellent balance across emotional, strategic, and action scenes.',
+      '4 — Good integration into key moments.',
+      '3 — Balanced dialogue and situational choices.',
+      '2 — Some variation but limited.',
+      '1 — Heavily skewed toward one type.',
+      '0 — Choices only in trivial dialogue.'
+    ]},
+    {id:'d3-4',question:"Are there random choices or do all choices have a purpose and aren't just for show?",label:'Filler Choices',descs:[
+      '5 — Every choice contributes to narrative, gameplay, or characterization.',
+      '4 — Nearly all choices intentional.',
+      '3 — Majority of choices serve a purpose.',
+      '2 — Some choices lack purpose.',
+      '1 — Many filler choices.',
+      '0 — Most choices meaningless or decorative.'
+    ]}
+  ],
+  d4:[
+    {id:'d4-1',question:'Can readers change the appearance or name of the main character?',label:'MC Customization',descs:[
+      '5 — Comprehensive customization enhancing immersion.',
+      '4 — Expanded options including name or minor traits.',
+      '3 — Standard appearance customization.',
+      '2 — Basic customization only.',
+      '1 — Very limited options.',
+      '0 — No customization when genre typically allows it.'
+    ]},
+    {id:'d4-2',question:'Are other important characters customizable?',label:'LI or Supporting Character Customization',descs:[
+      '5 — Extensive and well-integrated customization.',
+      '4 — Multiple characters customizable.',
+      '3 — Clear and functional customization options.',
+      '2 — Basic appearance customization.',
+      '1 — Extremely limited changes.',
+      '0 — No customization available.'
+    ]},
+    {id:'d4-3',question:'Are diverse features and preferences considered (e.g. LGBTQ+, race, body types)?',label:'Inclusivity Options',descs:[
+      '5 — Strong inclusivity integrated naturally and respectfully.',
+      '4 — Thoughtful diversity in customization and preferences.',
+      '3 — Inclusive options available.',
+      '2 — Basic inclusion with limited depth.',
+      '1 — Very limited representation.',
+      '0 — No diversity options.'
+    ]},
+    {id:'d4-4',question:'Are interactive elements tailored to genre (e.g. clue collection in mysteries)?',label:'Genre-Specific Options',descs:[
+      '5 — Creative and immersive mechanics specific to genre (e.g. clue systems in mysteries).',
+      '4 — Strong genre-tailored interactivity.',
+      '3 — Some genre-relevant mechanics.',
+      '2 — Minimal genre-based interaction.',
+      '1 — Weak genre integration.',
+      '0 — No interactive elements tied to genre.'
+    ]}
+  ],
+  d5:[
+    {id:'d5-1',question:'Are choices, gains, and branches coded without bugs or misdirects?',label:'Coding Precision',descs:[
+      '5 — Flawless coding with no visible technical problems.',
+      '4 — Clean execution with rare minor issues.',
+      '3 — Mostly smooth coding.',
+      '2 — Some minor technical issues.',
+      '1 — Frequent bugs or broken branches.',
+      '0 — Major coding errors.'
+    ]},
+    {id:'d5-2',question:'Are tappable, overlays, and visual menus used creatively?',label:'Visual Choice Presentation',descs:[
+      '5 — Highly polished and visually engaging interactive presentation.',
+      '4 — Creative use of overlays or tappables.',
+      '3 — Clean and readable choice display.',
+      '2 — Basic text-based choices only.',
+      '1 — Cluttered or confusing layout.',
+      '0 — Plain, unclear presentation.'
+    ]},
+    {id:'d5-3',question:'Are there unique interactive mechanics or features?',label:'Innovation in Interactivity',descs:[
+      '5 — Unique and memorable interactivity.',
+      '4 — Distinct interactive mechanics.',
+      '3 — Noticeable innovative elements.',
+      '2 — Slightly creative features.',
+      '1 — Very standard approach.',
+      '0 — No creativity.'
+    ]},
+    {id:'d5-4',question:'Is the interactivity smooth, clear, and enjoyable throughout?',label:'Consistency & User Experience',descs:[
+      '5 — Seamless, intuitive, and highly satisfying user experience.',
+      '4 — Clear and enjoyable flow.',
+      '3 — Smooth and understandable interactivity.',
+      '2 — Some inconsistency in experience.',
+      '1 — Frequent interruptions or unclear instructions.',
+      '0 — Confusing or frustrating navigation.'
+    ]}
+  ],
+
+  // OTHERS
+  ot1:[
+    {id:'ot1-1',question:'How correct is the grammar, spelling, and punctuation? Are errors rare or distracting?',label:'Correctness',descs:[
+      '5 — Virtually flawless grammar and punctuation.',
+      '4 — Very few small mistakes.',
+      '3 — Minor errors but overall readable.',
+      '2 — Several errors that distract from reading.',
+      '1 — Numerous noticeable grammar/spelling mistakes.',
+      '0 — Frequent major errors affecting comprehension.'
+    ]},
+    {id:'ot1-2',question:'Is the writing style consistent across episodes or chapters?',label:'Consistency of Writing',descs:[
+      '5 — Highly polished and uniform writing style throughout.',
+      '4 — Strong consistency across chapters.',
+      '3 — Generally consistent writing style.',
+      '2 — Some noticeable inconsistencies.',
+      '1 — Frequent shifts in writing style.',
+      '0 — Inconsistent tense, tone, or formatting throughout.'
+    ]},
+    {id:'ot1-3',question:'Are conversations natural, engaging, and relevant to the story?',label:'Dialogue Quality',descs:[
+      '5 — Dynamic, emotionally layered, and plot-enhancing dialogue.',
+      '4 — Engaging and character-specific dialogue.',
+      '3 — Natural and relevant exchanges.',
+      '2 — Basic dialogue that lacks personality.',
+      '1 — Stiff or repetitive conversations.',
+      '0 — Unnatural, confusing, or irrelevant dialogue.'
+    ]},
+    {id:'ot1-4',question:'Does the story reflect attention to detail and polish in writing?',label:'Professionalism',descs:[
+      '5 — Highly professional and carefully polished writing.',
+      '4 — Well-edited and refined presentation.',
+      '3 — Solid attention to writing detail.',
+      '2 — Some polish but noticeable roughness.',
+      '1 — Minimal editing effort.',
+      '0 — Unedited or unfinished presentation.'
+    ]}
+  ],
+  ot2:[
+    {id:'ot2-1',question:'Does the story follow the conventions of its genre?',label:'Consistency with Genre',descs:[
+      '5 — Masterful understanding and execution of genre.',
+      '4 — Strong adherence to genre conventions.',
+      '3 — Clearly fits within genre norms.',
+      '2 — Loose connection to genre expectations.',
+      '1 — Frequently breaks genre conventions unintentionally.',
+      '0 — Does not align with stated genre.'
+    ]},
+    {id:'ot2-2',question:"Is the atmosphere appropriate for the story's genre and scenes?",label:'Tone & Mood',descs:[
+      '5 — Immersive and emotionally aligned tone throughout.',
+      '4 — Strong and intentional mood setting.',
+      '3 — Appropriate tone for most scenes.',
+      '2 — Some tone inconsistency.',
+      '1 — Mood frequently clashes with scenes.',
+      '0 — Tone feels inconsistent or misplaced.'
+    ]},
+    {id:'ot2-3',question:'Does the story meet what readers would expect from the genre?',label:'Reader Expectation',descs:[
+      '5 — Fully satisfies and exceeds genre expectations.',
+      '4 — Strong delivery on promised themes.',
+      '3 — Satisfies general reader expectations.',
+      '2 — Partially meets expectations.',
+      '1 — Frequently fails to deliver on genre promises.',
+      '0 — Misleading premise or unmet expectations.'
+    ]},
+    {id:'ot2-4',question:'Does the story innovate or creatively interpret the genre?',label:'Genre-Specific Creativity',descs:[
+      '5 — Innovative yet coherent reinvention of genre conventions.',
+      '4 — Creative twist within genre framework.',
+      '3 — Some fresh interpretation of genre elements.',
+      '2 — Minimal innovation.',
+      '1 — Very predictable use of tropes.',
+      '0 — No creative deviation within genre.'
+    ]}
+  ],
+  ot3:[
+    {id:'ot3-1',question:'Are chapters neither too long nor too short for readability?',label:'Balanced Chapter Length',descs:[
+      '5 — Perfectly calibrated for engagement and flow.',
+      '4 — Well-balanced and reader-friendly.',
+      '3 — Generally appropriate chapter length.',
+      '2 — Slight imbalance in length.',
+      '1 — Poorly balanced length affecting readability.',
+      '0 — Extremely short or excessively long chapters.'
+    ]},
+    {id:'ot3-2',question:'Does the story progress naturally from one chapter to the next?',label:'Flow Between Chapters',descs:[
+      '5 — Seamless continuation with strong narrative cohesion.',
+      '4 — Smooth narrative flow across episodes.',
+      '3 — Logical chapter progression.',
+      '2 — Some uneven transitions.',
+      '1 — Weak connection between episodes.',
+      '0 — Disjointed or abrupt chapter shifts.'
+    ]},
+    {id:'ot3-3',question:'Are scenes balanced in action, dialogue, and description?',label:'Scene Pacing',descs:[
+      '5 — Expert pacing that sustains engagement consistently.',
+      '4 — Well-paced with clear rhythm.',
+      '3 — Balanced dialogue and action.',
+      '2 — Some uneven scene timing.',
+      '1 — Frequent pacing imbalance.',
+      '0 — Extremely rushed or painfully slow scenes.'
+    ]},
+    {id:'ot3-4',question:'Does pacing maintain reader interest, smooth reading experience and engagement?',label:'Suspense & Tension',descs:[
+      '5 — Continuous engagement with expertly maintained suspense.',
+      '4 — Strong tension maintaining reader interest.',
+      '3 — Noticeable suspense in key moments.',
+      '2 — Occasional tension but inconsistent.',
+      '1 — Very low suspense.',
+      '0 — No tension or engagement.'
+    ]}
+  ],
+  ot4:[
+    {id:'ot4-1',question:'Are different cultures, ethnicities, and backgrounds represented respectfully and meaningfully?',label:'Cultural & Ethnic Representation',descs:[
+      '5 — Thoughtful, nuanced, and authentic cultural portrayal.',
+      '4 — Meaningful and integrated representation.',
+      '3 — Respectful and visible representation.',
+      '2 — Minimal diversity present.',
+      '1 — Token representation without depth.',
+      '0 — Stereotypical or insensitive portrayal.'
+    ]},
+    {id:'ot4-2',question:'Are characters of various genders and sexual orientations included thoughtfully?',label:'Gender & LGBTQ+ Inclusivity',descs:[
+      '5 — Strong, natural, and respectful inclusivity throughout.',
+      '4 — Thoughtfully integrated inclusivity.',
+      '3 — Inclusive character options present.',
+      '2 — Basic representation without depth.',
+      '1 — Very limited inclusion.',
+      '0 — Exclusionary or insensitive content.'
+    ]},
+    {id:'ot4-3',question:'Are diverse body types, physical abilities, and appearances represented?',label:'Body Types & Abilities',descs:[
+      '5 — Authentic and respectful representation of varied bodies and abilities.',
+      '4 — Thoughtful portrayal of physical diversity.',
+      '3 — Clear inclusion of varied appearances.',
+      '2 — Minimal diversity representation.',
+      '1 — No visible diversity in physical traits.',
+      '0 — Harmful stereotypes or exclusion.'
+    ]},
+    {id:'ot4-4',question:"Are characters' different social, economic, and life experiences considered and portrayed authentically?",label:'Socioeconomic & Life Experiences',descs:[
+      '5 — Deep, authentic exploration of varied social and economic realities.',
+      '4 — Strong portrayal of diverse life circumstances.',
+      '3 — Realistic inclusion of varied experiences.',
+      '2 — Limited exploration of background differences.',
+      '1 — Surface-level mention only.',
+      '0 — Unrealistic or insensitive portrayals.'
+    ]}
+  ],
+  ot5:[
+    {id:'ot5-1',question:'Are the characters multi-dimensional with clear motivations, personality traits, and growth?',label:'Character Depth',descs:[
+      '5 — Deeply complex characters with meaningful growth arcs.',
+      '4 — Strong emotional layers and development.',
+      '3 — Multi-dimensional characters with clear motivations.',
+      '2 — Basic character traits without complexity.',
+      '1 — Very limited personality traits.',
+      '0 — Flat, one-dimensional characters.'
+    ]},
+    {id:'ot5-2',question:'Do characters behave and speak consistently according to their established traits throughout the story?',label:'Character Consistency',descs:[
+      '5 — Fully consistent and psychologically believable characters.',
+      '4 — Strong alignment between traits and actions.',
+      '3 — Generally consistent behavior.',
+      '2 — Occasional inconsistency.',
+      '1 — Frequent personality contradictions.',
+      '0 — Characters behave inconsistently without reason.'
+    ]},
+    {id:'ot5-3',question:'Are character relationships and interactions believable, dynamic, and impactful on the story?',label:'Relationships & Interactions',descs:[
+      '5 — Rich, evolving relationships central to the story\'s impact.',
+      '4 — Emotionally engaging and impactful relationships.',
+      '3 — Believable character dynamics.',
+      '2 — Basic relational development.',
+      '1 — Weak or underdeveloped interactions.',
+      '0 — Forced or unrealistic relationships.'
+    ]},
+    {id:'ot5-4',question:'Is the story world immersive, detailed, and consistent, supporting the characters and plot effectively?',label:'World-Building & Setting',descs:[
+      '5 — Highly immersive, consistent world that enhances plot and character arcs.',
+      '4 — Detailed and immersive world-building.',
+      '3 — Clear and functional setting.',
+      '2 — Basic environmental detail.',
+      '1 — Vague or underdeveloped world.',
+      '0 — Undefined or inconsistent setting.'
+    ]}
+  ],
+
+  // THEME FIT
+  th1:[
+    {id:'th1-1',question:'Does the story clearly reflect the contest theme within its premise or narrative?',label:'Presence of Theme',descs:[
+      '5 — Theme is the central pillar of the story and clearly drives the narrative.',
+      '4 — Theme is strongly connected to the main story direction.',
+      '3 — Theme is clearly present but not central to the story\'s core conflict.',
+      '2 — Theme appears occasionally but feels disconnected from the main narrative.',
+      '1 — Theme is barely present or forced into the story with no relevance.',
+      '0 — Theme is completely absent.'
+    ]},
+    {id:'th1-2',question:'Is the theme naturally incorporated into the plot rather than briefly mentioned or forced?',label:'Theme Integration',descs:[
+      '5 — Theme is deeply woven into the plot, character arcs, and overall narrative structure.',
+      '4 — Theme influences character motivations, conflicts, or story development.',
+      '3 — Theme is integrated into multiple story elements.',
+      '2 — Theme influences some parts of the story but remains inconsistent.',
+      '1 — Theme is mentioned but has little impact on story events.',
+      '0 — Theme feels artificially inserted or irrelevant to the plot.'
+    ]},
+    {id:'th1-3',question:'Does the theme remain present and relevant throughout the story rather than appearing only in isolated moments?',label:'Theme Consistency',descs:[
+      '5 — Theme is consistently reinforced across scenes, conflicts, and character development.',
+      '4 — Theme consistently influences the story progression.',
+      '3 — Theme remains present but not always emphasized.',
+      '2 — Theme appears sporadically with inconsistent importance.',
+      '1 — Theme appears briefly and then becomes irrelevant.',
+      '0 — Theme disappears entirely after introduction.'
+    ]}
+  ],
+  th2:[
+    {id:'th2-1',question:'Does the author present the theme in a unique, thoughtful, or creative way rather than relying on an obvious or generic approach?',label:'Creativity in Interpretation',descs:[
+      '5 — Highly creative or unique interpretation that elevates the theme.',
+      '4 — Strong and thoughtful interpretation of the theme.',
+      '3 — Clear interpretation with some creative approach.',
+      '2 — Basic interpretation with minimal creativity.',
+      '1 — Very literal interpretation with no originality.',
+      '0 — Theme is misunderstood or incorrectly used.'
+    ]},
+    {id:'th2-2',question:'Does the story explore the theme meaningfully through events, conflicts, or character experiences?',label:'Depth of Theme Exploration',descs:[
+      '5 — Theme is explored deeply through conflict, character arcs, and narrative outcomes.',
+      '4 — Theme is explored through multiple narrative elements.',
+      '3 — Theme has moderate exploration within the story.',
+      '2 — Theme is touched upon but lacks depth.',
+      '1 — Theme is only superficially mentioned.',
+      '0 — Theme has no meaningful exploration.'
+    ]}
+  ],
+  th3:[
+    {id:'th3-1',question:"Are the characters' decisions, goals, or conflicts influenced by the theme?",label:'Character Motivation Related to Theme',descs:[
+      '5 — Theme drives character arcs and development throughout the story.',
+      '4 — Theme strongly affects character motivations and actions.',
+      '3 — Theme influences some character decisions.',
+      '2 — Theme influences characters slightly but inconsistently.',
+      '1 — Characters briefly acknowledge the theme but it has no influence on actions.',
+      '0 — Characters have no relationship to the theme.'
+    ]},
+    {id:'th3-2',question:'Does the theme strengthen the emotional weight or narrative significance of the story?',label:'Emotional or Narrative Impact of Theme',descs:[
+      '5 — Theme creates powerful emotional resonance or narrative meaning.',
+      '4 — Theme enhances the emotional or narrative stakes.',
+      '3 — Theme adds some emotional or narrative significance.',
+      '2 — Theme contributes minor emotional weight.',
+      '1 — Theme feels irrelevant to the reader\'s experience.',
+      '0 — Theme creates no emotional or narrative impact.'
+    ]}
+  ],
+  th4:[
+    {id:'th4-1',question:'Does the story genuinely fit the purpose and intention of the themed contest?',label:'Contest Suitability',descs:[
+      '5 — Story perfectly represents the spirit and intention of the contest.',
+      '4 — Story fits well within the contest theme.',
+      '3 — Story reasonably fits within the theme.',
+      '2 — Some relevance exists but it feels misplaced.',
+      '1 — Story only barely relates to the contest theme.',
+      '0 — Story clearly does not belong in the themed contest.'
+    ]},
+    {id:'th4-2',question:'Would readers clearly recognize the theme while reading the story?',label:'Reader Expectation of Theme',descs:[
+      '5 — Readers would strongly associate the story with the contest theme.',
+      '4 — Readers experience the theme meaningfully throughout the story.',
+      '3 — Readers can clearly see the theme present.',
+      '2 — Readers may recognize the theme but it is weak.',
+      '1 — Readers would struggle to identify the theme.',
+      '0 — Readers expecting the theme would feel misled.'
+    ]},
+    {id:'th4-3',question:'How effectively does the story deliver the contest theme as a core part of its narrative experience?',label:'Overall Theme Effectiveness',descs:[
+      '5 — Theme execution is exceptional and defines the story.',
+      '4 — Theme execution is strong and noticeable.',
+      '3 — Theme execution is adequate.',
+      '2 — Theme exists but is poorly executed.',
+      '1 — Theme presence is extremely weak.',
+      '0 — Theme execution fails completely.'
+    ]}
+  ]
+};
+
+// ─────────────────────────────────────────────────────
+// SUB-TOTALS CONFIG
+// fi1=10, fi2=15, fi3=15, fi4=10 → FI total = 50
+// b1..b5 each 20 → B = 100
+// c1..c5 each 20 → C = 100
+// d1..d5 each 20 → D = 100
+// ot1..ot5 each 20 → OT = 100
+// th1=15, th2=10, th3=10, th4=15 → TH = 50 (but max is 100?)
+// Actually from the PDF: TH.1=15, TH.2=10, TH.3=10, TH.4=15 → total criteria = 50 pts
+// But the manual says theme fit total = 100 pts. This is because each sub has multiple criteria.
+// TH.1 has 3 criteria × 5 = 15 ✓, TH.2 has 2×5=10 ✓, TH.3 has 2×5=10 ✓, TH.4 has 3×5=15 ✓ = 50 total
+// Wait - the manual says TH.1 = 15pts (3 criteria), TH.4 = 15pts (3 criteria). Let's follow the manual exactly.
+// ─────────────────────────────────────────────────────
+
+const SUB_MAX = {
+  fi1: 10, fi2: 15, fi3: 15, fi4: 10,
+  b1: 20, b2: 20, b3: 20, b4: 20, b5: 20,
+  c1: 20, c2: 20, c3: 20, c4: 20, c5: 20,
+  d1: 20, d2: 20, d3: 20, d4: 20, d5: 20,
+  ot1: 20, ot2: 20, ot3: 20, ot4: 20, ot5: 20,
+  th1: 15, th2: 10, th3: 10, th4: 15
+};
+
+const SEC_SUBS = {
+  FI: ['fi1','fi2','fi3','fi4'],
+  B:  ['b1','b2','b3','b4','b5'],
+  C:  ['c1','c2','c3','c4','c5'],
+  D:  ['d1','d2','d3','d4','d5'],
+  OT: ['ot1','ot2','ot3','ot4','ot5'],
+  TH: ['th1','th2','th3','th4']
+};
+
+const SEC_MAX = { FI: 50, B: 100, C: 100, D: 100, OT: 100, TH: 50 };
+
+// ─────────────────────────────────────────────────────
+// BUILD CRITERIA ROWS
+// ─────────────────────────────────────────────────────
+function buildCriteriaRows(tbodyId, subKey) {
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody || !CRITERIA[subKey]) return;
+  const rows = [];
+  CRITERIA[subKey].forEach(c => {
+    const descId = 'desc-' + c.id;
+    let radios = '';
+    [5,4,3,2,1,0].forEach(v => {
+      const rid = `${c.id}-${v}`;
+      const sec = c.id.split('-')[0].replace(/\d/g,'').toUpperCase();
+      let calcSec = 'FI';
+      if (c.id.startsWith('b')) calcSec = 'B';
+      else if (c.id.startsWith('c')) calcSec = 'C';
+      else if (c.id.startsWith('d')) calcSec = 'D';
+      else if (c.id.startsWith('ot')) calcSec = 'OT';
+      else if (c.id.startsWith('th')) calcSec = 'TH';
+      radios += `<td class="radio-cell"><input class="score-radio" type="radio" name="${c.id}" value="${v}" id="${rid}" onchange="calcSection('${calcSec}');autoSave()"><label class="score-label" for="${rid}">${v}</label></td>`;
+    });
+    rows.push(`<tr><td><span class="crit-name" onclick="toggleDesc('${c.id}')">${c.label}</span></td>${radios}</tr>`);
+    const questionHtml = c.question ? `<div class="desc-question"><span class="desc-question-icon">❓</span><span>${c.question}</span></div>` : '';
+    rows.push(`<tr><td colspan="7"><div class="desc-panel" id="${descId}">${questionHtml}<div class="desc-scores">${c.descs.map((d,i) => `<strong>${[5,4,3,2,1,0][i]} —</strong> ${d.replace(/^\d+ — /,'')}<br>`).join('')}</div></div></td></tr>`);
+  });
+  tbody.innerHTML = rows.join('');
+}
+
+// ─────────────────────────────────────────────────────
+// CALC SECTIONS
+// ─────────────────────────────────────────────────────
+function getSubTotal(subKey) {
+  const crits = CRITERIA[subKey];
+  if (!crits) return 0;
+  let t = 0;
+  crits.forEach(c => {
+    const el = document.querySelector(`input[name="${c.id}"]:checked`);
+    if (el) t += parseInt(el.value);
+  });
+  return t;
+}
+
+function calcSection(sec) {
+  const subs = SEC_SUBS[sec];
+  if (!subs) return;
+  let total = 0;
+  subs.forEach(sub => {
+    const st = getSubTotal(sub);
+    const el = document.getElementById(sub + '-sub');
+    if (el) el.textContent = st;
+    total += st;
+  });
+  const t = document.getElementById(sec + '-total');
+  const a = document.getElementById(sec + '-auto-confirm');
+  if (t) t.textContent = total;
+  if (a) a.textContent = total;
+  updateReview();
+}
+
+function updateReview() {
+  const fi = getSecTotal('FI');
+  const b  = getSecTotal('B');
+  const c  = getSecTotal('C');
+  const d  = getSecTotal('D');
+  const ot = getSecTotal('OT');
+  const th = getSecTotal('TH');
+
+  setText('rev-FI', fi);
+  setText('rev-B', b);
+  setText('rev-C', c);
+  setText('rev-D', d);
+  setText('rev-OT', ot);
+  setText('rev-TH', th);
+
+  const grand = fi + b + c + d + ot + (themeMode ? th : 0);
+  const maxPts = themeMode ? 500 : 450;
+  setText('rev-grand', grand);
+  setText('rev-grand-max', `/ ${maxPts} pts`);
+  setText('summary-sub-line', themeMode
+    ? 'All evaluation categories including Theme Fit · Total out of 500 points'
+    : 'All evaluation categories · Total out of 450 points');
+  setText('summary-total-label-detail', themeMode
+    ? 'First Impression + Directing + Plot + Interactivity + Others + Theme Fit'
+    : 'First Impression + Directing + Plot + Interactivity + Others');
+
+  // Show/hide theme row in summary
+  const thRow = document.getElementById('rev-TH-wrap');
+  if (thRow) thRow.style.display = themeMode ? 'block' : 'none';
+
+  setText('review-title', getVal('a-title') || '—');
+  setText('review-meta', [getVal('a-genre'), getVal('a-author'), 'Reviewer: ' + getVal('a-judge')].filter(Boolean).join(' · ') || '—');
+
+  // Theme line
+  const themeLine = document.getElementById('review-theme-line');
+  const themeVal = document.getElementById('review-theme-val');
+  if (themeLine && themeVal) {
+    themeLine.style.display = themeMode && getVal('a-theme') ? 'block' : 'none';
+    themeVal.textContent = getVal('a-theme') || '—';
+  }
+  // Theme reminder box
+  const reminderBox = document.getElementById('theme-name-display');
+  if (reminderBox) reminderBox.textContent = getVal('a-theme') || '(not entered)';
+
+  // Comments recap
+  renderCommentsRecap();
+}
+
+function getSecTotal(sec) {
+  const el = document.getElementById(sec + '-total');
+  return el ? parseInt(el.textContent) || 0 : 0;
+}
+
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+// ─────────────────────────────────────────────────────
+// COMMENT COUNTER
+// ─────────────────────────────────────────────────────
+function updateCommentCount(secKey, maxLen) {
+  const idMap = { FI:'fi', B:'b', C:'c', D:'d', OT:'ot', TH:'th' };
+  const prefix = idMap[secKey] || secKey.toLowerCase();
+  const ta = document.getElementById('comment-' + secKey);
+  const counter = document.getElementById(prefix + '-comment-count');
+  if (!ta || !counter) return;
+  const len = ta.value.length;
+  counter.textContent = `${len} / ${maxLen}`;
+  counter.className = 'comment-counter' + (len >= maxLen ? ' at-limit' : len >= maxLen * 0.85 ? ' near-limit' : '');
+  ta.classList.toggle('has-content', len > 0);
+}
+
+function renderCommentsRecap() {
+  const sections = [
+    { key:'FI', label:'✦ First Impression', sec:'FI' },
+    { key:'B',  label:'🎬 Directing',        sec:'B'  },
+    { key:'C',  label:'📖 Plot',             sec:'C'  },
+    { key:'D',  label:'🎮 Interactivity',    sec:'D'  },
+    { key:'OT', label:'✍️ Others',           sec:'OT' },
+    { key:'TH', label:'🎯 Theme Fit',        sec:'TH' },
+  ];
+  const list = document.getElementById('comments-recap-list');
+  const badge = document.getElementById('comments-filled-badge');
+  if (!list) return;
+
+  let filled = 0;
+  const visibleSections = themeMode ? sections : sections.filter(s => s.key !== 'TH');
+  visibleSections.forEach(s => {
+    const val = getVal('comment-' + s.key);
+    if (val) filled++;
+  });
+
+  if (badge) {
+    badge.textContent = `${filled} of ${visibleSections.length} filled`;
+    badge.className = 'badge ' + (filled === visibleSections.length ? 'badge-jade' : 'badge-gold');
+  }
+
+  list.innerHTML = visibleSections.map((s, i) => {
+    const val = getVal('comment-' + s.key);
+    const isLast = i === visibleSections.length - 1;
+    return `<div style="padding:14px 20px;${!isLast ? 'border-bottom:1px solid var(--border);' : ''}display:flex;align-items:flex-start;gap:14px;cursor:pointer;" onclick="goSection('${s.sec}');setTimeout(()=>document.getElementById('comment-${s.key}')?.focus(),300)">
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${val ? '#7a5c10' : '#aaa'};margin-bottom:${val ? '5px' : '0'}">${s.label}</div>
+        ${val
+          ? `<div style="font-size:13px;color:#555;line-height:1.55;word-break:break-word;">"${val}"</div>`
+          : `<div style="font-size:12px;color:#ccc;font-style:italic;">No comment added — click to add one</div>`
+        }
+      </div>
+      <div style="flex-shrink:0;margin-top:2px;">
+        ${val
+          ? `<span style="font-size:10px;font-weight:700;background:var(--gold-dim);border:1px solid rgba(201,168,76,0.3);color:#7a5c10;border-radius:20px;padding:2px 8px;text-transform:uppercase;letter-spacing:0.05em;">✓ Added</span>`
+          : `<span style="font-size:10px;color:#ccc;border:1px solid var(--border);border-radius:20px;padding:2px 8px;text-transform:uppercase;letter-spacing:0.05em;">Edit</span>`
+        }
+      </div>
+    </div>`;
+  }).join('');
+}
+let affirmed = false;
+function toggleAffirm() {
+  affirmed = !affirmed;
+  document.getElementById('affirm-cb').classList.toggle('checked', affirmed);
+}
+
+// ─────────────────────────────────────────────────────
+// DESCRIPTOR TOGGLE
+// ─────────────────────────────────────────────────────
+function toggleDesc(id) {
+  const el = document.getElementById('desc-' + id);
+  if (!el) return;
+  el.classList.toggle('open');
+}
+
+// ─────────────────────────────────────────────────────
+// FORM HELPERS
+// ─────────────────────────────────────────────────────
+function markFilled(el) {
+  el.classList.toggle('has-val', el.value.trim() !== '');
+}
+function getVal(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+// ─────────────────────────────────────────────────────
+// NAVIGATION
+// ─────────────────────────────────────────────────────
+const ALL_SECTIONS = ['INTRO','A','FI','B','C','D','OT','TH','F','H'];
+function goSection(key) {
+  ALL_SECTIONS.forEach(s => {
+    const p = document.getElementById('sec-' + s);
+    const b = document.getElementById('pnav-' + s);
+    if (p) p.classList.toggle('active', s === key);
+    if (b) b.classList.toggle('active', s === key);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (key === 'F') updateReview();
+  if (key === 'H') renderHistory();
+}
+
+function nextSection(from, to) {
+  if (from === 'A') {
+    if (!getVal('a-title') || !getVal('a-genre') || !getVal('a-author') || !getVal('a-judge')) {
+      toast('⚠ Please fill in Story Title, Genre, Author Name, and your Reviewer Name');
+      return;
+    }
+    if (themeMode && !getVal('a-theme')) {
+      toast('⚠ Please enter the Contest Theme Title for this theme-based contest');
+      return;
+    }
+  }
+  const btn = document.getElementById('pnav-' + from);
+  if (btn) btn.classList.add('done');
+  goSection(to);
+  if (to === 'F') updateReview();
+}
+
+// ─────────────────────────────────────────────────────
+// AUTOSAVE
+// ─────────────────────────────────────────────────────
+function autoSave() {
+  try {
+    const draft = {
+      title: getVal('a-title'), genre: getVal('a-genre'),
+      author: getVal('a-author'), handle: getVal('a-handle'),
+      judge: getVal('a-judge'), date: getVal('a-date'),
+      theme: getVal('a-theme'), notes: getVal('a-notes'),
+      themeMode: themeMode,
+      comments: {
+        FI: getVal('comment-FI'), B: getVal('comment-B'),
+        C: getVal('comment-C'),   D: getVal('comment-D'),
+        OT: getVal('comment-OT'), TH: getVal('comment-TH')
+      }
+    };
+    localStorage.setItem('buddies_monthly_draft', JSON.stringify(draft));
+  } catch(e) {}
+}
+
+// ─────────────────────────────────────────────────────
+// COLLECT ALL SCORES
+// ─────────────────────────────────────────────────────
+function collectAllScores() {
+  const out = {};
+  Object.values(CRITERIA).flat().forEach(c => {
+    const el = document.querySelector(`input[name="${c.id}"]:checked`);
+    out[c.id] = el ? parseInt(el.value) : null;
+  });
+  return out;
+}
+
+function collectComments() {
+  return {
+    firstImpression: getVal('comment-FI') || null,
+    directing:       getVal('comment-B')  || null,
+    plot:            getVal('comment-C')  || null,
+    interactivity:   getVal('comment-D')  || null,
+    others:          getVal('comment-OT') || null,
+    themeFit:        themeMode ? (getVal('comment-TH') || null) : null
+  };
+}
+
+// ─────────────────────────────────────────────────────
+// SUBMIT
+// ─────────────────────────────────────────────────────
+async function submitAll() {
+  const judge = getVal('f-judge-confirm') || getVal('a-judge');
+  if (!getVal('a-title') || !getVal('a-author') || !judge) {
+    toast('⚠ Please complete Story Details and confirm your Reviewer Name');
+    return;
+  }
+  if (themeMode && !getVal('a-theme')) {
+    toast('⚠ Contest theme title is required for theme-based evaluations');
+    return;
+  }
+  if (!affirmed) {
+    toast('⚠ Please check the affirmation box before submitting');
+    return;
+  }
+
+  const now = new Date().toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  const fi = getSecTotal('FI');
+  const b  = getSecTotal('B');
+  const c  = getSecTotal('C');
+  const d  = getSecTotal('D');
+  const ot = getSecTotal('OT');
+  const th = themeMode ? getSecTotal('TH') : null;
+  const grand = fi + b + c + d + ot + (themeMode ? th : 0);
+  const maxPts = themeMode ? 500 : 450;
+
+  const payload = {
+    type: 'monthly_contest_review',
+    timestamp: now,
+    reviewerName: judge,
+    themeMode: themeMode,
+    contestTheme: themeMode ? getVal('a-theme') : null,
+    story: {
+      title: getVal('a-title'),
+      genre: getVal('a-genre'),
+      author: getVal('a-author'),
+      handle: getVal('a-handle')
+    },
+    sectionTotals: { firstImpression: fi, directing: b, plot: c, interactivity: d, others: ot, themeFit: th },
+    grandTotal: grand,
+    maxPoints: maxPts,
+    percentage: ((grand / maxPts) * 100).toFixed(1),
+    criteriaScores: collectAllScores(),
+    reviewerComments: collectComments(),
+    notes: getVal('f-notes') || getVal('a-notes'),
+    date: getVal('a-date')
+  };
+
+  addToHistory({ ...payload, display: { FI: fi, B: b, C: c, D: d, OT: ot, TH: th, grand } });
+
+  const btn = document.getElementById('submit-btn');
+  btn.innerHTML = '<span class="spinner"></span> Submitting…';
+  btn.disabled = true;
+  await sendToSheet(payload);
+  btn.innerHTML = '📤 Submit All Scores';
+  btn.disabled = false;
+
+  toast(`✅ Scores submitted for "${payload.story.title}" — ${grand}/${maxPts}`);
+  resetForm();
+}
+
+function resetForm() {
+  ['a-title','a-genre','a-author','a-handle','a-judge','a-date','a-theme','a-notes','f-judge-confirm','f-notes'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.value = ''; el.classList.remove('has-val'); }
+  });
+  // Clear comment textareas and reset counters
+  ['FI','B','C','D','OT','TH'].forEach(key => {
+    const ta = document.getElementById('comment-' + key);
+    if (ta) { ta.value = ''; ta.classList.remove('has-content'); }
+    updateCommentCount(key, 400);
+  });
+  document.querySelectorAll('.score-radio').forEach(r => { r.checked = false; });
+  ALL_SECTIONS.filter(s => !['INTRO','H'].includes(s)).forEach(s => {
+    const t = document.getElementById(s + '-total'); if (t) t.textContent = '0';
+    const a = document.getElementById(s + '-auto-confirm'); if (a) a.textContent = '0';
+    const btn = document.getElementById('pnav-' + s); if (btn) btn.classList.remove('done');
+  });
+  Object.keys(SUB_MAX).forEach(sub => {
+    const el = document.getElementById(sub + '-sub'); if (el) el.textContent = '0';
+  });
+  affirmed = false;
+  const cb = document.getElementById('affirm-cb');
+  if (cb) cb.classList.remove('checked');
+  try { localStorage.removeItem('buddies_monthly_draft'); } catch(e) {}
+  goSection('A');
+}
+
+// ─────────────────────────────────────────────────────
+// GOOGLE SHEETS
+// ─────────────────────────────────────────────────────
+async function sendToSheet(payload) {
+  if (!SHEET_URL || SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEBHOOK_URL') {
+    console.log('[Buddies Monthly] Sheet URL not configured — stored locally only.', payload);
+    return;
+  }
+  try {
+    const form = new FormData();
+    form.append('data', JSON.stringify(payload));
+    await fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: form });
+  } catch(e) {
+    console.warn('[Buddies Monthly] Sheet send failed:', e);
+  }
+}
+
+// ─────────────────────────────────────────────────────
+// HISTORY
+// ─────────────────────────────────────────────────────
+function loadHistory() { try { return JSON.parse(localStorage.getItem('buddies_monthly_submissions')||'[]'); } catch(e) { return []; } }
+function saveHistory(d) { try { localStorage.setItem('buddies_monthly_submissions', JSON.stringify(d)); } catch(e) {} }
+function addToHistory(e) { const h = loadHistory(); h.unshift(e); saveHistory(h); }
+
+function renderHistory() {
+  const hist = loadHistory();
+  const empty = document.getElementById('hist-empty');
+  const content = document.getElementById('hist-content');
+  const tbody = document.getElementById('hist-tbody');
+  const cards = document.getElementById('hist-cards');
+  if (!hist.length) { empty.style.display='block'; content.style.display='none'; return; }
+  empty.style.display = 'none'; content.style.display = 'block';
+
+  tbody.innerHTML = hist.map(h => `<tr>
+    <td><div class="hist-story">${h.story?.title||'—'}</div>${h.contestTheme?`<div style="font-size:11px;color:var(--teal)">🎯 ${h.contestTheme}</div>`:''}</td>
+    <td><span style="font-size:12px;color:#888">${h.story?.genre||'—'}</span></td>
+    <td><span style="font-size:12px">${h.story?.author||'—'}</span></td>
+    <td><span class="hist-score">${h.display?.FI??'—'}/50</span></td>
+    <td><span class="hist-score">${h.display?.B??'—'}/100</span></td>
+    <td><span class="hist-score">${h.display?.C??'—'}/100</span></td>
+    <td><span class="hist-score">${h.display?.D??'—'}/100</span></td>
+    <td><span class="hist-score">${h.display?.OT??'—'}/100</span></td>
+    <td><span class="hist-score">${h.display?.TH!=null ? h.display.TH+'/50' : '—'}</span></td>
+    <td><strong>${h.display?.grand??'—'}/${h.maxPoints??450}</strong></td>
+    <td><span style="font-size:12px">${h.reviewerName||'—'}</span></td>
+    <td><span style="font-size:11px;color:#bbb;font-family:var(--mono)">${h.timestamp||'—'}</span></td>
+  </tr>`).join('');
+
+  cards.innerHTML = hist.map(h => {
+    const cmts = h.reviewerComments || {};
+    const commentEntries = [
+      { label:'✦ First Impression', val: cmts.firstImpression },
+      { label:'🎬 Directing',        val: cmts.directing },
+      { label:'📖 Plot',             val: cmts.plot },
+      { label:'🎮 Interactivity',    val: cmts.interactivity },
+      { label:'✍️ Others',           val: cmts.others },
+      ...(h.themeMode ? [{ label:'🎯 Theme Fit', val: cmts.themeFit }] : [])
+    ].filter(e => e.val);
+
+    return `
+    <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
+      <div style="padding:14px 18px;background:var(--ink);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <div>
+          <div style="font-family:var(--serif);font-size:16px;font-weight:700;color:var(--gold)">${h.story?.title||'Unknown'}</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:2px">${h.story?.genre||''} · ${h.story?.author||''} · Reviewer: ${h.reviewerName||''}</div>
+          ${h.contestTheme?`<div style="font-size:11px;color:rgba(14,116,144,0.8);margin-top:2px">🎯 Theme: ${h.contestTheme}</div>`:''}
+        </div>
+        <div style="text-align:right">
+          <div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--gold)">${h.display?.grand??0}/${h.maxPoints??450}</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4)">${h.percentage??'—'}%</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(${h.themeMode?6:5},1fr);gap:0;">
+        ${[
+          ['✦ First Imp.','#6b3fa0',h.display?.FI,50],
+          ['🎬 Directing','#2a4fa3',h.display?.B,100],
+          ['📖 Plot','#8a3055',h.display?.C,100],
+          ['🎮 Interact.','#2d7a5f',h.display?.D,100],
+          ['✍️ Others','#c9a84c',h.display?.OT,100],
+          ...(h.themeMode?[['🎯 Theme','#0e7490',h.display?.TH,50]]:[])
+        ].map((cat,i,arr) => `
+          <div style="padding:10px 14px;border-top:1px solid var(--border);${i<arr.length-1?'border-right:1px solid var(--border)':''}">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:${cat[1]};margin-bottom:3px">${cat[0]}</div>
+            <div style="font-family:var(--mono);font-size:16px;font-weight:700">${cat[2]??'—'}<span style="font-size:10px;color:#bbb">/${cat[3]}</span></div>
+          </div>`).join('')}
+      </div>
+      ${commentEntries.length ? `
+      <div style="border-top:1px solid var(--border);">
+        <div style="padding:10px 18px 4px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#aaa;">Reviewer Comments</div>
+        ${commentEntries.map((e,i,arr) => `
+          <div style="padding:8px 18px;${i<arr.length-1?'border-bottom:1px solid var(--border)':''}display:flex;gap:10px;align-items:flex-start;">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#aaa;min-width:90px;padding-top:1px;flex-shrink:0;">${e.label}</div>
+            <div style="font-size:12px;color:#555;line-height:1.55;font-style:italic;">"${e.val}"</div>
+          </div>`).join('')}
+      </div>` : ''}
+      ${h.notes?`<div style="padding:10px 16px;border-top:1px solid var(--border);font-size:12px;color:#888;font-style:italic">Note: "${h.notes}"</div>`:''}
+      <div style="padding:8px 16px;border-top:1px solid var(--border);font-size:11px;color:#bbb;font-family:var(--mono)">${h.timestamp||''}</div>
+    </div>`;
+  }).join('');
+}
+
+function clearHistory() {
+  if (!confirm('Clear all locally stored submission records? Records already sent to the central sheet are not affected.')) return;
+  localStorage.removeItem('buddies_monthly_submissions');
+  renderHistory();
+  toast('🗑 Local log cleared');
+}
+
+// ─────────────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────────────
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3400);
+}
+
+// ─────────────────────────────────────────────────────
+// INIT — build all dynamic rows
+// ─────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Build all criteria tables
+  const keyMap = {
+    'fi1-tbody':'fi1','fi2-tbody':'fi2','fi3-tbody':'fi3','fi4-tbody':'fi4',
+    'b1-tbody':'b1','b2-tbody':'b2','b3-tbody':'b3','b4-tbody':'b4','b5-tbody':'b5',
+    'c1-tbody':'c1','c2-tbody':'c2','c3-tbody':'c3','c4-tbody':'c4','c5-tbody':'c5',
+    'd1-tbody':'d1','d2-tbody':'d2','d3-tbody':'d3','d4-tbody':'d4','d5-tbody':'d5',
+    'ot1-tbody':'ot1','ot2-tbody':'ot2','ot3-tbody':'ot3','ot4-tbody':'ot4','ot5-tbody':'ot5',
+    'th1-tbody':'th1','th2-tbody':'th2','th3-tbody':'th3','th4-tbody':'th4'
+  };
+  Object.entries(keyMap).forEach(([tbodyId, key]) => buildCriteriaRows(tbodyId, key));
+
+  // Theme pnav hidden by default
+  document.getElementById('pnav-TH').style.display = 'none';
+  document.getElementById('theme-title-wrap').style.display = 'none';
+  document.getElementById('rev-TH-wrap').style.display = 'none';
+
+  // Try restore draft
+  try {
+    const draft = JSON.parse(localStorage.getItem('buddies_monthly_draft') || '{}');
+    if (draft.title) { ['title','genre','author','handle','judge','date','theme','notes'].forEach(f => {
+      const el = document.getElementById('a-' + f);
+      if (el && draft[f]) { el.value = draft[f]; markFilled(el); }
+    }); }
+    if (draft.themeMode !== undefined && draft.themeMode !== null) {
+      setThemeMode(draft.themeMode);
+    }
+    // Restore comments
+    if (draft.comments) {
+      Object.entries(draft.comments).forEach(([key, val]) => {
+        if (!val) return;
+        const ta = document.getElementById('comment-' + key);
+        if (ta) { ta.value = val; ta.classList.add('has-content'); updateCommentCount(key, 400); }
+      });
+    }
+  } catch(e) {}
+
+  updateOTNextBtn();
+});
+</script>
+</body>
+</html>
