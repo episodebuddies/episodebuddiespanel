@@ -315,8 +315,29 @@ const SEED_CONTESTS = [
 const SK = 'bsh_monthly_contests_2026';
 let S, currentContest = 0, openStories = {};
 
+function migrateCategoryIds(contests) {
+  const labelToId = {
+    'first impression': 'fi',
+    'directing': 'dir',
+    'plot': 'plt',
+    'interactivity': 'int',
+    'others': 'oth',
+    'theme fit': 'tf'
+  };
+  contests.forEach(c => {
+    c.categories.forEach(cat => {
+      const mapped = labelToId[cat.label.toLowerCase()];
+      if (mapped) cat.id = mapped;
+    });
+  });
+  return contests;
+}
+
 function loadState() {
-  try { const d = localStorage.getItem(SK); S = d ? JSON.parse(d) : JSON.parse(JSON.stringify(SEED_CONTESTS)); }
+  try {
+    const d = localStorage.getItem(SK);
+    S = d ? migrateCategoryIds(JSON.parse(d)) : JSON.parse(JSON.stringify(SEED_CONTESTS));
+  }
   catch(e) { S = JSON.parse(JSON.stringify(SEED_CONTESTS)); }
 }
 function save() { localStorage.setItem(SK, JSON.stringify(S)); }
