@@ -341,10 +341,12 @@ function storyAvgPct(story, cats) {
   return parseFloat((avg / mx * 100).toFixed(2));
 }
 
-function catAvg(story, catIdx) {
-  const s1 = story.j1.scores[catIdx];
-  const s2 = story.j2.scores[catIdx];
-  const vals = [s1, s2].filter(v => v !== null && v !== '');
+function catAvg(story, catIdx, cats) {
+  // If cats provided, resolve catIdx safely (no-op if already correct)
+  const idx = catIdx;
+  const s1 = (story.j1.scores || [])[idx];
+  const s2 = (story.j2.scores || [])[idx];
+  const vals = [s1, s2].filter(v => v !== null && v !== undefined && v !== '');
   if (!vals.length) return null;
   return vals.reduce((a,b)=>a+Number(b),0) / vals.length;
 }
@@ -356,10 +358,16 @@ function detectAwards(contest) {
   if (!scored.length) return null;
   scored.sort((a,b) => (storyAvgPct(b,cats)||0) - (storyAvgPct(a,cats)||0));
 
-  // Direction index
-  const dirIdx = cats.findIndex(c => c.id === 'dir');
-  const pltIdx = cats.findIndex(c => c.id === 'plt');
-  const intIdx = cats.findIndex(c => c.id === 'int');
+  // Find indices by label as fallback in case id was auto-generated
+  function findIdx(id, labelFallback) {
+    let i = cats.findIndex(c => c.id === id);
+    if (i < 0) i = cats.findIndex(c => c.label.toLowerCase() === labelFallback);
+    return i;
+  }
+
+  const dirIdx = findIdx('dir', 'directing');
+  const pltIdx = findIdx('plt', 'plot');
+  const intIdx = findIdx('int', 'interactivity');
 
   const byDir = dirIdx >= 0 ? [...scored].sort((a,b) => (catAvg(b,dirIdx)||0) - (catAvg(a,dirIdx)||0)) : [];
   const byPlt = pltIdx >= 0 ? [...scored].sort((a,b) => (catAvg(b,pltIdx)||0) - (catAvg(a,pltIdx)||0)) : [];
@@ -673,9 +681,14 @@ function renderResultsTable(c) {
 // ═══════════════════════════════════════════════
 function renderAwardsSection(a, c) {
   const cats = c.categories;
-  const dirIdx = cats.findIndex(ct=>ct.id==='dir');
-  const pltIdx = cats.findIndex(ct=>ct.id==='plt');
-  const intIdx = cats.findIndex(ct=>ct.id==='int');
+  function findCatIdx(id, label) {
+    let i = cats.findIndex(ct => ct.id === id);
+    if (i < 0) i = cats.findIndex(ct => ct.label.toLowerCase() === label);
+    return i;
+  }
+  const dirIdx = findCatIdx('dir', 'directing');
+  const pltIdx = findCatIdx('plt', 'plot');
+  const intIdx = findCatIdx('int', 'interactivity');
 
   const pills = [
     {icon:'🏆',name:'Contest Winner',winner:a.winner,score:a.winner?storyAvgPct(a.winner,cats)+'%':null},
